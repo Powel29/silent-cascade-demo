@@ -4,7 +4,7 @@ A thin UI over the repo's existing pure functions. Every number shown here comes
 same code that produced outputs/*.csv: cascade.cascade(), d2_language.classify_one(),
 d4_intervention.run_condition(). Nothing is reimplemented in the app layer.
 
-Run locally:  pip install -r requirements-app.txt && streamlit run app.py
+Run locally:  pip install -r requirements.txt && streamlit run app.py
 """
 
 from __future__ import annotations
