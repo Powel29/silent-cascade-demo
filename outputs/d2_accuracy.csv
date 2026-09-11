@@ -1,0 +1,7 @@
+language,condition,accuracy_pct
+en,clean,100.0
+en,small_model,70.0
+en,truncated,90.0
+native,clean,100.0
+native,small_model,75.0
+native,truncated,55.0

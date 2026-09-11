@@ -1,0 +1,82 @@
+# config.yaml — every numeric assumption used anywhere in the pipeline lives here.
+# Each value under `assumptions` is NOT observed data. It is a stand-in used to make the
+# simulation runnable, and every slide that shows a number derived from it must say so.
+
+seed: 42
+
+cities:
+  # try in order; fall back to the next if the fetched node count is too small
+  order: [bhopal, indore, nagpur, jaipur]
+  bhopal:
+    bbox: [23.15, 77.30, 23.35, 77.55]   # [south, west, north, east]
+  indore:
+    bbox: [22.65, 75.75, 22.80, 75.95]
+  nagpur:
+    bbox: [21.05, 78.95, 21.20, 79.15]   # not in spec's two boxes — placeholder, ask before use
+  jaipur:
+    bbox: [26.80, 75.70, 26.95, 75.90]   # not in spec's two boxes — placeholder, ask before use
+
+overpass:
+  endpoint: "https://overpass-api.de/api/interpreter"
+  timeout: 90
+  min_nodes_to_accept_city: 15
+  min_water_nodes_before_synthesis: 3
+  synthetic_water_node_count: 5
+
+assumptions:
+  # ASSUMPTION: substation electrical capacity, MW. No published feeder-level capacity
+  # data was available for the fallback (OSM-only) path, so we draw uniformly and label
+  # every such node provenance="inferred" for the value (the node's existence may still
+  # be provenance="observed").
+  capacity_mw_range: [80, 150]
+
+  # ASSUMPTION: initial load as a fraction of capacity — deliberately narrow so the grid
+  # starts with limited headroom, which is what makes cascades observable within a few
+  # timesteps. Chosen for demo legibility, not measured from any utility.
+  load_fraction_of_capacity_range: [0.55, 0.75]
+
+  # ASSUMPTION: population served per substation. No ward-to-feeder mapping was available;
+  # drawn uniformly as a stand-in for "a plausible mid-size distribution substation".
+  population_served_range: [8000, 45000]
+
+  # ASSUMPTION: hospital backup generator runtime, hours. Typical published diesel-generator
+  # runtime for mid-size hospital gensets at rated load; not specific to any named hospital.
+  hospital_buffer_hours: 8.0
+
+  # ASSUMPTION: water pump/reservoir buffer, hours. Typical urban service-reservoir drawdown
+  # time under normal demand; not specific to any named facility.
+  pump_buffer_hours: 6.0
+
+  # ASSUMPTION: simulation timestep length, hours. Chosen so a 12-step run spans ~1 day,
+  # matching the "14 days later it failed" narrative compressed into the demo animation.
+  hours_per_step: 2.0
+
+  # ASSUMPTION: cost figures for D4 intervention comparison, INR. Order-of-magnitude
+  # placeholders for "hardening a substation" vs "adding a verification checkpoint" —
+  # NOT sourced from any vendor quote or utility budget. Flag on slide as illustrative cost.
+  cost_inr:
+    harden_substation: 8500000       # transformer/breaker upgrade, order-of-magnitude
+    verification_checkpoint: 150000  # a human-in-the-loop review step in the AI pipeline
+
+d1:
+  max_steps: 12
+  scenario_b_delay_steps: 14   # narrative only — see CLAUDE.md D1 step 4
+  gif_fps: 1.5
+  final_frame_hold_count: 5
+  frame_width_px: 1600
+  frame_height_px: 1200
+  frame_dpi: 150
+
+d2:
+  # Model conditions. `small_model` name is filled in by d2_language.py at run time based
+  # on whichever local/small classifier is actually available — see that file's header.
+  truncate_chars: 40
+
+d4:
+  n_runs: 100
+  # ASSUMPTION: fraction of runs in which a verification checkpoint on the AI routing layer
+  # catches a misclassified complaint in time to prevent the equipment failure entirely
+  # (repair happens before the substation trips). Not measured — modelled as "removing the
+  # initiating failure in X% of runs" per CLAUDE.md's D4 spec. Chosen as an illustrative
+  # mid-range value, not derived from D2's accuracy numbers or any external source.
+  verification_checkpoint_prevention_rate: 0.4

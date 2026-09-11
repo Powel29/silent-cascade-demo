@@ -1,0 +1,266 @@
+{
+  "elements": [
+    {
+      "osm_type": "node",
+      "id": 13923992459,
+      "lat": 23.215775,
+      "lon": 77.4417995,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 13923992466,
+      "lat": 23.2613524,
+      "lon": 77.4294273,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 13924036630,
+      "lat": 23.2740014,
+      "lon": 77.4566884,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 13925831367,
+      "lat": 23.2437521,
+      "lon": 77.4355915,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 13926854996,
+      "lat": 23.2767034,
+      "lon": 77.4510858,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 13942758190,
+      "lat": 23.2638717,
+      "lon": 77.4140183,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 194108811,
+      "lat": 23.286985,
+      "lon": 77.4612142,
+      "tags": {
+        "name": "A.Nagar",
+        "power": "substation",
+        "voltage": "132000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 194108812,
+      "lat": 23.3194914,
+      "lon": 77.3311792,
+      "tags": {
+        "name": "Bairagarh",
+        "power": "substation",
+        "voltage": "220000;132000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 194108815,
+      "lat": 23.2548043,
+      "lon": 77.4385255,
+      "tags": {
+        "name": "Madhya Pradesh Power Transmission Private Limited",
+        "power": "substation",
+        "voltage": "220000;132000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 194108851,
+      "lat": 23.2779432,
+      "lon": 77.4071057,
+      "tags": {
+        "power": "substation",
+        "voltage": "132000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 194108853,
+      "lat": 23.338126,
+      "lon": 77.4821883,
+      "tags": {
+        "power": "substation",
+        "voltage": "132000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 194108858,
+      "lat": 23.2728373,
+      "lon": 77.3669593,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 194108860,
+      "lat": 23.2713969,
+      "lon": 77.374405,
+      "tags": {
+        "power": "substation",
+        "voltage": "132000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 194108861,
+      "lat": 23.2696485,
+      "lon": 77.4784124,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 194108868,
+      "lat": 23.2629552,
+      "lon": 77.4461989,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 194119510,
+      "lat": 23.2125393,
+      "lon": 77.4994607,
+      "tags": {
+        "power": "substation",
+        "voltage": "132000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 194119526,
+      "lat": 23.2123064,
+      "lon": 77.4574171,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 194119536,
+      "lat": 23.2065709,
+      "lon": 77.4021152,
+      "tags": {
+        "power": "substation",
+        "voltage": "132000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 360424779,
+      "lat": 23.244107,
+      "lon": 77.4513207,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 360424780,
+      "lat": 23.2386402,
+      "lon": 77.4577046,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 375514477,
+      "lat": 23.2325405,
+      "lon": 77.4343717,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 666636903,
+      "lat": 23.3471761,
+      "lon": 77.4838176,
+      "tags": {
+        "name": "Bhopal",
+        "power": "substation",
+        "voltage": "400000;220000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1266448648,
+      "lat": 23.2175306,
+      "lon": 77.4143548,
+      "tags": {
+        "name": "132 KV SubStation, Bhopal",
+        "power": "substation",
+        "voltage": "132000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1308339012,
+      "lat": 23.2248717,
+      "lon": 77.439791,
+      "tags": {
+        "power": "substation",
+        "substation": "minor_distribution"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1460260458,
+      "lat": 23.2462714,
+      "lon": 77.4267208,
+      "tags": {
+        "location": "outdoor",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1466824522,
+      "lat": 23.3085738,
+      "lon": 77.3378484,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1527955542,
+      "lat": 23.278643,
+      "lon": 77.4812763,
+      "tags": {
+        "name": "220KV Sub Station Adampur",
+        "power": "substation",
+        "voltage": "220000"
+      }
+    }
+  ]
+}

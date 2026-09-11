@@ -1,0 +1,4337 @@
+{
+  "elements": [
+    {
+      "osm_type": "node",
+      "id": 2651560704,
+      "lat": 23.213357,
+      "lon": 77.3921666,
+      "tags": {
+        "addr:city": "Bhopal, Madhya Pradesh 462003",
+        "addr:housenumber": "A-8,",
+        "addr:postcode": "462003",
+        "addr:street": "Main Road 3, Gomti Colony,",
+        "amenity": "hospital",
+        "name": "Manisha Hospital",
+        "phone": "0755 277 4851"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 4781134061,
+      "lat": 23.1724664,
+      "lon": 77.4170971,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Akbarpur,Main Kolar Road",
+        "addr:postcode": "462003",
+        "addr:state": "Madhya Pradesh",
+        "addr:street": "Kolar Road",
+        "amenity": "hospital",
+        "name": "Anupam Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 4781180447,
+      "lat": 23.1825879,
+      "lon": 77.4363178,
+      "tags": {
+        "addr:street": "E 8 Extension ",
+        "amenity": "hospital",
+        "description": "Cosmetic surgeon ",
+        "name": "Bisoniya Hospital "
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 4781230224,
+      "lat": 23.1886998,
+      "lon": 77.4319555,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "physiotherapist",
+        "name": "Physiotherapy & Ayurveda",
+        "name:en": "Physiotherapy & Ayurveda"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 4798854898,
+      "lat": 23.2016302,
+      "lon": 77.4263831,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "A-69, Shahpura Near Manisha Market",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Shekhar Hospital, Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 4798865397,
+      "lat": 23.1984715,
+      "lon": 77.4264928,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "A - 498 Near Manisha Market, Shahpura",
+        "addr:postcode": "462039",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Life Line Hospital, Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 4798867777,
+      "lat": 23.1998518,
+      "lon": 77.429428,
+      "tags": {
+        "amenity": "hospital",
+        "name": "Lahoti Hospital "
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 4803607717,
+      "lat": 23.2126452,
+      "lon": 77.4387892,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Bhopal Fracture Hospital "
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 4803609898,
+      "lat": 23.2100099,
+      "lon": 77.440881,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Asha Niketan"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 4807059899,
+      "lat": 23.2521256,
+      "lon": 77.4149495,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "1st Floor,Shiv Narayan Complex Lily Talkies Square Jehangirabad",
+        "addr:postcode": "462008",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Vardaan Hospital, Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 4836567801,
+      "lat": 23.2617176,
+      "lon": 77.4104527,
+      "tags": {
+        "addr:block": "Phanda",
+        "addr:district": "Bhopal",
+        "addr:full": "BHRAT TALKIES ROAD",
+        "addr:postcode": "462013",
+        "addr:state": "Madhya Pradesh",
+        "addr:street": "Near Station",
+        "addr:subdistrict": "Huzur",
+        "amenity": "hospital",
+        "description": "Dispensaries",
+        "health_facility:type": "dispensary",
+        "locality": "Bhopal",
+        "name": "Khan Shakir ali khan aspataal, gas rahat, bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 4836592537,
+      "lat": 23.2682768,
+      "lon": 77.404835,
+      "tags": {
+        "amenity": "hospital",
+        "name": "Bhopal Eye Hospital"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 6128500472,
+      "lat": 23.2324175,
+      "lon": 77.3944885,
+      "tags": {
+        "amenity": "hospital",
+        "name": "Aastha Hospital"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 6562093342,
+      "lat": 23.2045252,
+      "lon": 77.4093707,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "HAKIM SYED ZIAUL HASAN GOVERMENT UNANI MEDICAL COLLEGE AND HOSPITAL"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 6562093343,
+      "lat": 23.2037556,
+      "lon": 77.4091003,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "GOVERMENT HOMEOPATHIC MEDICAL COLLEGE AND HOSPITAL"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013132568,
+      "lat": 23.2133755,
+      "lon": 77.4299254,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "E-5/38, Arera Colony",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Meenakshi Hospital, Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013166610,
+      "lat": 23.2288798,
+      "lon": 77.4356157,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Plot No.131/14, Zone-2,Mp Nagar,Opposite Provident Fund Office,Near Pragati Petrol Pump",
+        "addr:postcode": "462011",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Prakash Eye Care and Laser Centre",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013484307,
+      "lat": 23.2242238,
+      "lon": 77.4019808,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "1/4, Sanjay Complex, Mata Mandir",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Mata Mandir Netra Sewa Kendra",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013484308,
+      "lat": 23.262956,
+      "lon": 77.3803829,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Bhopal",
+        "addr:postcode": "462003",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Kshitij Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013484309,
+      "lat": 23.2627832,
+      "lon": 77.3939585,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Noor Mahal Road, Chowki Imambara",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Bhopal Care Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013590094,
+      "lat": 23.2301825,
+      "lon": 77.3937517,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "31-35,Mwa Mp Qwarters, Jawahar Chowk New Market",
+        "addr:postcode": "462003",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "G.S.M.Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013648893,
+      "lat": 23.263933,
+      "lon": 77.393792,
+      "tags": {
+        "addr:district": "Jabalpur",
+        "addr:full": "713,Kamala Nehru Nagar",
+        "addr:postcode": "482002",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Central Hospital and Research Center",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013698771,
+      "lat": 23.217648,
+      "lon": 77.4391609,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Add,E-3/23, Arera Colony",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Narmada Advance Trauma and Critical care Institute",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013700387,
+      "lat": 23.2684238,
+      "lon": 77.4731988,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Ahinsa Vihar Colony, Ayodhya Nagar, P O Phase-3",
+        "addr:postcode": "462041",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Devmata Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013704094,
+      "lat": 23.1945312,
+      "lon": 77.4731706,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "H-1/642, Arvind Vihar, Bag Mugaliya",
+        "addr:postcode": "462003",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Shri Maya Maternity and General Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013704107,
+      "lat": 23.2070006,
+      "lon": 77.4342786,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "E-7, H/451, Opp, 1100 Qtrs, Hanuman Mandir Arera Colony",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Malti Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013744455,
+      "lat": 23.2528588,
+      "lon": 77.3988064,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "No. 22, Retghat, Near Kamla Park",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Jayshree Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013770350,
+      "lat": 23.2402937,
+      "lon": 77.4055132,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "6, Malviya Nagar",
+        "addr:postcode": "462003",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Peoples General Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013804526,
+      "lat": 23.2624533,
+      "lon": 77.3939529,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "103, Opposite Tazul Masjid",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Shubham Hospital Fracture Accident Care",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013804552,
+      "lat": 23.2536634,
+      "lon": 77.4280921,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Gurunankrupa Raisen Road,Bpl, Near Capital Pertol Pump",
+        "addr:postcode": "462023",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Choudhary Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013804557,
+      "lat": 23.2304819,
+      "lon": 77.4360924,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "115,Zonal-II,M.P Nagar,Behind Pragati Petrol Pump",
+        "addr:postcode": "462011",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Citi Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013804558,
+      "lat": 23.2548783,
+      "lon": 77.4043921,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Charbatti Budhwara",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Gour Hospital And Maternity Home",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013804661,
+      "lat": 23.2678041,
+      "lon": 77.3950513,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Shahjahanabad",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Adarsh Hospital, Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013865513,
+      "lat": 23.1911005,
+      "lon": 77.4503008,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "74-C, Vidhya Nagar , Hoshangabad Road",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Nilay Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013865527,
+      "lat": 23.2274392,
+      "lon": 77.4320886,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Hig-2, Ankur Colony Shivaji Nagar",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Parul Hospital Pvt Ltd",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013865542,
+      "lat": 23.2128356,
+      "lon": 77.4391428,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "E-3-A Arera Colony",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Bhopal Fracture Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013865548,
+      "lat": 23.2198621,
+      "lon": 77.3957902,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Behind Veerangana Laxmi Bai Parisar, Kotra Sultanabad",
+        "addr:postcode": "462003",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Shukla Hospital and Maternity Home",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013885330,
+      "lat": 23.2481629,
+      "lon": 77.413765,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Safina Church Road , Opposite Lal Parade Ground",
+        "addr:postcode": "462003",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Hafeez Maternity Home and Eye Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013885339,
+      "lat": 23.2698098,
+      "lon": 77.4013451,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "116-117, Sindhi Colony Berasia Road",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Apex Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013919332,
+      "lat": 23.254938,
+      "lon": 77.4302284,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "110, Old Ashoka Garden, Near Prabhat Petrol Pump",
+        "addr:postcode": "462023",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Pranjal Hospital and Child Care Center",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013923398,
+      "lat": 23.2696891,
+      "lon": 77.4013142,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "115, Berasia Road Near Sindhi Colony",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Ajwani Eye Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013924260,
+      "lat": 23.2125817,
+      "lon": 77.4361414,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "E- 4/20, Arera Colony",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Anushree Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7013971836,
+      "lat": 23.2512606,
+      "lon": 77.459553,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Inrapuri A- Sector, Opposite Bhel Gate No. 1, Above Canara Bank, Raisen Road",
+        "addr:postcode": "462030",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Anantshree Multispeciality Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7014129664,
+      "lat": 23.2993465,
+      "lon": 77.403806,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "House No-2,Pipal Squre Karond",
+        "addr:postcode": "462038",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Venus Hospital and Medical Research Centre-Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7014129665,
+      "lat": 23.250594,
+      "lon": 77.4717195,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "H-8, Sector-B, Sonagiri",
+        "addr:postcode": "462023",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Aradhana Maternity And Kidney Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7014244270,
+      "lat": 23.2649458,
+      "lon": 77.3937383,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "73, Tajul Masjid Road",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "L.B.S Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7014244271,
+      "lat": 23.2688064,
+      "lon": 77.3081296,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Bhopal- Indore Highway, Near Bajragarh,Bhaisakheds, Baijragarh",
+        "addr:postcode": "462030",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Chirayu Medical College and Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7014266231,
+      "lat": 23.2652057,
+      "lon": 77.3936498,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Tajul Masjid Road, Opp Motiya Talab Near L.B.S Hospital",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Yashoda Hospital, Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7014694821,
+      "lat": 23.2523431,
+      "lon": 77.4155004,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "# 106, Chiklod Road,Jehangirbad",
+        "addr:postcode": "462008",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Krishna Hospital, Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7014942436,
+      "lat": 23.2338401,
+      "lon": 77.3961577,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "30, M L A Quarters, Near DAV Maha vidyalaya, Bhadbhada Road",
+        "addr:postcode": "462003",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Jashdeep Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7014942437,
+      "lat": 23.1927209,
+      "lon": 77.433726,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "E- 8- 353, Trilanga, Shahpura",
+        "addr:postcode": "462039",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Naman Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7015238384,
+      "lat": 23.1948024,
+      "lon": 77.4704428,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Hig-652, Arvind Vihar , Near Mount Carmel School , Bagmugaliya",
+        "addr:postcode": "462003",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Nav Jeevan Hospital, Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7015262894,
+      "lat": 23.2112407,
+      "lon": 77.432908,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "E-2/13, Arera Colony , Opposite Habibganj Railway Station",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Niramaya Hospital, Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7015262907,
+      "lat": 23.2597415,
+      "lon": 77.4056527,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "31.Mangalwara Road",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Ntr Hospital and Research Centre",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7015296487,
+      "lat": 23.2156753,
+      "lon": 77.4393775,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "E-3/15, Arera Colony Near Habibganj Rly Crossing",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Agrawal Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7015296488,
+      "lat": 23.3003492,
+      "lon": 77.4166846,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Raisen Bye Pass Road , Bhanpur",
+        "addr:postcode": "462038",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Bhopal Memorial Hospital and Research Center",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7015296499,
+      "lat": 23.1614005,
+      "lon": 77.4705541,
+      "tags": {
+        "addr:city": "Bhopal",
+        "addr:district": "Bhopal",
+        "addr:full": "Plot No. 269/1, Opposite Misrod Police Station Misrod, Near Mpeb Sub Station",
+        "addr:postcode": "462026",
+        "addr:state": "Madhya Pradesh",
+        "addr:street": "Plot No. 269/1",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "healthcare:speciality": "general;orthopaedics;radiology;cardiology",
+        "name": "Noble Multispeciality Hospital",
+        "operator": "Mr. Rajeev Mishra",
+        "operator:type": "private",
+        "source": "OpenGovernmentData;local knowledge"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7015548062,
+      "lat": 23.230265,
+      "lon": 77.436824,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "41, Zone- Ii M P Nagar",
+        "addr:postcode": "462011",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Navodaya Hospital And Research Centre",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7015810930,
+      "lat": 23.2174908,
+      "lon": 77.4236557,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Char Imli Opp: Ekant Park Rishi Nagar",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Akshaya Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7015810938,
+      "lat": 23.2303599,
+      "lon": 77.4440525,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Near a Bhopal Talkies Chouraha, Berasia Road",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Paliwal Hospital Pvt. Ltd.",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7015810948,
+      "lat": 23.2720029,
+      "lon": 77.3424774,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "55, Main Road, In Front Of Krishna Plaza Bairagarh",
+        "addr:postcode": "462030",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Rajdeep Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7015810949,
+      "lat": 23.2641502,
+      "lon": 77.3937863,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "77, Op. Motia Talab , Tajul Masajid Road",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Sanjeevani Hospital, Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7015816092,
+      "lat": 23.1956985,
+      "lon": 77.4483964,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Plot No:113 Sector-B, Vidhya Nagar,Hoshangabad Road",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Sahara Fracture and General Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7015954635,
+      "lat": 23.2988834,
+      "lon": 77.4251068,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Peoples Campus , Bhanpur",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Peoples Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7015971605,
+      "lat": 23.1916178,
+      "lon": 77.4365044,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "G-3/358, Near South Savoy Complex Gulmohar Colony, E-8",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Sujyoti Hospital and Maternity Home",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7016102821,
+      "lat": 23.210445,
+      "lon": 77.4315892,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "E-7 Arera Colony",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Dewani Hospital And Research Centre",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7016102833,
+      "lat": 23.2014132,
+      "lon": 77.4344569,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "E-7/822, Arera Colony, Near Basant Kunj",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Pushpanjali Hsopital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7016102834,
+      "lat": 23.2083848,
+      "lon": 77.4180633,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "45-A, Janki Nagar,Chuna Bhatti, Kolar Road",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Suyash Mother and Child Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7016104858,
+      "lat": 23.2140521,
+      "lon": 77.429118,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "E-5/24,Opp Arera Petrol Pump,Arena Colony",
+        "addr:postcode": "462038",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Global Liver and Gastroenterology Centre",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7016150778,
+      "lat": 23.2102929,
+      "lon": 77.4396715,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "E-6, Arera Colony",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Asha Niketan Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7016150779,
+      "lat": 23.2169754,
+      "lon": 77.4360666,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "E- 3/61, Arera Colony",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "National Hospital For Heart and Critical Care",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7016150780,
+      "lat": 23.2137751,
+      "lon": 77.4274743,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "E-5/61, Arera Colony",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Ajwani Eye Tech Centre",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7016168278,
+      "lat": 23.251491,
+      "lon": 77.4151021,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Old Nav Bharat Press Building Jahangirabad",
+        "addr:postcode": "462008",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Charak Hospital/A Unit Of Mrityunjay Health Care Pvt Ltd,",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7016168371,
+      "lat": 23.2283782,
+      "lon": 77.4364391,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "172, Zone 2, Near Sargam Talkies, Maharanapratap Nagar",
+        "addr:postcode": "462011",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "New Bhopal Hospital and Research Foundation",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7016172592,
+      "lat": 23.221521,
+      "lon": 77.3959123,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "189 A, Aradhana Nagar, Kotra Sultanabad",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Sharda Hospital and Diagnostic Center",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7016217250,
+      "lat": 23.2029589,
+      "lon": 77.4457088,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "C-2, Narayan Nagar, Opposite Barkutallah University, Hoshangabad Road",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Saarthi Hospital (Maternity and Urological Centre)",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7016243059,
+      "lat": 23.2516574,
+      "lon": 77.4167892,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "84, Chiklol Road, Near Petrol Pump",
+        "addr:postcode": "462008",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Tanushree Female Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7016405057,
+      "lat": 23.2353103,
+      "lon": 77.441023,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Mig-215, Gautam Nagar, Govindpura",
+        "addr:postcode": "462023",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Shivam Hospital, Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7016451736,
+      "lat": 23.2302816,
+      "lon": 77.4364857,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "109 Zone 2 Mp Nagar",
+        "addr:postcode": "462011",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Sankalp Netralya Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7016451737,
+      "lat": 23.2339407,
+      "lon": 77.4400197,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "B-66 Kasturba Nagar, Near Chetak Bridge",
+        "addr:postcode": "462023",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Vatsalya Hospital, Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7016451742,
+      "lat": 23.2321079,
+      "lon": 77.4405538,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "B-27, Kasturba Nagar , Near Chetak Bridge",
+        "addr:postcode": "462023",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Lakecity Hospital, Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7016451755,
+      "lat": 23.2617624,
+      "lon": 77.3977843,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "No:3, Chowki Imam Bada, Noor Mahal Road",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Al - Rasheed Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7016528077,
+      "lat": 23.2676723,
+      "lon": 77.389707,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Pari Park Road , Opposite Babe Aali",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Kid Kare",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7016647042,
+      "lat": 23.2711503,
+      "lon": 77.3887213,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "104-105,Prince Colony, Lower Idgah Hills",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Ankur Maternity And Nursing Home",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7016647059,
+      "lat": 23.2356788,
+      "lon": 77.3983128,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Sahkar Brown,Rangmahal Square,New Market",
+        "addr:postcode": "462003",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Rainbow Children Hospital, Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7016647089,
+      "lat": 23.2616106,
+      "lon": 77.3938631,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "E- 1/100, Arera Colony+106 Old Tas Market",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Hi-Tech Eye Care and Laser Center",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7016714429,
+      "lat": 23.25277,
+      "lon": 77.4309996,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "11, Old Ashoka Garden, Behind Prabhat Petrol Pump",
+        "addr:postcode": "462003",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Ayush Hospital and Research Centre",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7016767826,
+      "lat": 23.233081,
+      "lon": 77.3953892,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "45 Mla Qtrs. Jawahar Chowk . T.T Nagar",
+        "addr:postcode": "462003",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Siddharth Eye Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7017074866,
+      "lat": 23.2405328,
+      "lon": 77.4307877,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Kisan Bhawan Campus, Near R. B.I., Opposite Maida Mill",
+        "addr:postcode": "462008",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Swami Vivekanand Regional Spine Centre",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7017098522,
+      "lat": 23.2369443,
+      "lon": 77.4343295,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Z-17, M P Nagar Zone 1, Infront Of Chittod Complex",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Miracles Children Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7017098523,
+      "lat": 23.2622106,
+      "lon": 77.3890002,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "State Bank Chouraha, Sultania Road",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Mayo Hospital, Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7017098524,
+      "lat": 23.2527836,
+      "lon": 77.4390656,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "First Floor, 8-A, Govind Garden Raisen Road, Govindpura",
+        "addr:postcode": "462023",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Roshan Maternity Child Care And General Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7017098529,
+      "lat": 23.2697538,
+      "lon": 77.3367957,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Bairagarh, Under Central Bank, Sarafa Road",
+        "addr:postcode": "462030",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Bhambhani Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7017170463,
+      "lat": 23.2332387,
+      "lon": 77.3952263,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "48, Mla Quarter, Jawahar Chowk",
+        "addr:postcode": "462003",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "R.A Stone and Surgical Care",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7017180604,
+      "lat": 23.2766683,
+      "lon": 77.3657897,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "6-C, Vijay Nagar, Near Railway Crossing, Lalghatti",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Suditi Hospital - Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7017489021,
+      "lat": 23.2613802,
+      "lon": 77.392424,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Hig-5, Shalimar Complex, Opposite S.B.I Sultania Road",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "S.V Eye Care and Research Centre",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7017489027,
+      "lat": 23.2728295,
+      "lon": 77.4650335,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Indus Muskan Plaza By Pass Road, Ayodhya Nagar",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Muskan Maternity and General Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7018318348,
+      "lat": 23.2249287,
+      "lon": 77.3934285,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Geetanjali Complex Main Road, No.2, Near .Mata Mandir,T T Nagar",
+        "addr:postcode": "462003",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Hajela Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7096140058,
+      "lat": 23.2721125,
+      "lon": 77.340247,
+      "tags": {
+        "addr:block": "Phanda",
+        "addr:district": "Bhopal",
+        "addr:full": "Main Road",
+        "addr:landmark": "Sabji Mandi Ke Pass",
+        "addr:postcode": "462030",
+        "addr:state": "Madhya Pradesh",
+        "addr:street": "Bairagarh",
+        "addr:subdistrict": "Huzur",
+        "amenity": "hospital",
+        "contact:phone": "0755 - 2521142",
+        "description": "Sub-District Hospital",
+        "locality": "Bairagarh",
+        "name": "Civil Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7103460542,
+      "lat": 23.2339794,
+      "lon": 77.3973834,
+      "tags": {
+        "addr:block": "Phanda",
+        "addr:district": "Bhopal",
+        "addr:full": "Jawahar Chowk",
+        "addr:postcode": "462003",
+        "addr:state": "Madhya Pradesh",
+        "addr:street": "Jawahar Chawk",
+        "addr:subdistrict": "Huzur",
+        "amenity": "hospital",
+        "contact:phone": "0755-2774252",
+        "description": "Sub-District Hospital",
+        "locality": "Tt Nagar",
+        "name": "KAILASH NATH KATJU",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7106710075,
+      "lat": 23.2093426,
+      "lon": 77.4584547,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "C-Wing, Second Floor, Medical College Building,",
+        "addr:landmark": "Saket Nagar, Bhopal",
+        "addr:postcode": "462020",
+        "addr:state": "Madhya Pradesh",
+        "addr:street": "Aiims Bhopal,",
+        "amenity": "hospital",
+        "contact:phone": "9425680915",
+        "description": "Medical Colleges Hospital",
+        "emergency": "yes",
+        "healthcare": "hospital",
+        "locality": ".",
+        "name": "All India Institute of Medical Sciences (AIIMS), Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7108262174,
+      "lat": 23.2714472,
+      "lon": 77.3916972,
+      "tags": {
+        "addr:block": "Phanda",
+        "addr:district": "Bhopal",
+        "addr:full": "MLS Hospital",
+        "addr:landmark": "Behind Old District Court",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "addr:street": "Shahjahanabad",
+        "addr:subdistrict": "Huzur",
+        "amenity": "hospital",
+        "contact:phone": "0755 - 2535912",
+        "description": "Sub-District Hospital",
+        "locality": "Shahjahanabad",
+        "name": "MASTERLAL SINGH HOSPITAL",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502754,
+      "lat": 23.182475,
+      "lon": 77.438149,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Rohit Nagar, Bawadiya Kalan, Gulmohar Colony, Bhopal",
+        "addr:postcode": "462039",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Jaanki Hospital Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502757,
+      "lat": 23.212475,
+      "lon": 77.437564,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Link Road Number 3, Near Personal Branch Sbi, Arera Colony, Bhopal",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Gastrocare, Liver & Digestive Disease Center",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502759,
+      "lat": 23.179017,
+      "lon": 77.427917,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Signature Residency, Kolar Road Near, J.K Town, Sarvadharam C Sector, C, Bhopal",
+        "addr:postcode": "462042",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "J.K Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502761,
+      "lat": 23.209923,
+      "lon": 77.431569,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Arera Colony, Bhopal",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Malti Hospital & Test Tube Baby Centre",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502763,
+      "lat": 23.176076,
+      "lon": 77.478925,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Behind Vrindavan Garoaden, Hoshangabad Road, Jatkhedi, Bhopal",
+        "addr:postcode": "462026",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "RKDF Medical College Hospital & Research Centre",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502765,
+      "lat": 23.20852,
+      "lon": 77.438402,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Arera Colony, Bhopal",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Manahi Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502766,
+      "lat": 23.172951,
+      "lon": 77.460498,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Hoshangabad Road, Inside Vrindavan Garoaden, Shri Ram Colony, Bhopal",
+        "addr:postcode": "462047",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "B.S.Sacklecha Hospital And Trauma Centre",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502767,
+      "lat": 23.1709998,
+      "lon": 77.4281443,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Danish Kunj Chouraha, Danish Kunj Kolar Road, Bhopal",
+        "addr:postcode": "462042",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Orthocare Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502769,
+      "lat": 23.196031,
+      "lon": 77.434562,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Akashganga Colony, Shahpura, Bhopal",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Kanha Maternity & Child Care Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502770,
+      "lat": 23.165835,
+      "lon": 77.415595,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Lalita Nagar, Kolar Rd, Gehun Kheda",
+        "addr:postcode": "462007",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Mishra Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502772,
+      "lat": 23.194218,
+      "lon": 77.473807,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Bagmugaliya, Bhopal",
+        "addr:postcode": "462043",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Mount Hospital Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502773,
+      "lat": 23.163029,
+      "lon": 77.46877,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Misrod, Bhopal",
+        "addr:postcode": "462047",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "L.G.M. Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502776,
+      "lat": 23.153644,
+      "lon": 77.474917,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Hoshangabad Rd, Misrod, Bhopal",
+        "addr:postcode": "462047",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Dulaar Children Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502777,
+      "lat": 23.1847754,
+      "lon": 77.4201867,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Mandakini Society, Mandakini Colony, Kolar Road, Bhopal",
+        "addr:postcode": "462042",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Shree Vinayak Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502779,
+      "lat": 23.2149023,
+      "lon": 77.433355,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Arera Colony, Bhopal",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Colony Care Multi-Speciality Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502783,
+      "lat": 23.2120918,
+      "lon": 77.4309133,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Arera Colony, Bhopal",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Jainmshree Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502784,
+      "lat": 23.1720945,
+      "lon": 77.4233654,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Kolar Road, Near Mpeb Office, Danish Kunj, Bhopal",
+        "addr:postcode": "462042",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "V Care Children Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502787,
+      "lat": 23.171339,
+      "lon": 77.425342,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Kolar Bypass Road, Danish Kunj, Bhopal",
+        "addr:postcode": "462042",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Siddhanta Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502792,
+      "lat": 23.195543,
+      "lon": 77.4657937,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Bagsewania Main Road, Om Nagar, Bhel Sangam Colony, Bhopal",
+        "addr:postcode": "462043",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Ojas Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502798,
+      "lat": 23.209026,
+      "lon": 77.418302,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Kolar Road, Janki Nagar, Chuna Bhatti, Bhopal",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "RBM Advanced Eye Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502802,
+      "lat": 23.202278,
+      "lon": 77.45071,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Barkatullah University, Habib Ganj, Bhopal",
+        "addr:postcode": "462026",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "check_date": "2026-08-24",
+        "name": "University Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502807,
+      "lat": 23.201299,
+      "lon": 77.4466394,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Hoshangabad Road, Surendra Palace, Narayan Nagar, Bhopal",
+        "addr:postcode": "462026",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Swasth Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502810,
+      "lat": 23.191201,
+      "lon": 77.432685,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Pragya Sagar Apartment, Mahakali Society, Trilanga, Bhopal",
+        "addr:postcode": "462039",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Shri Siddhi Vinayak Miracles Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502811,
+      "lat": 23.1623654,
+      "lon": 77.4693157,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Hoshangabad Road,Main Road Madan Market, Opposite Government Hospital, Misrod, Bhopal",
+        "addr:postcode": "462026",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Bhopal City Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502813,
+      "lat": 23.186688,
+      "lon": 77.435336,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Police Station Sahyog Vihar Near Shahpura, Bhopal",
+        "addr:postcode": "462039",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Krishna Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502818,
+      "lat": 23.213384,
+      "lon": 77.396377,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Residential Quarters, Vaishali Nagar, Bhopal",
+        "addr:postcode": "462003",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "bansal hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502822,
+      "lat": 23.21118,
+      "lon": 77.432444,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Motia Talab Road, Taj-Ul-Masjid Road, E-4, Arera Colony, Bhopal",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Astha Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502823,
+      "lat": 23.177274,
+      "lon": 77.428247,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "80 Feet Road, Kolar Road, Near J.K Hospital, Sarvadharam, Sector C, Bhopal",
+        "addr:postcode": "462042",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "LN Medical Collage and J.K Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502826,
+      "lat": 23.199468,
+      "lon": 77.414268,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Ground Floor Bansal Hospital, Chuna Bhatti, Bhopal",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Dr Kamlesh Talesara",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502828,
+      "lat": 23.1978545,
+      "lon": 77.4301604,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Shahpura, Bhopal",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Shalya Joint Care Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502832,
+      "lat": 23.163756,
+      "lon": 77.41431,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Wala Road, Swagat Bunglow, Rajharsh Colony, Kolar Road, Bhopal",
+        "addr:postcode": "462042",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Divya Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502834,
+      "lat": 23.187859,
+      "lon": 77.41736,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Kolar Road, Sarvdharm Colony, Bhopal",
+        "addr:postcode": "462042",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Matratva Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502836,
+      "lat": 23.185204,
+      "lon": 77.450875,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Chinar Fortune City, Bhopal",
+        "addr:postcode": "462026",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "rkdf hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502839,
+      "lat": 23.173442,
+      "lon": 77.471741,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Jatkhedi, Bhopal",
+        "addr:postcode": "462047",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Bhabha General Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502841,
+      "lat": 23.202132,
+      "lon": 77.446307,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Hoshangabad Road, Narayan Nagar, Bhopal",
+        "addr:postcode": "462026",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Shri Satya Sai Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502842,
+      "lat": 23.1722091,
+      "lon": 77.4590072,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Hoshangabad Road, Sneh Nagar, Bhopal",
+        "addr:postcode": "462026",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Ubbuntu Heart Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502845,
+      "lat": 23.171374,
+      "lon": 77.422264,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Banjari, Near Jain Mandir, Danish Kunj, Kolar Road, Bhopal",
+        "addr:postcode": "462042",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Galaxy hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288502848,
+      "lat": 23.1587783,
+      "lon": 77.428613,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Rajharsh Colony, Kolar Rd, Bhopal",
+        "addr:postcode": "462042",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Shivalaya Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631338,
+      "lat": 23.253359,
+      "lon": 77.4264,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Raisen Road, Near Hindustan Hall, New Subhash Nagar, Lala Lajpat Rai Colony, Old Subhash Nagar, Bhopal",
+        "addr:postcode": "462008",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "All Care Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631339,
+      "lat": 23.266028,
+      "lon": 77.339174,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "One Tree Hill Road, Sant Hiroadaram Nagar, Behata, Bairagarh, Bhopal",
+        "addr:postcode": "462030",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Sant Hirdaram Yoga and Nature cure Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631340,
+      "lat": 23.252763,
+      "lon": 77.486122,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Hatai Kheda Road, Bhawani Chowk, Ashok Vihar, Anandnagar, Bhopal",
+        "addr:postcode": "462021",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Jamna Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631341,
+      "lat": 23.264925,
+      "lon": 77.380524,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Sultania Road, Lal Ghati Road, Kohefiza, Bhopal",
+        "addr:postcode": "462030",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Cmas Koh E Fiza Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631342,
+      "lat": 23.2521287,
+      "lon": 77.4041094,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Hathikhana, Hathi Khana, Budhwara, Bhopal",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Unani Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631343,
+      "lat": 23.263746,
+      "lon": 77.393839,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Old Taj Market, Taj-Ul-Masjid Road, Motia Talab, Kohefiza, Bhopal",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Silver Line Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631344,
+      "lat": 23.277062,
+      "lon": 77.372306,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Gufa Mandir Road, Om Shiv Nagar, Om Shiv Colony, Lalghati",
+        "addr:postcode": "462032",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Maheshwari Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631345,
+      "lat": 23.2632152,
+      "lon": 77.39392,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Motia Talab Road, Opposite, Taj-Ul-Masjid Road, Lbs Hospital, Kali Basti, Kohefiza, Bhopal",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Paras Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631346,
+      "lat": 23.2500507,
+      "lon": 77.4169728,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Paul Street Church Rd, Jinsi, Pratap Nagar, Jahangirabad, Bhopal",
+        "addr:postcode": "462008",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Nandan Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631347,
+      "lat": 23.238589,
+      "lon": 77.4959018,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Khajuri Kala Roadkhajuri Kala, Near Krishna Mandir, Regal Town, Gopal Nagar, Bhopal",
+        "addr:postcode": "462043",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Metro Multispeciality & Fracture Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631348,
+      "lat": 23.276649,
+      "lon": 77.37255,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Gufa Mandir Road, Lalghati, Bhopal",
+        "addr:postcode": "462030",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Madhavbaug cardiac clinic",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631349,
+      "lat": 23.258056,
+      "lon": 77.3957463,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Sultania Rd, Fatehgarh, Nakkar Khana, Peer Gate Area, Bhopal",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Maxcare Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631350,
+      "lat": 23.249134,
+      "lon": 77.488308,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Bhopal Bypass Rd, Bijli Colony, Anandnagar",
+        "addr:postcode": "462022",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Gayatri Hospital And Trauma Centre",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631351,
+      "lat": 23.2697662,
+      "lon": 77.4074972,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Kabadkhana Road, Liyaqat Market, Near Bus Stand, Ibrahimganj",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Hayat Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631352,
+      "lat": 23.255325,
+      "lon": 77.435997,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Raisen Road, Punjabi Bagh, Shanshah Garoaden, Bhopal",
+        "addr:postcode": "462023",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Srijan Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631354,
+      "lat": 23.221097,
+      "lon": 77.434557,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Arera Colony, Bhopal",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Colony Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631355,
+      "lat": 23.269603,
+      "lon": 77.467351,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Ayodhya Bypass Rd, Bhawanidham, Chhatrapati Nagar, Narela Shankri, Ayodhya Nagar, Bhopal",
+        "addr:postcode": "462022",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Zindagi Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631356,
+      "lat": 23.2195151,
+      "lon": 77.4826762,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Shubhalay Villas Adhar Shilla Near Avadhpuri Police Station Ke Paas, Bhopal",
+        "addr:postcode": "462022",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Thyrocare Centre",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631357,
+      "lat": 23.253862,
+      "lon": 77.4311342,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Iqbal Colony, New Ashoka Garden",
+        "addr:postcode": "462023",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Gas Rahat Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631358,
+      "lat": 23.2668298,
+      "lon": 77.4200427,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Kapda Mill Gate, Chandbarh",
+        "addr:postcode": "462010",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Bhopal Memorial & Gas Rahat Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631359,
+      "lat": 23.2514169,
+      "lon": 77.4599857,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Indrapuri B Sector, Indrapuri, Bhopal",
+        "addr:postcode": "462022",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "MP Hospital Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631360,
+      "lat": 23.2633324,
+      "lon": 77.3992566,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Old Saifia College Road, Kali Basti, Peer Gate Area",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Ballabh ENT Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631361,
+      "lat": 23.251139,
+      "lon": 77.41259,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Infront Jain Mandir, Murghi Bazar, Berkhedi, Jahangirabad, Bhopal",
+        "addr:postcode": "462008",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Mehko Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631362,
+      "lat": 23.2615613,
+      "lon": 77.428758,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Mayur Vihar, Bhopal",
+        "addr:postcode": "462023",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Hindustan Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631363,
+      "lat": 23.2504261,
+      "lon": 77.48461,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Shiv Nagar, Anandnagar, Bhopal",
+        "addr:postcode": "462022",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Gayatri Hospital Anand Nagar",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631364,
+      "lat": 23.2337463,
+      "lon": 77.4347058,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Chetak Bridge, Zone-I, Maharana Pratap Nagar, Near Jyoti Talkies, Bhopal",
+        "addr:postcode": "462023",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Batra Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631365,
+      "lat": 23.2737457,
+      "lon": 77.3668008,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Bairagarh Road, Near Vatika, Vijay Nagar, Lalghati",
+        "addr:postcode": "462030",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Care Infinity Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631366,
+      "lat": 23.2604152,
+      "lon": 77.4053093,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "New Itwara Rd, Indra Prasth, Mangalwara, Bhopal",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Pulse hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631367,
+      "lat": 23.250024,
+      "lon": 77.4881688,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Raisen Rd, Anandnagar, Bhopal",
+        "addr:postcode": "462022",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "M J Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631368,
+      "lat": 23.2314706,
+      "lon": 77.4504262,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Kalibadi Road, A-Sector, Sector A, Habib Ganj, Bhopal",
+        "addr:postcode": "462023",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Career Hospital",
+        "short_name": "CIMS",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631369,
+      "lat": 23.2498466,
+      "lon": 77.441712,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Near Durga Mandir, Soubhagya Nagar, Govindpura, Bhopal",
+        "addr:postcode": "462023",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Shree Shubh Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631370,
+      "lat": 23.2280354,
+      "lon": 77.4864343,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Druga Chowk, Samanvay Nagar, Awadhpuri, Bhopal",
+        "addr:postcode": "462022",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Sakshi co-operative hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631371,
+      "lat": 23.2705381,
+      "lon": 77.4015169,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Berasia Road, Sindhi Colony Crossing, Near Durga Temple",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Darbari Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631372,
+      "lat": 23.257513,
+      "lon": 77.478446,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Mohan Nagar, Prakash Nagar, Mamta Nagar, Bhopal",
+        "addr:postcode": "462022",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Hope s s hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631373,
+      "lat": 23.253224,
+      "lon": 77.433678,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Punjabi Bagh, Shanshah Garoaden, Bhopal",
+        "addr:postcode": "462023",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Mona Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631374,
+      "lat": 23.222251,
+      "lon": 77.484838,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Awadhpuri, Bhopal",
+        "addr:postcode": "462022",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "aashirwad multispeciality hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631375,
+      "lat": 23.2655073,
+      "lon": 77.4726603,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Unnamed Road, Ahinsa Vihar Colony, Ayodhya Bypass, Bhopal",
+        "addr:postcode": "462041",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Shubh Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631376,
+      "lat": 23.220139,
+      "lon": 77.430376,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Arera Colony, Near Bittan Market, Bhopal",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Parulkar Hospitals",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631377,
+      "lat": 23.252527,
+      "lon": 77.466163,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Raisen Road, Indrapuri C Sector,Indrapuri, Bhopal",
+        "addr:postcode": "462021",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "R.K. Hospital and Research Centre (A Unit of R.K Healthcare)",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631378,
+      "lat": 23.2646039,
+      "lon": 77.3941763,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Motia Talab, Near Taj-Ul-Masajid, Motia Talab",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Central Hospital & Research Center",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631379,
+      "lat": 23.252094,
+      "lon": 77.504064,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Raisen Road, Near Nri College, Patel Nagar, Bhopal",
+        "addr:postcode": "462022",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Arnav Hospital, Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631380,
+      "lat": 23.2635646,
+      "lon": 77.3938354,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Motia Talab Road, Motia Talab, Kali Basti, Kohefiza, Bhopal",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Unique Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631382,
+      "lat": 23.25137,
+      "lon": 77.503047,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Patel Nagar, Bhopal",
+        "addr:postcode": "462022",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Nagpur Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631383,
+      "lat": 23.261919,
+      "lon": 77.46257,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Karamveer Nagar Road, Hazrat, Nizamuddin Road, Ayodhya Nagar",
+        "addr:postcode": "462022",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Dolphin Children Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631384,
+      "lat": 23.250681,
+      "lon": 77.502513,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Raisen Rd, Patel Nagar, Bhopal",
+        "addr:postcode": "462022",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Rudransh Multispeciality Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631385,
+      "lat": 23.2380758,
+      "lon": 77.4962629,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Near Krishna Mandir, Khajuri Kala, Bhopal",
+        "addr:postcode": "462022",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Vaishno Hospital bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631386,
+      "lat": 23.2750528,
+      "lon": 77.3781166,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Near Cancer Hospital, Bda Colony, Idgah Hills",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "T B Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631387,
+      "lat": 23.2610396,
+      "lon": 77.4010633,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Kazipura Station Road Nearest, Sultania Road",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Indira Gandhi Hospital",
+        "name:etymology:wikidata": "Q1149",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631388,
+      "lat": 23.2465243,
+      "lon": 77.4113718,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Phq Jhangirabad Bhopal, Bhopal",
+        "addr:postcode": "462008",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Police Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631389,
+      "lat": 23.2337404,
+      "lon": 77.3959966,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Jawahar Chowk, Tt Nagar, Bhopal",
+        "addr:postcode": "462003",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "G.S.M. Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631390,
+      "lat": 23.273679,
+      "lon": 77.370737,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Tripti Hospital, Gufa Mandir Road, Lalghati Chauraha",
+        "addr:postcode": "462030",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Tripti Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631391,
+      "lat": 23.2552746,
+      "lon": 77.4081332,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Sultania Road City Center Thana Talaiya, Band Master Square, Quasipura ,Budhwara",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Superintendent Office Sultania Zanana Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631392,
+      "lat": 23.2435872,
+      "lon": 77.4104892,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Roshanpura Road, Jahangirabad, Bhopal",
+        "addr:postcode": "462008",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Protima Mullik Police Lady Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631393,
+      "lat": 23.2207305,
+      "lon": 77.4306234,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Near Rbi Awasiya Parisar, Arera Colony, Bhopal",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "MKM Stone & Urology Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631394,
+      "lat": 23.268316,
+      "lon": 77.401097,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Teela Jamalpura Road, Putlighar, Shanti Nagar, Shahjahanabad",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Saluja Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631395,
+      "lat": 23.216619,
+      "lon": 77.424238,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Ekant Park, Arera Colony, Bhopal",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Global Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631396,
+      "lat": 23.253402,
+      "lon": 77.413919,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Anekant Nagar, Near Lily Complex,, Jahangirabad, Bhopal",
+        "addr:postcode": "462008",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Jaimini Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631397,
+      "lat": 23.266097,
+      "lon": 77.400791,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Hamidia Road, Near, Bhopal Talkies, Ghora Nakkas ,Bhopal",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Sunetra Eye Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631398,
+      "lat": 23.253032,
+      "lon": 77.461701,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Nizamuddin Road, Opp Bhel, Indrapuri, Bhopal",
+        "addr:postcode": "462022",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Navodaya Cancer Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631399,
+      "lat": 23.2649868,
+      "lon": 77.4656512,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Narela Sankri Road, Narela, Bhawani Campus, Paras Nagar, Ayodhya Bypass, Bhopal",
+        "addr:postcode": "462022",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Anand Joint Replacement Centre",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631400,
+      "lat": 23.2507344,
+      "lon": 77.430654,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "R.K Plaza , Near Prabhat Petrol Pump, Padmanabh Nagar, Govindpura",
+        "addr:postcode": "462023",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "OM Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631401,
+      "lat": 23.2503903,
+      "lon": 77.422628,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Chiklod Road, Jinsi, Jahangirabad, Bhopal",
+        "addr:postcode": "462008",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Jupiter Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631402,
+      "lat": 23.231072,
+      "lon": 77.443582,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Manya Arcade ,Commercial Scheme Zone Waroad",
+        "addr:postcode": "462011",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Indira IVF Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631403,
+      "lat": 23.272502,
+      "lon": 77.344475,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Bhopal Bypass Road, Sant Hiroadaram Nagar, Hemu Kalani, Bairagarh, Bhopal",
+        "addr:postcode": "462030",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Hardev Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631404,
+      "lat": 23.258135,
+      "lon": 77.397161,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Nakkar Khana, Peer Gate, Bhopal",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Chirayu Health & Medicare Pvt. Ltd.",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631405,
+      "lat": 23.249564,
+      "lon": 77.471653,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Raisen Rd, Sonagiri Square,Bhel, Piplani, Sonagiri, Bhopal",
+        "addr:postcode": "462023",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Sachin Mamta Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631406,
+      "lat": 23.224112,
+      "lon": 77.399811,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Sanjay Complex, 7Th Block, Mata Mandir Square, Aradhana Nagar, Bhopal",
+        "addr:postcode": "462003",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "A.K. Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631407,
+      "lat": 23.2704374,
+      "lon": 77.401481,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Raj Deo Colony, Qazi Camp, Bhopal",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Nandan Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631408,
+      "lat": 23.257099,
+      "lon": 77.418607,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Pul Bogda Road Near Chadakyapuri, Railway Gate, Ganpati Chowk, Aish Bagh, Bhopal",
+        "addr:postcode": "462010",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Mansi Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631409,
+      "lat": 23.245765,
+      "lon": 77.4002823,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Near Mlb Girls College, Professors Colony, Bhopal",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Aggrawal's Bombay Children Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631410,
+      "lat": 23.22181,
+      "lon": 77.380268,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Bhadbhada Road, Police Radio Colony, Tt Nagar, Bhopal",
+        "addr:postcode": "462002",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "25Th Battalion Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631411,
+      "lat": 23.2696244,
+      "lon": 77.3956623,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Janki Nagar, Chunabhatti",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Suyash Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631412,
+      "lat": 23.2197879,
+      "lon": 77.4341465,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Arera Colony, Bhopal",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Dr Rahul Agarwal ENT Clinic",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631413,
+      "lat": 23.252268,
+      "lon": 77.496581,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Patel Nagar, Raisen Road, Patel Nagar, Bhopal",
+        "addr:postcode": "462021",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Swastik Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631414,
+      "lat": 23.264439,
+      "lon": 77.419474,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Ashok Garoaden Bank Colony, Pushpa Nagar, Bhopal",
+        "addr:postcode": "462010",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Narayan Shri Homeopathic Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631415,
+      "lat": 23.2154253,
+      "lon": 77.4388478,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Market Road , Near Habibganj Naka, Arera Colony",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "ASG Eye Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631416,
+      "lat": 23.251641,
+      "lon": 77.458523,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Raisen Rd, Indrapuri Sector, A, Indrapuri, Bhopal",
+        "addr:postcode": "462022",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Devi Rajeshwari Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631417,
+      "lat": 23.2633705,
+      "lon": 77.3938848,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Thelay Wali Sadak, Kohefiza, Bhopal",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "ABM Muntispeciality Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631418,
+      "lat": 23.2768125,
+      "lon": 77.40287,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Green Park Colony Main Road, Berasiya Road, Bhopal",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Muskan Children's & General Hospital Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631419,
+      "lat": 23.2511711,
+      "lon": 77.4150939,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Pratap Nagar, Jahangirabad, Bhopal",
+        "addr:postcode": "462008",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Apple hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631420,
+      "lat": 23.261772,
+      "lon": 77.428413,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Mayur Vihar, Ashoka Garden, Ashoka Garden, Bhopal",
+        "addr:postcode": "462023",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Sahaj Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631421,
+      "lat": 23.274346,
+      "lon": 77.402743,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Raj Deo Colony, Qazi Camp ,Congress Nagar, Raj Deo Colony, Jp Nagar",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Peoples General Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631422,
+      "lat": 23.2605895,
+      "lon": 77.4049403,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Mangalwara, Azad Market, Peer Gate Area, Bhopal",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Pulse Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631423,
+      "lat": 23.250344,
+      "lon": 77.471633,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Raisen Road , Sonagiri, Bhopal",
+        "addr:postcode": "462021",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Balaji Fracture & General Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631424,
+      "lat": 23.232979,
+      "lon": 77.429734,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Db City, Arera Hill Road, Maharana Pratap Nagar, Bhopal",
+        "addr:postcode": "462011",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Himalaya Optical Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631425,
+      "lat": 23.27308,
+      "lon": 77.380577,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Idgah Hills",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Cancer Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631426,
+      "lat": 23.2386597,
+      "lon": 77.4859876,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Awadhpuri Road, Tagore Nagar, Awadhpuri, Bhopal",
+        "addr:postcode": "462022",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Lord Buddha Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631427,
+      "lat": 23.230583,
+      "lon": 77.3932195,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Saraswati Nagar, Jawahar Chowk, Stt Nagar, Shastri Nagar, Bhopal",
+        "addr:postcode": "462003",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Jindal Maternity Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631428,
+      "lat": 23.2720075,
+      "lon": 77.3452807,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Sant Hiroadaram Ki Kutiya Ke Samne Main Road Bairagad",
+        "addr:postcode": "462030",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Kiishnani Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288631429,
+      "lat": 23.2676797,
+      "lon": 77.3947884,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Aali Manzil Rd, Badabagh, Shahjahanabad, Bhopal",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Manya Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288793800,
+      "lat": 23.323475,
+      "lon": 77.405068,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Lambakheda",
+        "addr:postcode": "462038",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Global Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288793801,
+      "lat": 23.2813234,
+      "lon": 77.4662053,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Housing Boaroad Colony, Ayodhya Nagar, Bhopal",
+        "addr:postcode": "462041",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Srijan General Hospital And Nursing Home",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288793804,
+      "lat": 23.280336,
+      "lon": 77.465615,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Near St Thomas School, Ayodhya Nagar, Bhopal",
+        "addr:postcode": "462041",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Mohit Day Care Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288793808,
+      "lat": 23.278182,
+      "lon": 77.40302,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Komal Complexdig Bunglow, Berasiya Road",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "New star hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288793809,
+      "lat": 23.302993,
+      "lon": 77.408562,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Radha Krishna Colony, Karond, Bhopal",
+        "addr:postcode": "462010",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Aadhar Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288793822,
+      "lat": 23.2817728,
+      "lon": 77.3592499,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Indira Vihar, Airport Road, Tilak Society, Lalghati",
+        "addr:postcode": "462030",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Central Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288793831,
+      "lat": 23.303048,
+      "lon": 77.41221,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Bypass Road Near Hotel Vyanjan, Bhanpur, Karond, Bhopal",
+        "addr:postcode": "462038",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Shri Sai Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288793834,
+      "lat": 23.2955194,
+      "lon": 77.3457958,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Airport Road, Gandhi Nagar, Bhopal",
+        "addr:postcode": "462036",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Shradha Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288793840,
+      "lat": 23.2926896,
+      "lon": 77.4037377,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Fiza Colony, Berasiya Road, Infront Of Triveni Heights, Housing Boaroad Colony, Karond",
+        "addr:postcode": "462038",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Promise Children & general Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288793842,
+      "lat": 23.3123573,
+      "lon": 77.365381,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Near Rgpv, Opposite Central Jail, By Pass Road, Adjacent To It Park",
+        "addr:postcode": "462036",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Mahaveer Institute of Medical Sciences and Research",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288793843,
+      "lat": 23.280011,
+      "lon": 77.422307,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Nishatpura",
+        "addr:postcode": "462010",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Divisional Railway Hospital, Bhopal",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288793845,
+      "lat": 23.304155,
+      "lon": 77.436358,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Raslakhedi, Bhanpur Vidish Road",
+        "addr:postcode": "462010",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Vidhata Multi Speciality Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288793846,
+      "lat": 23.277956,
+      "lon": 77.403085,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Berasiya Road, Dig Bunglow, Sindhi Colony",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "New Apex Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288793847,
+      "lat": 23.3029552,
+      "lon": 77.4061754,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Radha Krishna Colony, Karond, Bhopal",
+        "addr:postcode": "462010",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Capital Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288793850,
+      "lat": 23.301544,
+      "lon": 77.419681,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "New Bhanpur Bridge Road, Peoples Campus, Bhanpur, Bhopal",
+        "addr:postcode": "462037",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Peoples College Of Paramedical Science & Research Center",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288793860,
+      "lat": 23.281349,
+      "lon": 77.376758,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Gufa Mandir Road, Vitthal Nagar, Nayapura, Lalghati",
+        "addr:postcode": "462030",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Carewell Multispeciality Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288793870,
+      "lat": 23.303004,
+      "lon": 77.408962,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Radha Krishna Colony, Karond, Bhopal",
+        "addr:postcode": "462010",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Jeewanshree Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288793872,
+      "lat": 23.277597,
+      "lon": 77.372502,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Gufa Mandir Road Opp Sbi, Janki Nagar, Lalghati",
+        "addr:postcode": "462030",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Sarvottam Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288793874,
+      "lat": 23.302911,
+      "lon": 77.408823,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Radha Krishna Colony, Karond, Bhopal",
+        "addr:postcode": "462010",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Jeevan Shree Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288793881,
+      "lat": 23.2920061,
+      "lon": 77.4147566,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Bhopal Mandi, Bhanpur, Bhopal",
+        "addr:postcode": "462038",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Max Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288793884,
+      "lat": 23.282081,
+      "lon": 77.403413,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Near V-Mart, Dig Banglow Square, Sheetal Heights Building, Sheetal Nagar, Berasia Road, Bhopal",
+        "addr:postcode": "462008",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Sparsh Med care Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288793889,
+      "lat": 23.348469,
+      "lon": 77.399598,
+      "tags": {
+        "addr:district": "Arwaliya",
+        "addr:full": "Arwaliya",
+        "addr:postcode": "462038",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "ArogyaNidhi Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7288793893,
+      "lat": 23.2958957,
+      "lon": 77.3450567,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Ayodhya Bypass Road, Adarsh Colony, Gandhi Nagar, Bhopal",
+        "addr:postcode": "462036",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Somnath Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 8137094030,
+      "lat": 23.2095734,
+      "lon": 77.4357149,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "SK dubey hospital"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 8137094051,
+      "lat": 23.2183639,
+      "lon": 77.428498,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "raka medical"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 9103869480,
+      "lat": 23.2759059,
+      "lon": 77.4561599,
+      "tags": {
+        "addr:city": "Bhopal",
+        "addr:housenumber": "SDX-90",
+        "addr:postcode": "462023",
+        "addr:street": "New minal",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "healthcare:speciality": "general",
+        "name": "Modi Hospital"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 11002939999,
+      "lat": 23.2564166,
+      "lon": 77.4094808,
+      "tags": {
+        "addr:city": "bhopal",
+        "addr:street": "Sultania Road",
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "CIVIL HOSPITAL"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 12595778138,
+      "lat": 23.2682641,
+      "lon": 77.4681819,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Rajni Health Care hospital"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 12595778140,
+      "lat": 23.2682177,
+      "lon": 77.4681117,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Smile Spectrum : Dental, Hair And Aestheic clinic"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 12595778143,
+      "lat": 23.2663724,
+      "lon": 77.4701843,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Shree Balaji Multispecialty Hospital"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 12595799537,
+      "lat": 23.2674239,
+      "lon": 77.466704,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Ma Pitamabara Multispeciality Hospital"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 12595799541,
+      "lat": 23.268336,
+      "lon": 77.4675993,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Janak Clinic and Care"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 12595897448,
+      "lat": 23.2634245,
+      "lon": 77.4645223,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Dolphin Children Hospital"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 12595975433,
+      "lat": 23.253215,
+      "lon": 77.4684872,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Dr Rakesh Singh Jagat"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 12595975438,
+      "lat": 23.2533157,
+      "lon": 77.4719325,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Jai Multispeciality Clinic"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 12595975469,
+      "lat": 23.2453734,
+      "lon": 77.4725074,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 12647698986,
+      "lat": 23.1874259,
+      "lon": 77.3652899,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Health Centre"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 12920707885,
+      "lat": 23.2145808,
+      "lon": 77.3922073,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Ronak Hospital"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 13919909016,
+      "lat": 23.30329,
+      "lon": 77.4001915,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Bhopal High Tech Hospital"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 13923992436,
+      "lat": 23.2000963,
+      "lon": 77.4298752,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 13924036639,
+      "lat": 23.2635031,
+      "lon": 77.4200099,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "R. R. Hospital"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 13924036699,
+      "lat": 23.2793173,
+      "lon": 77.4704246,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Vishwanaath Hospital"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 13928812567,
+      "lat": 23.2530919,
+      "lon": 77.4291849,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Raj Multi Specialty Hospital"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 13929348801,
+      "lat": 23.2784491,
+      "lon": 77.4525278,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "level": "0",
+        "name": "Divyanka Children Hospital"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 13931624123,
+      "lat": 23.2356631,
+      "lon": 77.4023729,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 13931624158,
+      "lat": 23.2300694,
+      "lon": 77.4188568,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 13935317648,
+      "lat": 23.2983597,
+      "lon": 77.4195961,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 13935317670,
+      "lat": 23.2800804,
+      "lon": 77.4482782,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Marvel Hospital"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 13935317700,
+      "lat": 23.2611543,
+      "lon": 77.3938209,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Sardar Patel Hospital"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 13935317708,
+      "lat": 23.2686807,
+      "lon": 77.393474,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 13942813419,
+      "lat": 23.2633479,
+      "lon": 77.4144423,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "A. J. Hospital"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 14109618001,
+      "lat": 23.1776365,
+      "lon": 77.4423312,
+      "tags": {
+        "addr:street": "rohit nagar road",
+        "amenity": "hospital",
+        "name": "SAGE APOLLO Bawadia Kalan, Bhopal"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 360524181,
+      "lat": 23.2298788,
+      "lon": 77.4168323,
+      "tags": {
+        "amenity": "hospital",
+        "name": "J P Hospital"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 360534229,
+      "lat": 23.2504763,
+      "lon": 77.4682385,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Raisen Road, Near Bima Astal, Sonagiri, Bhopal",
+        "addr:postcode": "462022",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Employees State Insurance Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 360551281,
+      "lat": 23.2234554,
+      "lon": 77.4481714,
+      "tags": {
+        "addr:full": "Bhopal",
+        "addr:postcode": "462024",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "barrier": "wall",
+        "healthcare": "hospital",
+        "name": "Kasturba Hospitals",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 364479903,
+      "lat": 23.2591853,
+      "lon": 77.3909881,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "name": "Gandhi Medical College and Hamidia Hospital",
+        "name:kn": "\u0cb9\u0cae\u0cbf\u0ca6\u0cbf\u0caf \u0c86\u0cb8\u0ccd\u0caa\u0ca4\u0ccd\u0cb0\u0cc6",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 364479904,
+      "lat": 23.2564379,
+      "lon": 77.4095038,
+      "tags": {
+        "addr:block": "Phanda",
+        "addr:district": "Bhopal",
+        "addr:full": "Peer Gate Area",
+        "addr:landmark": "Sultania Road",
+        "addr:postcode": "462001",
+        "addr:state": "Madhya Pradesh",
+        "addr:street": "Sultania Road",
+        "addr:subdistrict": "Huzur",
+        "amenity": "hospital",
+        "contact:phone": "7552730124",
+        "description": "Women Hospital",
+        "healthcare": "hospital",
+        "locality": "Sultania Road",
+        "name": "Sultania Zanana Hospital",
+        "name:hi": "\u0938\u0941\u0932\u094d\u0924\u093e\u0928\u093f\u092f\u093e \u091c\u093c\u0928\u093e\u0928\u093e \u0905\u0938\u094d\u092a\u0924\u093e\u0932",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 413600490,
+      "lat": 23.2728319,
+      "lon": 77.3401066,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "Sant Hirdaram Nagar",
+        "addr:postcode": "462030",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "building": "yes",
+        "name": "Sewa Sedan Eye Hospital Trust",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 414182648,
+      "lat": 23.2307014,
+      "lon": 77.4195189,
+      "tags": {
+        "amenity": "hospital",
+        "name": "Red Cross Hospital Bhopal",
+        "operator": "Red Cross Society"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 414564458,
+      "lat": 23.2015756,
+      "lon": 77.4170405,
+      "tags": {
+        "addr:district": "Bhopal",
+        "addr:full": "A-1/40, Chunabhatti Main Road,Near Mayuri Resturant, Kolar Road,Chunbhatti Petrol Pump",
+        "addr:postcode": "462016",
+        "addr:state": "Madhya Pradesh",
+        "amenity": "hospital",
+        "building": "yes",
+        "name": "Manoria Heart and Critical Care Hospital",
+        "source": "OpenGovernmentData"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 414599188,
+      "lat": 23.2052299,
+      "lon": 77.4081805,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Dr. Khushilal Sharma Ayurvedic Hospital"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 414905704,
+      "lat": 23.1995774,
+      "lon": 77.419916,
+      "tags": {
+        "addr:city": "Bhopal",
+        "addr:postcode": "462016",
+        "addr:street": "Kolar Road",
+        "amenity": "hospital",
+        "building": "yes",
+        "name": "BANSAL HOSPITAL",
+        "phone": "9302749744",
+        "source": "OpenGovernmentData",
+        "website": "http://www.octell.com/"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 469357342,
+      "lat": 23.2304326,
+      "lon": 77.4194181,
+      "tags": {
+        "amenity": "hospital",
+        "name": "Red Cross Hspital"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1153428047,
+      "lat": 23.225075,
+      "lon": 77.393416,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1153428278,
+      "lat": 23.2792519,
+      "lon": 77.4029006,
+      "tags": {
+        "amenity": "hospital",
+        "healthcare": "hospital",
+        "name": "Jawaharlal Nehru Hospital",
+        "name:etymology:wikidata": "Q1047"
+      }
+    }
+  ]
+}

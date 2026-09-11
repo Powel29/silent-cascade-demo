@@ -1,0 +1,938 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.4 2390de5a",
+  "osm3s": {
+    "timestamp_osm_base": "2026-09-11T12:11:36Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+    {
+      "type": "node",
+      "id": 3648610591,
+      "lat": 23.2173915,
+      "lon": 77.4269291,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648610601,
+      "lat": 23.2182734,
+      "lon": 77.42557,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648668823,
+      "lat": 23.2016271,
+      "lon": 77.4360215,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648682626,
+      "lat": 23.2106497,
+      "lon": 77.4304628,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648682628,
+      "lat": 23.2136257,
+      "lon": 77.4308599,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648682629,
+      "lat": 23.2173003,
+      "lon": 77.4271125,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648682631,
+      "lat": 23.2182118,
+      "lon": 77.4363018,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648682633,
+      "lat": 23.2235591,
+      "lon": 77.4373868,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648707614,
+      "lat": 23.2094281,
+      "lon": 77.4483936,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648707621,
+      "lat": 23.2116558,
+      "lon": 77.4994464,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708929,
+      "lat": 23.2131011,
+      "lon": 77.503654,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708933,
+      "lat": 23.2149073,
+      "lon": 77.4637914,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708934,
+      "lat": 23.2156053,
+      "lon": 77.5011077,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708940,
+      "lat": 23.2176007,
+      "lon": 77.4862643,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708941,
+      "lat": 23.2184906,
+      "lon": 77.4699794,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708942,
+      "lat": 23.2200471,
+      "lon": 77.4839497,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708943,
+      "lat": 23.2203159,
+      "lon": 77.4875648,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708944,
+      "lat": 23.220639,
+      "lon": 77.4998728,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708945,
+      "lat": 23.2207287,
+      "lon": 77.4858908,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708946,
+      "lat": 23.2214509,
+      "lon": 77.4942664,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708947,
+      "lat": 23.2215284,
+      "lon": 77.4841178,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708948,
+      "lat": 23.2218189,
+      "lon": 77.4802873,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708949,
+      "lat": 23.2223876,
+      "lon": 77.4481591,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708950,
+      "lat": 23.2229458,
+      "lon": 77.4870913,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708951,
+      "lat": 23.2230686,
+      "lon": 77.491254,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708952,
+      "lat": 23.2232152,
+      "lon": 77.4966076,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708953,
+      "lat": 23.2234892,
+      "lon": 77.4811609,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708954,
+      "lat": 23.2238183,
+      "lon": 77.495301,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708955,
+      "lat": 23.2240882,
+      "lon": 77.4839305,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708957,
+      "lat": 23.2249234,
+      "lon": 77.4873965,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708958,
+      "lat": 23.2284597,
+      "lon": 77.4875321,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708959,
+      "lat": 23.2292152,
+      "lon": 77.4446907,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708960,
+      "lat": 23.2302395,
+      "lon": 77.4862141,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708961,
+      "lat": 23.2317856,
+      "lon": 77.4881212,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708962,
+      "lat": 23.2317982,
+      "lon": 77.4770743,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708963,
+      "lat": 23.2318673,
+      "lon": 77.4892274,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708964,
+      "lat": 23.2327358,
+      "lon": 77.4876423,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708965,
+      "lat": 23.2328565,
+      "lon": 77.487477,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708966,
+      "lat": 23.234313,
+      "lon": 77.5001511,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708967,
+      "lat": 23.2345155,
+      "lon": 77.4874855,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708968,
+      "lat": 23.2351659,
+      "lon": 77.4879432,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708969,
+      "lat": 23.2355977,
+      "lon": 77.4711077,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708970,
+      "lat": 23.2364854,
+      "lon": 77.4937221,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708971,
+      "lat": 23.2375687,
+      "lon": 77.486159,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708972,
+      "lat": 23.239335,
+      "lon": 77.4913939,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708973,
+      "lat": 23.2395043,
+      "lon": 77.4690076,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3648708974,
+      "lat": 23.2399938,
+      "lon": 77.5020429,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3649094690,
+      "lat": 23.2266956,
+      "lon": 77.4657003,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650281827,
+      "lat": 23.2167361,
+      "lon": 77.4778989,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650300332,
+      "lat": 23.2332356,
+      "lon": 77.4907824,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650514920,
+      "lat": 23.2432606,
+      "lon": 77.41001,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650514921,
+      "lat": 23.2490721,
+      "lon": 77.4299871,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650514922,
+      "lat": 23.2506363,
+      "lon": 77.4244814,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650514924,
+      "lat": 23.252963,
+      "lon": 77.4172072,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650524325,
+      "lat": 23.2549054,
+      "lon": 77.422142,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650524329,
+      "lat": 23.2552977,
+      "lon": 77.4112089,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650524366,
+      "lat": 23.258365,
+      "lon": 77.4202159,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650524373,
+      "lat": 23.2586635,
+      "lon": 77.4269164,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650524391,
+      "lat": 23.2594825,
+      "lon": 77.4204653,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650524395,
+      "lat": 23.2596132,
+      "lon": 77.4320258,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650524415,
+      "lat": 23.2605503,
+      "lon": 77.4215224,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650524432,
+      "lat": 23.2611349,
+      "lon": 77.4223024,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650575902,
+      "lat": 23.2509524,
+      "lon": 77.4682733,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650575908,
+      "lat": 23.2513461,
+      "lon": 77.4737982,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650575909,
+      "lat": 23.2517881,
+      "lon": 77.4753407,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650575910,
+      "lat": 23.2522571,
+      "lon": 77.4687381,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650575911,
+      "lat": 23.2526555,
+      "lon": 77.4609512,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650575912,
+      "lat": 23.2526647,
+      "lon": 77.4612143,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650575913,
+      "lat": 23.2569142,
+      "lon": 77.4623089,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650575914,
+      "lat": 23.259047,
+      "lon": 77.4598764,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650575915,
+      "lat": 23.2598727,
+      "lon": 77.4620244,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650632046,
+      "lat": 23.2590387,
+      "lon": 77.4647279,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650632101,
+      "lat": 23.2608605,
+      "lon": 77.4650965,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650632109,
+      "lat": 23.2614411,
+      "lon": 77.4618158,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650717140,
+      "lat": 23.2212424,
+      "lon": 77.4418673,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650717359,
+      "lat": 23.2332592,
+      "lon": 77.4357262,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3650717406,
+      "lat": 23.2381085,
+      "lon": 77.4489504,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3652466384,
+      "lat": 23.2376534,
+      "lon": 77.4551788,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3652466385,
+      "lat": 23.2376655,
+      "lon": 77.4554254,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3652466386,
+      "lat": 23.2377036,
+      "lon": 77.4516131,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3652466390,
+      "lat": 23.2380532,
+      "lon": 77.4420436,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3652769646,
+      "lat": 23.2445815,
+      "lon": 77.4544286,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3673108816,
+      "lat": 23.2332077,
+      "lon": 77.4380278,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3673109435,
+      "lat": 23.2341571,
+      "lon": 77.4390582,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3673109437,
+      "lat": 23.2380527,
+      "lon": 77.4392089,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3673163483,
+      "lat": 23.2364141,
+      "lon": 77.4049563,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3682336874,
+      "lat": 23.2324106,
+      "lon": 77.3979723,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3682336903,
+      "lat": 23.2373107,
+      "lon": 77.3816413,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3682336911,
+      "lat": 23.2380942,
+      "lon": 77.3820601,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3682343739,
+      "lat": 23.2407676,
+      "lon": 77.3917744,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3685225968,
+      "lat": 23.25595,
+      "lon": 77.4023461,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3685225979,
+      "lat": 23.2579399,
+      "lon": 77.393468,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3685226001,
+      "lat": 23.2591566,
+      "lon": 77.3906118,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3685226021,
+      "lat": 23.2694661,
+      "lon": 77.3851764,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3685226164,
+      "lat": 23.2847812,
+      "lon": 77.3959563,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3786023537,
+      "lat": 23.2477056,
+      "lon": 77.4343061,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3786023538,
+      "lat": 23.2478207,
+      "lon": 77.4345673,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3786023539,
+      "lat": 23.2502563,
+      "lon": 77.4332555,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3786023540,
+      "lat": 23.2502667,
+      "lon": 77.4335433,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4163267889,
+      "lat": 23.1630059,
+      "lon": 77.4205916,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5180228749,
+      "lat": 23.1803547,
+      "lon": 77.4412304,
+      "tags": {
+        "man_made": "water_tower",
+        "name": "Rishi Nagar Water Tank"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13923992471,
+      "lat": 23.2799419,
+      "lon": 77.4861302,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13928812352,
+      "lat": 23.2554292,
+      "lon": 77.4472023,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    }
+  ]
+}
