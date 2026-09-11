@@ -21,7 +21,7 @@ In municipal grievance pipelines, AI triage systems can degrade silently:
 4. The ticket is assigned a low-priority routine maintenance SLA instead of emergency dispatch.
 5. Days later, the physical asset fails under load, triggering a **cascading power grid overload and water supply blackout** across the city.
 
-**Silent Cascade** proves this failure mode using real spatial infrastructure data from Bhopal, experimental linguistic routing benchmarks, a physical cascade simulator, and an intervention analysis illustrating the **Butterfly Effect**: a ₹1.5L human verification checkpoint on AI decisions prevents 5.8× more cascade impact than a ₹85L substation hardware hardening.
+**Silent Cascade** proves this failure mode using real spatial infrastructure data from Bhopal, an experimental linguistic routing benchmark, a physical cascade simulator, an intervention analysis illustrating the **Butterfly Effect**, and — going a step further — a working **verification checkpoint and decision-quality monitor** that closes the loop back into the physical network: a ₹1.5L human verification checkpoint on AI decisions prevents 5.8× more cascade impact than a ₹85L substation hardware hardening.
 
 ---
 
@@ -39,82 +39,89 @@ flowchart LR
 
 ---
 
-## Deliverables & Pipeline Architecture
+## Two ways to explore this project
 
-The project produces four core demonstration deliverables (D1–D4) configured via [config.yaml](file:///d:/Powel/MIT/Projects/silent-cascade-demo/config.yaml):
+| | What it is | Best for |
+|---|---|---|
+| **[`app.py`](app.py) — Interactive prototype (Streamlit)** | A live app calling the project's real Python functions (`cascade()`, `classify_one()`, `route_with_guard()`, `run_condition()`) — nothing is reimplemented for the UI. Runs locally or deployed on Streamlit Community Cloud. | Judges who want to change inputs and see the actual pipeline respond — the PLAN.md §A.5 bonus prototype. |
+| **[`outputs/dashboard/index.html`](outputs/dashboard/index.html) / [`outputs/d3_dashboard.html`](outputs/d3_dashboard.html)** | Static, self-contained HTML snapshots (one is a frozen copy of a Claude-Artifact-hosted interactive page; the other is the standalone D3 "all-green monitor" mock). No Python required — open directly in a browser. | Slides, video recording, or anyone without Python installed. |
+
+Both read from the same `outputs/*.csv` and `config.yaml` — there is one source of truth.
+
+**Live deployment:** _add your Streamlit Community Cloud URL here once deployed (see [Deploying the prototype](#deploying-the-prototype))._
+
+---
+
+## The interactive prototype (`app.py`)
+
+Four sections, each a thin UI layer over existing pure functions — so every number the app shows is provably the same computation that produced the committed `outputs/*.csv` files:
+
+### Overview
+The pitch, the failure chain, and a **live** "no alarm fired" split test: a CivicOps monitor (uptime, latency, error rate, requests/min, six "operational" services) that drifts and ticks in real time — entirely in the browser, no page reruns — right next to what the classifier actually did to complaint `c01`. A provenance table lists every metric in the app as Observed / Inferred / Assumed / Synthetic / Measured / Simulated.
+
+### Cascade simulator
+Pick any of Bhopal's 27 real substations as the initiating failure. A self-contained Leaflet map (real OpenStreetMap tiles) plays the cascade timeline client-side — play/pause, scrub, speed control, fit-to-network, hover tooltips with each node's failure time — with a live HUD (people affected, hospitals on generator, wards without water, substations tripped). Below it, the full criticality ranking: which substation's failure, alone, cascades to the whole network.
+
+### Language routing — the AI injection, traced end to end
+This is the core "fix," not just the demonstration:
+1. **The decision** — the real `classify_one()` keyword-baseline classifier (not a production LLM — labelled as such) routes one complaint under a chosen language/condition, with matched keywords highlighted.
+2. **The routing guard** — `route_with_guard()` is a concrete verification checkpoint: unparseable or low-confidence decisions are sent to a 48-hour verification queue (the cited UPPCL SLA) instead of a routine queue, and safety keywords impose an urgency floor. Shown side by side: "today, no guard" vs. "with guard."
+3. **What that delay does to the network** — the guarded/unguarded repair SLA is checked against the time-to-failure, and the *actual* `cascade()` engine runs to show people affected with and without the guard, on the real network.
+4. **Decision monitor** — `canary_report()` continuously re-probes a 20-complaint golden set in both languages and alarms when native-script accuracy diverges from English by more than a configured threshold — the canary CivicOps never had.
+
+### Intervention comparison
+Recomputes the D4 Monte Carlo comparison live (adjustable run count): baseline vs. hardening the top-ranked substation vs. the verification checkpoint, with cost annotations.
+
+---
+
+## Running the prototype locally
+
+```bash
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+Requires `data/processed/graph.gpickle`, `data/complaints.csv`, and `outputs/d1_criticality.csv` / `d2_accuracy.csv` / `d2_results.csv` / `d4_summary.csv` to already exist — see [Running the offline pipeline](#running-the-offline-pipeline) if you're starting from a fresh clone. All of these are committed to the repo, so `git clone` + the two commands above is enough; no Overpass fetch needed.
+
+## Deploying the prototype
+
+1. Push this repo (or your fork) to GitHub.
+2. On [share.streamlit.io](https://share.streamlit.io), create an app pointing at your repo, the branch you're deploying, and main file `app.py`. Dependencies install automatically from `requirements.txt`.
+3. Once live, test the URL **on a phone over mobile data** before submitting — the map is the heaviest part of the page.
+
+---
+
+## Deliverables & Pipeline Architecture (D1–D4)
+
+The offline pipeline produces four demonstration deliverables configured via [config.yaml](config.yaml):
 
 | ID | Asset | Source Script | Primary Output | Description |
 |---|---|---|---|---|
-| **D1** | **Cascade Simulation** | [`src/d1_cascade.py`](file:///d:/Powel/MIT/Projects/silent-cascade-demo/src/d1_cascade.py) | [`outputs/d1_cascade_scenario_a.gif`](file:///d:/Powel/MIT/Projects/silent-cascade-demo/outputs/d1_cascade_scenario_a.gif), [`outputs/d1_criticality.csv`](file:///d:/Powel/MIT/Projects/silent-cascade-demo/outputs/d1_criticality.csv) | Physics-based load-redistribution failure cascade across Bhopal's spatial power and water network. |
-| **D2** | **Language Experiment** | [`src/d2_language.py`](file:///d:/Powel/MIT/Projects/silent-cascade-demo/src/d2_language.py) | [`outputs/d2_chart.png`](file:///d:/Powel/MIT/Projects/silent-cascade-demo/outputs/d2_chart.png), [`outputs/d2_results.csv`](file:///d:/Powel/MIT/Projects/silent-cascade-demo/outputs/d2_results.csv) | Empirical benchmark of 120 triage decisions measuring accuracy gaps between English and Kannada under clean, truncated, and lightweight model conditions. |
-| **D3** | **"All-Green" Ops Monitor** | [`src/d3_dashboard.py`](file:///d:/Powel/MIT/Projects/silent-cascade-demo/src/d3_dashboard.py) | [`outputs/d3_dashboard.html`](file:///d:/Powel/MIT/Projects/silent-cascade-demo/outputs/d3_dashboard.html) | Synthetic municipal telemetry UI demonstrating that service monitoring reports healthy status while fatal decision errors occur. |
-| **D4** | **Intervention Analysis** | [`src/d4_intervention.py`](file:///d:/Powel/MIT/Projects/silent-cascade-demo/src/d4_intervention.py) | [`outputs/d4_comparison.png`](file:///d:/Powel/MIT/Projects/silent-cascade-demo/outputs/d4_comparison.png), [`outputs/d4_summary.csv`](file:///d:/Powel/MIT/Projects/silent-cascade-demo/outputs/d4_summary.csv) | Monte Carlo simulation (100 runs) comparing physical hardware hardening vs. an upstream AI verification checkpoint. |
+| **D1** | **Cascade Simulation** | [`src/d1_cascade.py`](src/d1_cascade.py) | [`outputs/d1_cascade_scenario_a.gif`](outputs/d1_cascade_scenario_a.gif), [`outputs/d1_criticality.csv`](outputs/d1_criticality.csv) | Physics-based load-redistribution failure cascade across Bhopal's spatial power and water network. |
+| **D2** | **Language Experiment** | [`src/d2_language.py`](src/d2_language.py) | [`outputs/d2_chart.png`](outputs/d2_chart.png), [`outputs/d2_results.csv`](outputs/d2_results.csv) | Empirical benchmark of 120 triage decisions measuring accuracy gaps between English and Kannada under clean, truncated, and lightweight model conditions. Also home to `route_with_guard()` and `canary_report()`, used live by `app.py`. |
+| **D3** | **"All-Green" Ops Monitor** | [`src/d3_dashboard.py`](src/d3_dashboard.py) | [`outputs/d3_dashboard.html`](outputs/d3_dashboard.html) | Synthetic municipal telemetry UI demonstrating that service monitoring reports healthy status while fatal decision errors occur. |
+| **D4** | **Intervention Analysis** | [`src/d4_intervention.py`](src/d4_intervention.py) | [`outputs/d4_comparison.png`](outputs/d4_comparison.png), [`outputs/d4_summary.csv`](outputs/d4_summary.csv) | Monte Carlo simulation (100 runs) comparing physical hardware hardening vs. an upstream AI verification checkpoint. |
 
----
-
-## Guide to Main Output HTML Files
-
-The project generates two key HTML files in the `outputs/` directory. Each serves a distinct analytical and presentation purpose:
-
-```
-outputs/
-├── d3_dashboard.html          # Standalone CivicOps Monitor mockup
-└── dashboard/
-    ├── index.html             # Master interactive showcase & simulation dashboard
-    └── assets/                # Rendered figures and animation assets
-```
-
-### 1. `outputs/dashboard/index.html` — Master Interactive Showcase Dashboard
-This is the primary presentation application for judges and stakeholders. It is an interactive, dark-mode, single-page web dashboard integrating all project components into an exploratory experience:
-
-* **Hero Section & Dynamic Network Mesh**:
-  * Displays an animated, drifting spatial graph rendered on `<canvas>` showing the real geographic topology of Bhopal (27 substations, 295 hospitals, 103 water pumping stations).
-* **Section 01 · The Problem Flow**:
-  * An animated 7-stage interactive timeline tracking a complaint from regional voice intake to municipal SLA delay, asset trip, and critical buffer depletion.
-* **Section 02 · Interactive Cascade Simulator**:
-  * An interactive canvas map allowing users to scrub through timesteps ($T+0.0\text{h}$ to $T+18.0\text{h}$).
-  * Live Head-Up Display (HUD) tracking **People affected**, **Hospitals on generator**, **Wards without water**, and **Substations tripped**.
-  * Controls for Play/Pause, timestep scrubbing, playback speed (slow/normal/fast), zoom, pan, and network auto-fit.
-* **Section 03 · "No Alarm Fired" Live Split Test**:
-  * **Left Panel**: CivicOps Monitor showing real-time green telemetry (99.98% uptime, 187ms latency, 0.01% error rate).
-  * **Right Panel (Degradation Injector)**: Interactive testbench allowing users to test 20 real complaints in English vs. Kannada across Clean, Truncated (40 chars), and Small-Model conditions, showing live HTTP 200 responses alongside misclassification verdicts.
-* **Section 04 · "It Isn't Equal" Equity Benchmark**:
-  * Visualizes the measured routing accuracy drop (100% clean $\to$ 55% truncated in Kannada vs. 90% in English).
-  * Includes the data table and generated chart ([`outputs/dashboard/assets/d2_chart.png`](file:///d:/Powel/MIT/Projects/silent-cascade-demo/outputs/dashboard/assets/d2_chart.png)).
-* **Section 05 · The Butterfly Effect (Intervention Comparison)**:
-  * Compares **Baseline (366k affected)** vs. **Hardening Substation sub_003 (346k affected, ₹85 Lakhs)** vs. **AI Verification Checkpoint (252k affected, ₹1.5 Lakhs)**.
-  * Shows that software-level verification achieves a **31.0% impact reduction at 1/50th of the cost**.
-* **Section 06 · Provenance & Transparency Disclosure**:
-  * An expandable 9-row disclosure detailing the scientific provenance of every metric, coordinate, and assumption in the pipeline.
-
----
-
-### 2. `outputs/d3_dashboard.html` — CivicOps Monitor Standalone Mockup
-This is a focused, standalone mockup of a municipal operations health monitoring center:
-
-* **What it displays**:
-  * **Metric KPI Cards**: Uptime (99.98%), p50 Latency (187ms), Error Rate (0.01%), and Throughput (1,240 req/min) with green sparklines.
-  * **Service Health Matrix**: Microservice breakdown showing `operational` status for `intake-api`, `language-normaliser`, `classifier`, `urgency-scorer`, `router`, and `queue-worker`.
-* **Analytical Purpose**:
-  * Represents the rhetorical paradox at the heart of Silent Cascade: **Standard DevOps/SRE telemetry tracks system availability, not decision correctness.**
-  * Demonstrates how an AI system can fail catastrophically in domain logic while maintaining pristine operational health metrics.
+`app.py` (the interactive prototype) sits on top of all four — it does not duplicate their logic.
 
 ---
 
 ## Data Provenance & Methodological Honesty
 
-In accordance with strict research integrity standards, every datum in this project is explicitly labeled with its provenance:
+Every datum in this project is explicitly labeled with its provenance (see also the Overview page's live provenance table):
 
 | Component | Source / Methodology | Provenance Label |
 |---|---|---|
 | **Substation Coordinates (27)** | OpenStreetMap query (`power=substation`) over Bhopal bounding box | **Observed** |
 | **Hospital & Pump Coordinates (398)** | OpenStreetMap queries (`amenity=hospital`, `man_made=water_works\|pumping_station`) | **Observed** |
 | **Power Feeder Topology** | $k$-Nearest Neighbors ($k=3$) on Haversine distance | **Inferred** |
-| **Electrical Capacities & Loads** | Uniform bounded sampling from [`config.yaml`](file:///d:/Powel/MIT/Projects/silent-cascade-demo/config.yaml) | **Assumed** |
+| **Electrical Capacities & Loads** | Uniform bounded sampling from [`config.yaml`](config.yaml) | **Assumed** |
 | **Hospital / Water Buffers** | Standard engineering baselines (8.0h generator fuel, 6.0h reservoir buffer) | **Assumed** |
 | **Complaint Texts (20)** | Native Kannada script and English civic grievance dataset | **Synthetic** |
 | **Routing Accuracy Metrics** | Deterministic 120-run experimental evaluation | **Measured** |
-| **Cascade Dynamics & Criticality** | Physics-based load shedding simulation in [`src/cascade.py`](file:///d:/Powel/MIT/Projects/silent-cascade-demo/src/cascade.py) | **Simulated** |
+| **Cascade Dynamics & Criticality** | Physics-based load shedding simulation in [`src/cascade.py`](src/cascade.py) | **Simulated** |
+| **Verification-queue SLA (48h)** | Cited: UPPCL published complaint-verification window | **Cited** |
+| **Other department SLAs, time-to-failure, guard thresholds** | Illustrative municipal SLA values in [`config.yaml`](config.yaml) | **Assumed** |
 | **Intervention Cost Estimates** | Order-of-magnitude representative figures for policy comparison | **Assumed** |
 
 ---
@@ -127,16 +134,20 @@ silent-cascade-demo/
 ├── CLAUDE.md                      # Technical build specification
 ├── PLAN.md                        # Context, competition strategy, and core argument
 ├── config.yaml                    # Single source of truth for numeric assumptions
-├── requirements.txt               # Python package dependencies
+├── requirements.txt                # Python package dependencies (offline pipeline + app.py)
+├── app.py                         # Interactive Streamlit prototype (PLAN.md §A.5 bonus)
+├── .streamlit/
+│   └── config.toml                # Dark theme for the Streamlit app
 ├── data/
 │   ├── raw/                       # Cached Overpass API JSON responses (never re-fetched)
+│   ├── complaints.csv             # 20 hand-written civic complaints, English + Kannada
 │   └── processed/                 # Generated node/edge CSVs and network graphs
 ├── src/
 │   ├── fetch_data.py              # OpenStreetMap Overpass data extractor
 │   ├── build_graph.py             # Spatial network builder & topology generator
 │   ├── cascade.py                 # Pure-function cascading failure engine
 │   ├── d1_cascade.py              # D1 pipeline: runs cascade & generates GIF/PNG frames
-│   ├── d2_language.py             # D2 pipeline: language evaluation & chart generation
+│   ├── d2_language.py             # D2 pipeline + classify_one/route_with_guard/canary_report
 │   ├── d3_dashboard.py            # D3 pipeline: generates CivicOps monitor HTML
 │   └── d4_intervention.py         # D4 pipeline: Monte Carlo intervention analysis
 └── outputs/                       # Final artifacts, charts, CSVs, and dashboards
@@ -148,7 +159,7 @@ silent-cascade-demo/
     ├── d4_comparison.png          # Intervention comparison chart
     ├── d4_summary.csv             # Intervention statistical summary
     └── dashboard/
-        ├── index.html             # Master interactive showcase dashboard
+        ├── index.html             # Static snapshot of the interactive showcase
         └── assets/                # Supporting images and static media
 ```
 
@@ -178,8 +189,14 @@ silent-cascade-demo/
    pip install -r requirements.txt
    ```
 
-### Running the Pipeline
-Run the end-to-end simulation scripts in sequence:
+### Running the prototype
+```bash
+streamlit run app.py
+```
+All the data it needs is already committed to the repo (see [Running the offline pipeline](#running-the-offline-pipeline) only if you want to regenerate it from scratch).
+
+### Running the offline pipeline
+Run the end-to-end simulation scripts in sequence to regenerate everything in `outputs/` from scratch:
 
 ```bash
 # 1. Fetch real infrastructure geometry (cached to data/raw/)
@@ -201,10 +218,10 @@ python src/d3_dashboard.py
 python src/d4_intervention.py
 ```
 
-### Viewing the Dashboards
-Open the HTML files directly in your web browser:
-* **Interactive Showcase**: [`outputs/dashboard/index.html`](file:///d:/Powel/MIT/Projects/silent-cascade-demo/outputs/dashboard/index.html)
-* **CivicOps Monitor**: [`outputs/d3_dashboard.html`](file:///d:/Powel/MIT/Projects/silent-cascade-demo/outputs/d3_dashboard.html)
+### Viewing the static dashboards
+Open the HTML files directly in your web browser — no Python required:
+* **Interactive showcase (static snapshot)**: [`outputs/dashboard/index.html`](outputs/dashboard/index.html)
+* **CivicOps Monitor mock**: [`outputs/d3_dashboard.html`](outputs/d3_dashboard.html)
 
 ---
 
