@@ -351,6 +351,76 @@ def cascade_component(nodes: pd.DataFrame, G, timeline: list[dict[str, Any]], ho
 
 # ---------------------------------------------------------------- pages
 
+# Live "all green" monitor. Runs entirely in the browser (no Streamlit reruns): metrics drift,
+# sparklines scroll, the clock ticks, and a request log fills with 200 OKs. It is a MOCK — the
+# point is that a healthy-looking monitor is exactly what a silently wrong classifier produces.
+MONITOR_HTML = r"""
+<style>
+  html, body { margin: 0; background: transparent; font-family: "Source Sans Pro", "Segoe UI", sans-serif; color: #e8eaed; }
+  .p { background: #171b21; border: 1px solid rgba(52,168,83,.5); box-shadow: 0 0 24px rgba(52,168,83,.12); border-radius: 12px; padding: 18px 20px; }
+  .hdr { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+  .hdr b { font-size: 16px; } .hdr span { font-family: monospace; font-size: 11px; color: #6b7280; letter-spacing: .06em; }
+  .g { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .m { background: #1d222a; border: 1px solid #262b33; border-radius: 8px; padding: 12px 14px; }
+  .l { font-size: 12px; color: #9aa0a6; }
+  .v { font-family: monospace; font-size: 22px; font-weight: 600; display: flex; align-items: center; gap: 8px; margin-top: 2px; font-variant-numeric: tabular-nums; }
+  svg { display: block; width: 100%; height: 26px; margin-top: 8px; }
+  .d { width: 8px; height: 8px; border-radius: 50%; background: #34a853; box-shadow: 0 0 8px rgba(52,168,83,.8); display: inline-block; }
+  .svc { margin-top: 12px; border-top: 1px solid #262b33; }
+  .svc div { display: flex; align-items: center; gap: 10px; padding: 7px 2px; border-bottom: 1px solid #262b33; font-family: monospace; font-size: 12.5px; }
+  .svc div:last-child { border-bottom: 0; } .svc span { flex: 1; color: #cfd2d6; }
+  .svc em { font-style: normal; color: #34a853; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; }
+  .log { margin-top: 12px; border-top: 1px solid #262b33; padding-top: 8px; font-family: monospace; font-size: 11px; color: #6b7280; line-height: 1.7; height: 5.1em; overflow: hidden; }
+  .log b { color: #34a853; font-weight: 500; }
+  @media (max-width: 300px) { .g { grid-template-columns: 1fr; } }
+</style>
+<div class="p">
+  <div class="hdr"><b>CivicOps Monitor</b><span>grievance pipeline · all systems · <span id="clk">updated just now</span></span></div>
+  <div class="g">
+    <div class="m"><div class="l">Uptime</div><div class="v"><span id="up">99.98%</span> <i class="d"></i></div><svg viewBox="0 0 160 26" preserveAspectRatio="none"><polyline id="s-up" fill="none" stroke="#34a853" stroke-width="1.6" points="0,14 12,13 24,15 36,13 48,14 60,12 72,14 84,13 96,15 108,13 120,14 132,12 144,13 160,14"/></svg></div>
+    <div class="m"><div class="l">p50 Latency</div><div class="v"><span id="lat">187ms</span> <i class="d"></i></div><svg viewBox="0 0 160 26" preserveAspectRatio="none"><polyline id="s-lat" fill="none" stroke="#34a853" stroke-width="1.6" points="0,15 12,14 24,16 36,15 48,13 60,15 72,16 84,14 96,13 108,15 120,16 132,14 144,15 160,13"/></svg></div>
+    <div class="m"><div class="l">Error rate</div><div class="v"><span id="err">0.01%</span> <i class="d"></i></div><svg viewBox="0 0 160 26" preserveAspectRatio="none"><polyline id="s-err" fill="none" stroke="#34a853" stroke-width="1.6" points="0,16 12,16 24,15 36,16 48,17 60,16 72,15 84,16 96,16 108,17 120,16 132,15 144,16 160,16"/></svg></div>
+    <div class="m"><div class="l">Requests / min</div><div class="v"><span id="rpm">1,240</span> <i class="d"></i></div><svg viewBox="0 0 160 26" preserveAspectRatio="none"><polyline id="s-rpm" fill="none" stroke="#34a853" stroke-width="1.6" points="0,13 12,15 24,12 36,14 48,16 60,13 72,12 84,15 96,14 108,12 120,15 132,13 144,14 160,12"/></svg></div>
+  </div>
+  <div class="svc">
+    <div><i class="d"></i><span>intake-api</span><em>operational</em></div>
+    <div><i class="d"></i><span>language-normaliser</span><em>operational</em></div>
+    <div><i class="d"></i><span>classifier</span><em>operational</em></div>
+    <div><i class="d"></i><span>urgency-scorer</span><em>operational</em></div>
+    <div><i class="d"></i><span>router</span><em>operational</em></div>
+    <div><i class="d"></i><span>queue-worker</span><em>operational</em></div>
+  </div>
+  <div class="log" id="log"></div>
+</div>
+<script>
+const $ = id => document.getElementById(id);
+let seed = 7; const rnd = () => { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return seed / 0x7fffffff; };
+const S = {}; for (const k of ['up','lat','err','rpm']) S[k] = $('s-' + k).getAttribute('points').trim().split(/\s+/).map(p => +p.split(',')[1]);
+function push(k, y) { const s = S[k]; s.push(Math.max(4, Math.min(22, y))); s.shift(); $('s-' + k).setAttribute('points', s.map((v, i) => `${(i / (s.length - 1) * 160).toFixed(1)},${v.toFixed(1)}`).join(' ')); }
+let rpm = 1240, lat = 187, last = 0, n = 4127;
+const IDS = ['c01','c03','c05','c07','c08','c10','c12','c13','c15','c17','c19','c20'], LANG = ['en','kn','kn','en','kn'], COND = ['clean','clean','truncated','clean','small_model'];
+function tick() {
+  rpm = Math.round(Math.max(1180, Math.min(1310, rpm + (rnd() - .5) * 26)));
+  lat = Math.round(Math.max(160, Math.min(215, lat + (rnd() - .5) * 14)));
+  $('rpm').textContent = rpm.toLocaleString('en-US'); $('lat').textContent = lat + 'ms';
+  push('rpm', 13 + (1245 - rpm) / 12); push('lat', 13 + (lat - 187) / 6); push('up', 13.5 + (rnd() - .5) * 2); push('err', 16 + (rnd() - .5) * 1.2);
+  last = 0; $('clk').textContent = 'updated just now';
+}
+function logLine() {
+  const id = IDS[Math.floor(rnd() * IDS.length)], lg = LANG[Math.floor(rnd() * LANG.length)], cd = COND[Math.floor(rnd() * COND.length)];
+  const ms = 150 + ((n++ * 37) % 90);
+  const log = $('log');
+  log.insertAdjacentHTML('afterbegin', `<div>POST /classify  ${id}  ${lg}  ${cd.padEnd(11, ' ')}  <b>200 OK</b>  ${ms} ms</div>`);
+  while (log.children.length > 4) log.lastChild.remove();
+}
+for (let i = 0; i < 3; i++) logLine();
+setInterval(tick, 2400);
+setInterval(logLine, 1300);
+setInterval(() => { last += 1; $('clk').textContent = last < 2 ? 'updated just now' : `updated ${last}s ago`; }, 1000);
+</script>
+"""
+
+
 def _spark(points: str) -> str:
     return (f'<svg viewBox="0 0 160 26" preserveAspectRatio="none"><polyline fill="none" stroke="#34a853" '
             f'stroke-width="1.6" points="{points}"/></svg>')
@@ -393,20 +463,6 @@ def page_overview() -> None:
     )
 
     _section("No alarm fired", "Complaint acknowledged. Ticket created. Status green. SLA nominally met — for the category it was assigned to.")
-    monitor = (
-        '<div class="sc-panel sc-ok">'
-        '<div class="hdr"><b>CivicOps Monitor</b><span>grievance pipeline · all systems · just now</span></div>'
-        '<div class="sc-mgrid">'
-        f'<div class="m"><div class="l">Uptime</div><div class="v">99.98% <i class="gdot"></i></div>{_spark("0,14 12,13 24,15 36,13 48,14 60,12 72,14 84,13 96,15 108,13 120,14 132,12 144,13 160,14")}</div>'
-        f'<div class="m"><div class="l">p50 Latency</div><div class="v">187ms <i class="gdot"></i></div>{_spark("0,15 12,14 24,16 36,15 48,13 60,15 72,16 84,14 96,13 108,15 120,16 132,14 144,15 160,13")}</div>'
-        f'<div class="m"><div class="l">Error rate</div><div class="v">0.01% <i class="gdot"></i></div>{_spark("0,16 12,16 24,15 36,16 48,17 60,16 72,15 84,16 96,16 108,17 120,16 132,15 144,16 160,16")}</div>'
-        f'<div class="m"><div class="l">Requests / min</div><div class="v">1,240 <i class="gdot"></i></div>{_spark("0,13 12,15 24,12 36,14 48,16 60,13 72,12 84,15 96,14 108,12 120,15 132,13 144,14 160,12")}</div>'
-        "</div>"
-        '<div class="sc-svc">' + "".join(
-            f'<div><i class="gdot"></i><span>{s}</span><em>operational</em></div>'
-            for s in ["intake-api", "language-normaliser", "classifier", "urgency-scorer", "router", "queue-worker"]
-        ) + "</div></div>"
-    )
     classifier = (
         '<div class="sc-panel sc-bad">'
         '<div class="hdr"><b style="color:#d93025">What the classifier actually did</b><span>ticket c01 · HTTP 200</span></div>'
@@ -419,7 +475,11 @@ def page_overview() -> None:
         '<div><span class="sc-k">Outcome</span><span class="sc-v bad">equipment failure → cascade</span></div>'
         "</div></div>"
     )
-    st.markdown(f'<div class="sc-split">{monitor}{classifier}</div>', unsafe_allow_html=True)
+    left, right = st.columns([1.15, 1])
+    with left:
+        components.html(MONITOR_HTML, height=640)
+    with right:
+        st.markdown(classifier, unsafe_allow_html=True)
     st.markdown('<p class="sc-cap" style="margin-top:18px">Every dashboard says everything is fine. <b>The thing that failed was a decision, not a server.</b> '
                 "Monitoring watches whether the AI answered — not whether it was right.</p>", unsafe_allow_html=True)
 
