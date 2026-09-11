@@ -188,7 +188,8 @@ def accuracy_table(results: pd.DataFrame) -> pd.DataFrame:
     )
 
 
-def plot_accuracy(acc: pd.DataFrame, out_path: Path) -> None:
+def plot_accuracy(acc: pd.DataFrame, out_path: Path | None) -> plt.Figure:
+    """Grouped bar chart of accuracy by condition × language. Saves to out_path if given; returns the figure."""
     # 1600x1000 px at dpi=150 per CLAUDE.md
     fig, ax = plt.subplots(figsize=(1600 / 150, 1000 / 150), dpi=150)
     x = range(len(CONDITIONS))
@@ -218,14 +219,16 @@ def plot_accuracy(acc: pd.DataFrame, out_path: Path) -> None:
         ax.text(i + width / 2, v + 1.5, f"{v:.0f}%", ha="center", fontsize=11)
 
     fig.tight_layout()
-    fig.savefig(out_path, dpi=150)
-    plt.close(fig)
-    print(f"[d2_language] wrote {out_path}")
+    if out_path is not None:
+        fig.savefig(out_path, dpi=150)
+        plt.close(fig)
+        print(f"[d2_language] wrote {out_path}")
+    return fig
 
 
-def print_misroute_examples(results: pd.DataFrame, complaints: pd.DataFrame) -> None:
-    print("\n[d2_language] Complaints correctly routed in English but misrouted in native script:")
-    found = 0
+def misroute_examples(results: pd.DataFrame, complaints: pd.DataFrame) -> pd.DataFrame:
+    """Complaints correctly routed in English but misrouted in native script, per condition."""
+    rows = []
     for condition in CONDITIONS:
         en = results[(results.condition == condition) & (results.language == "en")]
         native = results[(results.condition == condition) & (results.language == "native")]
@@ -233,16 +236,33 @@ def print_misroute_examples(results: pd.DataFrame, complaints: pd.DataFrame) -> 
         bad = merged[(merged.correct_en) & (~merged.correct_native)]
         for _, row in bad.iterrows():
             complaint = complaints[complaints.id == row["id"]].iloc[0]
-            found += 1
-            print(
-                f"  [{condition}] {row['id']}: true={row['true_dept_en']} | "
-                f"EN -> {row['predicted_dept_en']} (correct) | "
-                f"native -> {row['predicted_dept_native'] or '(unparseable)'} (WRONG)\n"
-                f"      en: {complaint['text_en']}"
+            rows.append(
+                {
+                    "condition": condition,
+                    "id": row["id"],
+                    "true_dept": row["true_dept_en"],
+                    "predicted_en": row["predicted_dept_en"],
+                    "predicted_native": row["predicted_dept_native"] or "(unparseable)",
+                    "text_en": complaint["text_en"],
+                    "text_native": complaint["text_native"],
+                }
             )
-    if found == 0:
+    return pd.DataFrame(rows, columns=["condition", "id", "true_dept", "predicted_en", "predicted_native", "text_en", "text_native"])
+
+
+def print_misroute_examples(results: pd.DataFrame, complaints: pd.DataFrame) -> None:
+    print("\n[d2_language] Complaints correctly routed in English but misrouted in native script:")
+    examples = misroute_examples(results, complaints)
+    for _, row in examples.iterrows():
+        print(
+            f"  [{row['condition']}] {row['id']}: true={row['true_dept']} | "
+            f"EN -> {row['predicted_en']} (correct) | "
+            f"native -> {row['predicted_native']} (WRONG)\n"
+            f"      en: {row['text_en']}"
+        )
+    if examples.empty:
         print("  None found — report this honestly; do not tune the experiment to force examples.")
-    print(f"[d2_language] total misroute examples: {found}")
+    print(f"[d2_language] total misroute examples: {len(examples)}")
 
 
 def main() -> None:

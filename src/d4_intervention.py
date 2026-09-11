@@ -145,7 +145,8 @@ def main() -> None:
     plot_comparison(conditions, n_runs, OUTPUTS_DIR / "d4_comparison.png")
 
 
-def plot_comparison(conditions: list[tuple[str, list[int], float]], n_runs: int, out_path: Path) -> None:
+def plot_comparison(conditions: list[tuple[str, list[int], float]], n_runs: int, out_path: Path | None) -> plt.Figure:
+    """Horizontal bar chart of mean impact per condition. Saves to out_path if given; returns the figure."""
     labels = [c[0] for c in conditions]
     means = [sum(c[1]) / n_runs for c in conditions]
     costs = [c[2] for c in conditions]
@@ -165,9 +166,11 @@ def plot_comparison(conditions: list[tuple[str, list[int], float]], n_runs: int,
         ax.text(bar.get_width() + max(means) * 0.01, bar.get_y() + bar.get_height() / 2, label, va="center", fontsize=11)
 
     fig.tight_layout()
-    fig.savefig(out_path, dpi=150)
-    plt.close(fig)
-    print(f"[d4_intervention] wrote {out_path}")
+    if out_path is not None:
+        fig.savefig(out_path, dpi=150)
+        plt.close(fig)
+        print(f"[d4_intervention] wrote {out_path}")
+    return fig
 
 
 if __name__ == "__main__":
