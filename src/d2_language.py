@@ -114,10 +114,21 @@ SMALL_KEYWORDS_KN: dict[str, list[str]] = {
 CONDITIONS = ["clean", "truncated", "small_model"]
 LANGUAGES = {"en": "text_en", "native": "text_native"}
 
+# Safety terms that impose an urgency floor regardless of the department the classifier
+# picked. Deliberately narrow: things that can hurt someone in the next few hours.
+SAFETY_KEYWORDS_EN = ["spark", "sparks", "sparking", "live wire", "shock", "fire", "burning", "exposed wire", "burst"]
+SAFETY_KEYWORDS_KN = ["ಕಿಡಿ", "ಶಾಕ್", "ಬೆಂಕಿ", "ಸುಟ್ಟ ವಾಸನೆ", "ವಿದ್ಯುತ್ ತಂತಿ", "ಒಡೆದ"]
+
 
 def load_config() -> dict[str, Any]:
     with open(REPO_ROOT / "config.yaml", encoding="utf-8") as f:
         return yaml.safe_load(f)
+
+
+def classify_scores(text: str, keywords: dict[str, list[str]]) -> dict[str, int]:
+    """Keyword-count score per department for `text`."""
+    text_lower = text.lower()
+    return {dept: sum(text_lower.count(kw.lower()) for kw in keywords[dept]) for dept in DEPARTMENTS}
 
 
 def classify(text: str, keywords: dict[str, list[str]]) -> str:
@@ -126,26 +137,96 @@ def classify(text: str, keywords: dict[str, list[str]]) -> str:
     Ties are broken by DEPARTMENTS order — a genuine limitation of a keyword baseline,
     not something to hide.
     """
-    text_lower = text.lower()
-    scores = {}
-    for dept in DEPARTMENTS:
-        count = sum(text_lower.count(kw.lower()) for kw in keywords[dept])
-        scores[dept] = count
+    scores = classify_scores(text, keywords)
     best_dept = max(DEPARTMENTS, key=lambda d: scores[d])
     if scores[best_dept] == 0:
         return ""
     return best_dept
 
 
-def classify_one(text: str, condition: str, truncate_chars: int) -> str:
+def condition_input(text: str, condition: str, truncate_chars: int) -> tuple[str, dict[str, list[str]]]:
+    """The (possibly degraded) text and keyword vocabulary the classifier sees under `condition`."""
+    english = _looks_english(text)
     if condition == "clean":
-        return classify(text, FULL_KEYWORDS_EN if _looks_english(text) else FULL_KEYWORDS_KN)
+        return text, FULL_KEYWORDS_EN if english else FULL_KEYWORDS_KN
     if condition == "truncated":
-        truncated_text = text[:truncate_chars]
-        return classify(truncated_text, FULL_KEYWORDS_EN if _looks_english(text) else FULL_KEYWORDS_KN)
+        return text[:truncate_chars], FULL_KEYWORDS_EN if english else FULL_KEYWORDS_KN
     if condition == "small_model":
-        return classify(text, SMALL_KEYWORDS_EN if _looks_english(text) else SMALL_KEYWORDS_KN)
+        return text, SMALL_KEYWORDS_EN if english else SMALL_KEYWORDS_KN
     raise ValueError(f"unknown condition: {condition}")
+
+
+def classify_one(text: str, condition: str, truncate_chars: int) -> str:
+    seen, keywords = condition_input(text, condition, truncate_chars)
+    return classify(seen, keywords)
+
+
+def route_with_guard(text: str, condition: str, cfg_d2: dict[str, Any]) -> dict[str, Any]:
+    """The verification checkpoint, made concrete: classify, then guard the decision.
+
+    The guard sees exactly what the classifier saw (same degraded input) — it is a check
+    on the decision, not a second look at the citizen's original words. Rules:
+      1. unparseable            -> verification queue (48 h), never the general queue
+      2. margin < threshold     -> verification queue (low confidence / tie)
+      3. safety keyword present -> urgency floor: SLA capped at the emergency SLA
+    Returns the unguarded and guarded routing side by side, each with its SLA in hours.
+    """
+    seen, keywords = condition_input(text, condition, cfg_d2["truncate_chars"])
+    scores = classify_scores(seen, keywords)
+    ranked = sorted(DEPARTMENTS, key=lambda d: (-scores[d], DEPARTMENTS.index(d)))
+    top, second = ranked[0], ranked[1]
+    predicted = top if scores[top] > 0 else ""
+    margin = scores[top] - scores[second]
+
+    sla = cfg_d2["sla_hours"]
+    safety_terms = SAFETY_KEYWORDS_EN if _looks_english(text) else SAFETY_KEYWORDS_KN
+    seen_lower = seen.lower()
+    safety_hits = [k for k in safety_terms if k.lower() in seen_lower]
+
+    # what happens today: unparseable falls to a general/maintenance queue
+    naive_queue = predicted or "electrical_maintenance"
+    naive_sla = sla[naive_queue]
+
+    flags: list[str] = []
+    if not predicted:
+        queue, flags = "verification", ["unparseable"]
+    elif margin < cfg_d2["low_confidence_margin"]:
+        queue, flags = "verification", ["low_confidence"]
+    else:
+        queue = predicted
+    guarded_sla = sla[queue]
+    if safety_hits:
+        flags.append("urgency_floor")
+        guarded_sla = min(guarded_sla, sla["electrical_emergency"])
+
+    return {
+        "seen": seen,
+        "scores": scores,
+        "predicted": predicted,
+        "margin": margin,
+        "safety_hits": safety_hits,
+        "flags": flags,
+        "naive": {"queue": naive_queue, "sla_hours": naive_sla},
+        "guarded": {"queue": queue, "sla_hours": guarded_sla},
+    }
+
+
+def canary_report(complaints: pd.DataFrame, cfg_d2: dict[str, Any]) -> pd.DataFrame:
+    """Golden-set probe of the routing layer: accuracy and unparseable-rate per language × condition."""
+    rows = []
+    for condition in CONDITIONS:
+        for lang_key, col in LANGUAGES.items():
+            preds = [classify_one(t, condition, cfg_d2["truncate_chars"]) for t in complaints[col]]
+            correct = sum(p == t for p, t in zip(preds, complaints["true_dept"]))
+            rows.append(
+                {
+                    "condition": condition,
+                    "language": lang_key,
+                    "accuracy_pct": round(100 * correct / len(complaints), 1),
+                    "unparseable_pct": round(100 * sum(p == "" for p in preds) / len(complaints), 1),
+                }
+            )
+    return pd.DataFrame(rows)
 
 
 def _looks_english(text: str) -> bool:

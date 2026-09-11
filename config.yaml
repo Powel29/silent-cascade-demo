@@ -72,6 +72,34 @@ d2:
   # on whichever local/small classifier is actually available — see that file's header.
   truncate_chars: 40
 
+  # Routing guard (the verification checkpoint, made concrete). Time-to-repair for each
+  # queue, in hours. ONLY the 48 h verification/field-officer window is cited (UPPCL's
+  # published complaint SLA); every other value is an ASSUMPTION — a plausible municipal
+  # SLA per department, chosen to make the delay mechanism legible, not sourced.
+  sla_hours:
+    electrical_emergency: 4
+    electrical_maintenance: 336    # 14 days — the "fourteen days later it failed" window
+    water_supply: 72
+    drainage: 168
+    roads: 336
+    sanitation: 72
+    verification: 48               # cited: UPPCL 48-hour SLA (field officer verifies/assigns)
+
+  # ASSUMPTION: hours from the complaint until the un-repaired asset physically fails — the
+  # narrative "fourteen days later" from the deck. A repair scheduled at or after this
+  # point is too late; one scheduled before it prevents the failure entirely.
+  time_to_failure_hours: 336
+
+  # Guard thresholds. A keyword-count margin below this between the top two departments is
+  # treated as low confidence and sent to the verification queue instead of being routed.
+  # ASSUMPTION for the keyword baseline; a production classifier would use its own score.
+  low_confidence_margin: 1
+
+  # Canary alarm: the monitor goes red when native-script accuracy on the golden set drops
+  # more than this many percentage points below English under the same condition.
+  # ASSUMPTION — an operational threshold, not a measured quantity.
+  canary_language_gap_alarm_pct: 15
+
 d4:
   n_runs: 100
   # ASSUMPTION: fraction of runs in which a verification checkpoint on the AI routing layer

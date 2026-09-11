@@ -34,8 +34,11 @@ from d2_language import (  # noqa: E402
     SMALL_KEYWORDS_KN,
     _looks_english,
     accuracy_table,
+    canary_report,
     classify_one,
+    condition_input,
     misroute_examples,
+    route_with_guard,
     plot_accuracy,
 )
 from d4_intervention import draw_random_failures, hardened_graph, plot_comparison, run_condition  # noqa: E402
@@ -122,8 +125,13 @@ st.markdown(
 
 # ---------------------------------------------------------------- data loading
 
-@st.cache_data
 def load_config() -> dict[str, Any]:
+    path = REPO_ROOT / "config.yaml"
+    return _load_config(path.stat().st_mtime)
+
+
+@st.cache_data
+def _load_config(mtime: float) -> dict[str, Any]:
     with open(REPO_ROOT / "config.yaml", encoding="utf-8") as f:
         return yaml.safe_load(f)
 
@@ -496,14 +504,41 @@ def _highlight(text: str, keywords: dict[str, list[str]], true_dept: str) -> str
     return "".join(out)
 
 
+CASCADE_DEPTS = {"electrical_emergency"}  # complaints whose neglect we link to a substation failure
+
+
+@st.cache_data
+def canary() -> pd.DataFrame:
+    return canary_report(load_complaints(), load_config()["d2"])
+
+
+def _route_card(title: str, r: dict[str, Any], flags: list[str], safety: list[str], cls: str) -> str:
+    q = r["queue"]
+    sla = r["sla_hours"]
+    sla_txt = f"{sla:g} h" if sla < 48 else f"{sla / 24:g} days"
+    flag_html = "".join(f'<span class="sc-pill {"inf" if f != "urgency_floor" else "real"}">{f.replace("_", " ")}</span> ' for f in flags)
+    flags_block = f'<div style="margin-top:8px">{flag_html}</div>' if flags else ""
+    safety_html = f'<div class="sc-k" style="margin-top:8px">Safety terms seen</div><div class="sc-v">{", ".join(safety)}</div>' if safety else ""
+    q_cls = "unp" if q == "verification" else ("ok" if cls == "sc-ok" else "bad")
+    return (
+        f'<div class="sc-panel {cls}"><div class="hdr"><b>{title}</b></div>'
+        f'<div class="sc-k">Queue</div><div class="sc-v {q_cls}">{q}</div>'
+        f'<div class="sc-k" style="margin-top:8px">Time to repair (SLA)</div><div class="sc-big" style="font-size:22px">{sla_txt}</div>'
+        f"{flags_block}{safety_html}</div>"
+    )
+
+
 def page_language() -> None:
     cfg = load_config()
+    d2 = cfg["d2"]
     complaints = load_complaints()
-    truncate = cfg["d2"]["truncate_chars"]
+    truncate = d2["truncate_chars"]
+    ttf = d2["time_to_failure_hours"]
 
     _section("Language routing — the AI injection, traced end to end",
-             "This runs the exact <code>classify_one()</code> from src/d2_language.py that produced outputs/d2_results.csv — a "
-             "deterministic keyword-baseline classifier, <em>not a production LLM</em>. Same code, same numbers.")
+             "One complaint, one degraded condition, followed from the classifier's decision to the substation. "
+             "The classifier is the exact <code>classify_one()</code> that produced outputs/d2_results.csv — a keyword baseline, "
+             "<em>not a production LLM</em>. The guard and the monitor are the fix.")
 
     c = st.columns([2, 1, 1])
     with c[0]:
@@ -515,34 +550,121 @@ def page_language() -> None:
 
     row = complaints.set_index("id").loc[cid]
     full = row["text_en"] if lang == "English" else row["text_native"]
-    text = full[:truncate] if cond == "truncated" else full
     is_en = _looks_english(full)
-    kws = (SMALL_KEYWORDS_EN if is_en else SMALL_KEYWORDS_KN) if cond == "small_model" else (FULL_KEYWORDS_EN if is_en else FULL_KEYWORDS_KN)
-    pred = classify_one(full, cond, truncate)
-    wrong = pred != row["true_dept"]
+    g = route_with_guard(full, cond, d2)
+    pred, wrong = g["predicted"], g["predicted"] != row["true_dept"]
+    seen, kws = condition_input(full, cond, truncate)
 
     st.session_state.reqn = st.session_state.get("reqn", 4127) + 1
     ms = 150 + (st.session_state.reqn * 37) % 90
 
+    # ---- 1. what the classifier saw and decided
+    st.markdown("#### 1 · The decision")
     left, right = st.columns([1.3, 1])
     with left:
-        body = _highlight(text, kws, row["true_dept"])
+        body = _highlight(seen, kws, row["true_dept"])
         if cond == "truncated":
             body += f"<s>{html.escape(full[truncate:])}</s>"
         st.markdown(f'<div class="sc-card"><div class="sc-k">Input · {cond}</div><p class="sc-text">{body}</p></div>', unsafe_allow_html=True)
         st.markdown(f'<p class="sc-log" style="margin-top:8px">POST /classify {cid} {"en" if is_en else "kn"} {cond} <b>200 OK</b> {ms} ms</p>', unsafe_allow_html=True)
     with right:
-        verdict = "correct · right queue" if not wrong else ("MISROUTED · wrong queue, wrong SLA" if pred else "DROPPED · unparseable, counted as incorrect")
+        verdict = "correct · right queue" if not wrong else ("MISROUTED · wrong queue, wrong SLA" if pred else "DROPPED · unparseable")
         vcls = "ok" if not wrong else ("bad" if pred else "unp")
         st.markdown(
             f'<div class="sc-card {"sc-bad" if wrong else "sc-ok"}">'
             f'<div class="sc-k">True dept</div><div class="sc-v ok">{row["true_dept"]}</div><br>'
-            f'<div class="sc-k">Routed to</div><div class="sc-v {vcls}">{pred or "(unparseable)"}</div><br>'
-            f'<div class="sc-k">Verdict</div><div class="sc-v {vcls}">{verdict}</div>'
+            f'<div class="sc-k">Classifier said</div><div class="sc-v {vcls}">{pred or "(unparseable)"}</div><br>'
+            f'<div class="sc-k">Verdict</div><div class="sc-v {vcls}">{verdict}</div><br>'
+            f'<div class="sc-k">Score margin (top − 2nd)</div><div class="sc-v">{g["margin"]}</div>'
             "</div>",
             unsafe_allow_html=True,
         )
-        st.markdown('<p class="sc-cap" style="margin-top:12px">Every request returns 200. The monitor never notices.</p>', unsafe_allow_html=True)
+
+    # ---- 2. the guard: today vs with a verification checkpoint
+    st.markdown("#### 2 · The routing guard — a verification checkpoint on the decision")
+    st.caption("The guard sees exactly what the classifier saw. Unparseable or low-confidence decisions go to a 48 h verification queue "
+               "(the cited UPPCL window) instead of a general queue; safety terms cap the SLA at the emergency SLA. Other SLAs are labelled assumptions in config.yaml.")
+    naive_late = g["naive"]["sla_hours"] >= ttf
+    guard_late = g["guarded"]["sla_hours"] >= ttf
+    st.markdown(
+        '<div class="sc-split">'
+        + _route_card("Today · no guard", g["naive"], [], [], "sc-bad" if naive_late else "sc-ok")
+        + _route_card("With guard", g["guarded"], g["flags"], g["safety_hits"], "sc-bad" if guard_late else "sc-ok")
+        + "</div>",
+        unsafe_allow_html=True,
+    )
+
+    # ---- 3. close the loop into the physical network
+    st.markdown("#### 3 · What that delay does to the network")
+    if row["true_dept"] in CASCADE_DEPTS:
+        nodes = load_nodes()
+        rank = ranking()
+        subs = nodes[nodes.type == "substation"]
+        labels = {r.id: f"{r.id} · {r.name if isinstance(r.name, str) and r.name else '(unnamed)'}" for r in subs.itertuples()}
+        opts = list(subs.id)
+        linked = st.selectbox("Substation this complaint sits on", opts, index=opts.index(rank.iloc[0]["node_id"]), format_func=labels.get)
+        final = run_cascade(linked)[-1]
+        people, hosp = final["people_affected"], len(final["hospitals_on_generator"])
+
+        def outcome(late: bool, sla: float, title: str) -> str:
+            if late:
+                return (f'<div class="sc-panel sc-bad"><div class="hdr"><b>{title}</b></div>'
+                        f'<div class="sc-k">Repair scheduled</div><div class="sc-v bad">T+{sla:g} h — not before the asset fails at T+{ttf:g} h</div>'
+                        f'<div class="sc-k" style="margin-top:10px">Cascade from {linked}</div>'
+                        f'<div class="sc-big" style="color:#d93025">{people:,}</div><div class="sc-k">people affected · {hosp} hospitals on generator</div></div>')
+            return (f'<div class="sc-panel sc-ok"><div class="hdr"><b>{title}</b></div>'
+                    f'<div class="sc-k">Repair scheduled</div><div class="sc-v ok">T+{sla:g} h — before the asset fails at T+{ttf:g} h</div>'
+                    f'<div class="sc-k" style="margin-top:10px">Cascade</div>'
+                    f'<div class="sc-big" style="color:#34a853">0</div><div class="sc-k">people affected · failure prevented</div></div>')
+
+        st.markdown('<div class="sc-split">' + outcome(naive_late, g["naive"]["sla_hours"], "Today · no guard")
+                    + outcome(guard_late, g["guarded"]["sla_hours"], "With guard") + "</div>", unsafe_allow_html=True)
+        delta = (people if naive_late else 0) - (people if guard_late else 0)
+        if delta > 0:
+            st.markdown(f'<p class="sc-cap" style="margin-top:14px">One checkpoint on one decision: <b>{delta:,} fewer people affected</b>. '
+                        "Same substation, same physics — the only thing that changed is when the repair crew was told.</p>", unsafe_allow_html=True)
+        elif naive_late and guard_late:
+            st.markdown('<p class="sc-cap" style="margin-top:14px">The guard could not rescue this one — the degraded input hid every signal it looks for. '
+                        "That is the honest limit of a check that sees only what the classifier saw.</p>", unsafe_allow_html=True)
+        else:
+            st.markdown('<p class="sc-cap" style="margin-top:14px">Routed in time either way — no cascade for this complaint.</p>', unsafe_allow_html=True)
+    else:
+        st.markdown(f'<p class="sc-cap">This complaint is <b>{row["true_dept"]}</b>; the physical cascade model covers electrical faults only, '
+                    "so no substation is linked. The routing guard above still applies.</p>", unsafe_allow_html=True)
+
+    # ---- 4. the monitor that should have existed
+    st.markdown("#### 4 · Decision monitor — the canary CivicOps never had")
+    st.caption("Every request above returned 200. This monitor ignores that and re-runs a golden set of 20 complaints in both languages "
+               f"under the live condition, watching accuracy and the unparseable rate per language. It alarms when native-script accuracy "
+               f"falls more than {d2['canary_language_gap_alarm_pct']:g} points below English.")
+    rep = canary()
+    cur = rep[rep.condition == cond].set_index("language")
+    base = rep[rep.condition == "clean"].set_index("language")
+    gap = base.loc["native", "accuracy_pct"] - cur.loc["native", "accuracy_pct"]
+    lang_gap = cur.loc["en", "accuracy_pct"] - cur.loc["native", "accuracy_pct"]
+    alarm = lang_gap > d2["canary_language_gap_alarm_pct"]
+
+    def tile(label: str, value: str, ok: bool, sub: str) -> str:
+        col = "#34a853" if ok else "#d93025"
+        return (f'<div><div class="l">{label}</div><div class="v" style="color:{col}">{value} <i class="gdot" style="background:{col};box-shadow:0 0 8px {col}"></i></div>'
+                f'<div class="l" style="margin-top:4px">{sub}</div></div>')
+
+    en_ok = cur.loc["en", "accuracy_pct"] >= base.loc["en", "accuracy_pct"] - d2["canary_language_gap_alarm_pct"]
+    kn_ok = not alarm and cur.loc["native", "accuracy_pct"] >= base.loc["native", "accuracy_pct"] - d2["canary_language_gap_alarm_pct"]
+    st.markdown(
+        f'<div class="sc-panel {"sc-bad" if alarm else "sc-ok"}">'
+        f'<div class="hdr"><b>Routing-quality canary · condition: {cond}</b><span>golden set · 20 × 2 languages · re-run now</span></div>'
+        '<div class="sc-mgrid">'
+        + tile("English accuracy", f"{cur.loc['en', 'accuracy_pct']:.0f}%", en_ok, f"unparseable {cur.loc['en', 'unparseable_pct']:.0f}%")
+        + tile("Kannada accuracy", f"{cur.loc['native', 'accuracy_pct']:.0f}%", kn_ok, f"unparseable {cur.loc['native', 'unparseable_pct']:.0f}%")
+        + tile("Language gap", f"{lang_gap:+.0f} pts", not alarm, f"alarm above {d2['canary_language_gap_alarm_pct']:g} pts")
+        + tile("Drift vs clean (Kannada)", f"{-gap:+.0f} pts", gap <= d2["canary_language_gap_alarm_pct"], "same golden set, clean condition")
+        + "</div>"
+        + (f'<div class="sc-v bad" style="margin-top:12px">▲ ALARM · native-script routing degraded {lang_gap:.0f} pts below English while every request returned 200</div>' if alarm
+           else '<div class="sc-v ok" style="margin-top:12px">● no language divergence on the golden set</div>')
+        + "</div>",
+        unsafe_allow_html=True,
+    )
 
     st.write("")
     st.markdown("#### Accuracy by language × condition (120 classifications, measured)")
