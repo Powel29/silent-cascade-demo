@@ -10,17 +10,16 @@ Run locally:  pip install -r requirements.txt && streamlit run app.py
 from __future__ import annotations
 
 import html
+import json
 import pickle
 import sys
 from pathlib import Path
 from typing import Any
 
-import folium
 import pandas as pd
 import streamlit as st
+import streamlit.components.v1 as components
 import yaml
-from streamlit_autorefresh import st_autorefresh
-from streamlit_folium import st_folium
 
 REPO_ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(REPO_ROOT / "src"))
@@ -42,7 +41,6 @@ from d2_language import (  # noqa: E402
 from d4_intervention import draw_random_failures, hardened_graph, plot_comparison, run_condition  # noqa: E402
 
 COLORS = {"healthy": "#9aa0a6", "overloaded": "#f5a623", "failed": "#d93025", "blue": "#4285f4", "green": "#34a853"}
-BHOPAL_CENTER = (23.25, 77.42)
 
 st.set_page_config(page_title="Silent Cascade", page_icon="⚡", layout="wide")
 
@@ -185,37 +183,162 @@ def run_interventions(n_runs: int) -> tuple[list[tuple[str, list[int], float]], 
     )
 
 
-# ---------------------------------------------------------------- map
+# ---------------------------------------------------------------- map (client-side Leaflet, no reruns)
 
-def cascade_map(nodes: pd.DataFrame, G, snapshot: dict[str, Any], center: tuple[float, float], zoom: int) -> folium.Map:
-    m = folium.Map(location=center, zoom_start=zoom, tiles="OpenStreetMap", control_scale=True)
-    failed, over = snapshot["failed"], snapshot["overloaded"]
-    state = lambda n: "failed" if n in failed else "overloaded" if n in over else "healthy"
+MAP_HTML = r"""
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  html, body { margin: 0; background: #0f1216; font-family: "Source Sans Pro", "Segoe UI", sans-serif; color: #e8eaed; }
+  #wrap { position: relative; width: 100%; height: __H__px; border-radius: 10px; overflow: hidden; border: 1px solid #343b46; background: #0b0d10; }
+  #map { position: absolute; inset: 0; }
+  .leaflet-tile-pane { filter: brightness(.62) saturate(.7); }
+  .hud { position: absolute; left: 12px; top: 12px; z-index: 1000; display: grid; gap: 5px; min-width: 200px; pointer-events: none;
+         background: rgba(15,18,22,.86); border: 1px solid #343b46; border-radius: 8px; padding: 10px 12px; font-family: monospace; }
+  .hud div { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; font-size: 12px; }
+  .hud .k { color: #9aa0a6; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+  .hud b { font-weight: 700; color: #e8eaed; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .hud .t b { font-size: 21px; color: #d93025; } .hud .p b { color: #d93025; }
+  .ctl { position: absolute; left: 12px; right: 12px; bottom: 12px; z-index: 1000; display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+         background: rgba(15,18,22,.88); border: 1px solid #343b46; border-radius: 8px; padding: 7px 10px; }
+  .btn { font-family: monospace; font-size: 12px; color: #0f1216; background: #e8eaed; border: 0; border-radius: 6px; padding: 6px 11px; cursor: pointer; font-weight: 700; white-space: nowrap; }
+  .btn.ghost { background: transparent; color: #cfd2d6; border: 1px solid #343b46; font-weight: 500; }
+  input[type=range] { flex: 1; min-width: 120px; accent-color: #d93025; }
+  .seg { display: inline-flex; border: 1px solid #343b46; border-radius: 6px; overflow: hidden; }
+  .seg button { font-family: monospace; font-size: 11px; color: #9aa0a6; background: transparent; border: 0; border-right: 1px solid #343b46; padding: 6px 9px; cursor: pointer; }
+  .seg button:last-child { border-right: 0; } .seg button.on { color: #e8eaed; background: #343b46; }
+  .attrib { margin-left: auto; font-family: monospace; font-size: 10px; color: rgba(232,234,237,.55); white-space: nowrap; }
+  .attrib a { color: inherit; }
+  .leaflet-control-attribution { display: none; }
+  .leaflet-tooltip { background: rgba(15,18,22,.95); color: #e8eaed; border: 1px solid #343b46; font-family: monospace; font-size: 11px; }
+  .leaflet-tooltip-top:before { border-top-color: #343b46; }
+  .pump { width: 9px; height: 9px; border: 1px solid #000; box-sizing: border-box; }
+  .leaflet-marker-icon.pump { background: var(--c, #9aa0a6); }
+</style>
+<div id="wrap">
+  <div id="map"></div>
+  <div class="hud">
+    <div class="t"><span class="k">Elapsed</span><b id="h-t">T+0.0h</b></div>
+    <div class="p"><span class="k">People affected</span><b id="h-p">0</b></div>
+    <div><span class="k">Hospitals on generator</span><b id="h-h">0</b></div>
+    <div><span class="k">Wards without water</span><b id="h-w">0</b></div>
+    <div><span class="k">Substations tripped</span><b id="h-s">0</b></div>
+  </div>
+  <div class="ctl">
+    <button class="btn" id="play">❚❚ Pause</button>
+    <button class="btn ghost" id="restart">↺</button>
+    <input type="range" id="scrub" min="0" max="__LAST__" step="0.01" value="0">
+    <div class="seg"><button data-s="4" class="on">slow</button><button data-s="2">normal</button><button data-s="0.8">fast</button></div>
+    <button class="btn ghost" id="fit">⤢ fit</button>
+    <span class="attrib">© <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors</span>
+  </div>
+</div>
+<script>
+const D = __DATA__;
+const C = { healthy: '#9aa0a6', over: '#f5a623', failed: '#d93025' };
+const map = L.map('map', { zoomControl: false, attributionControl: false });
+L.control.zoom({ position: 'topright' }).addTo(map);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(map);
+const bounds = L.latLngBounds(D.nodes.map(n => [n[0], n[1]]));
+map.fitBounds(bounds.pad(0.08));
 
-    edges = folium.FeatureGroup(name="grid")
-    for u, v, d in G.edges(data=True):
-        if d["type"] != "grid" or u > v:
-            continue
-        su, sv = state(u), state(v)
-        col = COLORS["failed"] if su == sv == "failed" else COLORS["overloaded"] if "failed" in (su, sv) else "#6b7280"
-        folium.PolyLine([(G.nodes[u]["lat"], G.nodes[u]["lon"]), (G.nodes[v]["lat"], G.nodes[v]["lon"])], color=col, weight=1.4, opacity=0.8).add_to(edges)
+// per-node schedule: failAt (fractional step, staggered within a step), overloaded steps
+const failAt = new Array(D.nodes.length).fill(Infinity);
+const overAt = D.nodes.map(() => new Set());
+D.steps.forEach(s => {
+  const n = s.new.length;
+  s.new.forEach((i, k) => { failAt[i] = s.step + (n > 1 ? (k / n) * 0.8 : 0); });
+  s.over.forEach(i => overAt[i].add(s.step));
+});
+const stateOf = (i, t) => failAt[i] <= t ? 'failed' : overAt[i].has(Math.floor(t)) ? 'over' : 'healthy';
 
-    pts = folium.FeatureGroup(name="assets")
-    for r in nodes.itertuples():
-        s = state(r.id)
-        col = COLORS[s]
-        label = r.name if isinstance(r.name, str) and r.name else r.id
-        tip = f"<b>{html.escape(label)}</b><br>{r.type} · {s.upper()}"
-        if r.type == "substation":
-            tip += f"<br>serves {int(r.population_served):,}"
-            folium.CircleMarker((r.lat, r.lon), radius=7, color="#000", weight=1, fill=True, fill_color=col, fill_opacity=0.95, tooltip=tip).add_to(pts)
-        elif r.type == "hospital":
-            folium.CircleMarker((r.lat, r.lon), radius=3, color=col, weight=2, fill=True, fill_color=col, fill_opacity=0.9, tooltip=tip).add_to(pts)
-        else:
-            folium.RegularPolygonMarker((r.lat, r.lon), number_of_sides=4, radius=5, rotation=45, color="#000", weight=1, fill_color=col, fill_opacity=0.95, tooltip=tip).add_to(pts)
-    edges.add_to(m)
-    pts.add_to(m)
-    return m
+// edges
+const edgeLayers = D.edges.map(([a, b]) => L.polyline([[D.nodes[a][0], D.nodes[a][1]], [D.nodes[b][0], D.nodes[b][1]]], { color: '#6b7280', weight: 1.4, opacity: .8, interactive: false }).addTo(map));
+// nodes: substations big circles, hospitals small circles, pumps squares (divIcon)
+const markers = D.nodes.map((n, i) => {
+  const [lat, lon, type, id, name, pop] = n;
+  const label = `<b>${name || id}</b><br>${['substation','hospital','pump'][type]}${type === 0 ? ` · serves ${pop.toLocaleString('en-US')}` : ''}<br><span id="tt-${i}"></span>`;
+  let m;
+  if (type === 2) {
+    m = L.marker([lat, lon], { icon: L.divIcon({ className: 'pump', iconSize: [9, 9] }), interactive: true });
+  } else {
+    m = L.circleMarker([lat, lon], { radius: type === 0 ? 7 : 3, color: type === 0 ? '#000' : C.healthy, weight: type === 0 ? 1 : 2, fillColor: C.healthy, fillOpacity: .95 });
+  }
+  m.bindTooltip(label, { direction: 'top', offset: [0, -6] });
+  m.addTo(map);
+  return m;
+});
+const TYPE = D.nodes.map(n => n[2]);
+const fmt = v => v.toLocaleString('en-US');
+
+let t = 0, playing = true, secPerStep = 4, last = 0;
+const LAST = D.steps.length - 1;
+function paint() {
+  const step = Math.floor(t);
+  let subs = 0;
+  D.nodes.forEach((n, i) => {
+    const s = stateOf(i, t), col = C[s];
+    if (s === 'failed' && TYPE[i] === 0) subs++;
+    const m = markers[i];
+    if (TYPE[i] === 2) { const el = m.getElement(); if (el) el.style.background = col; }
+    else m.setStyle(TYPE[i] === 0 ? { fillColor: col } : { fillColor: col, color: col });
+    const tt = document.getElementById('tt-' + i); if (tt) tt.textContent = s === 'failed' ? `FAILED at T+${(failAt[i] * D.hps).toFixed(1)}h` : s.toUpperCase();
+  });
+  D.edges.forEach(([a, b], k) => {
+    const fa = failAt[a] <= t, fb = failAt[b] <= t;
+    edgeLayers[k].setStyle({ color: fa && fb ? C.failed : (fa || fb) ? C.over : '#6b7280', opacity: fa || fb ? .9 : .7 });
+  });
+  const s = D.steps[step];
+  document.getElementById('h-t').textContent = `T+${(t * D.hps).toFixed(1)}h`;
+  document.getElementById('h-p').textContent = fmt(s.people);
+  document.getElementById('h-h').textContent = fmt(s.hosp);
+  document.getElementById('h-w').textContent = fmt(s.pumps);
+  document.getElementById('h-s').textContent = `${subs} / ${D.nsub}`;
+  document.getElementById('scrub').value = t;
+}
+function loop(ts) {
+  const dt = last ? (ts - last) / 1000 : 0; last = ts;
+  if (playing) {
+    t = Math.min(LAST, t + dt / secPerStep);
+    if (t >= LAST) { playing = false; document.getElementById('play').textContent = '↺ Replay'; }
+    paint();
+  }
+  requestAnimationFrame(loop);
+}
+const playBtn = document.getElementById('play');
+playBtn.onclick = () => { if (playing) { playing = false; playBtn.textContent = t >= LAST ? '↺ Replay' : '▶ Play'; } else { if (t >= LAST) t = 0; playing = true; playBtn.textContent = '❚❚ Pause'; } };
+document.getElementById('restart').onclick = () => { t = 0; playing = true; playBtn.textContent = '❚❚ Pause'; paint(); };
+document.getElementById('fit').onclick = () => map.fitBounds(bounds.pad(0.08));
+document.getElementById('scrub').oninput = e => { t = +e.target.value; playing = false; playBtn.textContent = t >= LAST ? '↺ Replay' : '▶ Play'; paint(); };
+document.querySelectorAll('.seg button').forEach(b => b.onclick = () => { secPerStep = +b.dataset.s; document.querySelectorAll('.seg button').forEach(x => x.classList.toggle('on', x === b)); });
+paint();
+requestAnimationFrame(loop);
+</script>
+"""
+
+
+def cascade_component(nodes: pd.DataFrame, G, timeline: list[dict[str, Any]], hours_per_step: float, height: int = 620) -> str:
+    """Self-contained Leaflet page: whole timeline embedded, animated client-side (no Streamlit reruns)."""
+    idx = {nid: i for i, nid in enumerate(nodes.id)}
+    tcode = {"substation": 0, "hospital": 1, "pump": 2}
+    node_list = [
+        [round(float(r.lat), 5), round(float(r.lon), 5), tcode[r.type], r.id,
+         r.name if isinstance(r.name, str) else "", int(r.population_served) if r.type == "substation" else 0]
+        for r in nodes.itertuples()
+    ]
+    edges = [[idx[u], idx[v]] for u, v, d in G.edges(data=True) if d["type"] == "grid" and u < v]
+    prev: set[str] = set()
+    steps = []
+    for s in timeline:
+        new = sorted(idx[n] for n in s["failed"] - prev) if s["step"] else sorted(idx[n] for n in s["failed"])
+        prev = set(s["failed"])
+        steps.append({
+            "step": s["step"], "new": new, "over": sorted(idx[n] for n in s["overloaded"]),
+            "people": s["people_affected"], "hosp": len(s["hospitals_on_generator"]), "pumps": len(s["wards_without_water"]),
+        })
+    data = {"nodes": node_list, "edges": edges, "steps": steps, "hps": hours_per_step, "nsub": int((nodes.type == "substation").sum())}
+    return (MAP_HTML.replace("__DATA__", json.dumps(data, ensure_ascii=False))
+            .replace("__LAST__", str(len(timeline) - 1)).replace("__H__", str(height)))
 
 
 # ---------------------------------------------------------------- pages
@@ -318,71 +441,29 @@ def page_cascade() -> None:
     G = load_graph()
     nodes = load_nodes()
     rank = ranking()
+    hps = cfg["assumptions"]["hours_per_step"]
 
     _section("Cascade simulator", "Real Bhopal substations, hospitals and pumps at real coordinates. Load-redistribution cascade, "
-             f"{cfg['assumptions']['hours_per_step']:g} h per step. Grid edges are <em>inferred</em> (3 nearest neighbours) — no feeder topology is published.")
+             f"{hps:g} h per step. Grid edges are <em>inferred</em> (3 nearest neighbours) — no feeder topology is published.")
 
     subs = nodes[nodes.type == "substation"].copy()
-    subs["label"] = subs.apply(lambda r: f"{r.id} · {r['name'] if isinstance(r['name'], str) and r['name'] else '(unnamed)'} · serves {int(r.population_served):,}", axis=1)
+    labels = {r.id: f"{r.id} · {r.name if isinstance(r.name, str) and r.name else '(unnamed)'} · serves {int(r.population_served):,}" for r in subs.itertuples()}
     default = rank.iloc[0]["node_id"]
     options = list(subs.id)
-    top = st.columns([2, 1, 1])
-    with top[0]:
-        node = st.selectbox("Initiating failure", options, index=options.index(default), format_func=lambda i: subs.set_index("id").loc[i, "label"])
+    node = st.selectbox("Initiating failure", options, index=options.index(default), format_func=labels.get)
     timeline = run_cascade(node)
-    last = len(timeline) - 1
+    final = timeline[-1]
+    st.caption(f"Cascade from **{labels[node]}** runs {len(timeline) - 1} steps (T+{final['hours']:.0f}h) and ends with "
+               f"**{final['people_affected']:,}** people affected, **{len(final['hospitals_on_generator'])}** hospitals on generator. "
+               "Playback is in-browser — the page does not reload while it plays.")
 
-    if "step" not in st.session_state or st.session_state.step > last:
-        st.session_state.step = 0
-    if st.session_state.pop("restart", False):
-        st.session_state.step = 0
-        st.session_state.autoplay = True
-    elif st.session_state.get("autoplay"):
-        if st.session_state.step >= last:
-            st.session_state.autoplay = False
-        else:
-            st.session_state.step += 1
-    with top[1]:
-        st.write("")
-        autoplay = st.checkbox("Autoplay (slow)", key="autoplay")
-    with top[2]:
-        st.write("")
-        if st.button("↺ Restart"):
-            st.session_state.restart = True
-            st.rerun()
-    if autoplay:
-        st_autorefresh(interval=1500, key="tick")
-
-    step = st.slider("Timestep", 0, last, key="step", format="step %d")
-    snap = timeline[step]
-    subs_tripped = sum(1 for n in snap["failed"] if G.nodes[n]["type"] == "substation")
-
-    stats = [
-        ("Elapsed", f"T+{snap['hours']:.1f}h", "#d93025"),
-        ("People affected", f"{snap['people_affected']:,}", "#d93025"),
-        ("Hospitals on generator", str(len(snap["hospitals_on_generator"])), "#e8eaed"),
-        ("Wards without water", str(len(snap["wards_without_water"])), "#e8eaed"),
-        ("Substations tripped", f"{subs_tripped} / {len(subs)}", "#e8eaed"),
-    ]
-    st.markdown(
-        '<div class="sc-hud">' + "".join(
-            f'<div><div class="sc-k">{k}</div><div class="sc-big" style="color:{c}">{v}</div></div>' for k, v, c in stats
-        ) + "</div>",
-        unsafe_allow_html=True,
-    )
-
-    view = st.session_state.get("map_view", {"center": BHOPAL_CENTER, "zoom": 12})
-    out = st_folium(
-        cascade_map(nodes, G, snap, view["center"], view["zoom"]),
-        key="cascade_map", returned_objects=["center", "zoom"], height=560, use_container_width=True,
-    )
-    if out and out.get("center") and out.get("zoom"):
-        st.session_state.map_view = {"center": (out["center"]["lat"], out["center"]["lng"]), "zoom": out["zoom"]}
+    components.html(cascade_component(nodes, G, timeline, hps, height=620), height=640)
     st.markdown(
         '<span class="sc-pill" style="color:#9aa0a6">● healthy</span> &nbsp;'
         '<span class="sc-pill" style="color:#f5a623">● overloaded &gt;90%</span> &nbsp;'
         '<span class="sc-pill" style="color:#d93025">● failed</span> &nbsp;'
-        '<span class="sc-pill">● substation &nbsp; • hospital &nbsp; ◆ pump</span>',
+        '<span class="sc-pill">● substation &nbsp; • hospital &nbsp; ■ pump</span> &nbsp; '
+        '<span class="sc-pill">hover a node for its state and failure time</span>',
         unsafe_allow_html=True,
     )
 

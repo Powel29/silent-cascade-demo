@@ -10,6 +10,3 @@ pyyaml
 
 # Streamlit prototype (app.py) only — the src/*.py scripts do not use these.
 streamlit
-folium
-streamlit-folium
-streamlit-autorefresh
