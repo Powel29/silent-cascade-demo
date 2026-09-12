@@ -18,6 +18,7 @@ first 40 characters before classifying.
 
 from __future__ import annotations
 
+import random
 from pathlib import Path
 from typing import Any
 
@@ -269,6 +270,64 @@ def accuracy_table(results: pd.DataFrame) -> pd.DataFrame:
     )
 
 
+def bootstrap_ci(correct: list[bool], n_boot: int = 2000, seed: int = 42) -> tuple[float, float]:
+    """95% bootstrap CI on accuracy, resampling `correct` with replacement.
+
+    Pure Python (no scipy): honest about how much n=20 per cell can actually support, per
+    PLAN.md's rule against presenting illustrative numbers as if they generalize.
+    """
+    rng = random.Random(seed)
+    n = len(correct)
+    if n == 0:
+        return (0.0, 0.0)
+    means = []
+    for _ in range(n_boot):
+        sample = [correct[rng.randrange(n)] for _ in range(n)]
+        means.append(100 * sum(sample) / n)
+    means.sort()
+    lo = means[int(0.025 * n_boot)]
+    hi = means[min(n_boot - 1, int(0.975 * n_boot))]
+    return (round(lo, 1), round(hi, 1))
+
+
+def accuracy_table_with_ci(results: pd.DataFrame, n_boot: int = 2000, seed: int = 42) -> pd.DataFrame:
+    """accuracy_table() plus a 95% bootstrap CI per (language, condition) cell."""
+    acc = accuracy_table(results)
+    los, his = [], []
+    for _, row in acc.iterrows():
+        cell = results[(results.language == row.language) & (results.condition == row.condition)]
+        lo, hi = bootstrap_ci(cell["correct"].tolist(), n_boot=n_boot, seed=seed)
+        los.append(lo)
+        his.append(hi)
+    acc["ci_low"] = los
+    acc["ci_high"] = his
+    return acc
+
+
+def dangerous_downgrade_rate(results: pd.DataFrame, cfg_d2: dict[str, Any]) -> pd.DataFrame:
+    """Among complaints whose TRUE department is time-critical (SLA <= 24h in config.yaml —
+    today only electrical_emergency), what fraction get classified into a non-critical
+    department, per language x condition?
+
+    This answers a sharper question than plain accuracy: a drainage<->roads mix-up and an
+    electrical_emergency->electrical_maintenance mix-up are not equally dangerous. Reuses the
+    SLA tiers already declared in config.yaml rather than hand-labeling severity per complaint.
+    """
+    critical_depts = {d for d, hrs in cfg_d2["sla_hours"].items() if d in DEPARTMENTS and hrs <= 24}
+    crit = results[results.true_dept.isin(critical_depts)]
+    if crit.empty:
+        return pd.DataFrame(columns=["language", "condition", "n_critical", "dangerous_downgrade_pct"])
+    downgraded = crit.predicted_dept.apply(lambda p: p not in critical_depts)
+    out = (
+        crit.assign(downgraded=downgraded)
+        .groupby(["language", "condition"])
+        .agg(n_critical=("downgraded", "size"), dangerous_downgrade_pct=("downgraded", "mean"))
+        .reset_index()
+    )
+    out["dangerous_downgrade_pct"] = (out["dangerous_downgrade_pct"] * 100).round(1)
+    return out
+
+
 def plot_accuracy(acc: pd.DataFrame, out_path: Path | None) -> plt.Figure:
     """Grouped bar chart of accuracy by condition × language. Saves to out_path if given; returns the figure."""
     # 1600x1000 px at dpi=150 per CLAUDE.md
@@ -359,14 +418,22 @@ def main() -> None:
     results.to_csv(results_path, index=False)
     print(f"[d2_language] wrote {results_path}")
 
-    acc = accuracy_table(results)
+    acc = accuracy_table_with_ci(results)
     acc_path = OUTPUTS_DIR / "d2_accuracy.csv"
     acc.to_csv(acc_path, index=False)
     print(f"[d2_language] wrote {acc_path}")
     print(acc.to_string(index=False))
+    print("[d2_language] NOTE: 95% bootstrap CIs above are wide because n=20 per cell — "
+          "directional findings, not population estimates. See LIMITATIONS.md.")
 
     plot_accuracy(acc, OUTPUTS_DIR / "d2_chart.png")
     print_misroute_examples(results, complaints)
+
+    downgrade = dangerous_downgrade_rate(results, cfg["d2"])
+    downgrade_path = OUTPUTS_DIR / "d2_dangerous_downgrade.csv"
+    downgrade.to_csv(downgrade_path, index=False)
+    print(f"[d2_language] wrote {downgrade_path}")
+    print(downgrade.to_string(index=False))
 
 
 if __name__ == "__main__":

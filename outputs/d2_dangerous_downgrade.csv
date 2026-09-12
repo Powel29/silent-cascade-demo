@@ -1,0 +1,7 @@
+language,condition,n_critical,dangerous_downgrade_pct
+en,clean,4,0.0
+en,small_model,4,50.0
+en,truncated,4,50.0
+native,clean,4,0.0
+native,small_model,4,25.0
+native,truncated,4,100.0
