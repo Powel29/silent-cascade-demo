@@ -1,426 +1,1408 @@
 id,type,lat,lon,name,capacity,load,population_served,buffer_hours,provenance
-sub_001,substation,23.215775,77.4417995,,124.76,69.24,26024,,observed
-sub_002,substation,23.2613524,77.4294273,,97.14,56.14,14717,,observed
-sub_003,substation,23.2740014,77.4566884,,127.37,92.78,13697,,observed
-sub_004,substation,23.2437521,77.4355915,,121.33,67.51,14140,,observed
-sub_005,substation,23.2767034,77.4510858,,95.3,62.05,9739,,observed
-sub_006,substation,23.2638717,77.4140183,,119.29,82.69,43713,,observed
-sub_007,substation,23.286985,77.4612142,A.Nagar,109.37,69.98,26231,,observed
-sub_008,substation,23.3194914,77.3311792,Bairagarh,136.66,75.34,18463,,observed
-sub_009,substation,23.2548043,77.4385255,Madhya Pradesh Power Transmission Private Limited,128.87,79.65,18189,,observed
-sub_010,substation,23.2779432,77.4071057,,95.07,66.81,14698,,observed
-sub_011,substation,23.338126,77.4821883,,86.49,49.24,30541,,observed
-sub_012,substation,23.2728373,77.3669593,,122.26,86.98,38108,,observed
-sub_013,substation,23.2713969,77.374405,,117.54,87.52,32807,,observed
-sub_014,substation,23.2696485,77.4784124,,85.52,52.05,31700,,observed
-sub_015,substation,23.2629552,77.4461989,,120.41,83.2,11003,,observed
-sub_016,substation,23.2125393,77.4994607,,126.29,88.98,13229,,observed
-sub_017,substation,23.2123064,77.4574171,,139.87,101.17,32911,,observed
-sub_018,substation,23.2065709,77.4021152,,99.46,67.35,31909,,observed
-sub_019,substation,23.244107,77.4513207,,91.39,56.76,25496,,observed
-sub_020,substation,23.2386402,77.4577046,,129.13,88.67,12679,,observed
-sub_021,substation,23.2325405,77.4343717,,122.64,71.65,24043,,observed
-sub_022,substation,23.3471761,77.4838176,Bhopal,91.44,57.23,44500,,observed
-sub_023,substation,23.2175306,77.4143548,"132 KV SubStation, Bhopal",95.37,58.64,11665,,observed
-sub_024,substation,23.2248717,77.439791,,96.03,53.43,28673,,observed
-sub_025,substation,23.2462714,77.4267208,,108.08,60.88,28622,,observed
-sub_026,substation,23.3085738,77.3378484,,94.88,61.66,38071,,observed
-sub_027,substation,23.278643,77.4812763,220KV Sub Station Adampur,90.0,52.01,44789,,observed
-hosp_001,hospital,23.213357,77.3921666,Manisha Hospital,,,,8.0,observed
-hosp_002,hospital,23.1724664,77.4170971,Anupam Hospital,,,,8.0,observed
-hosp_003,hospital,23.1825879,77.4363178,Bisoniya Hospital ,,,,8.0,observed
-hosp_004,hospital,23.1886998,77.4319555,Physiotherapy & Ayurveda,,,,8.0,observed
-hosp_005,hospital,23.2016302,77.4263831,"Shekhar Hospital, Bhopal",,,,8.0,observed
-hosp_006,hospital,23.1984715,77.4264928,"Life Line Hospital, Bhopal",,,,8.0,observed
-hosp_007,hospital,23.1998518,77.429428,Lahoti Hospital ,,,,8.0,observed
-hosp_008,hospital,23.2126452,77.4387892,Bhopal Fracture Hospital ,,,,8.0,observed
-hosp_009,hospital,23.2100099,77.440881,Asha Niketan,,,,8.0,observed
-hosp_010,hospital,23.2521256,77.4149495,"Vardaan Hospital, Bhopal",,,,8.0,observed
-hosp_011,hospital,23.2617176,77.4104527,"Khan Shakir ali khan aspataal, gas rahat, bhopal",,,,8.0,observed
-hosp_012,hospital,23.2682768,77.404835,Bhopal Eye Hospital,,,,8.0,observed
-hosp_013,hospital,23.2324175,77.3944885,Aastha Hospital,,,,8.0,observed
-hosp_014,hospital,23.2045252,77.4093707,HAKIM SYED ZIAUL HASAN GOVERMENT UNANI MEDICAL COLLEGE AND HOSPITAL,,,,8.0,observed
-hosp_015,hospital,23.2037556,77.4091003,GOVERMENT HOMEOPATHIC MEDICAL COLLEGE AND HOSPITAL,,,,8.0,observed
-hosp_016,hospital,23.2133755,77.4299254,"Meenakshi Hospital, Bhopal",,,,8.0,observed
-hosp_017,hospital,23.2288798,77.4356157,Prakash Eye Care and Laser Centre,,,,8.0,observed
-hosp_018,hospital,23.2242238,77.4019808,Mata Mandir Netra Sewa Kendra,,,,8.0,observed
-hosp_019,hospital,23.262956,77.3803829,Kshitij Hospital,,,,8.0,observed
-hosp_020,hospital,23.2627832,77.3939585,Bhopal Care Hospital,,,,8.0,observed
-hosp_021,hospital,23.2301825,77.3937517,G.S.M.Hospital,,,,8.0,observed
-hosp_022,hospital,23.263933,77.393792,Central Hospital and Research Center,,,,8.0,observed
-hosp_023,hospital,23.217648,77.4391609,Narmada Advance Trauma and Critical care Institute,,,,8.0,observed
-hosp_024,hospital,23.2684238,77.4731988,Devmata Hospital,,,,8.0,observed
-hosp_025,hospital,23.1945312,77.4731706,Shri Maya Maternity and General Hospital,,,,8.0,observed
-hosp_026,hospital,23.2070006,77.4342786,Malti Hospital,,,,8.0,observed
-hosp_027,hospital,23.2528588,77.3988064,Jayshree Hospital,,,,8.0,observed
-hosp_028,hospital,23.2402937,77.4055132,Peoples General Hospital,,,,8.0,observed
-hosp_029,hospital,23.2624533,77.3939529,Shubham Hospital Fracture Accident Care,,,,8.0,observed
-hosp_030,hospital,23.2536634,77.4280921,Choudhary Hospital,,,,8.0,observed
-hosp_031,hospital,23.2304819,77.4360924,Citi Hospital,,,,8.0,observed
-hosp_032,hospital,23.2548783,77.4043921,Gour Hospital And Maternity Home,,,,8.0,observed
-hosp_033,hospital,23.2678041,77.3950513,"Adarsh Hospital, Bhopal",,,,8.0,observed
-hosp_034,hospital,23.1911005,77.4503008,Nilay Hospital,,,,8.0,observed
-hosp_035,hospital,23.2274392,77.4320886,Parul Hospital Pvt Ltd,,,,8.0,observed
-hosp_036,hospital,23.2128356,77.4391428,Bhopal Fracture Hospital,,,,8.0,observed
-hosp_037,hospital,23.2198621,77.3957902,Shukla Hospital and Maternity Home,,,,8.0,observed
-hosp_038,hospital,23.2481629,77.413765,Hafeez Maternity Home and Eye Hospital,,,,8.0,observed
-hosp_039,hospital,23.2698098,77.4013451,Apex Hospital,,,,8.0,observed
-hosp_040,hospital,23.254938,77.4302284,Pranjal Hospital and Child Care Center,,,,8.0,observed
-hosp_041,hospital,23.2696891,77.4013142,Ajwani Eye Hospital,,,,8.0,observed
-hosp_042,hospital,23.2125817,77.4361414,Anushree Hospital,,,,8.0,observed
-hosp_043,hospital,23.2512606,77.459553,Anantshree Multispeciality Hospital,,,,8.0,observed
-hosp_044,hospital,23.2993465,77.403806,Venus Hospital and Medical Research Centre-Bhopal,,,,8.0,observed
-hosp_045,hospital,23.250594,77.4717195,Aradhana Maternity And Kidney Hospital,,,,8.0,observed
-hosp_046,hospital,23.2649458,77.3937383,L.B.S Hospital,,,,8.0,observed
-hosp_047,hospital,23.2688064,77.3081296,Chirayu Medical College and Hospital,,,,8.0,observed
-hosp_048,hospital,23.2652057,77.3936498,"Yashoda Hospital, Bhopal",,,,8.0,observed
-hosp_049,hospital,23.2523431,77.4155004,"Krishna Hospital, Bhopal",,,,8.0,observed
-hosp_050,hospital,23.2338401,77.3961577,Jashdeep Hospital,,,,8.0,observed
-hosp_051,hospital,23.1927209,77.433726,Naman Hospital,,,,8.0,observed
-hosp_052,hospital,23.1948024,77.4704428,"Nav Jeevan Hospital, Bhopal",,,,8.0,observed
-hosp_053,hospital,23.2112407,77.432908,"Niramaya Hospital, Bhopal",,,,8.0,observed
-hosp_054,hospital,23.2597415,77.4056527,Ntr Hospital and Research Centre,,,,8.0,observed
-hosp_055,hospital,23.2156753,77.4393775,Agrawal Hospital,,,,8.0,observed
-hosp_056,hospital,23.3003492,77.4166846,Bhopal Memorial Hospital and Research Center,,,,8.0,observed
-hosp_057,hospital,23.1614005,77.4705541,Noble Multispeciality Hospital,,,,8.0,observed
-hosp_058,hospital,23.230265,77.436824,Navodaya Hospital And Research Centre,,,,8.0,observed
-hosp_059,hospital,23.2174908,77.4236557,Akshaya Hospital,,,,8.0,observed
-hosp_060,hospital,23.2303599,77.4440525,Paliwal Hospital Pvt. Ltd.,,,,8.0,observed
-hosp_061,hospital,23.2720029,77.3424774,Rajdeep Hospital,,,,8.0,observed
-hosp_062,hospital,23.2641502,77.3937863,"Sanjeevani Hospital, Bhopal",,,,8.0,observed
-hosp_063,hospital,23.1956985,77.4483964,Sahara Fracture and General Hospital,,,,8.0,observed
-hosp_064,hospital,23.2988834,77.4251068,Peoples Hospital,,,,8.0,observed
-hosp_065,hospital,23.1916178,77.4365044,Sujyoti Hospital and Maternity Home,,,,8.0,observed
-hosp_066,hospital,23.210445,77.4315892,Dewani Hospital And Research Centre,,,,8.0,observed
-hosp_067,hospital,23.2014132,77.4344569,Pushpanjali Hsopital,,,,8.0,observed
-hosp_068,hospital,23.2083848,77.4180633,Suyash Mother and Child Hospital,,,,8.0,observed
-hosp_069,hospital,23.2140521,77.429118,Global Liver and Gastroenterology Centre,,,,8.0,observed
-hosp_070,hospital,23.2102929,77.4396715,Asha Niketan Hospital,,,,8.0,observed
-hosp_071,hospital,23.2169754,77.4360666,National Hospital For Heart and Critical Care,,,,8.0,observed
-hosp_072,hospital,23.2137751,77.4274743,Ajwani Eye Tech Centre,,,,8.0,observed
-hosp_073,hospital,23.251491,77.4151021,"Charak Hospital/A Unit Of Mrityunjay Health Care Pvt Ltd,",,,,8.0,observed
-hosp_074,hospital,23.2283782,77.4364391,New Bhopal Hospital and Research Foundation,,,,8.0,observed
-hosp_075,hospital,23.221521,77.3959123,Sharda Hospital and Diagnostic Center,,,,8.0,observed
-hosp_076,hospital,23.2029589,77.4457088,Saarthi Hospital (Maternity and Urological Centre),,,,8.0,observed
-hosp_077,hospital,23.2516574,77.4167892,Tanushree Female Hospital,,,,8.0,observed
-hosp_078,hospital,23.2353103,77.441023,"Shivam Hospital, Bhopal",,,,8.0,observed
-hosp_079,hospital,23.2302816,77.4364857,Sankalp Netralya Hospital,,,,8.0,observed
-hosp_080,hospital,23.2339407,77.4400197,"Vatsalya Hospital, Bhopal",,,,8.0,observed
-hosp_081,hospital,23.2321079,77.4405538,"Lakecity Hospital, Bhopal",,,,8.0,observed
-hosp_082,hospital,23.2617624,77.3977843,Al - Rasheed Hospital,,,,8.0,observed
-hosp_083,hospital,23.2676723,77.389707,Kid Kare,,,,8.0,observed
-hosp_084,hospital,23.2711503,77.3887213,Ankur Maternity And Nursing Home,,,,8.0,observed
-hosp_085,hospital,23.2356788,77.3983128,"Rainbow Children Hospital, Bhopal",,,,8.0,observed
-hosp_086,hospital,23.2616106,77.3938631,Hi-Tech Eye Care and Laser Center,,,,8.0,observed
-hosp_087,hospital,23.25277,77.4309996,Ayush Hospital and Research Centre,,,,8.0,observed
-hosp_088,hospital,23.233081,77.3953892,Siddharth Eye Hospital,,,,8.0,observed
-hosp_089,hospital,23.2405328,77.4307877,Swami Vivekanand Regional Spine Centre,,,,8.0,observed
-hosp_090,hospital,23.2369443,77.4343295,Miracles Children Hospital,,,,8.0,observed
-hosp_091,hospital,23.2622106,77.3890002,"Mayo Hospital, Bhopal",,,,8.0,observed
-hosp_092,hospital,23.2527836,77.4390656,Roshan Maternity Child Care And General Hospital,,,,8.0,observed
-hosp_093,hospital,23.2697538,77.3367957,Bhambhani Hospital,,,,8.0,observed
-hosp_094,hospital,23.2332387,77.3952263,R.A Stone and Surgical Care,,,,8.0,observed
-hosp_095,hospital,23.2766683,77.3657897,Suditi Hospital - Bhopal,,,,8.0,observed
-hosp_096,hospital,23.2613802,77.392424,S.V Eye Care and Research Centre,,,,8.0,observed
-hosp_097,hospital,23.2728295,77.4650335,Muskan Maternity and General Hospital,,,,8.0,observed
-hosp_098,hospital,23.2249287,77.3934285,Hajela Hospital,,,,8.0,observed
-hosp_099,hospital,23.2721125,77.340247,Civil Hospital,,,,8.0,observed
-hosp_100,hospital,23.2339794,77.3973834,KAILASH NATH KATJU,,,,8.0,observed
-hosp_101,hospital,23.2093426,77.4584547,"All India Institute of Medical Sciences (AIIMS), Bhopal",,,,8.0,observed
-hosp_102,hospital,23.2714472,77.3916972,MASTERLAL SINGH HOSPITAL,,,,8.0,observed
-hosp_103,hospital,23.182475,77.438149,Jaanki Hospital Bhopal,,,,8.0,observed
-hosp_104,hospital,23.212475,77.437564,"Gastrocare, Liver & Digestive Disease Center",,,,8.0,observed
-hosp_105,hospital,23.179017,77.427917,J.K Hospital,,,,8.0,observed
-hosp_106,hospital,23.209923,77.431569,Malti Hospital & Test Tube Baby Centre,,,,8.0,observed
-hosp_107,hospital,23.176076,77.478925,RKDF Medical College Hospital & Research Centre,,,,8.0,observed
-hosp_108,hospital,23.20852,77.438402,Manahi Hospital,,,,8.0,observed
-hosp_109,hospital,23.172951,77.460498,B.S.Sacklecha Hospital And Trauma Centre,,,,8.0,observed
-hosp_110,hospital,23.1709998,77.4281443,Orthocare Hospital,,,,8.0,observed
-hosp_111,hospital,23.196031,77.434562,Kanha Maternity & Child Care Hospital,,,,8.0,observed
-hosp_112,hospital,23.165835,77.415595,Mishra Hospital,,,,8.0,observed
-hosp_113,hospital,23.194218,77.473807,Mount Hospital Bhopal,,,,8.0,observed
-hosp_114,hospital,23.163029,77.46877,L.G.M. Hospital,,,,8.0,observed
-hosp_115,hospital,23.153644,77.474917,Dulaar Children Hospital,,,,8.0,observed
-hosp_116,hospital,23.1847754,77.4201867,Shree Vinayak Hospital,,,,8.0,observed
-hosp_117,hospital,23.2149023,77.433355,Colony Care Multi-Speciality Hospital,,,,8.0,observed
-hosp_118,hospital,23.2120918,77.4309133,Jainmshree Hospital,,,,8.0,observed
-hosp_119,hospital,23.1720945,77.4233654,V Care Children Hospital,,,,8.0,observed
-hosp_120,hospital,23.171339,77.425342,Siddhanta Hospital,,,,8.0,observed
-hosp_121,hospital,23.195543,77.4657937,Ojas Hospital,,,,8.0,observed
-hosp_122,hospital,23.209026,77.418302,RBM Advanced Eye Hospital,,,,8.0,observed
-hosp_123,hospital,23.202278,77.45071,University Hospital,,,,8.0,observed
-hosp_124,hospital,23.201299,77.4466394,Swasth Hospital,,,,8.0,observed
-hosp_125,hospital,23.191201,77.432685,Shri Siddhi Vinayak Miracles Hospital,,,,8.0,observed
-hosp_126,hospital,23.1623654,77.4693157,Bhopal City Hospital,,,,8.0,observed
-hosp_127,hospital,23.186688,77.435336,Krishna Hospital,,,,8.0,observed
-hosp_128,hospital,23.213384,77.396377,bansal hospital,,,,8.0,observed
-hosp_129,hospital,23.21118,77.432444,Astha Hospital,,,,8.0,observed
-hosp_130,hospital,23.177274,77.428247,LN Medical Collage and J.K Hospital,,,,8.0,observed
-hosp_131,hospital,23.199468,77.414268,Dr Kamlesh Talesara,,,,8.0,observed
-hosp_132,hospital,23.1978545,77.4301604,Shalya Joint Care Hospital,,,,8.0,observed
-hosp_133,hospital,23.163756,77.41431,Divya Hospital,,,,8.0,observed
-hosp_134,hospital,23.187859,77.41736,Matratva Hospital,,,,8.0,observed
-hosp_135,hospital,23.185204,77.450875,rkdf hospital,,,,8.0,observed
-hosp_136,hospital,23.173442,77.471741,Bhabha General Hospital,,,,8.0,observed
-hosp_137,hospital,23.202132,77.446307,Shri Satya Sai Hospital,,,,8.0,observed
-hosp_138,hospital,23.1722091,77.4590072,Ubbuntu Heart Hospital,,,,8.0,observed
-hosp_139,hospital,23.171374,77.422264,Galaxy hospital,,,,8.0,observed
-hosp_140,hospital,23.1587783,77.428613,Shivalaya Hospital,,,,8.0,observed
-hosp_141,hospital,23.253359,77.4264,All Care Hospital,,,,8.0,observed
-hosp_142,hospital,23.266028,77.339174,Sant Hirdaram Yoga and Nature cure Hospital,,,,8.0,observed
-hosp_143,hospital,23.252763,77.486122,Jamna Hospital,,,,8.0,observed
-hosp_144,hospital,23.264925,77.380524,Cmas Koh E Fiza Hospital,,,,8.0,observed
-hosp_145,hospital,23.2521287,77.4041094,Unani Hospital,,,,8.0,observed
-hosp_146,hospital,23.263746,77.393839,Silver Line Hospital,,,,8.0,observed
-hosp_147,hospital,23.277062,77.372306,Maheshwari Hospital,,,,8.0,observed
-hosp_148,hospital,23.2632152,77.39392,Paras Hospital,,,,8.0,observed
-hosp_149,hospital,23.2500507,77.4169728,Nandan Hospital,,,,8.0,observed
-hosp_150,hospital,23.238589,77.4959018,Metro Multispeciality & Fracture Hospital,,,,8.0,observed
-hosp_151,hospital,23.276649,77.37255,Madhavbaug cardiac clinic,,,,8.0,observed
-hosp_152,hospital,23.258056,77.3957463,Maxcare Hospital,,,,8.0,observed
-hosp_153,hospital,23.249134,77.488308,Gayatri Hospital And Trauma Centre,,,,8.0,observed
-hosp_154,hospital,23.2697662,77.4074972,Hayat Hospital,,,,8.0,observed
-hosp_155,hospital,23.255325,77.435997,Srijan Hospital,,,,8.0,observed
-hosp_156,hospital,23.221097,77.434557,Colony Hospital,,,,8.0,observed
-hosp_157,hospital,23.269603,77.467351,Zindagi Hospital,,,,8.0,observed
-hosp_158,hospital,23.2195151,77.4826762,Thyrocare Centre,,,,8.0,observed
-hosp_159,hospital,23.253862,77.4311342,Gas Rahat Hospital,,,,8.0,observed
-hosp_160,hospital,23.2668298,77.4200427,Bhopal Memorial & Gas Rahat Hospital,,,,8.0,observed
-hosp_161,hospital,23.2514169,77.4599857,MP Hospital Bhopal,,,,8.0,observed
-hosp_162,hospital,23.2633324,77.3992566,Ballabh ENT Hospital,,,,8.0,observed
-hosp_163,hospital,23.251139,77.41259,Mehko Hospital,,,,8.0,observed
-hosp_164,hospital,23.2615613,77.428758,Hindustan Hospital,,,,8.0,observed
-hosp_165,hospital,23.2504261,77.48461,Gayatri Hospital Anand Nagar,,,,8.0,observed
-hosp_166,hospital,23.2337463,77.4347058,Batra Hospital,,,,8.0,observed
-hosp_167,hospital,23.2737457,77.3668008,Care Infinity Hospital,,,,8.0,observed
-hosp_168,hospital,23.2604152,77.4053093,Pulse hospital,,,,8.0,observed
-hosp_169,hospital,23.250024,77.4881688,M J Hospital,,,,8.0,observed
-hosp_170,hospital,23.2314706,77.4504262,Career Hospital,,,,8.0,observed
-hosp_171,hospital,23.2498466,77.441712,Shree Shubh Hospital,,,,8.0,observed
-hosp_172,hospital,23.2280354,77.4864343,Sakshi co-operative hospital,,,,8.0,observed
-hosp_173,hospital,23.2705381,77.4015169,Darbari Hospital,,,,8.0,observed
-hosp_174,hospital,23.257513,77.478446,Hope s s hospital,,,,8.0,observed
-hosp_175,hospital,23.253224,77.433678,Mona Hospital,,,,8.0,observed
-hosp_176,hospital,23.222251,77.484838,aashirwad multispeciality hospital,,,,8.0,observed
-hosp_177,hospital,23.2655073,77.4726603,Shubh Hospital,,,,8.0,observed
-hosp_178,hospital,23.220139,77.430376,Parulkar Hospitals,,,,8.0,observed
-hosp_179,hospital,23.252527,77.466163,R.K. Hospital and Research Centre (A Unit of R.K Healthcare),,,,8.0,observed
-hosp_180,hospital,23.2646039,77.3941763,Central Hospital & Research Center,,,,8.0,observed
-hosp_181,hospital,23.252094,77.504064,"Arnav Hospital, Bhopal",,,,8.0,observed
-hosp_182,hospital,23.2635646,77.3938354,Unique Hospital,,,,8.0,observed
-hosp_183,hospital,23.25137,77.503047,Nagpur Hospital,,,,8.0,observed
-hosp_184,hospital,23.261919,77.46257,Dolphin Children Hospital,,,,8.0,observed
-hosp_185,hospital,23.250681,77.502513,Rudransh Multispeciality Hospital,,,,8.0,observed
-hosp_186,hospital,23.2380758,77.4962629,Vaishno Hospital bhopal,,,,8.0,observed
-hosp_187,hospital,23.2750528,77.3781166,T B Hospital,,,,8.0,observed
-hosp_188,hospital,23.2610396,77.4010633,Indira Gandhi Hospital,,,,8.0,observed
-hosp_189,hospital,23.2465243,77.4113718,Police Hospital,,,,8.0,observed
-hosp_190,hospital,23.2337404,77.3959966,G.S.M. Hospital,,,,8.0,observed
-hosp_191,hospital,23.273679,77.370737,Tripti Hospital,,,,8.0,observed
-hosp_192,hospital,23.2552746,77.4081332,Superintendent Office Sultania Zanana Hospital,,,,8.0,observed
-hosp_193,hospital,23.2435872,77.4104892,Protima Mullik Police Lady Hospital,,,,8.0,observed
-hosp_194,hospital,23.2207305,77.4306234,MKM Stone & Urology Hospital,,,,8.0,observed
-hosp_195,hospital,23.268316,77.401097,Saluja Hospital,,,,8.0,observed
-hosp_196,hospital,23.216619,77.424238,Global Hospital,,,,8.0,observed
-hosp_197,hospital,23.253402,77.413919,Jaimini Hospital,,,,8.0,observed
-hosp_198,hospital,23.266097,77.400791,Sunetra Eye Hospital,,,,8.0,observed
-hosp_199,hospital,23.253032,77.461701,Navodaya Cancer Hospital,,,,8.0,observed
-hosp_200,hospital,23.2649868,77.4656512,Anand Joint Replacement Centre,,,,8.0,observed
-hosp_201,hospital,23.2507344,77.430654,OM Hospital,,,,8.0,observed
-hosp_202,hospital,23.2503903,77.422628,Jupiter Hospital,,,,8.0,observed
-hosp_203,hospital,23.231072,77.443582,Indira IVF Bhopal,,,,8.0,observed
-hosp_204,hospital,23.272502,77.344475,Hardev Hospital,,,,8.0,observed
-hosp_205,hospital,23.258135,77.397161,Chirayu Health & Medicare Pvt. Ltd.,,,,8.0,observed
-hosp_206,hospital,23.249564,77.471653,Sachin Mamta Hospital,,,,8.0,observed
-hosp_207,hospital,23.224112,77.399811,A.K. Hospital,,,,8.0,observed
-hosp_208,hospital,23.2704374,77.401481,Nandan Hospital,,,,8.0,observed
-hosp_209,hospital,23.257099,77.418607,Mansi Hospital,,,,8.0,observed
-hosp_210,hospital,23.245765,77.4002823,Aggrawal's Bombay Children Hospital,,,,8.0,observed
-hosp_211,hospital,23.22181,77.380268,25Th Battalion Hospital,,,,8.0,observed
-hosp_212,hospital,23.2696244,77.3956623,Suyash Hospital,,,,8.0,observed
-hosp_213,hospital,23.2197879,77.4341465,Dr Rahul Agarwal ENT Clinic,,,,8.0,observed
-hosp_214,hospital,23.252268,77.496581,Swastik Hospital,,,,8.0,observed
-hosp_215,hospital,23.264439,77.419474,Narayan Shri Homeopathic Hospital,,,,8.0,observed
-hosp_216,hospital,23.2154253,77.4388478,ASG Eye Hospital,,,,8.0,observed
-hosp_217,hospital,23.251641,77.458523,Devi Rajeshwari Hospital,,,,8.0,observed
-hosp_218,hospital,23.2633705,77.3938848,ABM Muntispeciality Hospital,,,,8.0,observed
-hosp_219,hospital,23.2768125,77.40287,Muskan Children's & General Hospital Bhopal,,,,8.0,observed
-hosp_220,hospital,23.2511711,77.4150939,Apple hospital,,,,8.0,observed
-hosp_221,hospital,23.261772,77.428413,Sahaj Hospital,,,,8.0,observed
-hosp_222,hospital,23.274346,77.402743,Peoples General Hospital,,,,8.0,observed
-hosp_223,hospital,23.2605895,77.4049403,Pulse Hospital,,,,8.0,observed
-hosp_224,hospital,23.250344,77.471633,Balaji Fracture & General Hospital,,,,8.0,observed
-hosp_225,hospital,23.232979,77.429734,Himalaya Optical Bhopal,,,,8.0,observed
-hosp_226,hospital,23.27308,77.380577,Cancer Hospital,,,,8.0,observed
-hosp_227,hospital,23.2386597,77.4859876,Lord Buddha Hospital,,,,8.0,observed
-hosp_228,hospital,23.230583,77.3932195,Jindal Maternity Hospital,,,,8.0,observed
-hosp_229,hospital,23.2720075,77.3452807,Kiishnani Hospital,,,,8.0,observed
-hosp_230,hospital,23.2676797,77.3947884,Manya Hospital,,,,8.0,observed
-hosp_231,hospital,23.323475,77.405068,Global Hospital,,,,8.0,observed
-hosp_232,hospital,23.2813234,77.4662053,Srijan General Hospital And Nursing Home,,,,8.0,observed
-hosp_233,hospital,23.280336,77.465615,Mohit Day Care Hospital,,,,8.0,observed
-hosp_234,hospital,23.278182,77.40302,New star hospital,,,,8.0,observed
-hosp_235,hospital,23.302993,77.408562,Aadhar Hospital,,,,8.0,observed
-hosp_236,hospital,23.2817728,77.3592499,Central Hospital,,,,8.0,observed
-hosp_237,hospital,23.303048,77.41221,Shri Sai Hospital,,,,8.0,observed
-hosp_238,hospital,23.2955194,77.3457958,Shradha Hospital,,,,8.0,observed
-hosp_239,hospital,23.2926896,77.4037377,Promise Children & general Hospital,,,,8.0,observed
-hosp_240,hospital,23.3123573,77.365381,Mahaveer Institute of Medical Sciences and Research,,,,8.0,observed
-hosp_241,hospital,23.280011,77.422307,"Divisional Railway Hospital, Bhopal",,,,8.0,observed
-hosp_242,hospital,23.304155,77.436358,Vidhata Multi Speciality Hospital,,,,8.0,observed
-hosp_243,hospital,23.277956,77.403085,New Apex Hospital,,,,8.0,observed
-hosp_244,hospital,23.3029552,77.4061754,Capital Hospital,,,,8.0,observed
-hosp_245,hospital,23.301544,77.419681,Peoples College Of Paramedical Science & Research Center,,,,8.0,observed
-hosp_246,hospital,23.281349,77.376758,Carewell Multispeciality Hospital,,,,8.0,observed
-hosp_247,hospital,23.303004,77.408962,Jeewanshree Hospital,,,,8.0,observed
-hosp_248,hospital,23.277597,77.372502,Sarvottam Hospital,,,,8.0,observed
-hosp_249,hospital,23.302911,77.408823,Jeevan Shree Hospital,,,,8.0,observed
-hosp_250,hospital,23.2920061,77.4147566,Max Hospital,,,,8.0,observed
-hosp_251,hospital,23.282081,77.403413,Sparsh Med care Hospital,,,,8.0,observed
-hosp_252,hospital,23.348469,77.399598,ArogyaNidhi Hospital,,,,8.0,observed
-hosp_253,hospital,23.2958957,77.3450567,Somnath Hospital,,,,8.0,observed
-hosp_254,hospital,23.2095734,77.4357149,SK dubey hospital,,,,8.0,observed
-hosp_255,hospital,23.2183639,77.428498,raka medical,,,,8.0,observed
-hosp_256,hospital,23.2759059,77.4561599,Modi Hospital,,,,8.0,observed
-hosp_257,hospital,23.2564166,77.4094808,CIVIL HOSPITAL,,,,8.0,observed
-hosp_258,hospital,23.2682641,77.4681819,Rajni Health Care hospital,,,,8.0,observed
-hosp_259,hospital,23.2682177,77.4681117,"Smile Spectrum : Dental, Hair And Aestheic clinic",,,,8.0,observed
-hosp_260,hospital,23.2663724,77.4701843,Shree Balaji Multispecialty Hospital,,,,8.0,observed
-hosp_261,hospital,23.2674239,77.466704,Ma Pitamabara Multispeciality Hospital,,,,8.0,observed
-hosp_262,hospital,23.268336,77.4675993,Janak Clinic and Care,,,,8.0,observed
-hosp_263,hospital,23.2634245,77.4645223,Dolphin Children Hospital,,,,8.0,observed
-hosp_264,hospital,23.253215,77.4684872,Dr Rakesh Singh Jagat,,,,8.0,observed
-hosp_265,hospital,23.2533157,77.4719325,Jai Multispeciality Clinic,,,,8.0,observed
-hosp_266,hospital,23.2453734,77.4725074,,,,,8.0,observed
-hosp_267,hospital,23.1874259,77.3652899,Health Centre,,,,8.0,observed
-hosp_268,hospital,23.2145808,77.3922073,Ronak Hospital,,,,8.0,observed
-hosp_269,hospital,23.30329,77.4001915,Bhopal High Tech Hospital,,,,8.0,observed
-hosp_270,hospital,23.2000963,77.4298752,,,,,8.0,observed
-hosp_271,hospital,23.2635031,77.4200099,R. R. Hospital,,,,8.0,observed
-hosp_272,hospital,23.2793173,77.4704246,Vishwanaath Hospital,,,,8.0,observed
-hosp_273,hospital,23.2530919,77.4291849,Raj Multi Specialty Hospital,,,,8.0,observed
-hosp_274,hospital,23.2784491,77.4525278,Divyanka Children Hospital,,,,8.0,observed
-hosp_275,hospital,23.2356631,77.4023729,,,,,8.0,observed
-hosp_276,hospital,23.2300694,77.4188568,,,,,8.0,observed
-hosp_277,hospital,23.2983597,77.4195961,,,,,8.0,observed
-hosp_278,hospital,23.2800804,77.4482782,Marvel Hospital,,,,8.0,observed
-hosp_279,hospital,23.2611543,77.3938209,Sardar Patel Hospital,,,,8.0,observed
-hosp_280,hospital,23.2686807,77.393474,,,,,8.0,observed
-hosp_281,hospital,23.2633479,77.4144423,A. J. Hospital,,,,8.0,observed
-hosp_282,hospital,23.1776365,77.4423312,"SAGE APOLLO Bawadia Kalan, Bhopal",,,,8.0,observed
-hosp_283,hospital,23.2298788,77.4168323,J P Hospital,,,,8.0,observed
-hosp_284,hospital,23.2504763,77.4682385,Employees State Insurance Hospital,,,,8.0,observed
-hosp_285,hospital,23.2234554,77.4481714,Kasturba Hospitals,,,,8.0,observed
-hosp_286,hospital,23.2591853,77.3909881,Gandhi Medical College and Hamidia Hospital,,,,8.0,observed
-hosp_287,hospital,23.2564379,77.4095038,Sultania Zanana Hospital,,,,8.0,observed
-hosp_288,hospital,23.2728319,77.3401066,Sewa Sedan Eye Hospital Trust,,,,8.0,observed
-hosp_289,hospital,23.2307014,77.4195189,Red Cross Hospital Bhopal,,,,8.0,observed
-hosp_290,hospital,23.2015756,77.4170405,Manoria Heart and Critical Care Hospital,,,,8.0,observed
-hosp_291,hospital,23.2052299,77.4081805,Dr. Khushilal Sharma Ayurvedic Hospital,,,,8.0,observed
-hosp_292,hospital,23.1995774,77.419916,BANSAL HOSPITAL,,,,8.0,observed
-hosp_293,hospital,23.2304326,77.4194181,Red Cross Hspital,,,,8.0,observed
-hosp_294,hospital,23.225075,77.393416,,,,,8.0,observed
-hosp_295,hospital,23.2792519,77.4029006,Jawaharlal Nehru Hospital,,,,8.0,observed
-pump_001,pump,23.2173915,77.4269291,,,,,6.0,observed
-pump_002,pump,23.2182734,77.42557,,,,,6.0,observed
-pump_003,pump,23.2016271,77.4360215,,,,,6.0,observed
-pump_004,pump,23.2106497,77.4304628,,,,,6.0,observed
-pump_005,pump,23.2136257,77.4308599,,,,,6.0,observed
-pump_006,pump,23.2173003,77.4271125,,,,,6.0,observed
-pump_007,pump,23.2182118,77.4363018,,,,,6.0,observed
-pump_008,pump,23.2235591,77.4373868,,,,,6.0,observed
-pump_009,pump,23.2094281,77.4483936,,,,,6.0,observed
-pump_010,pump,23.2116558,77.4994464,,,,,6.0,observed
-pump_011,pump,23.2131011,77.503654,,,,,6.0,observed
-pump_012,pump,23.2149073,77.4637914,,,,,6.0,observed
-pump_013,pump,23.2156053,77.5011077,,,,,6.0,observed
-pump_014,pump,23.2176007,77.4862643,,,,,6.0,observed
-pump_015,pump,23.2184906,77.4699794,,,,,6.0,observed
-pump_016,pump,23.2200471,77.4839497,,,,,6.0,observed
-pump_017,pump,23.2203159,77.4875648,,,,,6.0,observed
-pump_018,pump,23.220639,77.4998728,,,,,6.0,observed
-pump_019,pump,23.2207287,77.4858908,,,,,6.0,observed
-pump_020,pump,23.2214509,77.4942664,,,,,6.0,observed
-pump_021,pump,23.2215284,77.4841178,,,,,6.0,observed
-pump_022,pump,23.2218189,77.4802873,,,,,6.0,observed
-pump_023,pump,23.2223876,77.4481591,,,,,6.0,observed
-pump_024,pump,23.2229458,77.4870913,,,,,6.0,observed
-pump_025,pump,23.2230686,77.491254,,,,,6.0,observed
-pump_026,pump,23.2232152,77.4966076,,,,,6.0,observed
-pump_027,pump,23.2234892,77.4811609,,,,,6.0,observed
-pump_028,pump,23.2238183,77.495301,,,,,6.0,observed
-pump_029,pump,23.2240882,77.4839305,,,,,6.0,observed
-pump_030,pump,23.2249234,77.4873965,,,,,6.0,observed
-pump_031,pump,23.2284597,77.4875321,,,,,6.0,observed
-pump_032,pump,23.2292152,77.4446907,,,,,6.0,observed
-pump_033,pump,23.2302395,77.4862141,,,,,6.0,observed
-pump_034,pump,23.2317856,77.4881212,,,,,6.0,observed
-pump_035,pump,23.2317982,77.4770743,,,,,6.0,observed
-pump_036,pump,23.2318673,77.4892274,,,,,6.0,observed
-pump_037,pump,23.2327358,77.4876423,,,,,6.0,observed
-pump_038,pump,23.2328565,77.487477,,,,,6.0,observed
-pump_039,pump,23.234313,77.5001511,,,,,6.0,observed
-pump_040,pump,23.2345155,77.4874855,,,,,6.0,observed
-pump_041,pump,23.2351659,77.4879432,,,,,6.0,observed
-pump_042,pump,23.2355977,77.4711077,,,,,6.0,observed
-pump_043,pump,23.2364854,77.4937221,,,,,6.0,observed
-pump_044,pump,23.2375687,77.486159,,,,,6.0,observed
-pump_045,pump,23.239335,77.4913939,,,,,6.0,observed
-pump_046,pump,23.2395043,77.4690076,,,,,6.0,observed
-pump_047,pump,23.2399938,77.5020429,,,,,6.0,observed
-pump_048,pump,23.2266956,77.4657003,,,,,6.0,observed
-pump_049,pump,23.2167361,77.4778989,,,,,6.0,observed
-pump_050,pump,23.2332356,77.4907824,,,,,6.0,observed
-pump_051,pump,23.2432606,77.41001,,,,,6.0,observed
-pump_052,pump,23.2490721,77.4299871,,,,,6.0,observed
-pump_053,pump,23.2506363,77.4244814,,,,,6.0,observed
-pump_054,pump,23.252963,77.4172072,,,,,6.0,observed
-pump_055,pump,23.2549054,77.422142,,,,,6.0,observed
-pump_056,pump,23.2552977,77.4112089,,,,,6.0,observed
-pump_057,pump,23.258365,77.4202159,,,,,6.0,observed
-pump_058,pump,23.2586635,77.4269164,,,,,6.0,observed
-pump_059,pump,23.2594825,77.4204653,,,,,6.0,observed
-pump_060,pump,23.2596132,77.4320258,,,,,6.0,observed
-pump_061,pump,23.2605503,77.4215224,,,,,6.0,observed
-pump_062,pump,23.2611349,77.4223024,,,,,6.0,observed
-pump_063,pump,23.2509524,77.4682733,,,,,6.0,observed
-pump_064,pump,23.2513461,77.4737982,,,,,6.0,observed
-pump_065,pump,23.2517881,77.4753407,,,,,6.0,observed
-pump_066,pump,23.2522571,77.4687381,,,,,6.0,observed
-pump_067,pump,23.2526555,77.4609512,,,,,6.0,observed
-pump_068,pump,23.2526647,77.4612143,,,,,6.0,observed
-pump_069,pump,23.2569142,77.4623089,,,,,6.0,observed
-pump_070,pump,23.259047,77.4598764,,,,,6.0,observed
-pump_071,pump,23.2598727,77.4620244,,,,,6.0,observed
-pump_072,pump,23.2590387,77.4647279,,,,,6.0,observed
-pump_073,pump,23.2608605,77.4650965,,,,,6.0,observed
-pump_074,pump,23.2614411,77.4618158,,,,,6.0,observed
-pump_075,pump,23.2212424,77.4418673,,,,,6.0,observed
-pump_076,pump,23.2332592,77.4357262,,,,,6.0,observed
-pump_077,pump,23.2381085,77.4489504,,,,,6.0,observed
-pump_078,pump,23.2376534,77.4551788,,,,,6.0,observed
-pump_079,pump,23.2376655,77.4554254,,,,,6.0,observed
-pump_080,pump,23.2377036,77.4516131,,,,,6.0,observed
-pump_081,pump,23.2380532,77.4420436,,,,,6.0,observed
-pump_082,pump,23.2445815,77.4544286,,,,,6.0,observed
-pump_083,pump,23.2332077,77.4380278,,,,,6.0,observed
-pump_084,pump,23.2341571,77.4390582,,,,,6.0,observed
-pump_085,pump,23.2380527,77.4392089,,,,,6.0,observed
-pump_086,pump,23.2364141,77.4049563,,,,,6.0,observed
-pump_087,pump,23.2324106,77.3979723,,,,,6.0,observed
-pump_088,pump,23.2373107,77.3816413,,,,,6.0,observed
-pump_089,pump,23.2380942,77.3820601,,,,,6.0,observed
-pump_090,pump,23.2407676,77.3917744,,,,,6.0,observed
-pump_091,pump,23.25595,77.4023461,,,,,6.0,observed
-pump_092,pump,23.2579399,77.393468,,,,,6.0,observed
-pump_093,pump,23.2591566,77.3906118,,,,,6.0,observed
-pump_094,pump,23.2694661,77.3851764,,,,,6.0,observed
-pump_095,pump,23.2847812,77.3959563,,,,,6.0,observed
-pump_096,pump,23.2477056,77.4343061,,,,,6.0,observed
-pump_097,pump,23.2478207,77.4345673,,,,,6.0,observed
-pump_098,pump,23.2502563,77.4332555,,,,,6.0,observed
-pump_099,pump,23.2502667,77.4335433,,,,,6.0,observed
-pump_100,pump,23.1630059,77.4205916,,,,,6.0,observed
-pump_101,pump,23.1803547,77.4412304,Rishi Nagar Water Tank,,,,6.0,observed
-pump_102,pump,23.2799419,77.4861302,,,,,6.0,observed
-pump_103,pump,23.2554292,77.4472023,,,,,6.0,observed
+sub_001,substation,12.9362606,77.6237622,,124.76,69.24,26024,,observed
+sub_002,substation,13.0119654,77.5752904,,97.14,56.14,14717,,observed
+sub_003,substation,12.8988404,77.6214406,,127.37,92.78,13697,,observed
+sub_004,substation,12.8998321,77.620203,,121.33,67.51,14140,,observed
+sub_005,substation,12.8928529,77.613361,,95.3,62.05,9739,,observed
+sub_006,substation,12.9414316,77.6945339,,119.29,82.69,43713,,observed
+sub_007,substation,13.095548,77.5948785,,109.37,69.98,26231,,observed
+sub_008,substation,12.8866386,77.5622186,,136.66,75.34,18463,,observed
+sub_009,substation,12.9813158,77.6454392,,128.87,79.65,18189,,observed
+sub_010,substation,12.9022267,77.6495638,HSR Layout Substation,95.07,66.81,14698,,observed
+sub_011,substation,12.9078721,77.5805781,BESCOM Office,86.49,49.24,30541,,observed
+sub_012,substation,13.0290763,77.5255429,Peenya Substation,122.26,86.98,38108,,observed
+sub_013,substation,13.0441739,77.5538825,Gokula,117.54,87.52,32807,,observed
+sub_014,substation,13.0382131,77.5586525,Mattikere,85.52,52.05,31700,,observed
+sub_015,substation,12.9951972,77.7116711,Hoodi Substation,120.41,83.2,11003,,observed
+sub_016,substation,12.9326212,77.6129323,Adugodi Substation,126.29,88.98,13229,,observed
+sub_017,substation,13.0367975,77.5664072,RMV Layout,139.87,101.17,32911,,observed
+sub_018,substation,12.9955218,77.7478202,,99.46,67.35,31909,,observed
+sub_019,substation,12.9628524,77.64899,BESCOM Electrical Substation,91.39,56.76,25496,,observed
+sub_020,substation,12.9713166,77.6049432,East Division Compound,129.13,88.67,12679,,observed
+sub_021,substation,12.9651639,77.6365084,,122.64,71.65,24043,,observed
+sub_022,substation,12.9543033,77.5940534,BMTC Substation,91.44,57.23,44500,,observed
+sub_023,substation,12.9414565,77.5915395,NIMHANS Substation,95.37,58.64,11665,,observed
+sub_024,substation,12.9768263,77.7176758,EPIP Whitefield Substation,96.03,53.43,28673,,observed
+sub_025,substation,13.0110013,77.5381431,Nandhini Layout Substation,108.08,60.88,28622,,observed
+sub_026,substation,12.9537098,77.6413638,Golf Links Substation,94.88,61.66,38071,,observed
+sub_027,substation,12.9966455,77.7277991,Hoody Traction,90.0,52.01,44789,,observed
+sub_028,substation,13.0176352,77.5073469,,117.73,82.34,36077,,observed
+sub_029,substation,12.9189551,77.4746565,Kengeri S Town,142.85,89.98,22373,,observed
+sub_030,substation,12.9846414,77.6938533,Bagmane WTC,149.81,86.54,40343,,observed
+sub_031,substation,12.889004,77.7355937,Domasandra Substation,86.36,48.31,15185,,observed
+sub_032,substation,12.8984754,77.5569842,ISRO Layout Substation,90.7,52.79,35666,,observed
+sub_033,substation,12.8738799,77.6578119,Naganathapura Substation,121.75,76.33,38674,,observed
+sub_034,substation,12.8968394,77.5469054,Subramanyapura Substation,117.04,87.1,8752,,observed
+sub_035,substation,12.8958287,77.5467272,Subramanyapura Substation,127.62,73.11,43190,,observed
+sub_036,substation,12.9364845,77.5206689,Vrishabavathi Valley,132.56,93.29,30293,,observed
+sub_037,substation,13.048141,77.619209,Manyata,87.81,55.93,37735,,observed
+sub_038,substation,12.9887861,77.7037335,,80.23,55.71,25261,,observed
+sub_039,substation,13.02873,77.6103261,LR Bande Substation,148.03,103.98,41271,,observed
+sub_040,substation,13.0305136,77.5823758,Hebbal Substation,143.88,104.19,27558,,observed
+sub_041,substation,13.0502974,77.5471452,HMT,138.92,90.51,21035,,observed
+sub_042,substation,13.0453047,77.5829667,,90.7,63.72,43348,,observed
+sub_043,substation,13.0655412,77.5820488,Sahakar Nagara,146.74,107.78,8037,,observed
+sub_044,substation,13.0257532,77.5812978,CPRI,121.93,78.97,15331,,observed
+sub_045,substation,13.0728008,77.5286763,Abbigere,145.04,105.26,28153,,observed
+sub_046,substation,12.9274824,77.668033,Electric Sub-Station,96.76,57.88,13161,,observed
+sub_047,substation,12.9828988,77.5753956,A Station,86.0,55.66,12535,,observed
+sub_048,substation,13.0438333,77.5262773,,148.46,97.47,16241,,observed
+sub_049,substation,13.0434723,77.5260733,Wellcast Steel,88.99,57.4,44031,,observed
+sub_050,substation,12.9220526,77.5607462,Padmanabha Nagar Substation,91.56,60.02,35730,,observed
+sub_051,substation,12.9478532,77.6444617,,147.51,108.53,21182,,observed
+sub_052,substation,13.0704231,77.5808829,,129.91,81.81,32472,,observed
+sub_053,substation,13.0299995,77.6277988,HBR Layout,110.67,72.32,15930,,observed
+sub_054,substation,12.9819465,77.5747321,,97.35,54.79,9378,,observed
+sub_055,substation,12.9358977,77.5207377,KPTCL Ramanagara Circle,121.18,72.23,22432,,observed
+sub_056,substation,12.9774233,77.6646738,,80.5,55.67,11858,,observed
+sub_057,substation,12.9862647,77.6746356,,96.03,70.2,29654,,observed
+sub_058,substation,12.9740318,77.6137554,B Station,84.96,50.77,39812,,observed
+sub_059,substation,13.0505696,77.5808914,,95.0,54.76,38976,,observed
+sub_060,substation,13.0807973,77.733942,Manduru,97.01,62.53,34677,,observed
+sub_061,substation,13.0986592,77.5703167,Yelahanka,93.33,53.14,36249,,observed
+sub_062,substation,12.9638948,77.6149477,Austin Town Substation,104.8,66.26,11550,,observed
+sub_063,substation,12.9431625,77.6240378,Koramangala Substation,127.14,94.95,14449,,observed
+sub_064,substation,12.9269841,77.6796401,KPTCL Power substation,84.24,58.6,15161,,observed
+sub_065,substation,13.0283667,77.533502,,97.41,57.28,37400,,observed
+sub_066,substation,13.0542981,77.5612223,BEL,89.81,52.69,38318,,observed
+sub_067,substation,13.061539,77.5061764,MEI Layout,97.49,71.62,37041,,observed
+sub_068,substation,13.0355024,77.5314806,Platinum City Power Station,136.56,98.49,14416,,observed
+sub_069,substation,13.0910222,77.4914798,Soladevanahalli,83.54,62.64,8967,,observed
+sub_070,substation,12.9586999,77.5287134,Chandra Layout,147.83,108.7,23491,,observed
+sub_071,substation,13.0011372,77.5482938,Mahalakshmi Layout,91.64,59.3,22008,,observed
+sub_072,substation,12.9802248,77.5363072,Vijaya Nagar,140.53,102.65,18789,,observed
+sub_073,substation,12.895212,77.5777915,,106.53,79.58,25380,,observed
+sub_074,substation,12.9200807,77.5990692,Jayadeva,144.86,102.42,26694,,observed
+sub_075,substation,13.0542943,77.6239388,,109.61,81.27,44422,,observed
+sub_076,substation,12.9914391,77.6541651,,126.33,81.78,20445,,observed
+sub_077,substation,12.9686272,77.6622395,HAL Substation,100.77,74.95,43533,,observed
+sub_078,substation,13.0203859,77.6490308,Banaswadi Substation,84.27,51.63,11286,,observed
+sub_079,substation,12.9478049,77.6984899,,120.89,78.65,42807,,observed
+sub_080,substation,12.9323952,77.7320445,,91.02,67.55,13250,,observed
+sub_081,substation,12.9923633,77.5994147,C Station,139.59,78.69,12453,,observed
+sub_082,substation,13.0151688,77.5635497,IISc MUSS,127.26,75.98,15856,,observed
+sub_083,substation,12.8735924,77.5657202,Khodays Glass Factory Substation,145.91,96.88,10604,,observed
+sub_084,substation,12.9045094,77.6642145,,123.36,78.19,42261,,observed
+sub_085,substation,13.0769662,77.6348797,,102.15,61.51,28590,,observed
+sub_086,substation,13.0224867,77.5764105,,96.71,60.84,27660,,observed
+sub_087,substation,13.0188619,77.5721032,,112.01,82.41,12754,,observed
+sub_088,substation,12.9433022,77.6676871,,80.65,54.38,44896,,observed
+sub_089,substation,13.0018762,77.6190756,Pottery Road,149.73,84.54,21969,,observed
+sub_090,substation,13.0147458,77.5555072,Brigade Gateway Substation,115.41,66.53,30872,,observed
+sub_091,substation,12.9307068,77.6967296,Vikas Tech Park Substation,141.66,102.82,32217,,observed
+sub_092,substation,12.9816567,77.5190453,,99.95,63.73,43600,,observed
+sub_093,substation,12.9379879,77.6972865,Exora,129.25,86.9,42664,,observed
+sub_094,substation,12.9675469,77.7218959,,80.55,57.46,27620,,observed
+sub_095,substation,13.0685518,77.5883932,L&T Substation,145.22,82.88,16800,,observed
+sub_096,substation,12.8750229,77.6117481,,98.51,71.71,44256,,observed
+sub_097,substation,13.0344708,77.5002256,KPTCL HMT Layout,90.88,55.11,21803,,observed
+sub_098,substation,12.9753633,77.6042137,,130.23,76.93,25300,,observed
+sub_099,substation,12.9698912,77.5916823,Kanteerava Stadium,115.38,69.25,11329,,observed
+sub_100,substation,12.9642082,77.5729734,Victoria Hospital Substation,86.46,54.88,26132,,observed
+sub_101,substation,12.9668659,77.5458925,Telecom Layout Substation,83.09,51.24,16573,,observed
+sub_102,substation,12.9822668,77.4525015,Kodigehalli Substation,124.6,75.06,36956,,observed
+sub_103,substation,12.9787404,77.5035171,Srigandhakavalu,118.62,75.39,8633,,observed
+sub_104,substation,12.952928,77.573447,National College Substation,87.83,64.91,17768,,observed
+sub_105,substation,12.9323171,77.58336,Jayanagar Substation,118.19,84.73,44210,,observed
+sub_106,substation,12.9456416,77.5310554,REMCO,90.37,52.0,28202,,observed
+sub_107,substation,12.9716897,77.6048297,East Division Compound,105.53,77.73,10614,,observed
+sub_108,substation,12.9978766,77.6235999,ITC Substation,142.92,84.61,24353,,observed
+sub_109,substation,12.9291569,77.6096487,St Johns Wood Substation,126.69,78.64,44692,,observed
+sub_110,substation,12.9157686,77.5433722,Arehalli,141.89,89.57,18128,,observed
+sub_111,substation,12.9346528,77.5387548,Banashankari,144.8,86.5,18649,,observed
+sub_112,substation,12.9141693,77.5285369,Rajajeshwari Nagar,148.33,105.64,35020,,observed
+sub_113,substation,12.9356995,77.5204783,Vrishabavathi Valley Substation,81.74,56.99,29770,,observed
+sub_114,substation,13.0528326,77.6149933,Manyata Substation,134.77,85.22,24263,,observed
+sub_115,substation,12.9301143,77.6966051,Vikas Tech Park Substation,98.68,69.81,15084,,observed
+sub_116,substation,12.968667,77.6614146,HAL Substation,106.78,59.55,38847,,observed
+sub_117,substation,12.941122,77.591536,Nimhans Substation,95.57,68.17,38166,,observed
+sub_118,substation,12.874507,77.6578977,Naganathapura Substation,104.48,74.61,22915,,observed
+sub_119,substation,12.9027351,77.6494492,HSR Layout Substation,95.6,65.2,34113,,observed
+sub_120,substation,13.0287866,77.5264533,Peenya Substation,102.98,74.44,26292,,observed
+sub_121,substation,12.9256888,77.6405485,,104.58,68.17,43141,,observed
+sub_122,substation,13.0461807,77.6465222,,103.18,57.32,25118,,observed
+sub_123,substation,13.0105259,77.5541353,,92.5,68.68,25397,,observed
+sub_124,substation,12.8736288,77.7294744,Chokkasandra,82.68,55.34,30654,,observed
+sub_125,substation,13.0558951,77.4865642,Jindal City Substation,131.0,80.27,41516,,observed
+sub_126,substation,12.930938,77.7231001,Sobha Dream Acres Substation,88.1,64.3,20457,,observed
+sub_127,substation,12.927951,77.6820307,,97.83,67.67,8110,,observed
+sub_128,substation,12.924302,77.6797801,,116.39,82.79,20912,,observed
+sub_129,substation,12.918433,77.6864358,,105.5,59.5,29639,,observed
+sub_130,substation,12.9812006,77.5622318,,123.62,84.39,16167,,observed
+sub_131,substation,12.988374,77.7491853,BMRCL RSS,130.38,79.54,28269,,observed
+sub_132,substation,12.9846573,77.7365257,ITPL,126.68,77.94,27376,,observed
+sub_133,substation,13.0007815,77.626661,Raheja Mansion Substation,118.81,69.9,32847,,observed
+sub_134,substation,12.9269536,77.6907014,ETV Substation,127.41,93.08,27723,,observed
+sub_135,substation,12.9390101,77.6889162,,108.43,77.71,27914,,observed
+sub_136,substation,12.9407124,77.6906552,,100.08,63.65,29118,,observed
+sub_137,substation,12.9373274,77.6974357,,112.55,71.85,22005,,observed
+sub_138,substation,12.9678398,77.5117824,Nagarbhavi KPTCL,115.78,82.06,19120,,observed
+sub_139,substation,12.8964878,77.540082,PLRD Electrict Yard,126.12,76.52,29966,,observed
+sub_140,substation,12.8945962,77.5406883,,86.54,64.07,23392,,observed
+sub_141,substation,12.8872917,77.610841,,127.1,75.61,21050,,observed
+sub_142,substation,12.9668897,77.6950208,,90.31,50.51,39138,,observed
+sub_143,substation,12.9413748,77.7191035,,122.79,86.41,37846,,observed
+sub_144,substation,12.9406142,77.6068954,,109.01,73.69,20742,,observed
+sub_145,substation,12.985607,77.4812358,,130.28,81.66,34191,,observed
+sub_146,substation,12.9517438,77.7476128,Prestige Tech Forest Substation,97.08,66.13,8363,,observed
+sub_147,substation,12.8846175,77.4712676,Provident Sunworth Substation,142.49,102.89,14985,,observed
+sub_148,substation,13.0630253,77.6620556,,134.49,79.86,41944,,observed
+sub_149,substation,12.9896956,77.726403,Prestige Shantiniketan Substation,112.52,74.43,15953,,observed
+sub_150,substation,12.8952792,77.457968,,111.95,79.52,42808,,observed
+sub_151,substation,12.9107135,77.7302815,Kachamaranahalli Substation,149.15,99.8,37004,,observed
+sub_152,substation,12.8730186,77.6216856,,122.89,85.26,41081,,observed
+sub_153,substation,12.9954635,77.6895383,,109.87,80.36,37223,,observed
+sub_154,substation,12.9964728,77.7027834,,142.8,99.78,39108,,observed
+sub_155,substation,12.9846486,77.6924994,,111.5,78.09,26173,,observed
+sub_156,substation,12.8885091,77.5806001,,133.61,87.41,23679,,observed
+sub_157,substation,12.8886558,77.5883621,,99.22,56.11,26725,,observed
+sub_158,substation,12.8949386,77.7127397,,96.41,59.5,43399,,observed
+sub_159,substation,12.9638087,77.7224299,Brigade Tech Gardens Brookefield,85.64,49.69,33102,,observed
+sub_160,substation,13.0695007,77.6072111,,128.58,88.88,12209,,observed
+sub_161,substation,13.0274165,77.5248582,SRS Peenya Substation,109.04,67.19,38534,,observed
+sub_162,substation,13.0531566,77.4990056,,109.1,64.52,35534,,observed
+sub_163,substation,12.9688498,77.7068325,,107.26,75.51,9280,,observed
+sub_164,substation,12.9170016,77.5047485,,139.97,98.42,32928,,observed
+sub_165,substation,12.9429506,77.4785143,,113.39,83.74,27569,,observed
+sub_166,substation,12.9156216,77.6245738,"220/33kV GIS Sub Station, Central Silk Board",132.74,95.67,35460,,observed
+sub_167,substation,12.8603679,77.5557148,Anjanapura Substation,117.68,82.01,22453,,observed
+sub_168,substation,12.8770469,77.5304635,,114.18,69.03,39827,,observed
+sub_169,substation,12.9780668,77.6559752,,82.03,50.63,34497,,observed
+sub_170,substation,12.9920679,77.6578177,MUSS NGEF,130.69,93.85,16364,,observed
+sub_171,substation,13.0050908,77.6865981,ITI,148.65,97.64,33822,,observed
+sub_172,substation,13.0172903,77.5067265,Brindavan,121.43,82.89,13501,,observed
+sub_173,substation,12.9139001,77.4580718,,124.99,72.14,38257,,observed
+sub_174,substation,12.8763281,77.4523486,Kambipura Substation,92.72,55.82,29453,,observed
+sub_175,substation,12.8505385,77.6129401,Power Transformers  - PU,94.82,58.35,32846,,observed
+sub_176,substation,13.1002936,77.5504102,Doddabettahalli 66kV Substation,99.48,73.64,35627,,observed
+sub_177,substation,12.9469087,77.7469683,,97.66,55.31,9270,,observed
+sub_178,substation,12.9554016,77.6544574,,132.43,74.22,30935,,observed
+sub_179,substation,12.8763184,77.4522721,,95.7,53.95,10638,,observed
+sub_180,substation,12.8750699,77.611763,,132.8,98.26,21065,,observed
+sub_181,substation,12.8517541,77.6576435,,138.75,93.55,23633,,observed
+sub_182,substation,12.8606036,77.5409702,KPTCL Keppel Purvankara Park Square,88.84,60.75,44960,,observed
+sub_183,substation,12.9647836,77.6537087,,146.34,94.1,24793,,observed
+sub_184,substation,13.0910558,77.450522,,133.68,78.01,15506,,observed
+sub_185,substation,13.0755162,77.624352,,134.45,78.35,28384,,observed
+sub_186,substation,13.036751,77.5584598,Mathikere,87.57,48.61,28444,,observed
+sub_187,substation,13.0800008,77.5180105,Somashettihalli 66kV Substation,120.31,88.02,32596,,observed
+sub_188,substation,12.9789166,77.7047535,,107.77,74.68,12980,,observed
+sub_189,substation,12.9345606,77.6777748,,121.45,86.97,23915,,observed
+sub_190,substation,12.9683893,77.7071954,,87.13,61.38,15933,,observed
+hosp_001,hospital,12.8550625,77.6642727,Swamy Hospital,,,,8.0,observed
+hosp_002,hospital,12.9134182,77.6774852,Clinic,,,,8.0,observed
+hosp_003,hospital,12.9235041,77.5857517,Shanti Hospital,,,,8.0,observed
+hosp_004,hospital,12.9263714,77.6765455,Apollo Hospital,,,,8.0,observed
+hosp_005,hospital,12.9155759,77.6349897,Narayana Hrudayalaya Dental Clinic,,,,8.0,observed
+hosp_006,hospital,12.9129006,77.6419101,Dr Ganesh Medical and Diabetic Clinic,,,,8.0,observed
+hosp_007,hospital,12.9207173,77.5745968,JBS Hospital,,,,8.0,observed
+hosp_008,hospital,12.9231684,77.584433,Jayanagar heart Centre,,,,8.0,observed
+hosp_009,hospital,13.0371728,77.6409543,Sri Vijayalakshmi Pragathi Hospital,,,,8.0,observed
+hosp_010,hospital,13.0185503,77.6364728,Sathya Hospital,,,,8.0,observed
+hosp_011,hospital,12.8500655,77.6624706,Ramakrishna Hospital,,,,8.0,observed
+hosp_012,hospital,12.9981215,77.5404836,Chord Road Hospital Pvt Ltd,,,,8.0,observed
+hosp_013,hospital,12.9978931,77.5436127,Pristline Hospital,,,,8.0,observed
+hosp_014,hospital,12.9376734,77.5802836,"Bengaluru Hospital, Susruta Medical Aid AndResearch Home Limited",,,,8.0,observed
+hosp_015,hospital,13.0011275,77.5639285,Manipal Northside Hospital,,,,8.0,observed
+hosp_016,hospital,12.9503234,77.6162619,Government Primary Health Centre,,,,8.0,observed
+hosp_017,hospital,12.9100629,77.5924585,Divakars speciality Hospital,,,,8.0,observed
+hosp_018,hospital,12.960765,77.7137961,Hema Poly Clinic,,,,8.0,observed
+hosp_019,hospital,12.9234317,77.5923374,BMTC Hospital,,,,8.0,observed
+hosp_020,hospital,12.9364329,77.583477,Ramakrishna Nursing Home and Hospital,,,,8.0,observed
+hosp_021,hospital,12.939058,77.5510802,Sri Vinayaka Poly Clinic,,,,8.0,observed
+hosp_022,hospital,13.0322788,77.576876,RMV Hospital,,,,8.0,observed
+hosp_023,hospital,12.9559302,77.7112689,Yashomathi Hospitals,,,,8.0,observed
+hosp_024,hospital,12.9815051,77.6011944,Mallya Audikesh Diagnostics Center,,,,8.0,observed
+hosp_025,hospital,12.985247,77.5803846,Mallige Medical Centre,,,,8.0,observed
+hosp_026,hospital,13.0038999,77.6039313,Devine Hospital,,,,8.0,observed
+hosp_027,hospital,12.9452313,77.5861734,Lalbagh Nursing Home,,,,8.0,observed
+hosp_028,hospital,12.9797287,77.7271089,Dr. Batra Clinic,,,,8.0,observed
+hosp_029,hospital,12.9988604,77.5817424,Government Maternity Hospital,,,,8.0,observed
+hosp_030,hospital,12.9681189,77.54325,Soujanya Clinic,,,,8.0,observed
+hosp_031,hospital,12.967291,77.5429164,Kanva Diagnostics Collection Centre,,,,8.0,observed
+hosp_032,hospital,12.9568527,77.6990468,New Akshay Mallya Hospital,,,,8.0,observed
+hosp_033,hospital,12.9951629,77.69923,Presidency Hospital,,,,8.0,observed
+hosp_034,hospital,12.90306,77.4974982,BGS Gleneagles Hospitals,,,,8.0,observed
+hosp_035,hospital,12.9073391,77.5830655,Srinivas Clinic,,,,8.0,observed
+hosp_036,hospital,13.0043642,77.5652959,,,,,8.0,observed
+hosp_037,hospital,12.8915893,77.560715,Metro Hospital,,,,8.0,observed
+hosp_038,hospital,12.9668213,77.7168891,Brookefield Hospital(A Unit Of Sanjeevani Hospital),,,,8.0,observed
+hosp_039,hospital,12.9573067,77.7087044,Tenet diagnostics,,,,8.0,observed
+hosp_040,hospital,12.995242,77.6523255,ESI Hospital,,,,8.0,observed
+hosp_041,hospital,12.9111263,77.7073377,Karunalayam Hospital,,,,8.0,observed
+hosp_042,hospital,12.9367955,77.5907094,SDS Tuberculosis Research Centre and Rajiv Gandhi Institute of Chest diseases,,,,8.0,observed
+hosp_043,hospital,12.942614,77.5854533,Maiya Multispecialty Hospital,,,,8.0,observed
+hosp_044,hospital,12.9671401,77.6094485,Narayana Netralaya,,,,8.0,observed
+hosp_045,hospital,13.0829889,77.5489026,Nagappa Hadli Hospital,,,,8.0,observed
+hosp_046,hospital,12.9746134,77.5129757,"Vasan Eye Care Hospital, Nagarabhavi",,,,8.0,observed
+hosp_047,hospital,12.930936,77.5153776,Rc Hospital,,,,8.0,observed
+hosp_048,hospital,12.9263226,77.5156579,Veturi Child Health Centre,,,,8.0,observed
+hosp_049,hospital,13.0686568,77.5582571,Ketham's Hospital Pvt. Ltd,,,,8.0,observed
+hosp_050,hospital,13.0425433,77.5155377,Ragavendra Hospital,,,,8.0,observed
+hosp_051,hospital,13.0349833,77.5676844,Guru Kripa Clinic,,,,8.0,observed
+hosp_052,hospital,13.0973922,77.5964894,Deeksha Orthopaedic Hospital,,,,8.0,observed
+hosp_053,hospital,13.0997316,77.5980216,Shushrusha Hospital,,,,8.0,observed
+hosp_054,hospital,12.9126298,77.5913594,Chirag Hospital and Maternity Center,,,,8.0,observed
+hosp_055,hospital,12.9256842,77.5489346,Udhbhava Hospital,,,,8.0,observed
+hosp_056,hospital,12.9206648,77.5598673,DG Hospital,,,,8.0,observed
+hosp_057,hospital,12.9423039,77.6174893,Srinivasa Nursing Home,,,,8.0,observed
+hosp_058,hospital,12.9336501,77.5660602,Kangila Clinic,,,,8.0,observed
+hosp_059,hospital,13.0990911,77.5861904,Chaitanya Hospital,,,,8.0,observed
+hosp_060,hospital,12.9402371,77.6253403,"Vasan Eye Care Hospital, Koramangala",,,,8.0,observed
+hosp_061,hospital,12.9075992,77.6488507,health nest,,,,8.0,observed
+hosp_062,hospital,13.0281613,77.5793947,Amma's ENT Clinic,,,,8.0,observed
+hosp_063,hospital,13.026721,77.5789272,Krishna Specialty Clinic,,,,8.0,observed
+hosp_064,hospital,12.995625,77.6113272,Seventh Day Adventist Hospital,,,,8.0,observed
+hosp_065,hospital,12.9965077,77.6220456,Srinivasa Nursing Home,,,,8.0,observed
+hosp_066,hospital,12.914434,77.6050207,Kids Care Clinic,,,,8.0,observed
+hosp_067,hospital,12.9382768,77.6186753,Pristine Health care,,,,8.0,observed
+hosp_068,hospital,12.9186845,77.630774,Prerana Dental Clinic,,,,8.0,observed
+hosp_069,hospital,12.9180492,77.6318764,Mamtha Health Center,,,,8.0,observed
+hosp_070,hospital,13.0079383,77.5469059,Suprabha Hospital,,,,8.0,observed
+hosp_071,hospital,13.0083564,77.5469273,Sangolli Nursing Home,,,,8.0,observed
+hosp_072,hospital,13.0037682,77.5498337,Diacon Hospital,,,,8.0,observed
+hosp_073,hospital,12.9273417,77.6221301,Agarwal Eye Hospital,,,,8.0,observed
+hosp_074,hospital,12.8736928,77.6449626,Sri Sapthagiri Clinic,,,,8.0,observed
+hosp_075,hospital,12.9169725,77.6300572,Sagar Dental Clinic,,,,8.0,observed
+hosp_076,hospital,12.9257842,77.6170828,Venkateshwara Hospital,,,,8.0,observed
+hosp_077,hospital,13.0047859,77.543073,Namratha Hospital,,,,8.0,observed
+hosp_078,hospital,12.9162576,77.6374069,Devi Eye Hospital,,,,8.0,observed
+hosp_079,hospital,13.0275337,77.5397051,Mysore Hospital,,,,8.0,observed
+hosp_080,hospital,12.9293288,77.5877091,Jayanagar Orthopaedic Centre,,,,8.0,observed
+hosp_081,hospital,12.9458714,77.5675192,Shekar Hospital,,,,8.0,observed
+hosp_082,hospital,13.0011459,77.5359798,Punya Hospital,,,,8.0,observed
+hosp_083,hospital,12.9102705,77.6265538,Vasan Eye Care,,,,8.0,observed
+hosp_084,hospital,12.8517246,77.6681472,Apollo Clinic,,,,8.0,observed
+hosp_085,hospital,12.9135707,77.5788941,Parimala Clinic,,,,8.0,observed
+hosp_086,hospital,12.9160081,77.6193573,Karanth Speciality Hospital,,,,8.0,observed
+hosp_087,hospital,12.9162878,77.6138218,Gangothri Hospital,,,,8.0,observed
+hosp_088,hospital,12.9239335,77.61116,Spurthy Hospital,,,,8.0,observed
+hosp_089,hospital,12.9351929,77.6086817,Prasad Eye Hospital,,,,8.0,observed
+hosp_090,hospital,12.9387115,77.5937737,NIMHANS Screening block,,,,8.0,observed
+hosp_091,hospital,12.9388056,77.5942994,NIMHANS OPD,,,,8.0,observed
+hosp_092,hospital,12.9483598,77.5940621,Manjunath Hospital,,,,8.0,observed
+hosp_093,hospital,12.9484356,77.5942592,Karthik Hospital,,,,8.0,observed
+hosp_094,hospital,12.9147871,77.6247622,Aswad Hospital,,,,8.0,observed
+hosp_095,hospital,13.0264438,77.5933686,TSR heart care,,,,8.0,observed
+hosp_096,hospital,13.0022409,77.5490879,Fortis Hospital,,,,8.0,observed
+hosp_097,hospital,12.9956506,77.5510696,Citi Hospital,,,,8.0,observed
+hosp_098,hospital,12.9995223,77.5505328,"Vasan Eye Care Hospital, Rajaji Nagar",,,,8.0,observed
+hosp_099,hospital,12.9998205,77.55045,Ananya Hospital,,,,8.0,observed
+hosp_100,hospital,12.9970915,77.5719766,Baptist,,,,8.0,observed
+hosp_101,hospital,12.973967,77.5479135,Shivakrupa Hospital,,,,8.0,observed
+hosp_102,hospital,13.0248621,77.6139585,Dr. Ambedkar Medical College Hospital,,,,8.0,observed
+hosp_103,hospital,12.9926441,77.5742046,"Sri Maruthi hospital, Sheshadripuram",,,,8.0,observed
+hosp_104,hospital,12.9267954,77.6699091,Sunny Medicals Hospital Clinic,,,,8.0,observed
+hosp_105,hospital,13.0307899,77.653594,Karunya Homoeopathy Centre,,,,8.0,observed
+hosp_106,hospital,13.0148188,77.6653699,Ayur Seva Hospital,,,,8.0,observed
+hosp_107,hospital,12.8990004,77.6218548,Vinayaka Specialty Hospital,,,,8.0,observed
+hosp_108,hospital,13.0207033,77.6760593,Koshys Hospital,,,,8.0,observed
+hosp_109,hospital,12.9593144,77.5265054,Gurushree Hitech Multispeciality Hospital,,,,8.0,observed
+hosp_110,hospital,12.9755854,77.5313495,"Shobha Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_111,hospital,12.9744053,77.5426819,"Gayathri Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_112,hospital,12.9309944,77.4929837,MEDSOL Hospital,,,,8.0,observed
+hosp_113,hospital,13.003447,77.504284,Government Primary Health Centre,,,,8.0,observed
+hosp_114,hospital,12.9761294,77.5326369,Bharathy Hospital,,,,8.0,observed
+hosp_115,hospital,12.9202791,77.5598033,Yogananda Medical and Research Centre,,,,8.0,observed
+hosp_116,hospital,12.8778532,77.6246582,"Government Primary Healthcare Center, Begur",,,,8.0,observed
+hosp_117,hospital,12.9074968,77.6492213,Cure & Care Dental Clinic Dr. Moumita Mukherjee,,,,8.0,observed
+hosp_118,hospital,13.0372438,77.5648754,Shirdi Sai Hospital,,,,8.0,observed
+hosp_119,hospital,12.8924828,77.6198497,Nayantara Opticals,,,,8.0,observed
+hosp_120,hospital,12.9411061,77.5850591,Kottakkal Arya Vaidya Sala,,,,8.0,observed
+hosp_121,hospital,13.0100409,77.6674667,"Charan Homeopathy, Ramamurthy Nagar",,,,8.0,observed
+hosp_122,hospital,13.0834023,77.6348642,Dhanavantri Hospital,,,,8.0,observed
+hosp_123,hospital,12.8807554,77.5841671,T.R.Hospital,,,,8.0,observed
+hosp_124,hospital,12.891484,77.5816961,Rainbow Clinic and Diagnostic Laboratory,,,,8.0,observed
+hosp_125,hospital,13.0078742,77.5625316,Cloud Nine Hospital,,,,8.0,observed
+hosp_126,hospital,12.9993857,77.5606403,"Nayak Hospital, Gayathri Nagar",,,,8.0,observed
+hosp_127,hospital,12.8845448,77.5701276,"Rajnandani Hospital, Bangalore",,,,8.0,observed
+hosp_128,hospital,12.915903,77.5550223,"Maharaja Agrasen Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_129,hospital,12.9231342,77.5642974,Banashankari Referral Hospital,,,,8.0,observed
+hosp_130,hospital,12.9179548,77.555816,Bangalore Kidney Foundation - NU Hospital,,,,8.0,observed
+hosp_131,hospital,12.9613237,77.511726,"GM Hospital, Nagarabhavi",,,,8.0,observed
+hosp_132,hospital,12.9856882,77.5435424,Shanbhag Hospital,,,,8.0,observed
+hosp_133,hospital,12.9946566,77.5397544,Trupti Nursing Home,,,,8.0,observed
+hosp_134,hospital,13.0124345,77.6580271,Srivijaya Speciality Hospital,,,,8.0,observed
+hosp_135,hospital,12.9349187,77.6305022,Magnus Diagnostic Lab,,,,8.0,observed
+hosp_136,hospital,13.000431,77.5411664,Krupa Medical center,,,,8.0,observed
+hosp_137,hospital,13.0774744,77.5587548,Soukya Hospital,,,,8.0,observed
+hosp_138,hospital,12.9191813,77.6381379,Greenview Medical Center,,,,8.0,observed
+hosp_139,hospital,12.9121004,77.6485848,Vaidyaratnam Oushadhasala,,,,8.0,observed
+hosp_140,hospital,12.9064393,77.6308237,Blossoms Hospital,,,,8.0,observed
+hosp_141,hospital,12.8791713,77.6454925,Live100,,,,8.0,observed
+hosp_142,hospital,13.0077936,77.6923101,ESi Hospital,,,,8.0,observed
+hosp_143,hospital,12.9744193,77.5336479,Happy Tooth,,,,8.0,observed
+hosp_144,hospital,12.9745812,77.532699,Rishi Women and Child Clinic,,,,8.0,observed
+hosp_145,hospital,12.9736894,77.5369482,Penta Care Ayurvedic Hospital,,,,8.0,observed
+hosp_146,hospital,12.9436624,77.5419997,Shalini Nursing & MAternity Home,,,,8.0,observed
+hosp_147,hospital,12.9729127,77.5394723,Shreya Poly Clinic,,,,8.0,observed
+hosp_148,hospital,12.9612829,77.5271683,Anurag Medical Center,,,,8.0,observed
+hosp_149,hospital,13.0007683,77.6132902,United Medical lab,,,,8.0,observed
+hosp_150,hospital,12.9843701,77.555666,Pragathi Ayurvedic Center,,,,8.0,observed
+hosp_151,hospital,12.9231571,77.6728066,Narayana Hrudayalaya Dental Clinic,,,,8.0,observed
+hosp_152,hospital,12.8948505,77.6109105,Vatsalya Chidren's Clinic,,,,8.0,observed
+hosp_153,hospital,12.9002599,77.6271003,Kottakkal Arya Vaidya Sala,,,,8.0,observed
+hosp_154,hospital,12.9623406,77.5342853,Sharavathi Hospitals (P) Ltd.,,,,8.0,observed
+hosp_155,hospital,12.9169288,77.5592568,"Dr.Agarwal's Eye Hospital Ltd, Padmanabha Nagar",,,,8.0,observed
+hosp_156,hospital,12.9184617,77.5555842,Shraddha Eye Care,,,,8.0,observed
+hosp_157,hospital,12.931334,77.5154779,"Vasan Eye Care Hospital, Rajarajeswari Nagar",,,,8.0,observed
+hosp_158,hospital,12.9055088,77.5858347,Cloud Nine Fertility,,,,8.0,observed
+hosp_159,hospital,12.8827229,77.5466715,Aikya Healthcare,,,,8.0,observed
+hosp_160,hospital,12.8840897,77.5664029,Konanakunte Government Hospital,,,,8.0,observed
+hosp_161,hospital,12.896052,77.4618775,Rajarajeshwari Hospital and Medical College,,,,8.0,observed
+hosp_162,hospital,12.9878709,77.7319773,Cloud Nine Hospital,,,,8.0,observed
+hosp_163,hospital,12.9768424,77.7103746,Telerad Rx Dx Health Care Whitefield,,,,8.0,observed
+hosp_164,hospital,12.9784409,77.6375845,Motherhood Hospital(Unit Of Rhea Healthcare Pvt Ltd),,,,8.0,observed
+hosp_165,hospital,12.9762645,77.6376528,Respiratory and womens health clinic.,,,,8.0,observed
+hosp_166,hospital,12.9766951,77.6362278,Rashmi Hospital,,,,8.0,observed
+hosp_167,hospital,12.9734836,77.6357281,Netradama Eye Hospital,,,,8.0,observed
+hosp_168,hospital,12.9425246,77.6025303,Sree Venkateshwara Speciality Hospital,,,,8.0,observed
+hosp_169,hospital,13.0002667,77.5694894,Leela Hospital and Diagnostic Center,,,,8.0,observed
+hosp_170,hospital,12.968031,77.5878222,Dr. Rajkumar Blood Bank,,,,8.0,observed
+hosp_171,hospital,12.9241818,77.6737518,Nelivigi Eye Hospital,,,,8.0,observed
+hosp_172,hospital,12.9517397,77.6994832,Sanghi Medical Centre (P) Ltd,,,,8.0,observed
+hosp_173,hospital,13.0294181,77.5593857,"Sri Sai Krupa Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_174,hospital,12.9826672,77.6381036,ALDOS Medical Service Pvt LTD,,,,8.0,observed
+hosp_175,hospital,12.8870605,77.603414,Government Hospital,,,,8.0,observed
+hosp_176,hospital,12.8893134,77.602422,Rajashree Granthim hospital,,,,8.0,observed
+hosp_177,hospital,12.8504718,77.6553058,Sri Laxmi Hospital,,,,8.0,observed
+hosp_178,hospital,12.9474222,77.5986921,Krishna Nursing Home,,,,8.0,observed
+hosp_179,hospital,12.9900105,77.5988107,"Shifa Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_180,hospital,12.9159249,77.5856011,Milann Fertility Center,,,,8.0,observed
+hosp_181,hospital,12.962951,77.6418711,Gift IVF center,,,,8.0,observed
+hosp_182,hospital,12.9603157,77.5930493,HCG Cancer Hospital,,,,8.0,observed
+hosp_183,hospital,12.9584755,77.5919279,Health Care Global,,,,8.0,observed
+hosp_184,hospital,12.9292418,77.5893625,Gulecha Dental Care,,,,8.0,observed
+hosp_185,hospital,12.9767055,77.5424167,,,,,8.0,observed
+hosp_186,hospital,13.0206063,77.6445361,Rajbal Skin Clinic,,,,8.0,observed
+hosp_187,hospital,12.9066637,77.6287463,Prashanth Hospital,,,,8.0,observed
+hosp_188,hospital,13.0147612,77.6335463,Dianova Diabetes Center and Hospital,,,,8.0,observed
+hosp_189,hospital,12.9777082,77.6323407,Ameena Medical centre,,,,8.0,observed
+hosp_190,hospital,12.9700356,77.6362439,Dr.Agarwal Eye & Dental Hospital,,,,8.0,observed
+hosp_191,hospital,12.9599306,77.7160447,SRL Diagnostics,,,,8.0,observed
+hosp_192,hospital,12.9850421,77.5460481,Dr Raos Maternity Hospital,,,,8.0,observed
+hosp_193,hospital,12.9485535,77.5748248,Sagar Chandramma Hospitals,,,,8.0,observed
+hosp_194,hospital,13.0169826,77.6432959,Trilife Hospital,,,,8.0,observed
+hosp_195,hospital,13.0267226,77.6041132,Vignesh Lab and Diagnostics,,,,8.0,observed
+hosp_196,hospital,12.9368104,77.6206345,Apollo Cradle,,,,8.0,observed
+hosp_197,hospital,12.9717049,77.5493718,Shiva Kumaraswamy Building,,,,8.0,observed
+hosp_198,hospital,12.8615976,77.5999324,Myo Medex - Ace Speciality Clinic,,,,8.0,observed
+hosp_199,hospital,12.911533,77.6764094,Stanford Speciality Hospital,,,,8.0,observed
+hosp_200,hospital,12.9124371,77.6813917,Dr Mohan Nursing Home,,,,8.0,observed
+hosp_201,hospital,12.9072384,77.6755805,Sparsh Clinic,,,,8.0,observed
+hosp_202,hospital,12.9041502,77.6741043,Raksha Orthopaedic And Multi Speciality Centre,,,,8.0,observed
+hosp_203,hospital,12.8750879,77.5950098,Narayana Nethralaya,,,,8.0,observed
+hosp_204,hospital,12.9121008,77.6820003,Naadi Ayurveda Center,,,,8.0,observed
+hosp_205,hospital,12.9217604,77.6618321,Kottakkal Arya Vaidya Sala,,,,8.0,observed
+hosp_206,hospital,12.9122002,77.6818637,The Family Doctor & The Family Pharma,,,,8.0,observed
+hosp_207,hospital,12.9194712,77.6130111,Life Care Hospital,,,,8.0,observed
+hosp_208,hospital,12.9161259,77.6311505,Bhagavathi Hospitals Private Limited,,,,8.0,observed
+hosp_209,hospital,12.9250105,77.6278708,Gunasheela Hospitals,,,,8.0,observed
+hosp_210,hospital,12.9151071,77.5624888,NRS Medical & Dental Specialists Centre,,,,8.0,observed
+hosp_211,hospital,12.9060641,77.6049776,Anurag Medical Centre,,,,8.0,observed
+hosp_212,hospital,12.9390944,77.5619057,Sarvodaya Hospital,,,,8.0,observed
+hosp_213,hospital,12.9703581,77.63022,Indianova Healthcare Pvt Ltd,,,,8.0,observed
+hosp_214,hospital,12.9179831,77.6691258,Dr Rachna - Homeopathy,,,,8.0,observed
+hosp_215,hospital,13.0830463,77.6347174,Regal Hospital,,,,8.0,observed
+hosp_216,hospital,13.0158543,77.7033173,Thyrocare,,,,8.0,observed
+hosp_217,hospital,12.9240063,77.6545058,Welnext,,,,8.0,observed
+hosp_218,hospital,12.966771,77.5349228,Employees State Insurance Dispensary,,,,8.0,observed
+hosp_219,hospital,12.9951627,77.5738144,Dr Solankis Eye Hospital,,,,8.0,observed
+hosp_220,hospital,13.0053923,77.5713352,Sri Sanjeevini Cold Laser Therapy,,,,8.0,observed
+hosp_221,hospital,12.975403,77.6470594,Dr. Bhargavi Reddy Women & Children Hospital,,,,8.0,observed
+hosp_222,hospital,12.973892,77.6460904,Axon Speciality Hospital,,,,8.0,observed
+hosp_223,hospital,12.9891818,77.689783,Bright Children's Clinic,,,,8.0,observed
+hosp_224,hospital,13.0316481,77.6023154,Sanjeevini Children & Women Clinic,,,,8.0,observed
+hosp_225,hospital,13.0203944,77.6512682,Procare Hospital,,,,8.0,observed
+hosp_226,hospital,12.9003193,77.6008061,Parimala Health Care,,,,8.0,observed
+hosp_227,hospital,13.0087504,77.6939806,"Sriram Hospital, Bangalore",,,,8.0,observed
+hosp_228,hospital,13.0110115,77.6935975,K R Puram Super Speciality Hospital,,,,8.0,observed
+hosp_229,hospital,13.0048396,77.7036425,Maithri Nursing Home,,,,8.0,observed
+hosp_230,hospital,12.9702741,77.6468603,,,,,8.0,observed
+hosp_231,hospital,12.9876871,77.6093097,Medic Star Hospital,,,,8.0,observed
+hosp_232,hospital,12.9856985,77.6058578,Hsis Gosha Hospital,,,,8.0,observed
+hosp_233,hospital,12.9959413,77.6082575,Santosh Hospital,,,,8.0,observed
+hosp_234,hospital,12.9914123,77.6117329,Hospital,,,,8.0,observed
+hosp_235,hospital,12.9127062,77.6201668,Keva Ayurveda Health Care Pvt Ltd,,,,8.0,observed
+hosp_236,hospital,12.9552696,77.6428508,Ayurvaid Hospital,,,,8.0,observed
+hosp_237,hospital,12.9891941,77.6037864,H B S Hospital,,,,8.0,observed
+hosp_238,hospital,12.9705436,77.5834769,St. Martha's Heart Centre,,,,8.0,observed
+hosp_239,hospital,13.0325717,77.5582602,Sumathi Nursing and Maternity Home,,,,8.0,observed
+hosp_240,hospital,12.9863736,77.5793154,Desai Nursing Home,,,,8.0,observed
+hosp_241,hospital,12.9881648,77.5548179,Fortis Hospital,,,,8.0,observed
+hosp_242,hospital,12.9165359,77.6361865,Healing Earth Multispeciality Ayurveda Hospital,,,,8.0,observed
+hosp_243,hospital,12.9165795,77.6362187,Global Ayurveda Multispeciality Hospital,,,,8.0,observed
+hosp_244,hospital,12.8830054,77.6073285,Brahmi Ayurvedic Center,,,,8.0,observed
+hosp_245,hospital,12.9344224,77.6299785,Fj Merrit Hydrotherapy And Wellness,,,,8.0,observed
+hosp_246,hospital,12.9175511,77.6039486,Vedam Ayurveda Multispeciality Hospital,,,,8.0,observed
+hosp_247,hospital,12.9667253,77.6378289,Ayur jagruti,,,,8.0,observed
+hosp_248,hospital,13.0204424,77.6440607,Herbocare Hospital Pvt,,,,8.0,observed
+hosp_249,hospital,12.9378359,77.5573329,""" NRS Medical & Dental Specialists Centre""",,,,8.0,observed
+hosp_250,hospital,12.8526731,77.6676459,Spring Leaf Health Care Pvt Ltd,,,,8.0,observed
+hosp_251,hospital,12.9386994,77.5518394,Chiranjeevi Hospital & Maternity Home,,,,8.0,observed
+hosp_252,hospital,12.9373748,77.5494778,"Vinayaka Hospital, Hanumantha Nagar",,,,8.0,observed
+hosp_253,hospital,12.9354293,77.5477956,Diavista Diabetes & Multispeciality Hospital,,,,8.0,observed
+hosp_254,hospital,12.9420715,77.553698,Meenakshi Hospital,,,,8.0,observed
+hosp_255,hospital,12.9408667,77.5603657,Medi-Tech Multi Speciality Hospital,,,,8.0,observed
+hosp_256,hospital,12.9420124,77.5506918,Kusuma Hospital,,,,8.0,observed
+hosp_257,hospital,12.9274553,77.5516293,Ring Road Hospital,,,,8.0,observed
+hosp_258,hospital,12.9389007,77.5438808,Pulse Multispecialty Hospital,,,,8.0,observed
+hosp_259,hospital,12.9316792,77.5450887,Surya Galaxy Hospital,,,,8.0,observed
+hosp_260,hospital,12.9593576,77.7461682,Wellness Ever,,,,8.0,observed
+hosp_261,hospital,12.9566858,77.7419283,Hair Loss Treatment in Bangalore - Hairline International,,,,8.0,observed
+hosp_262,hospital,12.9242825,77.6170883,Surya Diagnostics and Health Services,,,,8.0,observed
+hosp_263,hospital,12.9946163,77.6023871,Ayushman Ayurvedic therapy centre,,,,8.0,observed
+hosp_264,hospital,12.9984229,77.5403887,Pristine Hospital,,,,8.0,observed
+hosp_265,hospital,12.9575029,77.5276466,Sri Vinayaka Hospital,,,,8.0,observed
+hosp_266,hospital,12.9573897,77.5276882,Shathayu Ayurveda Wellness Centre,,,,8.0,observed
+hosp_267,hospital,13.0226079,77.4748015,Shri Vishnu Ent Speciality Center,,,,8.0,observed
+hosp_268,hospital,12.9594984,77.5275515,Hospital Sharavathi,,,,8.0,observed
+hosp_269,hospital,12.9735891,77.5443283,Arogya Kendra,,,,8.0,observed
+hosp_270,hospital,13.0029689,77.5526666,The Family Doctor Malleswaram,,,,8.0,observed
+hosp_271,hospital,12.9644231,77.5333324,Venkat Charmalaya,,,,8.0,observed
+hosp_272,hospital,12.9787049,77.5403581,V Care Medical Systems P Ltd,,,,8.0,observed
+hosp_273,hospital,12.968821,77.5246297,Manasa Hospital,,,,8.0,observed
+hosp_274,hospital,12.9691657,77.5351921,Saikrupa Hospital For Women's and Surgical Centre,,,,8.0,observed
+hosp_275,hospital,12.9768117,77.5449094,Cutis Academy of Cutaneous Sciences,,,,8.0,observed
+hosp_276,hospital,12.9621516,77.533401,Shreya Hearing Clinic,,,,8.0,observed
+hosp_277,hospital,12.9353208,77.6205504,Acura Speciality Hospital,,,,8.0,observed
+hosp_278,hospital,12.9603312,77.5300796,Prasad Nethralaya,,,,8.0,observed
+hosp_279,hospital,12.9717905,77.5372864,Vijayanagar Global Hospital,,,,8.0,observed
+hosp_280,hospital,12.9649703,77.5389842,Blossom Infertility Center,,,,8.0,observed
+hosp_281,hospital,12.958321,77.5350434,Padmashree Nursing Home and Maternity Home,,,,8.0,observed
+hosp_282,hospital,12.9639998,77.5302683,,,,,8.0,observed
+hosp_283,hospital,12.9706209,77.5151893,Dhanush Hospital,,,,8.0,observed
+hosp_284,hospital,12.957572,77.5184436,"S K Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_285,hospital,12.9062193,77.580682,"Green City Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_286,hospital,12.9947201,77.5715879,The Homoeo World,,,,8.0,observed
+hosp_287,hospital,12.9698405,77.5327211,Modern Family Doctor Pvt Ltd,,,,8.0,observed
+hosp_288,hospital,12.9312101,77.5756907,Oxford Hospital,,,,8.0,observed
+hosp_289,hospital,12.8584183,77.6653346,Oxford Hospital,,,,8.0,observed
+hosp_290,hospital,12.9059465,77.5904192,R R Hospital & Trauma Centre,,,,8.0,observed
+hosp_291,hospital,12.9039905,77.5859569,M N Speciality Clinic,,,,8.0,observed
+hosp_292,hospital,12.9067129,77.6265085,Prashanth Hospital,,,,8.0,observed
+hosp_293,hospital,12.9009278,77.5986641,Parimala Health Care,,,,8.0,observed
+hosp_294,hospital,12.853228,77.6653506,Springleaf Hospital,,,,8.0,observed
+hosp_295,hospital,13.0096231,77.6924713,Sri Ram Hospital,,,,8.0,observed
+hosp_296,hospital,12.9458746,77.5877756,Vijay Diagnostic Centre,,,,8.0,observed
+hosp_297,hospital,12.924274,77.5680927,Dr Lal PathLabs,,,,8.0,observed
+hosp_298,hospital,12.9242869,77.6532853,Welnext,,,,8.0,observed
+hosp_299,hospital,12.8943049,77.5682821,Sri Sai Ram Hospital,,,,8.0,observed
+hosp_300,hospital,13.0044499,77.5530755,Tamara Hospital & IVF Centre,,,,8.0,observed
+hosp_301,hospital,12.995573,77.5354215,ChanRe Rheumatology and Immunology Center and Research,,,,8.0,observed
+hosp_302,hospital,12.9838763,77.4788534,Anupama Hospital,,,,8.0,observed
+hosp_303,hospital,13.0120509,77.6998816,Deepa Hospital,,,,8.0,observed
+hosp_304,hospital,12.9709463,77.5451059,"Manasa Hospital, Vijayanagar",,,,8.0,observed
+hosp_305,hospital,13.0957329,77.6273067,Agarahara Government Hospital,,,,8.0,observed
+hosp_306,hospital,12.9056092,77.5426964,Nagarathna Hospital,,,,8.0,observed
+hosp_307,hospital,13.0130826,77.5761449,Ramana Rao's clinic,,,,8.0,observed
+hosp_308,hospital,12.9983402,77.6200927,Government Maternity Home,,,,8.0,observed
+hosp_309,hospital,12.9306876,77.5794541,Lucid Medical Diagnostics,,,,8.0,observed
+hosp_310,hospital,12.9984887,77.5504219,Cauvery Orthopaedic Centre,,,,8.0,observed
+hosp_311,hospital,12.9168014,77.5851878,"Apollo Bengaluru Cradle Limited, Jayanagar",,,,8.0,observed
+hosp_312,hospital,12.997613,77.5509423,"Nethradhama Superspeciality Eye Hospital, Rajajinagar",,,,8.0,observed
+hosp_313,hospital,12.9397588,77.59445,NIMHANS - Ashwini Block,,,,8.0,observed
+hosp_314,hospital,13.0215807,77.7128053,Sathya Sai Lake Side Ortho Hospital,,,,8.0,observed
+hosp_315,hospital,12.9817167,77.6800412,Comfort Multispeciality Hospital,,,,8.0,observed
+hosp_316,hospital,12.9400669,77.5931597,National Institute of Mental Health and Neuro Sciences,,,,8.0,observed
+hosp_317,hospital,12.9404277,77.5988406,NBRC(National Brain Research Center),,,,8.0,observed
+hosp_318,hospital,12.9876335,77.6851595,Dr. Roshni's Tooth Planet Dental Clinic,,,,8.0,observed
+hosp_319,hospital,12.9716236,77.6273835,Cambridge Hospital,,,,8.0,observed
+hosp_320,hospital,12.9555357,77.5918347,Respigen healthcare,,,,8.0,observed
+hosp_321,hospital,13.014746,77.6357881,Doctor's diagnostics Centre,,,,8.0,observed
+hosp_322,hospital,13.0080001,77.5837482,Hosmat Hospital,,,,8.0,observed
+hosp_323,hospital,12.9597752,77.6569127,Cloudnine Hospital Pvt. Ltd.,,,,8.0,observed
+hosp_324,hospital,13.0090912,77.656317,Subramanium Medicine Store,,,,8.0,observed
+hosp_325,hospital,13.0104342,77.6583242,Columbiaa Hospital,,,,8.0,observed
+hosp_326,hospital,12.9849537,77.5569222,Altius Hospital,,,,8.0,observed
+hosp_327,hospital,12.9918415,77.5968531,Bangalore Diabetes Hospital,,,,8.0,observed
+hosp_328,hospital,13.011845,77.5526061,NU Hospitals,,,,8.0,observed
+hosp_329,hospital,12.9472091,77.5966914,V. S. Achar Multispeciality Hospital,,,,8.0,observed
+hosp_330,hospital,12.933223,77.5842632,Nature Cure Hospital,,,,8.0,observed
+hosp_331,hospital,12.966103,77.5549647,Government Hospital,,,,8.0,observed
+hosp_332,hospital,12.9403849,77.5945391,"Emergency Block , NIMHANS",,,,8.0,observed
+hosp_333,hospital,12.9138086,77.5273633,Usha Vikranth Diagnostic Center and Hospital,,,,8.0,observed
+hosp_334,hospital,12.9719805,77.6474011,Nethradhama Superspeciality Eye Hospital,,,,8.0,observed
+hosp_335,hospital,13.0552027,77.6028234,Care Health,,,,8.0,observed
+hosp_336,hospital,12.9542624,77.5709473,Sri Shankara Cancer Hospital And Research Centre (A Service Unit Of Sscf),,,,8.0,observed
+hosp_337,hospital,12.9939752,77.5391801,Vathsalya Speciality Hospital,,,,8.0,observed
+hosp_338,hospital,12.9878631,77.6177434,Lakeside Medical Centre and Hospital,,,,8.0,observed
+hosp_339,hospital,12.9677607,77.5413282,Maruthi Hospital,,,,8.0,observed
+hosp_340,hospital,12.9362087,77.616947,Aparna Hospital,,,,8.0,observed
+hosp_341,hospital,12.9338175,77.6201615,Apollo Spectra Hospitals,,,,8.0,observed
+hosp_342,hospital,12.9256013,77.6359638,Sankeerthana Hospital and Fertility Center,,,,8.0,observed
+hosp_343,hospital,12.881611,77.6260763,Jayashree Multi Specilaity Hospital,,,,8.0,observed
+hosp_344,hospital,13.066842,77.6390545,Bangalore Prime Hospital,,,,8.0,observed
+hosp_345,hospital,12.9366526,77.6277125,Shiva Vision Care,,,,8.0,observed
+hosp_346,hospital,13.0711049,77.5781394,Medical Center,,,,8.0,observed
+hosp_347,hospital,12.9781293,77.6372391,Sujatha Hospital,,,,8.0,observed
+hosp_348,hospital,13.011214,77.6979598,Patil Hospital,,,,8.0,observed
+hosp_349,hospital,12.9821954,77.5493143,The Eye Surgical Centre,,,,8.0,observed
+hosp_350,hospital,13.0957808,77.5792872,NDR Hospital,,,,8.0,observed
+hosp_351,hospital,13.0665572,77.59647,Venus Bone & Joint Centre,,,,8.0,observed
+hosp_352,hospital,13.0182102,77.540004,Lourdes High School,,,,8.0,observed
+hosp_353,hospital,13.016705,77.539386,Boregowda Lingamma Hospital,,,,8.0,observed
+hosp_354,hospital,13.0175606,77.5394308,Kanva Hospital,,,,8.0,observed
+hosp_355,hospital,12.9156896,77.4808065,Kengeri Upanagara Government Hospital,,,,8.0,observed
+hosp_356,hospital,12.9158516,77.5593919,Yogananda Multi Speciality Hospital,,,,8.0,observed
+hosp_357,hospital,12.9998982,77.5501121,Dr. Agrawal's Eye Hospital,,,,8.0,observed
+hosp_358,hospital,12.9948905,77.5347984,Ashok Hospital,,,,8.0,observed
+hosp_359,hospital,12.9376087,77.5666429,Balaji Hospital and Gastroenterology Center,,,,8.0,observed
+hosp_360,hospital,12.9517481,77.4939886,Abhay Hospital,,,,8.0,observed
+hosp_361,hospital,13.0237316,77.5941463,Chaitanya Hospital,,,,8.0,observed
+hosp_362,hospital,12.9981979,77.568151,Dr. B. Venkatasubbarao Memorial Hospital,,,,8.0,observed
+hosp_363,hospital,12.9497745,77.5802779,"South City Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_364,hospital,13.0370143,77.6238732,"Sri Sai Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_365,hospital,12.9998457,77.5663653,Jupiter Hospital And Institute Of Vascular Surgery,,,,8.0,observed
+hosp_366,hospital,12.9829857,77.5309655,"Shreyas Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_367,hospital,13.0289685,77.6045479,Ashirwad Hospital,,,,8.0,observed
+hosp_368,hospital,13.0965172,77.5787745,N.D.R. Hospital,,,,8.0,observed
+hosp_369,hospital,13.0263529,77.5933929,Asha Kiran Children & Women Health Care Centre,,,,8.0,observed
+hosp_370,hospital,12.9690441,77.5688544,Radha Maternity and Surgical Hospital,,,,8.0,observed
+hosp_371,hospital,12.9878104,77.5809833,"Hitech Kidney Stone Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_372,hospital,12.9822186,77.5599374,Sri Dhavantari Ayurveda Hoapital,,,,8.0,observed
+hosp_373,hospital,12.9845512,77.5528322,Vaidyam Hospital,,,,8.0,observed
+hosp_374,hospital,12.9897745,77.5551014,Suresh Hospital - Bangalore,,,,8.0,observed
+hosp_375,hospital,13.0058226,77.5694512,Lakshmi Maternity Home,,,,8.0,observed
+hosp_376,hospital,13.0077265,77.5696993,Manjunatha Maternity Home and Surgical Centre,,,,8.0,observed
+hosp_377,hospital,12.9932806,77.580691,Samprathi Eye Hospital And Squint Centre,,,,8.0,observed
+hosp_378,hospital,13.0089953,77.5406188,Shankara Nethralaya Eye Hospital,,,,8.0,observed
+hosp_379,hospital,12.8919509,77.5799654,Supra South City Hospital,,,,8.0,observed
+hosp_380,hospital,12.9992083,77.550269,ChanRe Rheumatology and Immunology Center and Research,,,,8.0,observed
+hosp_381,hospital,12.9579894,77.5114394,Chandana Hospital,,,,8.0,observed
+hosp_382,hospital,13.0398217,77.6230843,"J M J Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_383,hospital,12.9215013,77.5655432,Sri Krishna Hospital,,,,8.0,observed
+hosp_384,hospital,12.9966677,77.5716037,Malleswaram Eye Day Care Hospital - Bengalore,,,,8.0,observed
+hosp_385,hospital,12.9933551,77.5729595,Mahaveer Eye Hospital Private Limited,,,,8.0,observed
+hosp_386,hospital,12.9989833,77.5802015,Bilva Hospital,,,,8.0,observed
+hosp_387,hospital,12.9256932,77.5773127,"Nethradhama Superspeciality Eye Hospital, Jayanagar",,,,8.0,observed
+hosp_388,hospital,12.9122295,77.5994906,Dr Agarwals Eye Hospital Ltd,,,,8.0,observed
+hosp_389,hospital,12.926471,77.6167399,Sri Venkateshwara Hospitals,,,,8.0,observed
+hosp_390,hospital,12.9339097,77.620208,"Nova Specialty Surgery Center, Koramangala",,,,8.0,observed
+hosp_391,hospital,12.9118831,77.5528805,C.S. Hospital,,,,8.0,observed
+hosp_392,hospital,12.9650437,77.5435022,Sri Kalabyraveshwara Swamy Ayurvedic Medical College hospital,,,,8.0,observed
+hosp_393,hospital,12.9765645,77.5455876,"Anugraha Hospital, Vijayanagar",,,,8.0,observed
+hosp_394,hospital,12.9711822,77.5781228,Amar Hospital,,,,8.0,observed
+hosp_395,hospital,12.95727,77.5640827,Retina Institute Of Karnataka,,,,8.0,observed
+hosp_396,hospital,12.9572978,77.5644522,The Venlakh Hospital,,,,8.0,observed
+hosp_397,hospital,12.9406698,77.5644596,Vishwabharathi Hospital Pvt. Ltd,,,,8.0,observed
+hosp_398,hospital,12.9404548,77.5578493,"Sunetra Eye Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_399,hospital,12.9253299,77.5711893,Sri Vivekananda Sevashrama,,,,8.0,observed
+hosp_400,hospital,12.9276382,77.568896,Saraswathi Hospital,,,,8.0,observed
+hosp_401,hospital,12.9386321,77.5944105,National Institute of Mental Health and Neuro Sciences,,,,8.0,observed
+hosp_402,hospital,12.9291283,77.5461361,Netraspandana Healthcare and Research Pvt. Ltd,,,,8.0,observed
+hosp_403,hospital,13.0945892,77.594104,North City CT Scan,,,,8.0,observed
+hosp_404,hospital,12.9176216,77.5550705,Nu Trust,,,,8.0,observed
+hosp_405,hospital,12.9817311,77.5333714,"Padmavathi Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_406,hospital,12.9957177,77.5031644,Panchamukhi Specialityu Hospital,,,,8.0,observed
+hosp_407,hospital,12.9881868,77.5087273,Sri Lakshmi Multi Speciality Hospital,,,,8.0,observed
+hosp_408,hospital,13.0090828,77.6235594,K C Raju Multi Speciality Hospital,,,,8.0,observed
+hosp_409,hospital,12.9278657,77.5519297,Ring Road Hospital,,,,8.0,observed
+hosp_410,hospital,12.8822813,77.5957945,"Vasan Eye Care Hospital, Bannergatta Road",,,,8.0,observed
+hosp_411,hospital,12.924624,77.6170966,Varalakshmi Hospital,,,,8.0,observed
+hosp_412,hospital,13.0223669,77.5587304,Kala Hospital,,,,8.0,observed
+hosp_413,hospital,12.917589,77.5948906,"Shekhar Hospital, Jayanagar",,,,8.0,observed
+hosp_414,hospital,13.0842019,77.5308891,Rajalakshmi Hospital,,,,8.0,observed
+hosp_415,hospital,12.9103393,77.5732398,"Vasan Eye Care Hospital, Sarakki",,,,8.0,observed
+hosp_416,hospital,12.9551501,77.7051643,Lions Airport City Hospital,,,,8.0,observed
+hosp_417,hospital,12.9079615,77.6235715,Mahanth Hospital,,,,8.0,observed
+hosp_418,hospital,12.9255233,77.5937748,Sunayana Eye Hospital,,,,8.0,observed
+hosp_419,hospital,13.024837,77.592089,"Lakshmi Hospital, Ganganagar",,,,8.0,observed
+hosp_420,hospital,13.0186045,77.6479433,Lokhande S Hospital,,,,8.0,observed
+hosp_421,hospital,13.0250141,77.5856289,Dr. T.V.Ramesh Piles Hospital,,,,8.0,observed
+hosp_422,hospital,12.9163994,77.5847384,Dr Kamini Rao Hospital(A Unit Of Bacc Health Care Pvt Ltd),,,,8.0,observed
+hosp_423,hospital,12.9605309,77.592659,HCG,,,,8.0,observed
+hosp_424,hospital,13.0218188,77.613084,Dr Ambedkar Medical College Hospital,,,,8.0,observed
+hosp_425,hospital,12.9929043,77.5588015,"Supriya Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_426,hospital,13.0212406,77.6070739,Manju Sree Hospital,,,,8.0,observed
+hosp_427,hospital,13.0322819,77.5770459,Raj Mahal Vilas Hospital,,,,8.0,observed
+hosp_428,hospital,12.9412109,77.6238987,Devi Eye Hospital,,,,8.0,observed
+hosp_429,hospital,12.974865,77.5096312,Essential Hospital,,,,8.0,observed
+hosp_430,hospital,13.0373572,77.6409059,Shree Vijayalakshmi Hospital and Trauma Centre,,,,8.0,observed
+hosp_431,hospital,12.9548208,77.5672585,Kalasa Maternity Home,,,,8.0,observed
+hosp_432,hospital,12.982442,77.5493681,Sidvin Hospital Pvt Ltd,,,,8.0,observed
+hosp_433,hospital,12.9246384,77.5509238,Abhilash Hospital And Sara Rehabilitation Centre,,,,8.0,observed
+hosp_434,hospital,12.9343279,77.6228848,"HCG, Koramangala",,,,8.0,observed
+hosp_435,hospital,12.8957636,77.6330289,"Ganesh Nursing Home, Bengaluru Urban",,,,8.0,observed
+hosp_436,hospital,12.8987442,77.6263127,Kavya Hospital,,,,8.0,observed
+hosp_437,hospital,12.9275311,77.5457901,Sg Hospital,,,,8.0,observed
+hosp_438,hospital,12.9988238,77.5819892,Place Guttahalli Maternity Home,,,,8.0,observed
+hosp_439,hospital,12.9608027,77.5911717,"Phoenix Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_440,hospital,12.9215104,77.4832503,"Shreya Hospital, Bengaluru Rural",,,,8.0,observed
+hosp_441,hospital,13.0241341,77.6335546,"Vasan Eye Care Hospital, Banaswadi",,,,8.0,observed
+hosp_442,hospital,12.9255704,77.4857756,Sri Annapoorneshwari Hospital,,,,8.0,observed
+hosp_443,hospital,13.0251833,77.5920609,"Vasan Eye Care Hospital, R.T.Nagar",,,,8.0,observed
+hosp_444,hospital,12.9563016,77.5747874,Kims Hospital and Research Centre,,,,8.0,observed
+hosp_445,hospital,12.9489406,77.5949925,"Karthik Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_446,hospital,12.9670215,77.5892667,Bangalore Kidney Stones Hospital,,,,8.0,observed
+hosp_447,hospital,12.9825937,77.6814736,Sree Lakshmi Hospital,,,,8.0,observed
+hosp_448,hospital,12.9271131,77.5471291,"Abhaya Eye Hospital, Super Speciality Eye Care Centre",,,,8.0,observed
+hosp_449,hospital,12.9994472,77.6162584,Mediscope Hospital Private Limited,,,,8.0,observed
+hosp_450,hospital,13.0555559,77.6517145,Medi Derma Hospital,,,,8.0,observed
+hosp_451,hospital,12.9110975,77.4806057,Mathru Hospital - Bangalore,,,,8.0,observed
+hosp_452,hospital,12.9825845,77.6124926,Manjushree Speciality Hospital,,,,8.0,observed
+hosp_453,hospital,13.0045747,77.5432728,Namratha Nursing And Maternity Home,,,,8.0,observed
+hosp_454,hospital,12.9424801,77.5473283,The Pulse Multi Speciality Hospital,,,,8.0,observed
+hosp_455,hospital,12.9514854,77.5703564,Popular Hospital,,,,8.0,observed
+hosp_456,hospital,12.9526505,77.5548633,Gavipuramguttahalli Maternity Home,,,,8.0,observed
+hosp_457,hospital,13.0139247,77.6640775,Ayurseva Hospital,,,,8.0,observed
+hosp_458,hospital,12.9745134,77.5493883,Spine Care And Ortho Care Hospital,,,,8.0,observed
+hosp_459,hospital,12.8579673,77.5892687,Vijayashree Hospitals,,,,8.0,observed
+hosp_460,hospital,12.9733764,77.5474034,Tanmay Hospital,,,,8.0,observed
+hosp_461,hospital,12.9651587,77.7150508,Aayug Multi Speciality Hospital,,,,8.0,observed
+hosp_462,hospital,12.9568547,77.7002262,MGA Hospital,,,,8.0,observed
+hosp_463,hospital,12.8705439,77.6595353,Blossom Hospital,,,,8.0,observed
+hosp_464,hospital,12.9160636,77.6308219,Bhagavathi Multi Speciality Hospital,,,,8.0,observed
+hosp_465,hospital,12.9144587,77.6003156,Sri Sai Ram Hospital - Bangalore,,,,8.0,observed
+hosp_466,hospital,12.9645006,77.5427189,Susheel Hospital,,,,8.0,observed
+hosp_467,hospital,12.9654318,77.52312,Dhanush Hospital,,,,8.0,observed
+hosp_468,hospital,12.970023,77.6307987,"Sadhana Eye Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_469,hospital,12.938853,77.5786096,Av Hospital,,,,8.0,observed
+hosp_470,hospital,12.9632506,77.5602901,"Balaji Hospital, K.H. Ranganath Colony",,,,8.0,observed
+hosp_471,hospital,13.0205082,77.6509675,Banasawadi Hospital,,,,8.0,observed
+hosp_472,hospital,13.0221036,77.6387729,Bangalore Eye Hospital And Retina Centre,,,,8.0,observed
+hosp_473,hospital,12.9110766,77.4800451,Belaku Eye Hospital,,,,8.0,observed
+hosp_474,hospital,12.9670615,77.5903161,Bhavatprabhu Hospitals Pvt Limited,,,,8.0,observed
+hosp_475,hospital,12.975802,77.6184806,Nikad Ortho Centre,,,,8.0,observed
+hosp_476,hospital,13.0195733,77.5419559,Raksha Multispeciality Hospital,,,,8.0,observed
+hosp_477,hospital,13.0195955,77.5419813,Cambridge Hospital,,,,8.0,observed
+hosp_478,hospital,13.0983472,77.5773677,"Prasad Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_479,hospital,12.9559644,77.5485635,Azad Nagar Maternity Home,,,,8.0,observed
+hosp_480,hospital,12.9403012,77.5764705,Gunasheela Surgical and Maternity Hospital,,,,8.0,observed
+hosp_481,hospital,12.9207314,77.5736019,Excel Care Hospital,,,,8.0,observed
+hosp_482,hospital,12.9292015,77.5819811,"Vasan Eye Care Hospital, Jayanagar",,,,8.0,observed
+hosp_483,hospital,12.9271389,77.579028,Hi Tech Kidney Stone Hospital,,,,8.0,observed
+hosp_484,hospital,12.9242515,77.573217,Dr. Vidyananda's Surgery and Dia Centre,,,,8.0,observed
+hosp_485,hospital,12.8981572,77.6207364,"Srushti Hospital, Bengaluru Rural",,,,8.0,observed
+hosp_486,hospital,12.9004567,77.6005474,Parimala Speciality Hospital,,,,8.0,observed
+hosp_487,hospital,13.0138123,77.6354731,"R K Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_488,hospital,12.9356703,77.6079905,"Prasad Eye Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_489,hospital,12.9819768,77.5108275,Unity Lifline Hospital Pvt Ltd,,,,8.0,observed
+hosp_490,hospital,13.0098352,77.5384723,J.P.Nursing Home,,,,8.0,observed
+hosp_491,hospital,13.0267995,77.5870813,North Side Health Centre,,,,8.0,observed
+hosp_492,hospital,12.8548947,77.6681162,Anugrahaa Hospital,,,,8.0,observed
+hosp_493,hospital,13.0657486,77.5992653,Amrutha Hospital,,,,8.0,observed
+hosp_494,hospital,12.910823,77.5207892,"Unity Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_495,hospital,12.9675989,77.6565533,Dr Chaitanyas Dental Care & Implant Centre,,,,8.0,observed
+hosp_496,hospital,12.9188948,77.6058905,Kareem E.N.T and Multispeciality Centre,,,,8.0,observed
+hosp_497,hospital,12.9085981,77.4784157,HK Hospital,,,,8.0,observed
+hosp_498,hospital,12.9777106,77.6459773,Chinmaya Narayana Super Specialty Centre,,,,8.0,observed
+hosp_499,hospital,12.9496114,77.5790786,Jyothi The Lasik Vision Centre,,,,8.0,observed
+hosp_500,hospital,12.9868695,77.4794832,S.S.G. Hospital,,,,8.0,observed
+hosp_501,hospital,12.9563042,77.5830996,Bengaluru West Lions Hospital,,,,8.0,observed
+hosp_502,hospital,12.9716291,77.5371969,Vijayanagar Hospital,,,,8.0,observed
+hosp_503,hospital,12.9550181,77.5683897,Abhinava Eye Hospital,,,,8.0,observed
+hosp_504,hospital,12.9067079,77.5849275,North Star Maternity and Nursing Home,,,,8.0,observed
+hosp_505,hospital,12.9685305,77.5843965,"Punarjyoti Eye Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_506,hospital,13.0080166,77.6221479,Sundar Hospital,,,,8.0,observed
+hosp_507,hospital,13.0121705,77.6961802,"Sri Ramakrishna Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_508,hospital,13.0423919,77.5136653,Sri Venkateshwara Eye Hospital,,,,8.0,observed
+hosp_509,hospital,13.015884,77.5973475,V Care Hospital,,,,8.0,observed
+hosp_510,hospital,12.9601022,77.5315556,A.M. Hospital,,,,8.0,observed
+hosp_511,hospital,12.9586907,77.5352668,"Divya Drishti Eye Hospital, Vijayanagar",,,,8.0,observed
+hosp_512,hospital,12.9617045,77.5217172,"Shridevi Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_513,hospital,13.0147224,77.6515616,Srinivasa Eye Hospital,,,,8.0,observed
+hosp_514,hospital,13.0112166,77.6743939,Spandana Hospital And Medical Centre,,,,8.0,observed
+hosp_515,hospital,12.9732706,77.5725357,Sreeniwasa Hospital,,,,8.0,observed
+hosp_516,hospital,12.988865,77.5078006,Ashraya Medinova Pvt Ltd,,,,8.0,observed
+hosp_517,hospital,12.9741253,77.561823,Magadi Road Maternity Home,,,,8.0,observed
+hosp_518,hospital,12.9980009,77.5432779,Pristine Hospital,,,,8.0,observed
+hosp_519,hospital,13.0021978,77.6329015,Dr Zamindar's Micro Surgical Eye Centre,,,,8.0,observed
+hosp_520,hospital,13.0004769,77.5054027,K.T.G. Hospital,,,,8.0,observed
+hosp_521,hospital,12.8980516,77.6339279,Vasan Eye Care Hospital,,,,8.0,observed
+hosp_522,hospital,12.9709143,77.6321116,Health Cottage Hospital,,,,8.0,observed
+hosp_523,hospital,12.89708,77.5473364,Samastha Hospitals Pvt Ltd,,,,8.0,observed
+hosp_524,hospital,13.0263344,77.595128,Poornima Hospital,,,,8.0,observed
+hosp_525,hospital,13.0357404,77.7347061,S.N. Hospital,,,,8.0,observed
+hosp_526,hospital,13.0178594,77.6547577,Dr.Zamindar Microsurgical Eye Centre,,,,8.0,observed
+hosp_527,hospital,13.0328036,77.633289,Good Shepherd Hospital,,,,8.0,observed
+hosp_528,hospital,12.9960196,77.6128413,"Dr.Agarwal Eye Hospital, Frazer Town, Bangalore",,,,8.0,observed
+hosp_529,hospital,13.0377564,77.5744454,"Mamta Hospital, Bengaluru Rural",,,,8.0,observed
+hosp_530,hospital,13.0360827,77.575065,S. J. Hospital,,,,8.0,observed
+hosp_531,hospital,12.964162,77.5982255,Republic Hospital,,,,8.0,observed
+hosp_532,hospital,12.9074269,77.5716318,R.R. Hospital and Trauma Centre,,,,8.0,observed
+hosp_533,hospital,13.0357169,77.7351701,Geetha Hospital,,,,8.0,observed
+hosp_534,hospital,13.0080397,77.6971089,"Suresh Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_535,hospital,13.0088071,77.6948659,Sri Ram Netralaya and Surgical Centre,,,,8.0,observed
+hosp_536,hospital,13.0090854,77.6969567,"Patil Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_537,hospital,13.011968,77.6659168,Sri Sai Eye Hospital,,,,8.0,observed
+hosp_538,hospital,12.9543777,77.6209764,Sri Ram Speciality Hospital,,,,8.0,observed
+hosp_539,hospital,13.0149675,77.6354957,Zion Hospital And Research Centre Pvt.Ltd.,,,,8.0,observed
+hosp_540,hospital,13.0068811,77.5055636,Jai Maruthi Hospital,,,,8.0,observed
+hosp_541,hospital,12.9619528,77.5728562,Institute Of Nephro Urology hospital,,,,8.0,observed
+hosp_542,hospital,12.9425676,77.6224349,Well Spring hospital,,,,8.0,observed
+hosp_543,hospital,13.0105038,77.5502452,Aaroyha Mandir Hospital,,,,8.0,observed
+hosp_544,hospital,12.9862161,77.5374853,"Punya Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_545,hospital,12.9418827,77.48376,"Vijaya Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_546,hospital,12.9761802,77.5261763,Sandhyashree Hospital,,,,8.0,observed
+hosp_547,hospital,13.0276736,77.6614188,Dr. Sailaja's Super Speciality Eye Hospital,,,,8.0,observed
+hosp_548,hospital,12.9162753,77.5589544,Hillside Hospital,,,,8.0,observed
+hosp_549,hospital,12.9646359,77.5926509,Pd Hinduja Sindhi Hospital,,,,8.0,observed
+hosp_550,hospital,12.9986239,77.542782,Sri Ranga Arogyadhama,,,,8.0,observed
+hosp_551,hospital,12.978053,77.5115959,Brinda Hospital,,,,8.0,observed
+hosp_552,hospital,12.95119,77.4918039,Sankalpa Hospital,,,,8.0,observed
+hosp_553,hospital,12.9705902,77.5108503,Deepashri Hospital,,,,8.0,observed
+hosp_554,hospital,12.9817233,77.5549364,Rotary Eye Hospital (A Unit Of Bangalore North Rotary Trust),,,,8.0,observed
+hosp_555,hospital,13.0218344,77.5567093,Acharya Tulsi Jain Hospital,,,,8.0,observed
+hosp_556,hospital,12.9526616,77.61503,Get Well Hospital,,,,8.0,observed
+hosp_557,hospital,13.0241863,77.5960574,Premier Hospital,,,,8.0,observed
+hosp_558,hospital,13.0001802,77.5461146,Gurukripa Hospital and Health Care Centre,,,,8.0,observed
+hosp_559,hospital,13.0269276,77.6227882,Avian Medicare and Research Centre,,,,8.0,observed
+hosp_560,hospital,12.8919999,77.6257829,Vinayaka Health Care and Maternity Home,,,,8.0,observed
+hosp_561,hospital,13.0113204,77.6771966,Little Flower Hospital,,,,8.0,observed
+hosp_562,hospital,12.9543465,77.5755649,"Venkateswara Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_563,hospital,13.0093599,77.5222108,Sai Baba Hospital,,,,8.0,observed
+hosp_564,hospital,12.8914666,77.5612113,"Metro Hospital, Bengaluru Rural",,,,8.0,observed
+hosp_565,hospital,12.9783164,77.5429603,"Madhu Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_566,hospital,13.0236062,77.6196139,Al- Habeeb Hospital,,,,8.0,observed
+hosp_567,hospital,12.9439008,77.6065864,"Santhigiri Ayurveda and Siddha Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_568,hospital,12.9745983,77.5436792,Padmashree Diagnostics,,,,8.0,observed
+hosp_569,hospital,12.9721779,77.6807872,Venus MultiSpeciality Hospital,,,,8.0,observed
+hosp_570,hospital,12.8541208,77.6624811,Ramakrishna Hospital,,,,8.0,observed
+hosp_571,hospital,12.9102142,77.6244654,Roopena Agrahara Government Hospital,,,,8.0,observed
+hosp_572,hospital,12.922327,77.736038,"Government Hospital, Gunjur",,,,8.0,observed
+hosp_573,hospital,13.031132,77.483923,Thippenalli Government Hospital,,,,8.0,observed
+hosp_574,hospital,13.009817,77.5231852,Laggere Government Hospital,,,,8.0,observed
+hosp_575,hospital,13.0164321,77.7169887,Seegehalli Government Hospital,,,,8.0,observed
+hosp_576,hospital,12.9629127,77.4751834,Ullalu Government Hospital,,,,8.0,observed
+hosp_577,hospital,12.993382,77.5694167,K.C. General Hospital,,,,8.0,observed
+hosp_578,hospital,13.049152,77.510442,NELAMAHESHWARI Government Hospital,,,,8.0,observed
+hosp_579,hospital,13.0701337,77.6329103,Sai Hospital,,,,8.0,observed
+hosp_580,hospital,12.9358669,77.4927128,Sree Ranga Hospital,,,,8.0,observed
+hosp_581,hospital,13.0324318,77.6085263,Cure Hospital,,,,8.0,observed
+hosp_582,hospital,12.9853993,77.5454024,Yashas Neurocare,,,,8.0,observed
+hosp_583,hospital,12.9870634,77.549951,Focus Diagnostic Center,,,,8.0,observed
+hosp_584,hospital,12.931298,77.5412566,Vittal Eye HOspital,,,,8.0,observed
+hosp_585,hospital,13.0413777,77.5050224,naveen clinc,,,,8.0,observed
+hosp_586,hospital,12.9240924,77.6177848,Chamundi Hi Tech Hospital,,,,8.0,observed
+hosp_587,hospital,12.9807257,77.6823734,Little Flower Hospital,,,,8.0,observed
+hosp_588,hospital,13.006205,77.7004289,NMPC Hospital,,,,8.0,observed
+hosp_589,hospital,13.0082031,77.697197,R R Hospital,,,,8.0,observed
+hosp_590,hospital,12.9901305,77.6713322,Jeevan Hospital,,,,8.0,observed
+hosp_591,hospital,13.0031618,77.7059531,Vicky Family Life,,,,8.0,observed
+hosp_592,hospital,12.9946786,77.6709989,Vedam Ayurveda Multi Speciality Hospital,,,,8.0,observed
+hosp_593,hospital,13.0239995,77.6585299,Stroke Treatment Paralysis,,,,8.0,observed
+hosp_594,hospital,13.0283977,77.6599575,Geriatric Hospitals,,,,8.0,observed
+hosp_595,hospital,13.0219523,77.6994046,Health Plus Multi Speciality Hospital,,,,8.0,observed
+hosp_596,hospital,12.9966313,77.671863,Pragathi Piles Hospital,,,,8.0,observed
+hosp_597,hospital,12.9895049,77.6741439,Mahaveer Hospitals,,,,8.0,observed
+hosp_598,hospital,13.033219,77.6747693,Eshawar HospItal,,,,8.0,observed
+hosp_599,hospital,12.973637,77.675186,Medihope Super Specialty Hospital,,,,8.0,observed
+hosp_600,hospital,12.989869,77.676589,Cure N Care Hospital,,,,8.0,observed
+hosp_601,hospital,13.0106539,77.6969464,Sad Bydya Shala Ayurvedic Hospital,,,,8.0,observed
+hosp_602,hospital,13.011115,77.697361,Sri Lakshmi Super Speciality Hospital,,,,8.0,observed
+hosp_603,hospital,13.0031938,77.7128759,Kids Health Link,,,,8.0,observed
+hosp_604,hospital,12.991561,77.6757833,Prakruti Hospital,,,,8.0,observed
+hosp_605,hospital,13.0042616,77.7114153,Amrutha Healthcare,,,,8.0,observed
+hosp_606,hospital,12.975501,77.534972,Kamadhenu Hospital,,,,8.0,observed
+hosp_607,hospital,12.9688989,77.6422131,Dr. Rajesh Hospitals Eye and Dental,,,,8.0,observed
+hosp_608,hospital,12.957269,77.653945,OJUS Multi Speciality Hospital,,,,8.0,observed
+hosp_609,hospital,12.9835824,77.5289448,Benaka Hospital,,,,8.0,observed
+hosp_610,hospital,12.9744928,77.5342045,"Goverment Hospital, Hosahalli",,,,8.0,observed
+hosp_611,hospital,12.9635299,77.6662889,Jhon's Medical Hospital,,,,8.0,observed
+hosp_612,hospital,12.96767,77.5226459,Vijaya Hospital,,,,8.0,observed
+hosp_613,hospital,12.9780731,77.5251934,Government Hospital,,,,8.0,observed
+hosp_614,hospital,12.9734087,77.5462808,Sriprasad Ayurveda,,,,8.0,observed
+hosp_615,hospital,12.9707429,77.5377684,Vidya Eye Hospital,,,,8.0,observed
+hosp_616,hospital,12.9698194,77.6317472,Sai Baba Hospital,,,,8.0,observed
+hosp_617,hospital,12.9555948,77.6418006,Shree Sai Speciality Hospital,,,,8.0,observed
+hosp_618,hospital,12.9615606,77.5222312,Shree Dhanvantari Ayurveda Hospital,,,,8.0,observed
+hosp_619,hospital,12.961509,77.523151,Srinivasam Cancer Care Multi Speciality Hospital,,,,8.0,observed
+hosp_620,hospital,12.9589495,77.6603768,Magdum Hospital,,,,8.0,observed
+hosp_621,hospital,12.9673428,77.6424996,Athoz Hospitals,,,,8.0,observed
+hosp_622,hospital,12.9802303,77.5548818,G.R. Hospital,,,,8.0,observed
+hosp_623,hospital,12.9754301,77.5358001,Sneha Horizon Hospital,,,,8.0,observed
+hosp_624,hospital,12.968292,77.524492,Jagjeevanram Hospital,,,,8.0,observed
+hosp_625,hospital,12.974339,77.542325,Kangroo Hospital,,,,8.0,observed
+hosp_626,hospital,12.9757486,77.553782,Abhinav Hospital,,,,8.0,observed
+hosp_627,hospital,12.969102,77.534951,Suhusannidhi Hospital,,,,8.0,observed
+hosp_628,hospital,12.963967,77.4973049,Abivrud Cancer Care & Research Centre,,,,8.0,observed
+hosp_629,hospital,12.9745497,77.5208943,Panchsheela Nagar Hospital,,,,8.0,observed
+hosp_630,hospital,12.9693009,77.6317545,ESIC Hospital,,,,8.0,observed
+hosp_631,hospital,12.9698191,77.5360801,Sai Ortho and Dental Centre,,,,8.0,observed
+hosp_632,hospital,12.9794315,77.5441641,Ammashrees Hospital,,,,8.0,observed
+hosp_633,hospital,12.963951,77.64308,Lohitha Hospital,,,,8.0,observed
+hosp_634,hospital,12.9639829,77.5188899,Government Hospital,,,,8.0,observed
+hosp_635,hospital,12.9679971,77.5015759,Revathi Hospital,,,,8.0,observed
+hosp_636,hospital,12.9637162,77.5188263,Shanthakumari Hospital,,,,8.0,observed
+hosp_637,hospital,12.9735574,77.5461246,Bengaluru Child Neurology and Rehabilitaion Centre,,,,8.0,observed
+hosp_638,hospital,12.976379,77.524439,Sumati Hospital,,,,8.0,observed
+hosp_639,hospital,12.9583212,77.659636,Dr. Hemant Agrawal,,,,8.0,observed
+hosp_640,hospital,12.975423,77.540659,Dr. Nothesh Child Specialist,,,,8.0,observed
+hosp_641,hospital,12.9544981,77.6401572,Swasthya Hospitals,,,,8.0,observed
+hosp_642,hospital,12.958861,77.654322,Miracle Hopital,,,,8.0,observed
+hosp_643,hospital,12.9698787,77.5332834,Sastry Memorial Hospital,,,,8.0,observed
+hosp_644,hospital,12.852699,77.667688,Springleaf Hospital,,,,8.0,observed
+hosp_645,hospital,12.8859649,77.6489078,Hospitec Multispeciality Hospital,,,,8.0,observed
+hosp_646,hospital,12.9056165,77.6122688,Sri Venkateswara Hospital,,,,8.0,observed
+hosp_647,hospital,12.895426,77.607662,Rajashri Grandhim Hospitals,,,,8.0,observed
+hosp_648,hospital,12.8908362,77.6040715,Goldage Hospital,,,,8.0,observed
+hosp_649,hospital,12.850377,77.6567056,Best E City Hospital,,,,8.0,observed
+hosp_650,hospital,12.93753,77.549675,Vinayaka Hospital,,,,8.0,observed
+hosp_651,hospital,12.9633185,77.5790145,Unani Hospital,,,,8.0,observed
+hosp_652,hospital,12.9596227,77.6146819,Rahul Maternity & Child Health Centre,,,,8.0,observed
+hosp_653,hospital,12.9405198,77.5794387,Bangaluru Unani Hospital,,,,8.0,observed
+hosp_654,hospital,12.953049,77.574203,Medcare Hospital,,,,8.0,observed
+hosp_655,hospital,12.9417439,77.5601782,Sumanjara Hospital,,,,8.0,observed
+hosp_656,hospital,12.961345,77.560893,Corporation Hospital,,,,8.0,observed
+hosp_657,hospital,12.945591,77.5712865,Mitralaya Hospital,,,,8.0,observed
+hosp_658,hospital,12.942076,77.553598,People Tree Hospitals,,,,8.0,observed
+hosp_659,hospital,12.936459,77.584422,Apollo Specialty Hospital,,,,8.0,observed
+hosp_660,hospital,12.9609494,77.5613939,Government Hospital,,,,8.0,observed
+hosp_661,hospital,12.940404,77.5580361,Verna Hospital,,,,8.0,observed
+hosp_662,hospital,12.9587464,77.5573456,"Government Hospital, Banglore",,,,8.0,observed
+hosp_663,hospital,12.960311,77.568274,Royan Maternity & Child Welfare Centre,,,,8.0,observed
+hosp_664,hospital,12.9652304,77.6104334,Alisa Eye Hospital,,,,8.0,observed
+hosp_665,hospital,12.945944,77.567404,Shekhar Hospital,,,,8.0,observed
+hosp_666,hospital,12.949104,77.563226,Government Hospital,,,,8.0,observed
+hosp_667,hospital,12.9415883,77.5641917,Jeevini Sarvodaya Hospital,,,,8.0,observed
+hosp_668,hospital,12.9569684,77.5695045,Mahaveer Ortho Care Speciality Centre,,,,8.0,observed
+hosp_669,hospital,12.938787,77.554296,Raghavendra Hospital,,,,8.0,observed
+hosp_670,hospital,12.938453,77.551329,Apaara Multi Speciality,,,,8.0,observed
+hosp_671,hospital,12.939882,77.573989,Khincha Orthopaedic Centre,,,,8.0,observed
+hosp_672,hospital,12.948971,77.563543,Parameshwari Hospital,,,,8.0,observed
+hosp_673,hospital,12.9422541,77.5506328,Drishti Nethralaya,,,,8.0,observed
+hosp_674,hospital,12.9654649,77.5894756,Furtde Hospital,,,,8.0,observed
+hosp_675,hospital,12.9702549,77.5734571,Manavarthapet Pregnancy Hospital,,,,8.0,observed
+hosp_676,hospital,12.9434996,77.5796583,Trinity Hospital and Heart Foundation,,,,8.0,observed
+hosp_677,hospital,12.957222,77.566486,Spandana Heart Centre,,,,8.0,observed
+hosp_678,hospital,12.960296,77.614714,Shas Eye Care,,,,8.0,observed
+hosp_679,hospital,12.9420276,77.575634,Matha Pitha Hospital,,,,8.0,observed
+hosp_680,hospital,12.972126,77.573351,ESI Hospital,,,,8.0,observed
+hosp_681,hospital,12.960972,77.5609696,Herige Hospital,,,,8.0,observed
+hosp_682,hospital,12.9654497,77.5999044,Gleneagles Global Hospitals,,,,8.0,observed
+hosp_683,hospital,12.9658901,77.589928,Punarjyoti Eye Hospital,,,,8.0,observed
+hosp_684,hospital,12.9479647,77.5696395,Swastik Eye Hospital,,,,8.0,observed
+hosp_685,hospital,12.9458294,77.5799015,Dave Gray Hospital,,,,8.0,observed
+hosp_686,hospital,12.9650303,77.5954946,Dr. Rudrappa's Hospital,,,,8.0,observed
+hosp_687,hospital,13.081777,77.54091,Aveksha Hospital,,,,8.0,observed
+hosp_688,hospital,13.0193799,77.6535352,Shishuka Children's Speciality Hospital,,,,8.0,observed
+hosp_689,hospital,13.0091103,77.6579493,Skin Remediez,,,,8.0,observed
+hosp_690,hospital,13.0524836,77.6120857,Navya Hospital,,,,8.0,observed
+hosp_691,hospital,13.0201491,77.6516628,Ovum Birthing Centre,,,,8.0,observed
+hosp_692,hospital,13.0528211,77.6041042,Icon Hospital,,,,8.0,observed
+hosp_693,hospital,13.0283463,77.6298629,Medicure Hospital,,,,8.0,observed
+hosp_694,hospital,13.0102697,77.6525909,Motherhood Women & Children Hospital,,,,8.0,observed
+hosp_695,hospital,13.0866852,77.5535728,Santhamma Hospital,,,,8.0,observed
+hosp_696,hospital,13.0263661,77.6302142,Feran Hospital,,,,8.0,observed
+hosp_697,hospital,13.0166883,77.6604049,Super Specialty Eye Hospital,,,,8.0,observed
+hosp_698,hospital,13.013761,77.648529,Endocrine Speciality Centre,,,,8.0,observed
+hosp_699,hospital,13.0885791,77.5455057,Shree Sai Hospital,,,,8.0,observed
+hosp_700,hospital,13.065863,77.604213,Axis Hospital,,,,8.0,observed
+hosp_701,hospital,13.0188119,77.647187,Anjani Women's Day Care Hospital,,,,8.0,observed
+hosp_702,hospital,13.0658472,77.5992844,Eswar Women and Day Care Hospital,,,,8.0,observed
+hosp_703,hospital,13.026989,77.6281742,CDEC Hospital,,,,8.0,observed
+hosp_704,hospital,13.029101,77.620568,Pranam Dental Hospital,,,,8.0,observed
+hosp_705,hospital,13.0109537,77.6476418,Milaan Hospital,,,,8.0,observed
+hosp_706,hospital,13.020084,77.654053,Cloudnine Hospital,,,,8.0,observed
+hosp_707,hospital,13.098943,77.576716,Rangalakshmi Netralaya,,,,8.0,observed
+hosp_708,hospital,13.0997321,77.5760891,Rainbow Health Care,,,,8.0,observed
+hosp_709,hospital,13.098909,77.596219,Jayalakshmi Hospital,,,,8.0,observed
+hosp_710,hospital,13.0981485,77.596139,Pavan Hospitals,,,,8.0,observed
+hosp_711,hospital,13.0938081,77.5804166,Kushi Hospital,,,,8.0,observed
+hosp_712,hospital,13.098668,77.5826843,Just Smiles,,,,8.0,observed
+hosp_713,hospital,12.925461,77.609021,Lavis Hospital,,,,8.0,observed
+hosp_714,hospital,12.9215119,77.5724702,Sevakshetra Hospital,,,,8.0,observed
+hosp_715,hospital,12.9055752,77.5425258,Perfetual Help Hospital,,,,8.0,observed
+hosp_716,hospital,12.9121632,77.6098276,Shree Vaishnavi Heart Centre and Multi Speciality,,,,8.0,observed
+hosp_717,hospital,12.9136262,77.6045369,Marigold Hospital,,,,8.0,observed
+hosp_718,hospital,12.9334096,77.5622345,Bharathi Hospitals,,,,8.0,observed
+hosp_719,hospital,12.9239445,77.6198634,Devi Hospital,,,,8.0,observed
+hosp_720,hospital,12.924153,77.565797,Devagiri Hospital,,,,8.0,observed
+hosp_721,hospital,12.9159348,77.6034098,Pothys Hospital,,,,8.0,observed
+hosp_722,hospital,12.916234,77.593019,Center for Liver Disease Hospital,,,,8.0,observed
+hosp_723,hospital,12.9254569,77.5467101,Sudha Prevention Centre,,,,8.0,observed
+hosp_724,hospital,12.920651,77.5746118,Sahasra Hospital,,,,8.0,observed
+hosp_725,hospital,12.9265183,77.6090995,Health India Hospital,,,,8.0,observed
+hosp_726,hospital,12.9202202,77.5772991,Shanti Hospital,,,,8.0,observed
+hosp_727,hospital,12.923857,77.611355,Spurthy Hospital,,,,8.0,observed
+hosp_728,hospital,12.916885,77.585258,Apollo Cradle Maternity & Children's Hospital,,,,8.0,observed
+hosp_729,hospital,12.906113,77.542548,St. Martha's Hospital,,,,8.0,observed
+hosp_730,hospital,12.9778121,77.6459447,Chinmaya Hrudayalaya,,,,8.0,observed
+hosp_731,hospital,13.0903942,77.4966765,Government Hospital,,,,8.0,observed
+hosp_732,hospital,13.0803204,77.5535057,Government Hospital,,,,8.0,observed
+hosp_733,hospital,13.0770012,77.5581038,Bangalore Healthcare Center Pranav Ayurveda Hospital,,,,8.0,observed
+hosp_734,hospital,13.070554,77.5388968,Government Hospital,,,,8.0,observed
+hosp_735,hospital,13.0650144,77.5041964,Kruthika Hospital,,,,8.0,observed
+hosp_736,hospital,13.0621628,77.5177637,Dr Saju George Kottakkal,,,,8.0,observed
+hosp_737,hospital,13.0559513,77.5329456,Fathima Hospital,,,,8.0,observed
+hosp_738,hospital,13.0439933,77.5065494,Esi Dispensary,,,,8.0,observed
+hosp_739,hospital,13.0313399,77.5055985,Ashwini Hospital,,,,8.0,observed
+hosp_740,hospital,13.0280728,77.5231858,Esi Hospital Peenya 1st Stage,,,,8.0,observed
+hosp_741,hospital,13.006795,77.571159,Nayanalaya Super Speciality Eye Care Centre,,,,8.0,observed
+hosp_742,hospital,13.005821,77.5725746,Srinidhi Health Centre,,,,8.0,observed
+hosp_743,hospital,13.0054934,77.5719519,Orthopedic & Eye Care Center,,,,8.0,observed
+hosp_744,hospital,13.004596,77.5540033,ESI Hospital,,,,8.0,observed
+hosp_745,hospital,13.0044307,77.5785238,Ramani Orthopaedic Hospital,,,,8.0,observed
+hosp_746,hospital,13.004314,77.547749,Atharva Ayurdhama Ayurvedic Hospital,,,,8.0,observed
+hosp_747,hospital,13.0015461,77.5721683,RICH CARE HOMEOPATHY,,,,8.0,observed
+hosp_748,hospital,12.998238,77.551173,Poornayu Ayurveda Hospital,,,,8.0,observed
+hosp_749,hospital,12.9981064,77.6008126,Appllo Diagnostic,,,,8.0,observed
+hosp_750,hospital,12.9969996,77.5730038,Supra Diagnostics Spine Care And Ortho Care Hospital,,,,8.0,observed
+hosp_751,hospital,12.9960244,77.5693714,K.C.General Hospital,,,,8.0,observed
+hosp_752,hospital,12.9916924,77.5539007,ESIC Model Hospital,,,,8.0,observed
+hosp_753,hospital,12.9905045,77.5566355,Government Hospital,,,,8.0,observed
+hosp_754,hospital,12.9904985,77.5530924,Esi Hospital Bangalore,,,,8.0,observed
+hosp_755,hospital,12.9844963,77.5551801,Government Hospital,,,,8.0,observed
+hosp_756,hospital,12.9831814,77.4787872,Anupama Hospital,,,,8.0,observed
+hosp_757,hospital,13.0332219,77.5549236,Sun Orthopaedic center,,,,8.0,observed
+hosp_758,hospital,12.9305937,77.6186159,St. Johns hospital Emergency ward,,,,8.0,observed
+hosp_759,hospital,12.9128623,77.5714903,Healing Hands Advanced Physiotherapy Clinic,,,,8.0,observed
+hosp_760,hospital,12.9288444,77.5828703,Narayan Multispeciality clinic,,,,8.0,observed
+hosp_761,hospital,12.9208444,77.4847891,Adarsh Hospital,,,,8.0,observed
+hosp_762,hospital,12.9395279,77.586437,clinic,,,,8.0,observed
+hosp_763,hospital,13.0544507,77.6316369,Shree Manyata Hospitals,,,,8.0,observed
+hosp_764,hospital,12.9355966,77.5971575,Kidwai Cancer Institute Radiation Block,,,,8.0,observed
+hosp_765,hospital,13.0344639,77.6291947,Altius Hospital,,,,8.0,observed
+hosp_766,hospital,12.9365283,77.7046741,Maya Hospital,,,,8.0,observed
+hosp_767,hospital,12.9556074,77.7216631,Devi Eye Hospital,,,,8.0,observed
+hosp_768,hospital,12.9337751,77.7433234,Sahasra Hospital,,,,8.0,observed
+hosp_769,hospital,12.8832909,77.5500857,Cloudnine Hospital,,,,8.0,observed
+hosp_770,hospital,12.9429852,77.5460604,My Dentist,,,,8.0,observed
+hosp_771,hospital,12.9563317,77.7305782,Siddanth Hospital,,,,8.0,observed
+hosp_772,hospital,12.9263862,77.6766068,Apollo Pharmacy,,,,8.0,observed
+hosp_773,hospital,13.048083,77.628791,Suraksha Hospital,,,,8.0,observed
+hosp_774,hospital,12.9094156,77.663997,The Local Dentist,,,,8.0,observed
+hosp_775,hospital,12.9918503,77.5437825,Janani Clinics,,,,8.0,observed
+hosp_776,hospital,12.9144825,77.6491563,Lotus Hospital,,,,8.0,observed
+hosp_777,hospital,12.9782618,77.6435889,Ayaans Hospital,,,,8.0,observed
+hosp_778,hospital,12.9400516,77.5954768,NIMHANS Department Of Psychiatric and Neuro Rehabilitation,,,,8.0,observed
+hosp_779,hospital,12.9396498,77.5967825,Nimhans Mr-pet Center,,,,8.0,observed
+hosp_780,hospital,12.9402037,77.5954721,NIMHANS Physiotherapy Center,,,,8.0,observed
+hosp_781,hospital,12.8784742,77.5450234,Zymus Hospitals,,,,8.0,observed
+hosp_782,hospital,12.906071,77.5869281,Cadabam's Hospitals,,,,8.0,observed
+hosp_783,hospital,12.9596032,77.5112481,"Fortis Hospital, Nagarbhavi",,,,8.0,observed
+hosp_784,hospital,13.058128,77.5860405,MEDSTAR Speciality Hospital,,,,8.0,observed
+hosp_785,hospital,12.9774449,77.6271297,Span Health Center,,,,8.0,observed
+hosp_786,hospital,12.8804891,77.6552588,Smile Smart Dental & Implant Centre,,,,8.0,observed
+hosp_787,hospital,12.9778346,77.6282837,Uvin Care Hospital,,,,8.0,observed
+hosp_788,hospital,12.8933895,77.6368614,Sai Sparsh Hospital,,,,8.0,observed
+hosp_789,hospital,12.9075935,77.5707809,Bengaluru City Hospital,,,,8.0,observed
+hosp_790,hospital,12.9971683,77.6145878,Aspire Hospital,,,,8.0,observed
+hosp_791,hospital,12.8835095,77.550214,Dhee Hospital,,,,8.0,observed
+hosp_792,hospital,12.9240012,77.6481809,Sai Thunga Hospitals,,,,8.0,observed
+hosp_793,hospital,13.098072,77.567378,Esha Hospital,,,,8.0,observed
+hosp_794,hospital,12.9058817,77.6037517,Chirag Global Hospital,,,,8.0,observed
+hosp_795,hospital,13.0624568,77.592227,Manipal Hospital OPD,,,,8.0,observed
+hosp_796,hospital,13.0065047,77.5545009,PMC Hospital,,,,8.0,observed
+hosp_797,hospital,12.9988382,77.5550964,New Varalakshmi Hospital,,,,8.0,observed
+hosp_798,hospital,13.0988482,77.5978974,Ashwini Hospital,,,,8.0,observed
+hosp_799,hospital,13.002768,77.5536287,Apollo Cradle Children's Hospital,,,,8.0,observed
+hosp_800,hospital,13.0620051,77.5930638,Motherhood Children's Hospital,,,,8.0,observed
+hosp_801,hospital,12.8728525,77.6515698,Abiramm Hospital,,,,8.0,observed
+hosp_802,hospital,12.99743,77.5510293,Netradhama,,,,8.0,observed
+hosp_803,hospital,12.871395,77.6542581,Sri Sai Hospital,,,,8.0,observed
+hosp_804,hospital,12.8841477,77.6492549,,,,,8.0,observed
+hosp_805,hospital,12.8892622,77.6505317,Raksha Hospital,,,,8.0,observed
+hosp_806,hospital,12.9658506,77.6109015,St Philomenas Hospital OPD Building,,,,8.0,observed
+hosp_807,hospital,12.9754354,77.5358965,Hiremath Hospital,,,,8.0,observed
+hosp_808,hospital,12.9962739,77.6075693,Gawai Hospital,,,,8.0,observed
+hosp_809,hospital,12.9342277,77.6296323,Beams Hospitals Private Limited,,,,8.0,observed
+hosp_810,hospital,12.9569057,77.5824398,H Siddiah Referral Hospital,,,,8.0,observed
+hosp_811,hospital,12.939978,77.7467408,Suraksha Hospitsls,,,,8.0,observed
+hosp_812,hospital,12.9433908,77.7475266,Aria,,,,8.0,observed
+hosp_813,hospital,12.9519863,77.4989075,"Shri Mokambika Women's Clinic, Child care and Nethralaya",,,,8.0,observed
+hosp_814,hospital,12.9519538,77.4990341,Suraksha Diagnostic Centre,,,,8.0,observed
+hosp_815,hospital,12.9566829,77.7414284,Cloud Nine,,,,8.0,observed
+hosp_816,hospital,12.9937247,77.5539724,Jindal Charitable Hospital,,,,8.0,observed
+hosp_817,hospital,12.9644726,77.6143018,Hosmat Hospitals,,,,8.0,observed
+hosp_818,hospital,12.9160037,77.6523087,Bangalore Gastro Centre,,,,8.0,observed
+hosp_819,hospital,12.980602,77.7092104,Narayana Nethralaya,,,,8.0,observed
+hosp_820,hospital,12.9762006,77.7258334,Nethradhama,,,,8.0,observed
+hosp_821,hospital,12.9388501,77.7472104,Sree Venkateshwara Hospital,,,,8.0,observed
+hosp_822,hospital,12.9296701,77.5764082,AMC Multispeciality Hospital,,,,8.0,observed
+hosp_823,hospital,12.9346221,77.6284665,Proteeth Dental,,,,8.0,observed
+hosp_824,hospital,13.0170153,77.6429262,Trilife Hospital,,,,8.0,observed
+hosp_825,hospital,12.9405054,77.5848675,Big Hospitals,,,,8.0,observed
+hosp_826,hospital,13.0202419,77.6516186,Motherhood,,,,8.0,observed
+hosp_827,hospital,13.0058328,77.6597392,NASA Hospitals,,,,8.0,observed
+hosp_828,hospital,13.0219385,77.6385853,Bangalore Orthopeadic And Surgical Hospital,,,,8.0,observed
+hosp_829,hospital,12.9070989,77.5460762,Nano Hospitals,,,,8.0,observed
+hosp_830,hospital,12.932315,77.6852483,Sakra World Hospital,,,,8.0,observed
+hosp_831,hospital,12.9061361,77.5868707,"Healing Hands Clinic - J.P Nagar, Bengaluru",,,,8.0,observed
+hosp_832,hospital,12.9783093,77.6426202,"Healing Hands Clinic - Indiranagar, Bengaluru",,,,8.0,observed
+hosp_833,hospital,13.0635992,77.5895961,"Healing Hands Clinic - Sahakar Nagar, Bengaluru",,,,8.0,observed
+hosp_834,hospital,12.9120415,77.6479898,"Healing Hands Clinic - HSR Layout, Bengaluru",,,,8.0,observed
+hosp_835,hospital,12.9981698,77.5429724,"Healing Hands Clinic - Rajajinagar, Bengaluru",,,,8.0,observed
+hosp_836,hospital,12.9880628,77.7298427,"Healing Hands Clinic - Whitefield, Bengaluru",,,,8.0,observed
+hosp_837,hospital,12.8695143,77.6542531,Apollo Cradle & Children's Hospital,,,,8.0,observed
+hosp_838,hospital,12.855088,77.6631602,Kauvery hospital,,,,8.0,observed
+hosp_839,hospital,13.0408289,77.5626277,Sukoon Psychiatry Centre,,,,8.0,observed
+hosp_840,hospital,13.059585,77.648516,Sunshine Hospital,,,,8.0,observed
+hosp_841,hospital,12.9072685,77.64555,Ovum Women & Child Speciality Hospital,,,,8.0,observed
+hosp_842,hospital,12.9324666,77.6853621,Dr Ramesh Dalwai Spine Surgeon,,,,8.0,observed
+hosp_843,hospital,12.9114199,77.5850249,Aster RV Hospital,,,,8.0,observed
+hosp_844,hospital,12.9779337,77.6461885,Chinmaya Mission Hospital,,,,8.0,observed
+hosp_845,hospital,13.0305079,77.535667,KLE Dental College,,,,8.0,observed
+hosp_846,hospital,13.0157723,77.5638038,Health Centre,,,,8.0,observed
+hosp_847,hospital,12.9950532,77.5697431,K C General Hospital,,,,8.0,observed
+hosp_848,hospital,12.9708175,77.5857431,St Marthas Hospital,,,,8.0,observed
+hosp_849,hospital,12.9681553,77.5950421,Vydehi Superspeciality Hospital,,,,8.0,observed
+hosp_850,hospital,12.9261175,77.592549,Jayanagar General Hospital,,,,8.0,observed
+hosp_851,hospital,12.9383683,77.5899069,Hospital Complex,,,,8.0,observed
+hosp_852,hospital,12.918526,77.599254,Sri Jayadeva Institute Of Cardiology,,,,8.0,observed
+hosp_853,hospital,13.04958,77.5509219,HMT Hospital,,,,8.0,observed
+hosp_854,hospital,13.0503387,77.5567647,BEL Hospital,,,,8.0,observed
+hosp_855,hospital,12.8947511,77.5985816,"Fortis Hospitals, Bannerghatta Road",,,,8.0,observed
+hosp_856,hospital,12.89632,77.5983495,Apollo Hospital,,,,8.0,observed
+hosp_857,hospital,12.9914884,77.5952993,Bhagwan Mahaveer Jain Hospital,,,,8.0,observed
+hosp_858,hospital,12.9830115,77.6047116,Bowring and Lady Curzon Hospitals,,,,8.0,observed
+hosp_859,hospital,12.9837175,77.599792,Sir Haji Ismail Gosha Sait Hospital,,,,8.0,observed
+hosp_860,hospital,12.9641529,77.5676947,Government Veterinary Hospital,,,,8.0,observed
+hosp_861,hospital,12.9798353,77.5651105,Divisional Railway Hospital,,,,8.0,observed
+hosp_862,hospital,13.0347249,77.5901708,Baptist Hospital,,,,8.0,observed
+hosp_863,hospital,12.9713479,77.6367243,ESI Hospital,,,,8.0,observed
+hosp_864,hospital,13.0971434,77.5893851,KK Hospital,,,,8.0,observed
+hosp_865,hospital,12.992488,77.7062224,ESI Dispensary,,,,8.0,observed
+hosp_866,hospital,12.9110143,77.5797725,Rajshekhar Hospital,,,,8.0,observed
+hosp_867,hospital,12.9574104,77.7134875,Karunashraya,,,,8.0,observed
+hosp_868,hospital,12.9571436,77.7128215,Sankara Eye Hospital,,,,8.0,observed
+hosp_869,hospital,12.9833345,77.5945358,"Sparsh Hospital For Advanced Surgeries, Bengaluru Urban",,,,8.0,observed
+hosp_870,hospital,12.9808814,77.7303048,Sri Sathya Sai Institute of Higher Medical Sciences,,,,8.0,observed
+hosp_871,hospital,12.908884,77.5136186,Manipal Speciality Hospital,,,,8.0,observed
+hosp_872,hospital,12.9587074,77.6490296,"Manipal Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_873,hospital,13.0990774,77.5861467,Chaitanya Nursing Home,,,,8.0,observed
+hosp_874,hospital,12.9409612,77.5455617,Radhakrishna Multispeciality Hospital,,,,8.0,observed
+hosp_875,hospital,12.9164637,77.5796155,Rajalakshmi Multispeciality Hospital,,,,8.0,observed
+hosp_876,hospital,12.9585777,77.6481409,Manipal Hospital,,,,8.0,observed
+hosp_877,hospital,12.9829238,77.6446972,Indiranagar Government Hospital,,,,8.0,observed
+hosp_878,hospital,12.9839262,77.6436191,Isolation Hospital,,,,8.0,observed
+hosp_879,hospital,12.9864155,77.6437586,Epidemic Disesase Hospital,,,,8.0,observed
+hosp_880,hospital,12.9909528,77.5534579,Employees' State Insurance Corporation Model Hospital,,,,8.0,observed
+hosp_881,hospital,12.9308127,77.5412224,"Vittala International Institute Of Ophthalmology, Hosakerehalli",,,,8.0,observed
+hosp_882,hospital,12.966082,77.656317,ISRO Employees Hospital,,,,8.0,observed
+hosp_883,hospital,13.0282176,77.569775,Ramaiah Memorial Hospital,,,,8.0,observed
+hosp_884,hospital,12.9691251,77.6133228,Hosmat Hospital,,,,8.0,observed
+hosp_885,hospital,12.9634957,77.5736948,Victoria Hospital,,,,8.0,observed
+hosp_886,hospital,13.050953,77.5938654,Manipal Hospital,,,,8.0,observed
+hosp_887,hospital,12.9643477,77.5845256,Dasappa Maternity Hospital,,,,8.0,observed
+hosp_888,hospital,12.9858278,77.6429649,Isolation Hospital,,,,8.0,observed
+hosp_889,hospital,12.9803669,77.5390159,Sarvodaya Hospital,,,,8.0,observed
+hosp_890,hospital,12.9773598,77.5428202,Dasarahalli Referral Hospital,,,,8.0,observed
+hosp_891,hospital,13.0271503,77.5768623,Nethra Eye Hospital,,,,8.0,observed
+hosp_892,hospital,12.936526,77.5981388,Kidwai Memorial Institute of Oncology,,,,8.0,observed
+hosp_893,hospital,12.9644407,77.5926745,P.D. Hinduja Sindhi Hospital,,,,8.0,observed
+hosp_894,hospital,13.0224158,77.6580401,Nmpc Hospital,,,,8.0,observed
+hosp_895,hospital,12.9173301,77.5851028,Shri Krishna Sevashrama Hospital,,,,8.0,observed
+hosp_896,hospital,12.9555043,77.7053083,Lions Seva Hospital,,,,8.0,observed
+hosp_897,hospital,12.9907432,77.5649082,Sreerampura Referal Hospital,,,,8.0,observed
+hosp_898,hospital,12.9623685,77.6664034,HAL Hospital,,,,8.0,observed
+hosp_899,hospital,12.9294355,77.564005,Pro MED Hospital,,,,8.0,observed
+hosp_900,hospital,12.9362818,77.5843424,Apollo Speciality Hospital,,,,8.0,observed
+hosp_901,hospital,12.9216723,77.5721649,"Sevakshetra Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_902,hospital,12.9253024,77.5774064,Netradhama Hospital,,,,8.0,observed
+hosp_903,hospital,13.0302068,77.560704,Subbaiah Hospital,,,,8.0,observed
+hosp_904,hospital,12.9884932,77.5945504,"Fortis Hospitals Limited, Bengaluru Urban",,,,8.0,observed
+hosp_905,hospital,12.9952564,77.6527138,ESI Hospital,,,,8.0,observed
+hosp_906,hospital,12.9788013,77.6380849,Milann Fertility Center,,,,8.0,observed
+hosp_907,hospital,13.0116917,77.5438731,Sanjeevani Hospital,,,,8.0,observed
+hosp_908,hospital,12.9103586,77.600474,Dr. Agarwal's Eye Hospital,,,,8.0,observed
+hosp_909,hospital,12.9356389,77.5935945,Sanjay Gandhi Accident and Trauma Hospital,,,,8.0,observed
+hosp_910,hospital,12.9357711,77.5939433,Sanjay Gandhi Accident and Trauma Hospital,,,,8.0,observed
+hosp_911,hospital,12.9191928,77.6381223,Greenview Hospital,,,,8.0,observed
+hosp_912,hospital,12.9744546,77.5640222,Leprosy Hospital,,,,8.0,observed
+hosp_913,hospital,13.0384676,77.527802,Ravi Kirloskar Memorial Hospital,,,,8.0,observed
+hosp_914,hospital,13.0943148,77.58071,Dr. Agarwal Eye Hospital,,,,8.0,observed
+hosp_915,hospital,12.9999803,77.6144986,Annasawmy Mudaliar General Hospital,,,,8.0,observed
+hosp_916,hospital,12.9685282,77.6457748,Arth Ayurveda World,,,,8.0,observed
+hosp_917,hospital,13.065084,77.5936343,Prolife Hospital,,,,8.0,observed
+hosp_918,hospital,12.9828993,77.7478126,Amrik Hospital,,,,8.0,observed
+hosp_919,hospital,13.0146094,77.6464563,Indicus,,,,8.0,observed
+hosp_920,hospital,12.9714272,77.627494,Shyamala Hospital,,,,8.0,observed
+hosp_921,hospital,12.9599619,77.7126304,Ways2Guide Speech Therapy Center,,,,8.0,observed
+hosp_922,hospital,12.9718119,77.693776,Government Primary Health Centre,,,,8.0,observed
+hosp_923,hospital,12.9920515,77.7064747,Kinder Women's Hospital & Fertility Center,,,,8.0,observed
+hosp_924,hospital,13.0285228,77.5587301,Medicare Diagnostics,,,,8.0,observed
+hosp_925,hospital,12.9462798,77.5947839,Abhaya Hospital,,,,8.0,observed
+hosp_926,hospital,12.9194536,77.5838939,Tirumalai Eye Clinic,,,,8.0,observed
+hosp_927,hospital,12.9807106,77.646011,MS Diabetes Speciality Center,,,,8.0,observed
+hosp_928,hospital,12.9265095,77.5808392,Shashank Clinic,,,,8.0,observed
+hosp_929,hospital,12.9491979,77.596808,BBMP Maternity Hospital,,,,8.0,observed
+hosp_930,hospital,12.978694,77.5744614,Ramakrishna Clinic,,,,8.0,observed
+hosp_931,hospital,12.9279948,77.5894064,ESI Hospital,,,,8.0,observed
+hosp_932,hospital,12.9346732,77.6287815,,,,,8.0,observed
+hosp_933,hospital,12.9346254,77.6284672,Proteeth Dental,,,,8.0,observed
+hosp_934,hospital,12.9883419,77.5726976,Apollo Hospital,,,,8.0,observed
+hosp_935,hospital,12.9928137,77.5386455,Supra Hospital,,,,8.0,observed
+hosp_936,hospital,12.9929463,77.5386927,GM Hospital,,,,8.0,observed
+hosp_937,hospital,12.9052747,77.6031945,Sakhi Hospital (A Unit Of Prasad Healthcare Services),,,,8.0,observed
+hosp_938,hospital,12.9391883,77.5513126,Prashanth Hospitals,,,,8.0,observed
+hosp_939,hospital,13.0084773,77.5684217,Vagus Super Speciality Hospital,,,,8.0,observed
+hosp_940,hospital,13.0171298,77.6432944,Ovum Hospitals,,,,8.0,observed
+hosp_941,hospital,13.0546111,77.5915016,,,,,8.0,observed
+hosp_942,hospital,12.9262236,77.5775108,Deepak Hospital,,,,8.0,observed
+hosp_943,hospital,12.9955667,77.5354224,ChanRe Rheumatology And Immunology Center And Research,,,,8.0,observed
+hosp_944,hospital,12.9883622,77.5343261,Gopala Eye Care Centre,,,,8.0,observed
+hosp_945,hospital,12.9583496,77.7454332,Manipal Hospitals,,,,8.0,observed
+hosp_946,hospital,12.9659074,77.7025531,Jeevika Hospital,,,,8.0,observed
+hosp_947,hospital,13.0152635,77.6467105,Sharada Medicals,,,,8.0,observed
+hosp_948,hospital,12.8938602,77.4572342,SDM Institute of Ayurveda & Hospital,,,,8.0,observed
+hosp_949,hospital,12.973692,77.6266773,Halasuru Referal Hospital,,,,8.0,observed
+hosp_950,hospital,12.9882084,77.5921572,Manipal Hospital,,,,8.0,observed
+hosp_951,hospital,12.9591543,77.6464476,BBMP Primary Health Center,,,,8.0,observed
+hosp_952,hospital,13.0081737,77.5634644,The Fracture and Orthopaedic Clinic,,,,8.0,observed
+hosp_953,hospital,12.991305,77.6011314,CSI Hospital,,,,8.0,observed
+hosp_954,hospital,12.9490229,77.6199247,Government Hospital,,,,8.0,observed
+hosp_955,hospital,12.9279005,77.5998446,Sagar Hospitals,,,,8.0,observed
+hosp_956,hospital,12.9078674,77.5651623,Sagar Hospital,,,,8.0,observed
+hosp_957,hospital,12.9638769,77.627935,Command Hospital (Air Force),,,,8.0,observed
+hosp_958,hospital,13.0995716,77.5962927,Yelahanka Government Hospital,,,,8.0,observed
+hosp_959,hospital,12.9649568,77.6111852,St. Philomena's Hospital,,,,8.0,observed
+hosp_960,hospital,12.9377267,77.5697859,Government Maternity Hospital,,,,8.0,observed
+hosp_961,hospital,12.9637737,77.5896796,HCG Cancer Hospital,,,,8.0,observed
+hosp_962,hospital,12.9898869,77.5942601,Al-Ameen Hospital,,,,8.0,observed
+hosp_963,hospital,13.0067504,77.5529389,St. Theresa's Hospital,,,,8.0,observed
+hosp_964,hospital,13.0668492,77.6394164,Shirdi Sai Hospital,,,,8.0,observed
+hosp_965,hospital,12.9756177,77.6470614,Life Hospital,,,,8.0,observed
+hosp_966,hospital,12.9496516,77.5803074,South City Hospital,,,,8.0,observed
+hosp_967,hospital,12.9880712,77.7286414,Manipal Hospitals Whitefield,,,,8.0,observed
+hosp_968,hospital,12.9179135,77.6722553,Motherhood,,,,8.0,observed
+hosp_969,hospital,12.9199685,77.6652549,Manipal Hospitals,,,,8.0,observed
+hosp_970,hospital,12.9059995,77.6511229,touchwood,,,,8.0,observed
+hosp_971,hospital,12.9135595,77.6795552,Suvarnamukhi,,,,8.0,observed
+hosp_972,hospital,12.9322182,77.6853258,Sakra World,,,,8.0,observed
+hosp_973,hospital,12.9753078,77.697834,Rainbow Children's Hospital,,,,8.0,observed
+hosp_974,hospital,12.9492019,77.5977936,Agadi Hospital,,,,8.0,observed
+hosp_975,hospital,12.8964133,77.6950639,Punarjani Ayurvedic Multispeciality Hospital,,,,8.0,observed
+hosp_976,hospital,12.9659169,77.749386,Svastha Hospital,,,,8.0,observed
+hosp_977,hospital,13.0277509,77.5429924,Sparsh Hospital,,,,8.0,observed
+hosp_978,hospital,12.8980981,77.6338265,,,,,8.0,observed
+hosp_979,hospital,12.9413364,77.5674679,BMS Hospital,,,,8.0,observed
+hosp_980,hospital,12.9246391,77.5006239,Medical Centre,,,,8.0,observed
+hosp_981,hospital,12.9980069,77.5459005,M C Modi Eye Hospital,,,,8.0,observed
+hosp_982,hospital,12.9689004,77.7494952,Pushpa Nursing Home,,,,8.0,observed
+hosp_983,hospital,13.0177672,77.5417058,,,,,8.0,observed
+hosp_984,hospital,13.0725243,77.5035875,Nrr Hospital,,,,8.0,observed
+hosp_985,hospital,13.057066,77.508511,Arunodaya Hospitals,,,,8.0,observed
+hosp_986,hospital,13.048319,77.5080361,Dr Ramachandra Hospital,,,,8.0,observed
+hosp_987,hospital,13.0991845,77.5968656,Government Hospital,,,,8.0,observed
+hosp_988,hospital,13.0982401,77.5970471,Deeksha Hospital,,,,8.0,observed
+hosp_989,hospital,12.9414292,77.5226387,Puneeth Rajkumar Multispeciality Hospital,,,,8.0,observed
+hosp_990,hospital,13.028489,77.6325562,"HOSMAT Hospital, Kalyan Nagar",,,,8.0,observed
+hosp_991,hospital,12.9427199,77.525514,Natus Woman and Children Hospital,,,,8.0,observed
+hosp_992,hospital,13.0507482,77.4832827,Jindal Naturecure Institute hospital,,,,8.0,observed
+hosp_993,hospital,13.0046358,77.6823567,ITI General Hospital,,,,8.0,observed
+hosp_994,hospital,13.0099309,77.5941222,JC Nagar Municipal Hospital,,,,8.0,observed
+hosp_995,hospital,12.9830546,77.536518,Government Homeopathic Hospital,,,,8.0,observed
+hosp_996,hospital,12.9863583,77.5792111,Dr. P.R. Desai Hospital Pvt Ltd,,,,8.0,observed
+hosp_997,hospital,13.0142942,77.5560784,Manipal Hospital Yeshwantpur,,,,8.0,observed
+hosp_998,hospital,12.9900045,77.5989675,"Shifa Hospital, Bengaluru Urban",,,,8.0,observed
+hosp_999,hospital,13.0037443,77.5498305,Diacon Hospital,,,,8.0,observed
+hosp_1000,hospital,13.0022012,77.5491011,Fortis Hospital,,,,8.0,observed
+hosp_1001,hospital,13.0545318,77.5918707,Aster CMI Hospital,,,,8.0,observed
+hosp_1002,hospital,13.0655647,77.5937383,Rainbow Children's Hospital,,,,8.0,observed
+hosp_1003,hospital,12.9656576,77.6097218,Vikram Aura Hospitals,,,,8.0,observed
+hosp_1004,hospital,12.9244197,77.6724971,Cloudnine,,,,8.0,observed
+hosp_1005,hospital,12.9124863,77.6765573,BN Specialty Hospital,,,,8.0,observed
+hosp_1006,hospital,12.9883438,77.7339468,Aster Women and Children Hospital,,,,8.0,observed
+hosp_1007,hospital,13.0463371,77.5065296,Prakriya Hospital,,,,8.0,observed
+hosp_1008,hospital,12.9589657,77.7467194,Motherhood Whitefield,,,,8.0,observed
+hosp_1009,hospital,12.9849552,77.556924,,,,,8.0,observed
+hosp_1010,hospital,13.0011093,77.5639472,,,,,8.0,observed
+hosp_1011,hospital,13.0282887,77.5391464,People Tree Hospitals,,,,8.0,observed
+hosp_1012,hospital,12.9667468,77.7172779,Apollo Cradle,,,,8.0,observed
+hosp_1013,hospital,12.9896386,77.60226,Charaka Super Speciality Hospital,,,,8.0,observed
+hosp_1014,hospital,13.0058093,77.5694388,,,,,8.0,observed
+hosp_1015,hospital,12.9112661,77.7075837,Karunalayam Hospital,,,,8.0,observed
+hosp_1016,hospital,12.9166101,77.6450517,Phoenix Hospital,,,,8.0,observed
+hosp_1017,hospital,13.0151199,77.5600013,ESI Hospital Malleshwaram Branch,,,,8.0,observed
+hosp_1018,hospital,12.9116986,77.6495441,Bhoomi Diagnostics,,,,8.0,observed
+hosp_1019,hospital,12.9082086,77.6435134,Narayana Multispeciality Hospital,,,,8.0,observed
+hosp_1020,hospital,12.9033828,77.6007409,Rainbow Children's Hospital,,,,8.0,observed
+hosp_1021,hospital,13.0949654,77.5986449,Sparsh Hospital,,,,8.0,observed
+hosp_1022,hospital,12.9882302,77.5600393,Suguna Hospital,,,,8.0,observed
+hosp_1023,hospital,13.040171,77.6406846,"Sparsh Hospital, Hennur",,,,8.0,observed
+hosp_1024,hospital,12.9569001,77.6047605,Dr Agarwal's Eye Hospital,,,,8.0,observed
+hosp_1025,hospital,13.097274,77.6477522,Government Primary Health Centre,,,,8.0,observed
+hosp_1026,hospital,12.9017283,77.7155216,Snehadaan Hospital,,,,8.0,observed
+hosp_1027,hospital,12.9264187,77.5216783,SS Sparsh Hospital,,,,8.0,observed
+hosp_1028,hospital,12.9156928,77.6752029,Cloud Nine,,,,8.0,observed
+hosp_1029,hospital,12.9949885,77.5937862,BBMP Hospital,,,,8.0,observed
+hosp_1030,hospital,12.9609247,77.5611731,,,,,8.0,observed
+hosp_1031,hospital,12.9162232,77.5890247,Jnana Sanjeevini,,,,8.0,observed
+hosp_1032,hospital,13.0937967,77.5893672,Anupamaa Hospital,,,,8.0,observed
+hosp_1033,hospital,13.0658864,77.5939666,HCG Hebbal,,,,8.0,observed
+hosp_1034,hospital,12.9478274,77.5924806,Brains Super Speciality Hospital,,,,8.0,observed
+hosp_1035,hospital,12.8628027,77.6663559,PESU HOSPITAL,,,,8.0,observed
+hosp_1036,hospital,12.9031532,77.5603082,Vasavi Hospital,,,,8.0,observed
+hosp_1037,hospital,13.0249864,77.530936,ESI Hospital Peenya,,,,8.0,observed
+hosp_1038,hospital,12.9202359,77.6674739,Rainbow Childrens Hospital,,,,8.0,observed
+hosp_1039,hospital,12.9447394,77.5964164,Safa Medicure Hospital,,,,8.0,observed
+hosp_1040,hospital,13.0924907,77.5863327,Chaitanya Medical Centre Maternity and Surgical Care,,,,8.0,observed
+hosp_1041,hospital,12.9538911,77.5711462,Rangadore Memorial Hospital,,,,8.0,observed
+hosp_1042,hospital,12.9606538,77.5840403,Trustwell Hospitals,,,,8.0,observed
+hosp_1043,hospital,12.971172,77.6651791,BEML Hospital,,,,8.0,observed
+hosp_1044,hospital,12.9566836,77.712382,Sri Vishveshathirtha Memorial Hospital,,,,8.0,observed
+hosp_1045,hospital,13.0214793,77.55361,Government Maternity Hospital,,,,8.0,observed
+hosp_1046,hospital,12.9510658,77.4810597,Government Multi-Speciality Hospital,,,,8.0,observed
+hosp_1047,hospital,12.9090409,77.66389,Klinik Guhen - Dental Clinic,,,,8.0,observed
+hosp_1048,hospital,12.9271061,77.576658,Yadiyuru Maternity Hospital,,,,8.0,observed
+hosp_1049,hospital,12.9267938,77.5772972,Ayurveda Prathisthana Hospital,,,,8.0,observed
+hosp_1050,hospital,13.0529326,77.7172701,East Point Hospital and Medical College,,,,8.0,observed
+hosp_1051,hospital,13.0207585,77.7016687,Shanthinilaya Hospital,,,,8.0,observed
+hosp_1052,hospital,12.9438635,77.5969221,Vignan Hospital,,,,8.0,observed
+hosp_1053,hospital,12.967036,77.717977,Mahanandi,,,,8.0,observed
+hosp_1054,hospital,12.9005656,77.6757868,Aarogya Hastha Hospital,,,,8.0,observed
+hosp_1055,hospital,12.9239736,77.6133232,Life Care Hospital,,,,8.0,observed
+hosp_1056,hospital,13.0564574,77.7156811,,,,,8.0,observed
+hosp_1057,hospital,13.0947708,77.5832502,,,,,8.0,observed
+hosp_1058,hospital,12.9890029,77.7338372,Aster Whitefield Hospital,,,,8.0,observed
+hosp_1059,hospital,12.9541576,77.6608368,SPS Surgicals,,,,8.0,observed
+hosp_1060,hospital,12.9541576,77.6608368,,,,,8.0,observed
+pump_001,pump,13.0568488,77.6250648,,,,,6.0,observed
+pump_002,pump,13.0595802,77.670917,,,,,6.0,observed
+pump_003,pump,13.0513117,77.6403781,,,,,6.0,observed
+pump_004,pump,13.0584238,77.6579426,,,,,6.0,observed
+pump_005,pump,13.0767417,77.6812505,,,,,6.0,observed
+pump_006,pump,13.0560925,77.6531139,,,,,6.0,observed
+pump_007,pump,13.0474766,77.7379527,,,,,6.0,observed
+pump_008,pump,13.0281518,77.6423416,,,,,6.0,observed
+pump_009,pump,13.0455649,77.6408712,,,,,6.0,observed
+pump_010,pump,13.0534679,77.5584452,,,,,6.0,observed
+pump_011,pump,13.0518007,77.5573242,,,,,6.0,observed
+pump_012,pump,13.0494147,77.5603821,,,,,6.0,observed
+pump_013,pump,13.0552374,77.5515925,,,,,6.0,observed
+pump_014,pump,13.0683528,77.5454917,,,,,6.0,observed
+pump_015,pump,13.0685723,77.5454809,,,,,6.0,observed
+pump_016,pump,13.0688127,77.5455131,,,,,6.0,observed
+pump_017,pump,13.0296555,77.5702838,,,,,6.0,observed
+pump_018,pump,12.9849706,77.5707968,,,,,6.0,observed
+pump_019,pump,13.0725752,77.6576536,Tubewell,,,,6.0,observed
+pump_020,pump,12.8817597,77.6081278,Shantiniketan Water Tank,,,,6.0,observed
+pump_021,pump,12.9081764,77.5842058,Ekaliki water supply,,,,6.0,observed
+pump_022,pump,12.9948669,77.5377207,Basaveshwara Nagar Water Tank,,,,6.0,observed
+pump_023,pump,13.0078297,77.551192,Rajaji Nagar Water Tank,,,,6.0,observed
+pump_024,pump,13.0154025,77.564829,,,,,6.0,observed
+pump_025,pump,12.9962378,77.6572822,Sadananda Nagar Water Tank,,,,6.0,observed
+pump_026,pump,12.908153,77.5346211,Poornaprajna Nagara Water Tank,,,,6.0,observed
+pump_027,pump,12.9712107,77.6373626,,,,,6.0,observed
+pump_028,pump,12.9715026,77.6389343,,,,,6.0,observed
+pump_029,pump,12.9726562,77.6363791,,,,,6.0,observed
+pump_030,pump,12.9756301,77.7499012,,,,,6.0,observed
+pump_031,pump,13.0777063,77.5596275,,,,,6.0,observed
+pump_032,pump,13.0715926,77.5516423,,,,,6.0,observed
+pump_033,pump,13.076804,77.5577733,,,,,6.0,observed
+pump_034,pump,13.0848756,77.5636982,,,,,6.0,observed
+pump_035,pump,12.9163997,77.6072156,,,,,6.0,observed
+pump_036,pump,12.9801225,77.7288901,,,,,6.0,observed
+pump_037,pump,12.9642559,77.6064078,,,,,6.0,observed
+pump_038,pump,12.98908,77.5654444,,,,,6.0,observed
+pump_039,pump,12.9302526,77.5845789,Jayanagar Water Tank,,,,6.0,observed
+pump_040,pump,12.9167724,77.5723948,,,,,6.0,observed
+pump_041,pump,12.9193414,77.5224032,,,,,6.0,observed
+pump_042,pump,13.0102985,77.5652978,,,,,6.0,observed
+pump_043,pump,13.0121694,77.5645135,,,,,6.0,observed
+pump_044,pump,13.0151783,77.5349715,,,,,6.0,observed
+pump_045,pump,13.0126468,77.6550762,,,,,6.0,observed
+pump_046,pump,12.9228925,77.4834239,,,,,6.0,observed
+pump_047,pump,13.0341023,77.5760845,Sanjaynagar Water Tank,,,,6.0,observed
+pump_048,pump,13.023207,77.5937942,,,,,6.0,observed
+pump_049,pump,12.9136859,77.4974164,,,,,6.0,observed
+pump_050,pump,12.9148323,77.4941863,,,,,6.0,observed
+pump_051,pump,13.0843091,77.4862026,,,,,6.0,observed
+pump_052,pump,13.0841135,77.4857411,,,,,6.0,observed
+pump_053,pump,12.8720418,77.4538413,,,,,6.0,observed
+pump_054,pump,12.9560247,77.6488864,,,,,6.0,observed
+pump_055,pump,12.941669,77.5041763,,,,,6.0,observed
+pump_056,pump,12.914846,77.6198432,,,,,6.0,observed
+pump_057,pump,12.9830467,77.5910347,,,,,6.0,observed
+pump_058,pump,12.9841358,77.595182,,,,,6.0,observed
+pump_059,pump,12.9877052,77.6649581,,,,,6.0,observed
+pump_060,pump,12.9884232,77.6620271,,,,,6.0,observed
+pump_061,pump,13.0101234,77.6145247,,,,,6.0,observed
+pump_062,pump,12.9720444,77.4973022,,,,,6.0,observed
+pump_063,pump,12.9770428,77.4987885,,,,,6.0,observed
+pump_064,pump,13.0325312,77.5452442,,,,,6.0,observed
+pump_065,pump,13.0683607,77.5981789,,,,,6.0,observed
+pump_066,pump,12.9601752,77.5635858,,,,,6.0,observed
+pump_067,pump,13.0022469,77.5792326,,,,,6.0,observed
+pump_068,pump,13.0264017,77.516334,Water Tank,,,,6.0,observed
+pump_069,pump,12.9240453,77.6636502,Shudhi Services,,,,6.0,observed
+pump_070,pump,12.9648712,77.6116075,,,,,6.0,observed
+pump_071,pump,12.8927548,77.712236,,,,,6.0,observed
+pump_072,pump,12.9312349,77.6142655,,,,,6.0,observed
+pump_073,pump,13.0245645,77.5652447,,,,,6.0,observed
+pump_074,pump,13.0657627,77.6009945,Amrutahalli Water Tower,,,,6.0,observed
+pump_075,pump,13.0148701,77.5719041,,,,,6.0,observed
+pump_076,pump,13.0177845,77.5622357,,,,,6.0,observed
+pump_077,pump,12.9804936,77.5701995,,,,,6.0,observed
+pump_078,pump,12.9758294,77.5704637,,,,,6.0,observed
+pump_079,pump,12.9752204,77.5502908,,,,,6.0,observed
+pump_080,pump,12.9803825,77.5515582,,,,,6.0,observed
+pump_081,pump,12.9927331,77.5982662,,,,,6.0,observed
+pump_082,pump,12.9741044,77.5672075,,,,,6.0,observed
+pump_083,pump,13.0066158,77.686484,,,,,6.0,observed
+pump_084,pump,13.0015105,77.68545,,,,,6.0,observed
+pump_085,pump,13.0103595,77.5924458,,,,,6.0,observed
+pump_086,pump,13.0010871,77.6352176,,,,,6.0,observed
+pump_087,pump,13.0044532,77.6384228,,,,,6.0,observed
+pump_088,pump,13.0034704,77.6379818,,,,,6.0,observed
+pump_089,pump,13.0507902,77.5296853,,,,,6.0,observed
+pump_090,pump,13.0136797,77.5687511,,,,,6.0,observed
+pump_091,pump,12.9950539,77.5692554,,,,,6.0,observed
+pump_092,pump,12.9491798,77.5739157,,,,,6.0,observed
+pump_093,pump,12.9036751,77.5289512,,,,,6.0,observed
+pump_094,pump,12.9083301,77.5842798,,,,,6.0,observed
+pump_095,pump,12.91241,77.610113,,,,,6.0,observed
+pump_096,pump,12.9387477,77.6359665,,,,,6.0,observed
+pump_097,pump,12.9624936,77.6292896,,,,,6.0,observed
+pump_098,pump,12.9969042,77.6422799,,,,,6.0,observed
+pump_099,pump,12.8903001,77.6048069,,,,,6.0,observed
+pump_100,pump,13.0044689,77.6384336,,,,,6.0,observed
+pump_101,pump,13.0313895,77.539143,,,,,6.0,observed
+pump_102,pump,13.0793921,77.6391618,,,,,6.0,observed
+pump_103,pump,13.0658668,77.6201597,,,,,6.0,observed
+pump_104,pump,12.9771323,77.7005535,,,,,6.0,observed
+pump_105,pump,13.0314588,77.5391275,,,,,6.0,observed
+pump_106,pump,12.9170386,77.6207927,,,,,6.0,observed
+pump_107,pump,12.9136276,77.4975666,,,,,6.0,observed
+pump_108,pump,12.8730361,77.6235006,,,,,6.0,observed
+pump_109,pump,13.065757,77.639894,,,,,6.0,observed
+pump_110,pump,12.9824417,77.6492549,BWSSB,,,,6.0,observed
+pump_111,pump,13.0018163,77.6279091,BWSSB,,,,6.0,observed
+pump_112,pump,12.9830125,77.5848698,Low Level Reservoir,,,,6.0,observed
+pump_113,pump,12.9988482,77.5458309,Rajajinagar BWSSB Water Tank,,,,6.0,observed
+pump_114,pump,12.8973539,77.6196309,BWSSB,,,,6.0,observed
+pump_115,pump,12.9098263,77.5617787,BWSSB Kumaraswamy Layout Service Station,,,,6.0,observed
+pump_116,pump,12.9363038,77.5884705,BWSSB,,,,6.0,observed
+pump_117,pump,13.0118375,77.5662535,BWSSB Combined Jewel Filters,,,,6.0,observed
+pump_118,pump,13.0907876,77.5590997,BWSSB,,,,6.0,observed
+pump_119,pump,13.0119654,77.6553651,BWSSB,,,,6.0,observed
+pump_120,pump,12.9873543,77.589684,BWSSB,,,,6.0,observed
+pump_121,pump,12.922348,77.4832043,BWSSB,,,,6.0,observed
+pump_122,pump,12.9193443,77.5222384,BWSSB,,,,6.0,observed
+pump_123,pump,12.9114822,77.6467373,BWSSB,,,,6.0,observed
+pump_124,pump,12.9973112,77.51127,BWSSB,,,,6.0,observed
+pump_125,pump,12.8738118,77.5850945,BWSSB,,,,6.0,observed
+pump_126,pump,12.9939977,77.5156707,BWSSB,,,,6.0,observed
+pump_127,pump,13.026533,77.6343784,BWSSB,,,,6.0,observed
+pump_128,pump,13.0590659,77.5869617,BWSSB Sahakarnagara,,,,6.0,observed
+pump_129,pump,13.012168,77.5817052,Kempegowda Tower BWSSB Service Station,,,,6.0,observed
+pump_130,pump,12.9413797,77.5685084,BWSSB,,,,6.0,observed
+pump_131,pump,12.9753497,77.5620045,,,,,6.0,observed
+pump_132,pump,12.9772318,77.7114891,BWSSB,,,,6.0,observed
+pump_133,pump,12.9723043,77.6212958,BWSSB,,,,6.0,observed
+pump_134,pump,13.008122,77.5511997,BWSSB Rajajinagara,,,,6.0,observed
+pump_135,pump,12.9240792,77.5580746,,,,,6.0,observed
+pump_136,pump,12.955635,77.5294621,,,,,6.0,observed
+pump_137,pump,12.9161125,77.5723225,,,,,6.0,observed
+pump_138,pump,12.9757925,77.6400393,BWSSB Indiranagar,,,,6.0,observed
+pump_139,pump,12.9719939,77.6446002,BWSSB Indiranagar,,,,6.0,observed
+pump_140,pump,13.0208771,77.649528,BWSSB Water Tank,,,,6.0,observed
+pump_141,pump,12.9141679,77.4891859,,,,,6.0,observed
+pump_142,pump,12.9145408,77.4892699,Trickling Filter,,,,6.0,observed
+pump_143,pump,12.9142669,77.4887175,Trickling Filter,,,,6.0,observed
+pump_144,pump,12.9733977,77.5381237,BWSSB,,,,6.0,observed
+pump_145,pump,12.8572887,77.5844702,Gottigere 50ML Reservoir,,,,6.0,observed
+pump_146,pump,12.8666854,77.582012,BWSSB,,,,6.0,observed
+pump_147,pump,13.0343946,77.5007838,BWSSB,,,,6.0,observed
+pump_148,pump,12.9080441,77.6527141,BWSSB,,,,6.0,observed
+pump_149,pump,12.888014,77.6999776,Doddakanahalli 48ML Reservoir,,,,6.0,observed
+pump_150,pump,12.9162112,77.6070823,BWSSB,,,,6.0,observed
+pump_151,pump,12.94374,77.7172134,,,,,6.0,observed
+pump_152,pump,12.9771049,77.4539452,10MLD GLR,,,,6.0,observed
+pump_153,pump,12.9349658,77.478476,BWSSB Service Station,,,,6.0,observed
+pump_154,pump,12.85048,77.5731915,BWSSB,,,,6.0,observed
+pump_155,pump,12.8731437,77.5192718,BWSSB Resrvoir Banashankari 6th Stage,,,,6.0,observed
+pump_156,pump,12.9932837,77.6096413,BWSSB,,,,6.0,observed
+pump_157,pump,13.034081,77.6242015,BWSSB,,,,6.0,observed

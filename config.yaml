@@ -6,7 +6,10 @@ seed: 42
 
 cities:
   # try in order; fall back to the next if the fetched node count is too small
-  order: [bhopal, indore, nagpur, jaipur]
+  order: [bangalore, bhopal, indore, nagpur, jaipur]
+  bangalore:
+    # Bengaluru, Karnataka — matches the Kannada complaint dataset (D2). [south, west, north, east]
+    bbox: [12.85, 77.45, 13.10, 77.75]
   bhopal:
     bbox: [23.15, 77.30, 23.35, 77.55]   # [south, west, north, east]
   indore:
@@ -73,9 +76,11 @@ d2:
   truncate_chars: 40
 
   # Routing guard (the verification checkpoint, made concrete). Time-to-repair for each
-  # queue, in hours. ONLY the 48 h verification/field-officer window is cited (UPPCL's
-  # published complaint SLA); every other value is an ASSUMPTION — a plausible municipal
-  # SLA per department, chosen to make the delay mechanism legible, not sourced.
+  # queue, in hours. Every value here is an ASSUMPTION — a plausible municipal SLA per
+  # department, chosen to make the delay mechanism legible, not sourced. (The 48 h
+  # verification window was previously attributed to UPPCL, Uttar Pradesh's utility; that
+  # citation was dropped when the network moved to Bengaluru/Karnataka — we do not have a
+  # verified BESCOM/BWSSB SLA figure, so it is treated as an assumption like the rest.)
   sla_hours:
     electrical_emergency: 4
     electrical_maintenance: 336    # 14 days — the "fourteen days later it failed" window
@@ -83,7 +88,7 @@ d2:
     drainage: 168
     roads: 336
     sanitation: 72
-    verification: 48               # cited: UPPCL 48-hour SLA (field officer verifies/assigns)
+    verification: 48               # ASSUMPTION: field-officer verify/assign window (was UPPCL-cited; now unsourced)
 
   # ASSUMPTION: hours from the complaint until the un-repaired asset physically fails — the
   # narrative "fourteen days later" from the deck. A repair scheduled at or after this

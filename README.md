@@ -21,7 +21,7 @@ In municipal grievance pipelines, AI triage systems can degrade silently:
 4. The ticket is assigned a low-priority routine maintenance SLA instead of emergency dispatch.
 5. Days later, the physical asset fails under load, triggering a **cascading power grid overload and water supply blackout** across the city.
 
-**Silent Cascade** proves this failure mode using real spatial infrastructure data from Bhopal, an experimental linguistic routing benchmark, a physical cascade simulator, an intervention analysis illustrating the **Butterfly Effect**, and — going a step further — a working **verification checkpoint and decision-quality monitor** that closes the loop back into the physical network: a ₹1.5L human verification checkpoint on AI decisions prevents 5.8× more cascade impact than a ₹85L substation hardware hardening.
+**Silent Cascade** proves this failure mode using real spatial infrastructure data from Bengaluru, an experimental linguistic routing benchmark, a physical cascade simulator, an intervention analysis illustrating the **Butterfly Effect**, and — going a step further — a working **verification checkpoint and decision-quality monitor** that closes the loop back into the physical network: a ₹1.5L human verification checkpoint on AI decisions cuts mean cascade impact by ~31% (≈460,000 fewer people affected across 100 paired runs), while a ₹85L single-substation hardware hardening barely moves it (<1%).
 
 ---
 
@@ -60,12 +60,12 @@ Four sections, each a thin UI layer over existing pure functions — so every nu
 The pitch, the failure chain, and a **live** "no alarm fired" split test: a CivicOps monitor (uptime, latency, error rate, requests/min, six "operational" services) that drifts and ticks in real time — entirely in the browser, no page reruns — right next to what the classifier actually did to complaint `c01`. A provenance table lists every metric in the app as Observed / Inferred / Assumed / Synthetic / Measured / Simulated.
 
 ### Cascade simulator
-Pick any of Bhopal's 27 real substations as the initiating failure. A self-contained Leaflet map (real OpenStreetMap tiles) plays the cascade timeline client-side — play/pause, scrub, speed control, fit-to-network, hover tooltips with each node's failure time — with a live HUD (people affected, hospitals on generator, wards without water, substations tripped). Below it, the full criticality ranking: which substation's failure, alone, cascades to the whole network.
+Pick any of Bengaluru's 190 real substations as the initiating failure. A self-contained Leaflet map (real OpenStreetMap tiles) plays the cascade timeline client-side — play/pause, scrub, speed control, fit-to-network, hover tooltips with each node's failure time — with a live HUD (people affected, hospitals on generator, wards without water, substations tripped). Below it, the full criticality ranking: which substation's failure, alone, cascades to the whole network.
 
 ### Language routing — the AI injection, traced end to end
 This is the core "fix," not just the demonstration:
 1. **The decision** — the real `classify_one()` keyword-baseline classifier (not a production LLM — labelled as such) routes one complaint under a chosen language/condition, with matched keywords highlighted.
-2. **The routing guard** — `route_with_guard()` is a concrete verification checkpoint: unparseable or low-confidence decisions are sent to a 48-hour verification queue (the cited UPPCL SLA) instead of a routine queue, and safety keywords impose an urgency floor. Shown side by side: "today, no guard" vs. "with guard."
+2. **The routing guard** — `route_with_guard()` is a concrete verification checkpoint: unparseable or low-confidence decisions are sent to a 48-hour verification queue (a field-officer verify/assign window — an assumption, see config.yaml) instead of a routine queue, and safety keywords impose an urgency floor. Shown side by side: "today, no guard" vs. "with guard."
 3. **What that delay does to the network** — the guarded/unguarded repair SLA is checked against the time-to-failure, and the *actual* `cascade()` engine runs to show people affected with and without the guard, on the real network.
 4. **Decision monitor** — `canary_report()` continuously re-probes a 20-complaint golden set in both languages and alarms when native-script accuracy diverges from English by more than a configured threshold — the canary CivicOps never had.
 
@@ -97,7 +97,7 @@ The offline pipeline produces four demonstration deliverables configured via [co
 
 | ID | Asset | Source Script | Primary Output | Description |
 |---|---|---|---|---|
-| **D1** | **Cascade Simulation** | [`src/d1_cascade.py`](src/d1_cascade.py) | [`outputs/d1_cascade_scenario_a.gif`](outputs/d1_cascade_scenario_a.gif), [`outputs/d1_criticality.csv`](outputs/d1_criticality.csv) | Physics-based load-redistribution failure cascade across Bhopal's spatial power and water network. |
+| **D1** | **Cascade Simulation** | [`src/d1_cascade.py`](src/d1_cascade.py) | [`outputs/d1_cascade_scenario_a.gif`](outputs/d1_cascade_scenario_a.gif), [`outputs/d1_criticality.csv`](outputs/d1_criticality.csv) | Physics-based load-redistribution failure cascade across Bengaluru's spatial power and water network. |
 | **D2** | **Language Experiment** | [`src/d2_language.py`](src/d2_language.py) | [`outputs/d2_chart.png`](outputs/d2_chart.png), [`outputs/d2_results.csv`](outputs/d2_results.csv) | Empirical benchmark of 120 triage decisions measuring accuracy gaps between English and Kannada under clean, truncated, and lightweight model conditions. Also home to `route_with_guard()` and `canary_report()`, used live by `app.py`. |
 | **D3** | **"All-Green" Ops Monitor** | [`src/d3_dashboard.py`](src/d3_dashboard.py) | [`outputs/d3_dashboard.html`](outputs/d3_dashboard.html) | Synthetic municipal telemetry UI demonstrating that service monitoring reports healthy status while fatal decision errors occur. |
 | **D4** | **Intervention Analysis** | [`src/d4_intervention.py`](src/d4_intervention.py) | [`outputs/d4_comparison.png`](outputs/d4_comparison.png), [`outputs/d4_summary.csv`](outputs/d4_summary.csv) | Monte Carlo simulation (100 runs) comparing physical hardware hardening vs. an upstream AI verification checkpoint. |
@@ -112,15 +112,15 @@ Every datum in this project is explicitly labeled with its provenance (see also 
 
 | Component | Source / Methodology | Provenance Label |
 |---|---|---|
-| **Substation Coordinates (27)** | OpenStreetMap query (`power=substation`) over Bhopal bounding box | **Observed** |
-| **Hospital & Pump Coordinates (398)** | OpenStreetMap queries (`amenity=hospital`, `man_made=water_works\|pumping_station`) | **Observed** |
+| **Substation Coordinates (190)** | OpenStreetMap query (`power=substation`) over Bengaluru bounding box | **Observed** |
+| **Hospital & Pump Coordinates (1,217)** | OpenStreetMap queries (`amenity=hospital`, `man_made=water_works\|pumping_station`) | **Observed** |
 | **Power Feeder Topology** | $k$-Nearest Neighbors ($k=3$) on Haversine distance | **Inferred** |
 | **Electrical Capacities & Loads** | Uniform bounded sampling from [`config.yaml`](config.yaml) | **Assumed** |
 | **Hospital / Water Buffers** | Standard engineering baselines (8.0h generator fuel, 6.0h reservoir buffer) | **Assumed** |
 | **Complaint Texts (20)** | Native Kannada script and English civic grievance dataset | **Synthetic** |
 | **Routing Accuracy Metrics** | Deterministic 120-run experimental evaluation | **Measured** |
 | **Cascade Dynamics & Criticality** | Physics-based load shedding simulation in [`src/cascade.py`](src/cascade.py) | **Simulated** |
-| **Verification-queue SLA (48h)** | Cited: UPPCL published complaint-verification window | **Cited** |
+| **Verification-queue SLA (48h)** | Field-officer verify/assign window; no verified Karnataka (BESCOM/BWSSB) figure available | **Assumed** |
 | **Other department SLAs, time-to-failure, guard thresholds** | Illustrative municipal SLA values in [`config.yaml`](config.yaml) | **Assumed** |
 | **Intervention Cost Estimates** | Order-of-magnitude representative figures for policy comparison | **Assumed** |
 

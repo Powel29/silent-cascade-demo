@@ -1,0 +1,2506 @@
+{
+  "elements": [
+    {
+      "osm_type": "node",
+      "id": 1470856116,
+      "lat": 12.9362606,
+      "lon": 77.6237622,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 1525993646,
+      "lat": 13.0119654,
+      "lon": 77.5752904,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 2398083171,
+      "lat": 12.8988404,
+      "lon": 77.6214406,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 2398083172,
+      "lat": 12.8998321,
+      "lon": 77.620203,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 2449069717,
+      "lat": 12.8928529,
+      "lon": 77.613361,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 4609658408,
+      "lat": 12.9414316,
+      "lon": 77.6945339,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7228221971,
+      "lat": 13.095548,
+      "lon": 77.5948785,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 7236242037,
+      "lat": 12.8866386,
+      "lon": 77.5622186,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "node",
+      "id": 12713751003,
+      "lat": 12.9813158,
+      "lon": 77.6454392,
+      "tags": {
+        "building": "commercial",
+        "power": "substation",
+        "substation": "minor_distribution"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 24488576,
+      "lat": 12.9022267,
+      "lon": 77.6495638,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "HSR Layout Substation",
+        "name:kn": "\u0c95\u0cb0\u0ccd\u0ca8\u0cbe\u0c9f\u0c95 \u0cb5\u0cbf\u0ca6\u0ccd\u0caf\u0cc1\u0ca4\u0ccd \u0caa\u0ccd\u0cb0\u0cb8\u0cb0\u0ca3 \u0ca8\u0cbf\u0c97\u0cae \u0ca8\u0cbf\u0caf\u0cae\u0cbf\u0ca4",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "400 MVA",
+        "ref": "1201001CE",
+        "start_date": "1998-01-26",
+        "substation": "transmission",
+        "voltage": "220000;66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 32259052,
+      "lat": 12.9078721,
+      "lon": 77.5805781,
+      "tags": {
+        "name": "BESCOM Office",
+        "name:kn": "\u0cac\u0cc6\u0c82\u0c97\u0cb3\u0cc2\u0cb0\u0cc1 \u0ca8\u0cc0\u0cb0\u0cc1 \u0cb8\u0cb0\u0cac\u0cb0\u0cbe\u0c9c\u0cc1 \u0cae\u0ca4\u0ccd\u0ca4\u0cc1 \u0c92\u0cb3\u0c9a\u0cb0\u0c82\u0ca1\u0cbf \u0cae\u0c82\u0ca1\u0cb3\u0cbf",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 40151508,
+      "lat": 13.0290763,
+      "lon": 77.5255429,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Peenya Substation",
+        "name:kn": "\u0caa\u0cc0\u0ca3\u0ccd\u0caf",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "450 MVA",
+        "ref": "1104001CE",
+        "start_date": "1965-01-25",
+        "substation": "transmission",
+        "voltage": "220000;66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 46837620,
+      "lat": 13.0441739,
+      "lon": 77.5538825,
+      "tags": {
+        "name": "Gokula",
+        "name:kn": "\u0c97\u0ccb\u0c95\u0cc1\u0cb2",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 46918829,
+      "lat": 13.0382131,
+      "lon": 77.5586525,
+      "tags": {
+        "name": "Mattikere",
+        "name:kn": "\u0cae\u0ca4\u0ccd\u0ca4\u0cbf\u0c95\u0cc6\u0cb0\u0cc6",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 126705930,
+      "lat": 12.9951972,
+      "lon": 77.7116711,
+      "tags": {
+        "barrier": "fence",
+        "frequency": "50",
+        "gas_insulated": "no",
+        "location": "outdoor",
+        "name": "Hoodi Substation",
+        "name:kn": "\u0cb9\u0cc2\u0ca1\u0cbf",
+        "operator": "KPTCL",
+        "operator:wikidata": "Q17064153",
+        "power": "substation",
+        "rating": "1500 MVA",
+        "ref": "1202002BC",
+        "start_date": "1995-03-31",
+        "substation": "transmission",
+        "voltage": "400000;220000;66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 130871139,
+      "lat": 12.9326212,
+      "lon": 77.6129323,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Adugodi Substation",
+        "name:kn": "\u0c95\u0cb0\u0ccd\u0ca8\u0cbe\u0c9f\u0c95 \u0cb5\u0cbf\u0ca6\u0ccd\u0caf\u0cc1\u0ca4\u0ccd \u0caa\u0ccd\u0cb0\u0cb8\u0cb0\u0ca3 \u0ca8\u0cbf\u0c97\u0cae \u0ca8\u0cbf\u0caf\u0cae\u0cbf\u0ca4",
+        "operator": "KPTCL",
+        "operator:wikidata": "Q17064153",
+        "power": "substation",
+        "rating": "60 MVA",
+        "ref": "1201011EF",
+        "start_date": "1964-08-19",
+        "substation": "transmission",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 133122825,
+      "lat": 13.0367975,
+      "lon": 77.5664072,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "RMV Layout",
+        "operator": "KPTCL",
+        "power": "substation",
+        "substation": "distribution",
+        "voltage": "66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 145096012,
+      "lat": 12.9955218,
+      "lon": 77.7478202,
+      "tags": {
+        "barrier": "wall",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 164140319,
+      "lat": 12.9628524,
+      "lon": 77.64899,
+      "tags": {
+        "name": "BESCOM Electrical Substation",
+        "name:kn": "\u0cac\u0cc6\u0c82\u0c97\u0cb3\u0cc2\u0cb0\u0cc1 \u0cb5\u0cbf\u0ca6\u0ccd\u0caf\u0cc1\u0ca4\u0ccd \u0cb8\u0cb0\u0cac\u0cb0\u0cbe\u0c9c\u0cc1 \u0c95\u0c82\u0caa\u0cc6\u0ca8\u0cbf",
+        "operator": "BESCOM",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 165506509,
+      "lat": 12.9713166,
+      "lon": 77.6049432,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "East Division Compound",
+        "name:kn": "\u0cb5\u0cbf\u0cb6\u0ccd\u0cb5\u0cc7\u0cb6\u0ccd\u0cb5\u0cb0\u0caf\u0ccd\u0caf",
+        "official_name": "Vishweshwaraiah Substation",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "63 MVA",
+        "ref": "1101001EF",
+        "start_date": "2010-12-20",
+        "substation": "transmission",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 166612988,
+      "lat": 12.9651639,
+      "lon": 77.6365084,
+      "tags": {
+        "operator": "BESCOM",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 172899327,
+      "lat": 12.9543033,
+      "lon": 77.5940534,
+      "tags": {
+        "frequency": "50",
+        "landuse": "industrial",
+        "location": "outdoor",
+        "name": "BMTC Substation",
+        "name:kn": "\u0cac\u0cc6\u0c82.\u0cae.\u0cb8\u0cbe.\u0cb8\u0c82.",
+        "operator": "KPTCL",
+        "operator:wikidata": "Q17064153",
+        "power": "substation",
+        "substation": "distribution",
+        "voltage": "66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 172899342,
+      "lat": 12.9414565,
+      "lon": 77.5915395,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "NIMHANS Substation",
+        "name:kn": "\u0ca8\u0cbf\u0cb9\u0ccd\u0cae\u0cbe\u0ca8\u0ccd\u0cb8\u0ccd",
+        "operator": "KPTCL",
+        "operator:wikidata": "Q17064153",
+        "power": "substation",
+        "rating": "300 MVA",
+        "ref": "1201003CE",
+        "start_date": "2012-02-26",
+        "substation": "transmission",
+        "voltage": "220000;66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 181466418,
+      "lat": 12.9768263,
+      "lon": 77.7176758,
+      "tags": {
+        "addr:plot": "132B",
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "EPIP Whitefield Substation",
+        "operator": "KPTCL",
+        "operator:wikidata": "Q17064153",
+        "power": "substation",
+        "rating": "300 MVA",
+        "ref": "1101002CE",
+        "start_date": "2014-01-10",
+        "substation": "distribution",
+        "voltage": "220000;66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 199023835,
+      "lat": 13.0110013,
+      "lon": 77.5381431,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Nandhini Layout Substation",
+        "name:kn": "\u0ca8\u0c82\u0ca6\u0cbf\u0ca8\u0cbf \u0cac\u0ca1\u0cbe\u0cb5\u0ca3\u0cc6",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "51.5 MVA",
+        "ref": "1104012EF",
+        "start_date": "1990-06-08",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 217566888,
+      "lat": 12.9537098,
+      "lon": 77.6413638,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Golf Links Substation",
+        "operator": "KPTCL",
+        "operator:wikidata": "Q17064153",
+        "power": "substation",
+        "rating": "63 MVA",
+        "ref": "1202020EF",
+        "start_date": "2009-03-31",
+        "substation": "transmission",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 279368511,
+      "lat": 12.9966455,
+      "lon": 77.7277991,
+      "tags": {
+        "name": "Hoody Traction",
+        "operator": "South Western Railway",
+        "operator:short": "SWR",
+        "operator:wikidata": "Q3595518",
+        "power": "substation",
+        "substation": "traction",
+        "voltage": "220000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 279393116,
+      "lat": 13.0176352,
+      "lon": 77.5073469,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 279393134,
+      "lat": 12.9189551,
+      "lon": 77.4746565,
+      "tags": {
+        "name": "Kengeri S Town",
+        "name:kn": "\u0ca6\u0c95\u0ccd\u0cb7\u0cbf\u0ca3 \u0c95\u0cc6\u0c82\u0c97\u0cc7\u0cb0\u0cbf",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 279472176,
+      "lat": 12.9846414,
+      "lon": 77.6938533,
+      "tags": {
+        "name": "Bagmane WTC",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 279472184,
+      "lat": 12.889004,
+      "lon": 77.7355937,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Domasandra Substation",
+        "name:kn": "\u0ca6\u0cca\u0cae\u0ccd\u0cae\u0cb8\u0c82\u0ca6\u0ccd\u0cb0",
+        "operator": "KPTCL",
+        "power": "substation",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 279472187,
+      "lat": 12.8984754,
+      "lon": 77.5569842,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "ISRO Layout Substation",
+        "name:kn": "\u0cad\u0cbe\u0cb0\u0ca4\u0cc0\u0caf \u0cac\u0cbe\u0cb9\u0ccd\u0caf\u0cbe\u0c95\u0cbe\u0cb6 \u0cb8\u0c82\u0cb6\u0ccb\u0ca7\u0ca8\u0cc6 \u0cb8\u0c82\u0cb8\u0ccd\u0ca5\u0cc6",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "40 MVA",
+        "ref": "1204018EF",
+        "start_date": "2007-01-01",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 279472191,
+      "lat": 12.8738799,
+      "lon": 77.6578119,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Naganathapura Substation",
+        "name:kn": "\u0ca8\u0cbe\u0c97\u0ca8\u0cbe\u0ca5\u0caa\u0cc1\u0cb0",
+        "operator": "KPTCL",
+        "operator:wikidata": "Q17064153",
+        "power": "substation",
+        "rating": "71.5 MVA",
+        "ref": "1201002EF",
+        "start_date": "1999-10-30",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 279472193,
+      "lat": 12.8968394,
+      "lon": 77.5469054,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Subramanyapura Substation",
+        "name:kn": "\u0cb8\u0cc1\u0cac\u0ccd\u0cb0\u0cae\u0ca3\u0ccd\u0caf\u0caa\u0cc1\u0cb0",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "40MVA",
+        "ref": "1204001EF",
+        "start_date": "1970-04-30",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 279472194,
+      "lat": 12.8958287,
+      "lon": 77.5467272,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Subramanyapura Substation",
+        "name:kn": "\u0cb8\u0cc1\u0cac\u0ccd\u0cb0\u0cae\u0ca3\u0ccd\u0caf\u0caa\u0cc1\u0cb0",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "400 MVA",
+        "ref": "1204001CE",
+        "start_date": "1986-10-02",
+        "substation": "distribution",
+        "voltage": "220000;66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 279472205,
+      "lat": 12.9364845,
+      "lon": 77.5206689,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Vrishabavathi Valley",
+        "name:kn": "\u0cb5\u0cc3\u0cb7\u0cad\u0cbe\u0cb5\u0ca4\u0cbf \u0c95\u0ca3\u0cbf\u0cb5\u0cc6",
+        "operator": "KPTCL",
+        "operator:wikidata": "Q17064153",
+        "power": "substation",
+        "rating": "63 MVA",
+        "ref": "1103003EF",
+        "start_date": "2009-03-04",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 279472254,
+      "lat": 13.048141,
+      "lon": 77.619209,
+      "tags": {
+        "name": "Manyata",
+        "name:kn": "\u0cae\u0cbe\u0ca8\u0ccd\u0caf\u0ca4",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 279472267,
+      "lat": 12.9887861,
+      "lon": 77.7037335,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 279472276,
+      "lat": 13.02873,
+      "lon": 77.6103261,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "LR Bande Substation",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "51.5 MVA",
+        "ref": "1102016EF",
+        "start_date": "2003-07-25",
+        "substation": "transmission",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 280482830,
+      "lat": 13.0305136,
+      "lon": 77.5823758,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Hebbal Substation",
+        "name:kn": "\u0cb9\u0cc6\u0cac\u0ccd\u0cac\u0cbe\u0cb3\u0cc1",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "200 MVA",
+        "ref": "1102001CE",
+        "start_date": "1994-07-02",
+        "substation": "distribution",
+        "voltage": "220000;66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 280482853,
+      "lat": 13.0502974,
+      "lon": 77.5471452,
+      "tags": {
+        "name": "HMT",
+        "name:kn": "\u0c8e\u0c9a\u0ccd\u200c\u0c8e\u0c82\u0c9f\u0cbf",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 280482854,
+      "lat": 13.0453047,
+      "lon": 77.5829667,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 280482858,
+      "lat": 13.0655412,
+      "lon": 77.5820488,
+      "tags": {
+        "name": "Sahakar Nagara",
+        "name:kn": "\u0cb8\u0cb9\u0c95\u0cbe\u0cb0\u0ca8\u0c97\u0cb0",
+        "operator": "KPTCL",
+        "power": "substation",
+        "substation": "transmission",
+        "voltage": "220000;66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 280482861,
+      "lat": 13.0257532,
+      "lon": 77.5812978,
+      "tags": {
+        "name": "CPRI",
+        "name:kn": "\u0c95\u0cc7\u0c82\u0ca6\u0ccd\u0cb0\u0cc0\u0caf \u0cb5\u0cbf\u0ca6\u0ccd\u0caf\u0cc1\u0ca4\u0ccd",
+        "power": "substation",
+        "voltage": "220000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 280482880,
+      "lat": 13.0728008,
+      "lon": 77.5286763,
+      "tags": {
+        "name": "Abbigere",
+        "name:kn": "\u0c85\u0cac\u0ccd\u0cac\u0cbf\u0c97\u0cc6\u0cb0\u0cc6",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 311372095,
+      "lat": 12.9274824,
+      "lon": 77.668033,
+      "tags": {
+        "name": "Electric Sub-Station",
+        "operator": "BESCOM",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 316686955,
+      "lat": 12.9828988,
+      "lon": 77.5753956,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "A Station",
+        "operator": "KPTCL",
+        "power": "substation",
+        "substation": "transmission",
+        "voltage": "220000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 316689602,
+      "lat": 13.0438333,
+      "lon": 77.5262773,
+      "tags": {
+        "barrier": "fence",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 316689603,
+      "lat": 13.0434723,
+      "lon": 77.5260733,
+      "tags": {
+        "barrier": "fence",
+        "name": "Wellcast Steel",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 344193934,
+      "lat": 12.9220526,
+      "lon": 77.5607462,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Padmanabha Nagar Substation",
+        "name:kn": "\u0c95\u0cb0\u0ccd\u0ca8\u0cbe\u0c9f\u0c95 \u0cb5\u0cbf\u0ca6\u0ccd\u0caf\u0cc1\u0ca4\u0ccd \u0caa\u0ccd\u0cb0\u0cb8\u0cb0\u0ca3 \u0ca8\u0cbf\u0c97\u0cae",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "51.5 MVA",
+        "ref": "1204017EF",
+        "start_date": "2004-02-26",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 345847177,
+      "lat": 12.9478532,
+      "lon": 77.6444617,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 346422550,
+      "lat": 13.0704231,
+      "lon": 77.5808829,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 346444901,
+      "lat": 13.0299995,
+      "lon": 77.6277988,
+      "tags": {
+        "fixme": "power line connections to be added",
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "HBR Layout",
+        "name:kn": "\u0cb9\u0cc6\u0ca3\u0ccd\u0ca3\u0cc2\u0cb0\u0cc1 \u0cac\u0cb3\u0ccd\u0cb3\u0cbe\u0cb0\u0cbf \u0cb0\u0cb8\u0ccd\u0ca4\u0cc6 \u0cb2\u0cc7\u0c94\u0c9f\u0ccd",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "60 MVA",
+        "ref": "1102019EF",
+        "start_date": "2007-01-31",
+        "substation": "transmission",
+        "voltage": "220000;66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 347175676,
+      "lat": 12.9819465,
+      "lon": 77.5747321,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 347417977,
+      "lat": 12.9358977,
+      "lon": 77.5207377,
+      "tags": {
+        "building": "yes",
+        "name": "KPTCL Ramanagara Circle",
+        "operator": "KPTCL",
+        "operator:wikidata": "Q17064153",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 347541531,
+      "lat": 12.9774233,
+      "lon": 77.6646738,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 363617608,
+      "lat": 12.9862647,
+      "lon": 77.6746356,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 369295547,
+      "lat": 12.9740318,
+      "lon": 77.6137554,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "B Station",
+        "operator": "KPTCL",
+        "power": "substation",
+        "start_date": "1905",
+        "substation": "distribution",
+        "voltage": "66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 386182103,
+      "lat": 13.0505696,
+      "lon": 77.5808914,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 386182131,
+      "lat": 13.0807973,
+      "lon": 77.733942,
+      "tags": {
+        "name": "Manduru",
+        "name:kn": "\u0cae\u0c82\u0ca1\u0cc2\u0cb0\u0cc1",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 386182133,
+      "lat": 13.0986592,
+      "lon": 77.5703167,
+      "tags": {
+        "landuse": "industrial",
+        "name": "Yelahanka",
+        "name:kn": "\u0caf\u0cb2\u0cb9\u0c82\u0c95",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 400517920,
+      "lat": 12.9638948,
+      "lon": 77.6149477,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Austin Town Substation",
+        "name:kn": "\u0c86\u0cb8\u0ccd\u0c9f\u0cbf\u0ca8\u0ccd \u0cb0\u0cb8\u0ccd\u0ca4\u0cc6",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "60 MVA",
+        "ref": "1201013EF",
+        "start_date": "1995-12-02",
+        "substation": "transmission",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 400517922,
+      "lat": 12.9431625,
+      "lon": 77.6240378,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Koramangala Substation",
+        "name:kn": "\u0c95\u0ccb\u0cb0\u0cae\u0c82\u0c97\u0cb2",
+        "operator": "KPTCL",
+        "operator:wikidata": "Q17064153",
+        "power": "substation",
+        "rating": "40 MVA",
+        "ref": "120104EF",
+        "start_date": "1996-04-12",
+        "substation": "transmission",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 400517923,
+      "lat": 12.9269841,
+      "lon": 77.6796401,
+      "tags": {
+        "name": "KPTCL Power substation",
+        "name:kn": "\u0c95.\u0cb5\u0cbf.\u0caa\u0ccd\u0cb0.\u0ca8\u0cbf.\u0ca8\u0cbf.",
+        "operator": "KPTCL",
+        "operator:wikidata": "Q17064153",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 433843476,
+      "lat": 13.0283667,
+      "lon": 77.533502,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 433843480,
+      "lat": 13.0542981,
+      "lon": 77.5612223,
+      "tags": {
+        "name": "BEL",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 433843481,
+      "lat": 13.061539,
+      "lon": 77.5061764,
+      "tags": {
+        "name": "MEI Layout",
+        "operator": "KPTCL",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 433843482,
+      "lat": 13.0355024,
+      "lon": 77.5314806,
+      "tags": {
+        "name": "Platinum City Power Station",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 433843483,
+      "lat": 13.0910222,
+      "lon": 77.4914798,
+      "tags": {
+        "name": "Soladevanahalli",
+        "name:kn": "\u0cb8\u0ccb\u0cb2\u0ca6\u0cc7\u0cb5\u0ca8\u0cb9\u0cb3\u0ccd\u0cb3\u0cbf",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 433853595,
+      "lat": 12.9586999,
+      "lon": 77.5287134,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Chandra Layout",
+        "name:kn": "\u0c9a\u0c82\u0ca6\u0ccd\u0cb0 \u0cac\u0ca1\u0cbe\u0cb5\u0ca3\u0cc6",
+        "operator": "KPTCL",
+        "power": "substation",
+        "substation": "distribution",
+        "voltage": "66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 433853596,
+      "lat": 13.0011372,
+      "lon": 77.5482938,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Mahalakshmi Layout",
+        "name:kn": "\u0cae\u0cb9\u0cbe\u0cb2\u0c95\u0ccd\u0cb7\u0ccd\u0cae\u0cbf \u0cac\u0ca1\u0cbe\u0cb5\u0ca3\u0cc6",
+        "operator": "KPTCL",
+        "power": "substation",
+        "substation": "distribution",
+        "voltage": "66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 433853597,
+      "lat": 12.9802248,
+      "lon": 77.5363072,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Vijaya Nagar",
+        "name:kn": "\u0cb5\u0cbf\u0c9c\u0caf\u0ca8\u0c97\u0cb0",
+        "operator": "KPTCL",
+        "power": "substation",
+        "substation": "distribution",
+        "voltage": "66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 439843204,
+      "lat": 12.895212,
+      "lon": 77.5777915,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 442048025,
+      "lat": 12.9200807,
+      "lon": 77.5990692,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Jayadeva",
+        "name:kn": "\u0c9c\u0caf\u0ca6\u0cc7\u0cb5",
+        "operator": "KPTCL",
+        "power": "substation",
+        "substation": "transmission",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 456555146,
+      "lat": 13.0542943,
+      "lon": 77.6239388,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 575162908,
+      "lat": 12.9914391,
+      "lon": 77.6541651,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 583879531,
+      "lat": 12.9686272,
+      "lon": 77.6622395,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "HAL Substation",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "63 MVA",
+        "ref": "1202001EF",
+        "start_date": "1967-01-01",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 591251805,
+      "lat": 13.0203859,
+      "lon": 77.6490308,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Banaswadi Substation",
+        "name:kn": "\u0cac\u0ca8\u0cb8\u0ccd\u0cb5\u0cbe\u0ca1\u0cbf",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "83 MVA",
+        "ref": "1102013EF",
+        "start_date": "1989-05-01",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 655368585,
+      "lat": 12.9478049,
+      "lon": 77.6984899,
+      "tags": {
+        "landuse": "industrial",
+        "location": "outdoor",
+        "operator": "KPTCL",
+        "operator:wikidata": "Q17064153",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 766409549,
+      "lat": 12.9323952,
+      "lon": 77.7320445,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 777518480,
+      "lat": 12.9923633,
+      "lon": 77.5994147,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "C Station",
+        "operator": "KPTCL",
+        "power": "substation",
+        "start_date": "1905",
+        "substation": "distribution",
+        "voltage": "66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 777690244,
+      "lat": 13.0151688,
+      "lon": 77.5635497,
+      "tags": {
+        "alt_name": "IISc Substation",
+        "frequency": "50",
+        "location": "indoor",
+        "name": "IISc MUSS",
+        "operator": "KPTCL",
+        "power": "substation",
+        "substation": "distribution",
+        "voltage": "66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 781680963,
+      "lat": 12.8735924,
+      "lon": 77.5657202,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Khodays Glass Factory Substation",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "400 MVA",
+        "ref": "1204002CE",
+        "start_date": "1986-10-02",
+        "substation": "distribution",
+        "voltage": "220000;66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 781700156,
+      "lat": 12.9045094,
+      "lon": 77.6642145,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 781773648,
+      "lat": 13.0769662,
+      "lon": 77.6348797,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 792790112,
+      "lat": 13.0224867,
+      "lon": 77.5764105,
+      "tags": {
+        "fixme": "Is this really a substation?",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 792790150,
+      "lat": 13.0188619,
+      "lon": 77.5721032,
+      "tags": {
+        "fixme": "Is this really a substation?",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 841027985,
+      "lat": 12.9433022,
+      "lon": 77.6676871,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 965216886,
+      "lat": 13.0018762,
+      "lon": 77.6190756,
+      "tags": {
+        "name": "Pottery Road",
+        "name:kn": "\u0caa\u0cbe\u0c9f\u0cc6\u0cb0\u0cbf \u0cb0\u0cb8\u0ccd\u0ca4\u0cc6",
+        "operator": "KPTCL",
+        "power": "substation",
+        "ref": "1102011EF",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1013443902,
+      "lat": 13.0147458,
+      "lon": 77.5555072,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Brigade Gateway Substation",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "40 MVA",
+        "ref": "BGW",
+        "start_date": "1101011EF",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1060953964,
+      "lat": 12.9307068,
+      "lon": 77.6967296,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Vikas Tech Park Substation",
+        "operator": "KTPCL",
+        "power": "substation",
+        "rating": "300 MVA",
+        "ref": "1202003CE",
+        "start_date": "2017-03-05",
+        "substation": "distribution",
+        "voltage": "220000;66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1064408561,
+      "lat": 12.9816567,
+      "lon": 77.5190453,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1064882695,
+      "lat": 12.9379879,
+      "lon": 77.6972865,
+      "tags": {
+        "name": "Exora",
+        "operator": "KTPCL",
+        "power": "substation",
+        "substation": "transmission",
+        "voltage": "220000;66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1070977173,
+      "lat": 12.9675469,
+      "lon": 77.7218959,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1073971280,
+      "lat": 13.0685518,
+      "lon": 77.5883932,
+      "tags": {
+        "location": "outdoor",
+        "name": "L&T Substation",
+        "power": "substation",
+        "substation": "minor_distribution"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1079087281,
+      "lat": 12.8750229,
+      "lon": 77.6117481,
+      "tags": {
+        "location": "outdoor",
+        "operator": "KPTCL",
+        "power": "substation",
+        "substation": "minor_distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1087820270,
+      "lat": 13.0344708,
+      "lon": 77.5002256,
+      "tags": {
+        "location": "outdoor",
+        "name": "KPTCL HMT Layout",
+        "operator": "KPTCL",
+        "power": "substation",
+        "voltage": "66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1089718003,
+      "lat": 12.9753633,
+      "lon": 77.6042137,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1097058965,
+      "lat": 12.9698912,
+      "lon": 77.5916823,
+      "tags": {
+        "frequency": "50",
+        "location": "indoor",
+        "name": "Kanteerava Stadium",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "63 MVA",
+        "ref": "1101014EF",
+        "start_date": "2014-01-10",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1097058966,
+      "lat": 12.9642082,
+      "lon": 77.5729734,
+      "tags": {
+        "alt_name": "A Station",
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Victoria Hospital Substation",
+        "name:kn": "\u0cb5\u0cbf\u0c95\u0ccd\u0c9f\u0ccb\u0cb0\u0cbf\u0caf\u0cbe \u0c86\u0cb8\u0ccd\u0caa\u0ca4\u0ccd\u0cb0\u0cc6",
+        "operator": "KPTCL",
+        "power": "substation",
+        "start_date": "1905",
+        "substation": "distribution",
+        "voltage": "66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1097058968,
+      "lat": 12.9668659,
+      "lon": 77.5458925,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Telecom Layout Substation",
+        "name:kn": "\u0c9f\u0cc6\u0cb2\u0cbf\u0c95\u0cbe\u0c82 \u0cac\u0ca1\u0cbe\u0cb5\u0ca3\u0cc6",
+        "operator": "KPTCL",
+        "power": "substation",
+        "substation": "distribution",
+        "voltage": "66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1097058973,
+      "lat": 12.9822668,
+      "lon": 77.4525015,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Kodigehalli Substation",
+        "operator": "KPTCL",
+        "power": "substation",
+        "substation": "distribution",
+        "voltage": "66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1097058974,
+      "lat": 12.9787404,
+      "lon": 77.5035171,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Srigandhakavalu",
+        "name:kn": "\u0cb6\u0ccd\u0cb0\u0cc0\u0c97\u0c82\u0ca7\u0c95\u0cbe\u0cb5\u0cb2\u0cc1",
+        "operator": "KPTCL",
+        "power": "substation",
+        "substation": "distribution",
+        "voltage": "66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1097223361,
+      "lat": 12.952928,
+      "lon": 77.573447,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "National College Substation",
+        "name:kn": "\u0cb0\u0cbe\u0cb7\u0ccd\u0c9f\u0ccd\u0cb0\u0cc0\u0caf \u0c95\u0cbe\u0cb2\u0cc7\u0c9c\u0cc1",
+        "operator": "KPTCL",
+        "operator:wikidata": "Q17064153",
+        "power": "substation",
+        "rating": "63 MVA",
+        "ref": "1101015EF",
+        "start_date": "2015-01-28",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1097223362,
+      "lat": 12.9323171,
+      "lon": 77.58336,
+      "tags": {
+        "frequency": "50",
+        "location": "indoor",
+        "name": "Jayanagar Substation",
+        "name:kn": "\u0c9c\u0caf\u0ca8\u0c97\u0cb0",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "63 MVA",
+        "ref": "1101013EF",
+        "start_date": "2013-11-13",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1097223363,
+      "lat": 12.9456416,
+      "lon": 77.5310554,
+      "tags": {
+        "frequency": "50",
+        "location": "indoor",
+        "name": "REMCO",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "63 MVA",
+        "ref": "110102EF",
+        "start_date": "2010-12-03",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1097223364,
+      "lat": 12.9716897,
+      "lon": 77.6048297,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "East Division Compound",
+        "name:kn": "\u0cb5\u0cbf\u0cb6\u0ccd\u0cb5\u0cc7\u0cb6\u0ccd\u0cb5\u0cb0\u0caf\u0ccd\u0caf",
+        "official_name": "Vishweshwaraiah Substation",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "300 MVA",
+        "ref": "1101001CE",
+        "start_date": "2010-12-20",
+        "substation": "transmission",
+        "voltage": "220000;66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1097263270,
+      "lat": 12.9978766,
+      "lon": 77.6235999,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "ITC Substation",
+        "power": "substation",
+        "substation": "transmission",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1097263271,
+      "lat": 12.9291569,
+      "lon": 77.6096487,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "St Johns Wood Substation",
+        "operator": "KPTCL",
+        "operator:wikidata": "Q17064153",
+        "power": "substation",
+        "rating": "40 MVA",
+        "ref": "1201021EF",
+        "start_date": "2009-03-30",
+        "substation": "transmission",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1097273235,
+      "lat": 12.9157686,
+      "lon": 77.5433722,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Arehalli",
+        "name:kn": "\u0c85\u0cb0\u0cc6\u0cb9\u0cb3\u0ccd\u0cb3\u0cbf",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "40 MVA",
+        "ref": "1204014EF",
+        "start_date": "1999-11-04",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1097273236,
+      "lat": 12.9346528,
+      "lon": 77.5387548,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Banashankari",
+        "name:kn": "\u0cac\u0ca8\u0cb6\u0c82\u0c95\u0cb0\u0cbf",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "83 MVA",
+        "ref": "1204011EF",
+        "start_date": "1987-01-24",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1097273237,
+      "lat": 12.9141693,
+      "lon": 77.5285369,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Rajajeshwari Nagar",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "40 MVA",
+        "ref": "1204013EF",
+        "start_date": "1998-12-31",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1097273238,
+      "lat": 12.9356995,
+      "lon": 77.5204783,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Vrishabavathi Valley Substation",
+        "name:kn": "\u0cb5\u0cc3\u0cb7\u0cad\u0cbe\u0cb5\u0ca4\u0cbf \u0c95\u0ca3\u0cbf\u0cb5\u0cc6",
+        "operator": "KPTCL",
+        "operator:wikidata": "Q17064153",
+        "power": "substation",
+        "rating": "300MVA",
+        "ref": "1103003CE",
+        "start_date": "2009-03-04",
+        "substation": "distribution",
+        "voltage": "220000;66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1097355603,
+      "lat": 13.0528326,
+      "lon": 77.6149933,
+      "tags": {
+        "frequency": "50",
+        "landuse": "industrial",
+        "location": "outdoor",
+        "name": "Manyata Substation",
+        "name:kn": "\u0cae\u0cbe\u0ca8\u0ccd\u0caf\u0ca4",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "500 MVA",
+        "ref": "1102018BC",
+        "substation": "distribution",
+        "voltage": "220000;66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1097355608,
+      "lat": 12.9301143,
+      "lon": 77.6966051,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Vikas Tech Park Substation",
+        "operator": "KTPCL",
+        "power": "substation",
+        "rating": "63 MVA",
+        "ref": "1202003EF",
+        "start_date": "2017-03-05",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1097355609,
+      "lat": 12.968667,
+      "lon": 77.6614146,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "HAL Substation",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "300 MVA",
+        "ref": "1202001CE",
+        "start_date": "2008-08-31",
+        "substation": "distribution",
+        "voltage": "220000;66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1097355610,
+      "lat": 12.941122,
+      "lon": 77.591536,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Nimhans Substation",
+        "name:kn": "\u0ca8\u0cbf\u0cb9\u0ccd\u0cae\u0cbe\u0ca8\u0ccd\u0cb8\u0ccd",
+        "operator": "KPTCL",
+        "operator:wikidata": "Q17064153",
+        "power": "substation",
+        "rating": "40 MVA",
+        "ref": "1201003EF",
+        "start_date": "2004-02-26",
+        "substation": "transmission",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1097355611,
+      "lat": 12.874507,
+      "lon": 77.6578977,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Naganathapura Substation",
+        "name:kn": "\u0ca8\u0cbe\u0c97\u0ca8\u0cbe\u0ca5\u0caa\u0cc1\u0cb0",
+        "operator": "KPTCL",
+        "operator:wikidata": "Q17064153",
+        "power": "substation",
+        "rating": "200 MVA",
+        "ref": "1201002CE",
+        "start_date": "2009-05-29",
+        "substation": "distribution",
+        "voltage": "220000;66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1097355612,
+      "lat": 12.9027351,
+      "lon": 77.6494492,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "HSR Layout Substation",
+        "name:kn": "\u0c95\u0cb0\u0ccd\u0ca8\u0cbe\u0c9f\u0c95 \u0cb5\u0cbf\u0ca6\u0ccd\u0caf\u0cc1\u0ca4\u0ccd \u0caa\u0ccd\u0cb0\u0cb8\u0cb0\u0ca3 \u0ca8\u0cbf\u0c97\u0cae \u0ca8\u0cbf\u0caf\u0cae\u0cbf\u0ca4",
+        "operator": "KPTCL",
+        "operator:wikidata": "Q17064153",
+        "power": "substation",
+        "rating": "83 MVA",
+        "ref": "1201001EF",
+        "start_date": "1998-01-26",
+        "substation": "transmission",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1097355613,
+      "lat": 13.0287866,
+      "lon": 77.5264533,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Peenya Substation",
+        "name:kn": "\u0caa\u0cc0\u0ca3\u0ccd\u0caf",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "159 MVA",
+        "ref": "1104001EF",
+        "start_date": "1965-01-25",
+        "substation": "transmission",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1107039354,
+      "lat": 12.9256888,
+      "lon": 77.6405485,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1107044269,
+      "lat": 13.0461807,
+      "lon": 77.6465222,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1116926301,
+      "lat": 13.0105259,
+      "lon": 77.5541353,
+      "tags": {
+        "location": "outdoor",
+        "operator": "KPTCL",
+        "power": "substation",
+        "substation": "distribution"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1117538123,
+      "lat": 12.8736288,
+      "lon": 77.7294744,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Chokkasandra",
+        "name:kn": "\u0c9a\u0cca\u0c95\u0ccd\u0c95\u0cb8\u0c82\u0ca6\u0ccd\u0cb0",
+        "operator": "KPTCL",
+        "power": "substation",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1128124757,
+      "lat": 13.0558951,
+      "lon": 77.4865642,
+      "tags": {
+        "location": "outdoor",
+        "name": "Jindal City Substation",
+        "power": "substation",
+        "substation": "minor_distribution"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1182510990,
+      "lat": 12.930938,
+      "lon": 77.7231001,
+      "tags": {
+        "location": "outdoor",
+        "name": "Sobha Dream Acres Substation",
+        "operator": "KPTCL",
+        "operator:wikidata": "Q17064153",
+        "power": "substation",
+        "substation": "transmission",
+        "voltage": "220000;66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1186655038,
+      "lat": 12.927951,
+      "lon": 77.6820307,
+      "tags": {
+        "location": "outdoor",
+        "power": "substation",
+        "substation": "distribution"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1186655039,
+      "lat": 12.924302,
+      "lon": 77.6797801,
+      "tags": {
+        "location": "outdoor",
+        "power": "substation",
+        "substation": "distribution"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1186655041,
+      "lat": 12.918433,
+      "lon": 77.6864358,
+      "tags": {
+        "frequency": "50",
+        "landuse": "industrial",
+        "location": "outdoor",
+        "power": "substation",
+        "substation": "distribution"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1187741529,
+      "lat": 12.9812006,
+      "lon": 77.5622318,
+      "tags": {
+        "location": "outdoor",
+        "power": "substation",
+        "substation": "distribution"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1190032730,
+      "lat": 12.988374,
+      "lon": 77.7491853,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "BMRCL RSS",
+        "operator": "BMRCL",
+        "power": "substation",
+        "substation": "minor_distribution",
+        "voltage": "66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1190136202,
+      "lat": 12.9846573,
+      "lon": 77.7365257,
+      "tags": {
+        "name": "ITPL",
+        "operator": "KPTCL",
+        "operator:wikidata": "Q17064153",
+        "power": "substation",
+        "substation": "transmission",
+        "voltage": "220000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1195585403,
+      "lat": 13.0007815,
+      "lon": 77.626661,
+      "tags": {
+        "location": "outdoor",
+        "name": "Raheja Mansion Substation",
+        "power": "substation",
+        "substation": "minor_distribution"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1212112579,
+      "lat": 12.9269536,
+      "lon": 77.6907014,
+      "tags": {
+        "location": "outdoor",
+        "name": "ETV Substation",
+        "power": "substation",
+        "substation": "distribution"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1212362568,
+      "lat": 12.9390101,
+      "lon": 77.6889162,
+      "tags": {
+        "power": "substation",
+        "substation": "transmission"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1212362570,
+      "lat": 12.9407124,
+      "lon": 77.6906552,
+      "tags": {
+        "power": "substation",
+        "substation": "transmission"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1212362571,
+      "lat": 12.9373274,
+      "lon": 77.6974357,
+      "tags": {
+        "power": "substation",
+        "substation": "transmission"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1217243748,
+      "lat": 12.9678398,
+      "lon": 77.5117824,
+      "tags": {
+        "landuse": "industrial",
+        "location": "outdoor",
+        "name": "Nagarbhavi KPTCL",
+        "power": "substation",
+        "substation": "distribution",
+        "voltage": "220000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1217710861,
+      "lat": 12.8964878,
+      "lon": 77.540082,
+      "tags": {
+        "building": "no",
+        "name": "PLRD Electrict Yard",
+        "power": "substation",
+        "substation": "minor_distribution"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1217945474,
+      "lat": 12.8945962,
+      "lon": 77.5406883,
+      "tags": {
+        "power": "substation",
+        "substation": "minor_distribution"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1220092530,
+      "lat": 12.8872917,
+      "lon": 77.610841,
+      "tags": {
+        "location": "outdoor",
+        "power": "substation",
+        "substation": "distribution"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1234104590,
+      "lat": 12.9668897,
+      "lon": 77.6950208,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1238665547,
+      "lat": 12.9413748,
+      "lon": 77.7191035,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1240776929,
+      "lat": 12.9406142,
+      "lon": 77.6068954,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1241555389,
+      "lat": 12.985607,
+      "lon": 77.4812358,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1245759287,
+      "lat": 12.9517438,
+      "lon": 77.7476128,
+      "tags": {
+        "location": "outdoor",
+        "name": "Prestige Tech Forest Substation",
+        "power": "substation",
+        "substation": "minor_distribution"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1247547673,
+      "lat": 12.8846175,
+      "lon": 77.4712676,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Provident Sunworth Substation",
+        "power": "substation",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1253158064,
+      "lat": 13.0630253,
+      "lon": 77.6620556,
+      "tags": {
+        "location": "outdoor",
+        "power": "substation",
+        "substation": "minor_distribution"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1256756134,
+      "lat": 12.9896956,
+      "lon": 77.726403,
+      "tags": {
+        "location": "outdoor",
+        "name": "Prestige Shantiniketan Substation",
+        "power": "substation",
+        "substation": "minor_distribution"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1257688678,
+      "lat": 12.8952792,
+      "lon": 77.457968,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1259583808,
+      "lat": 12.9107135,
+      "lon": 77.7302815,
+      "tags": {
+        "location": "outdoor",
+        "name": "Kachamaranahalli Substation",
+        "operator": "KPTCL",
+        "power": "substation",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1261422278,
+      "lat": 12.8730186,
+      "lon": 77.6216856,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1267710988,
+      "lat": 12.9954635,
+      "lon": 77.6895383,
+      "tags": {
+        "location": "outdoor",
+        "power": "substation",
+        "substation": "minor_distribution"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1267728593,
+      "lat": 12.9964728,
+      "lon": 77.7027834,
+      "tags": {
+        "location": "outdoor",
+        "power": "substation",
+        "substation": "minor_distribution"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1268945171,
+      "lat": 12.9846486,
+      "lon": 77.6924994,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1270623498,
+      "lat": 12.8885091,
+      "lon": 77.5806001,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1270788364,
+      "lat": 12.8886558,
+      "lon": 77.5883621,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1273253797,
+      "lat": 12.8949386,
+      "lon": 77.7127397,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1274389151,
+      "lat": 12.9638087,
+      "lon": 77.7224299,
+      "tags": {
+        "frequency": "50",
+        "landuse": "industrial",
+        "location": "outdoor",
+        "name": "Brigade Tech Gardens Brookefield",
+        "operator": "Karnataka Power Transmission Corporation Limited",
+        "power": "substation",
+        "utility": "power",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1279609576,
+      "lat": 13.0695007,
+      "lon": 77.6072111,
+      "tags": {
+        "location": "outdoor",
+        "power": "substation",
+        "substation": "minor_distribution"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1280619034,
+      "lat": 13.0274165,
+      "lon": 77.5248582,
+      "tags": {
+        "frequency": "50",
+        "full_name": "Sharavathi Receiving Station Peenya Substation",
+        "location": "outdoor",
+        "name": "SRS Peenya Substation",
+        "name:kn": "\u0caa\u0cc0\u0ca3\u0ccd\u0caf",
+        "operator": "KPTCL",
+        "power": "substation",
+        "rating": "2x500 MVA",
+        "start_date": "2024",
+        "substation": "transmission",
+        "voltage": "400000;220000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1281206626,
+      "lat": 13.0531566,
+      "lon": 77.4990056,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1281342437,
+      "lat": 12.9688498,
+      "lon": 77.7068325,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1286468292,
+      "lat": 12.9170016,
+      "lon": 77.5047485,
+      "tags": {
+        "location": "outdoor",
+        "power": "substation",
+        "substation": "minor_distribution"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1286756038,
+      "lat": 12.9429506,
+      "lon": 77.4785143,
+      "tags": {
+        "location": "outdoor",
+        "power": "substation",
+        "substation": "minor_distribution"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1299917513,
+      "lat": 12.9156216,
+      "lon": 77.6245738,
+      "tags": {
+        "frequency": "50",
+        "landuse": "industrial",
+        "location": "outdoor",
+        "name": "220/33kV GIS Sub Station, Central Silk Board",
+        "operator": "BMRCL",
+        "power": "substation",
+        "substation": "distribution",
+        "voltage": "220000;33000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1345407074,
+      "lat": 12.8603679,
+      "lon": 77.5557148,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "Anjanapura Substation",
+        "operator": "KPTCL",
+        "power": "substation",
+        "substation": "minor_distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1349974951,
+      "lat": 12.8770469,
+      "lon": 77.5304635,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1354098139,
+      "lat": 12.9780668,
+      "lon": 77.6559752,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1354126976,
+      "lat": 12.9920679,
+      "lon": 77.6578177,
+      "tags": {
+        "location": "outdoor",
+        "name": "MUSS NGEF",
+        "operator": "KPTCL",
+        "power": "substation",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1359786564,
+      "lat": 13.0050908,
+      "lon": 77.6865981,
+      "tags": {
+        "name": "ITI",
+        "operator": "KPTCL",
+        "operator:wikidata": "Q17064153",
+        "power": "substation",
+        "substation": "transmission",
+        "voltage": "220000;66000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1360490750,
+      "lat": 13.0172903,
+      "lon": 77.5067265,
+      "tags": {
+        "name": "Brindavan",
+        "operator": "KPTCL",
+        "power": "substation",
+        "substation": "transmission",
+        "voltage": "220000;66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1365570013,
+      "lat": 12.9139001,
+      "lon": 77.4580718,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1368604669,
+      "lat": 12.8763281,
+      "lon": 77.4523486,
+      "tags": {
+        "location": "outdoor",
+        "name": "Kambipura Substation",
+        "operator": "KPTCL",
+        "power": "substation",
+        "substation": "minor_distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1373630178,
+      "lat": 12.8505385,
+      "lon": 77.6129401,
+      "tags": {
+        "name": "Power Transformers  - PU",
+        "operator": "Karnataka Power Corporation Limited",
+        "operator:wikidata": "Q6372867",
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1409426364,
+      "lat": 13.1002936,
+      "lon": 77.5504102,
+      "tags": {
+        "location": "outdoor",
+        "name": "Doddabettahalli 66kV Substation",
+        "operator": "KPTCL",
+        "power": "substation",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1410000976,
+      "lat": 12.9469087,
+      "lon": 77.7469683,
+      "tags": {
+        "addr:street": "Varthur Lake Road",
+        "building": "service",
+        "building:levels": "1",
+        "building:material": "plaster",
+        "power": "substation",
+        "roof:levels": "0",
+        "roof:shape": "flat",
+        "substation": "minor_distribution",
+        "utility": "power"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1443623292,
+      "lat": 12.9554016,
+      "lon": 77.6544574,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1457696784,
+      "lat": 12.8763184,
+      "lon": 77.4522721,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1457696788,
+      "lat": 12.8750699,
+      "lon": 77.611763,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1457696789,
+      "lat": 12.8517541,
+      "lon": 77.6576435,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1457696790,
+      "lat": 12.8606036,
+      "lon": 77.5409702,
+      "tags": {
+        "frequency": "50",
+        "location": "outdoor",
+        "name": "KPTCL Keppel Purvankara Park Square",
+        "operator": "KPTCL",
+        "power": "substation",
+        "substation": "minor_distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1457696791,
+      "lat": 12.9647836,
+      "lon": 77.6537087,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1457696792,
+      "lat": 13.0910558,
+      "lon": 77.450522,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1457696793,
+      "lat": 13.0755162,
+      "lon": 77.624352,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1497373620,
+      "lat": 13.036751,
+      "lon": 77.5584598,
+      "tags": {
+        "name": "Mathikere",
+        "power": "substation",
+        "substation": "transmission",
+        "voltage": "220000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1507512139,
+      "lat": 13.0800008,
+      "lon": 77.5180105,
+      "tags": {
+        "location": "outdoor",
+        "name": "Somashettihalli 66kV Substation",
+        "operator": "KPTCL",
+        "power": "substation",
+        "substation": "distribution",
+        "voltage": "66000;11000"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1508386877,
+      "lat": 12.9789166,
+      "lon": 77.7047535,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1513974487,
+      "lat": 12.9345606,
+      "lon": 77.6777748,
+      "tags": {
+        "power": "substation"
+      }
+    },
+    {
+      "osm_type": "way",
+      "id": 1552799966,
+      "lat": 12.9683893,
+      "lon": 77.7071954,
+      "tags": {
+        "landuse": "industrial",
+        "power": "substation"
+      }
+    }
+  ]
+}

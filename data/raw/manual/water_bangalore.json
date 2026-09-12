@@ -1,0 +1,2208 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.4 2390de5a",
+  "osm3s": {
+    "timestamp_osm_base": "2026-09-12T03:52:51Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+    {
+      "type": "node",
+      "id": 412681677,
+      "lat": 13.0568488,
+      "lon": 77.6250648,
+      "tags": {
+        "addr:housenumber": "CA-8",
+        "addr:place": "Manyata Residency",
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 419795553,
+      "lat": 13.0595802,
+      "lon": 77.670917,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 419810687,
+      "lat": 13.0513117,
+      "lon": 77.6403781,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 420076870,
+      "lat": 13.0584238,
+      "lon": 77.6579426,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 420082931,
+      "lat": 13.0767417,
+      "lon": 77.6812505,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 420087859,
+      "lat": 13.0560925,
+      "lon": 77.6531139,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 440675872,
+      "lat": 13.0474766,
+      "lon": 77.7379527,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 443639123,
+      "lat": 13.0281518,
+      "lon": 77.6423416,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 443653545,
+      "lat": 13.0455649,
+      "lon": 77.6408712,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 529453463,
+      "lat": 13.0534679,
+      "lon": 77.5584452,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 529453506,
+      "lat": 13.0518007,
+      "lon": 77.5573242,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 529453508,
+      "lat": 13.0494147,
+      "lon": 77.5603821,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 529455261,
+      "lat": 13.0552374,
+      "lon": 77.5515925,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 590020504,
+      "lat": 13.0683528,
+      "lon": 77.5454917,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 590020562,
+      "lat": 13.0685723,
+      "lon": 77.5454809,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 590020611,
+      "lat": 13.0688127,
+      "lon": 77.5455131,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 598948009,
+      "lat": 13.0296555,
+      "lon": 77.5702838,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 663604675,
+      "lat": 12.9849706,
+      "lon": 77.5707968,
+      "tags": {
+        "man_made": "water_tower",
+        "ups_infrastructure": "water tank"
+      }
+    },
+    {
+      "type": "node",
+      "id": 708335202,
+      "lat": 13.0725752,
+      "lon": 77.6576536,
+      "tags": {
+        "man_made": "water_tower",
+        "name": "Tubewell"
+      }
+    },
+    {
+      "type": "node",
+      "id": 738562935,
+      "lat": 12.8817597,
+      "lon": 77.6081278,
+      "tags": {
+        "man_made": "water_tower",
+        "name": "Shantiniketan Water Tank"
+      }
+    },
+    {
+      "type": "node",
+      "id": 928188140,
+      "lat": 12.9081764,
+      "lon": 77.5842058,
+      "tags": {
+        "man_made": "water_works",
+        "name": "Ekaliki water supply"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1024942706,
+      "lat": 12.9948669,
+      "lon": 77.5377207,
+      "tags": {
+        "man_made": "water_tower",
+        "name": "Basaveshwara Nagar Water Tank"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1027491008,
+      "lat": 13.0078297,
+      "lon": 77.551192,
+      "tags": {
+        "man_made": "water_tower",
+        "name": "Rajaji Nagar Water Tank"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1085546733,
+      "lat": 13.0154025,
+      "lon": 77.564829,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1436157669,
+      "lat": 12.9962378,
+      "lon": 77.6572822,
+      "tags": {
+        "man_made": "water_tower",
+        "name": "Sadananda Nagar Water Tank"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1463585631,
+      "lat": 12.908153,
+      "lon": 77.5346211,
+      "tags": {
+        "man_made": "water_tower",
+        "name": "Poornaprajna Nagara Water Tank"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1485671147,
+      "lat": 12.9712107,
+      "lon": 77.6373626,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1485671148,
+      "lat": 12.9715026,
+      "lon": 77.6389343,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1485671149,
+      "lat": 12.9726562,
+      "lon": 77.6363791,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 1709379164,
+      "lat": 12.9756301,
+      "lon": 77.7499012,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2344096581,
+      "lat": 13.0777063,
+      "lon": 77.5596275,
+      "tags": {
+        "man_made": "water_works"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2344096583,
+      "lat": 13.0715926,
+      "lon": 77.5516423,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2349466971,
+      "lat": 13.076804,
+      "lon": 77.5577733,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2350282459,
+      "lat": 13.0848756,
+      "lon": 77.5636982,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2510395018,
+      "lat": 12.9163997,
+      "lon": 77.6072156,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 2744177223,
+      "lat": 12.9801225,
+      "lon": 77.7288901,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3303716267,
+      "lat": 12.9642559,
+      "lon": 77.6064078,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3416360721,
+      "lat": 12.98908,
+      "lon": 77.5654444,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3422043020,
+      "lat": 12.9302526,
+      "lon": 77.5845789,
+      "tags": {
+        "man_made": "water_tower",
+        "name": "Jayanagar Water Tank",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3422057418,
+      "lat": 12.9167724,
+      "lon": 77.5723948,
+      "tags": {
+        "man_made": "water_tower",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3422057426,
+      "lat": 12.9193414,
+      "lon": 77.5224032,
+      "tags": {
+        "man_made": "water_tower",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3422079535,
+      "lat": 13.0102985,
+      "lon": 77.5652978,
+      "tags": {
+        "man_made": "water_tower",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3422079551,
+      "lat": 13.0121694,
+      "lon": 77.5645135,
+      "tags": {
+        "man_made": "water_tower",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3422079568,
+      "lat": 13.0151783,
+      "lon": 77.5349715,
+      "tags": {
+        "man_made": "water_tower",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3422096915,
+      "lat": 13.0126468,
+      "lon": 77.6550762,
+      "tags": {
+        "man_made": "water_tower",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3422107787,
+      "lat": 12.9228925,
+      "lon": 77.4834239,
+      "tags": {
+        "man_made": "water_tower",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3422131362,
+      "lat": 13.0341023,
+      "lon": 77.5760845,
+      "tags": {
+        "man_made": "water_tower",
+        "name": "Sanjaynagar Water Tank",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3422131380,
+      "lat": 13.023207,
+      "lon": 77.5937942,
+      "tags": {
+        "man_made": "water_tower",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3544435687,
+      "lat": 12.9136859,
+      "lon": 77.4974164,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3544435688,
+      "lat": 12.9148323,
+      "lon": 77.4941863,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3544465495,
+      "lat": 13.0843091,
+      "lon": 77.4862026,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3544465496,
+      "lat": 13.0841135,
+      "lon": 77.4857411,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3544631569,
+      "lat": 12.8720418,
+      "lon": 77.4538413,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3563081440,
+      "lat": 12.9560247,
+      "lon": 77.6488864,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3713455103,
+      "lat": 12.941669,
+      "lon": 77.5041763,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3764841724,
+      "lat": 12.914846,
+      "lon": 77.6198432,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3767778055,
+      "lat": 12.9830467,
+      "lon": 77.5910347,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3767778056,
+      "lat": 12.9841358,
+      "lon": 77.595182,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3784482757,
+      "lat": 12.9877052,
+      "lon": 77.6649581,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3784482758,
+      "lat": 12.9884232,
+      "lon": 77.6620271,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3818305909,
+      "lat": 13.0101234,
+      "lon": 77.6145247,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3982062806,
+      "lat": 12.9720444,
+      "lon": 77.4973022,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3982062811,
+      "lat": 12.9770428,
+      "lon": 77.4987885,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3984637603,
+      "lat": 13.0325312,
+      "lon": 77.5452442,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3984651357,
+      "lat": 13.0683607,
+      "lon": 77.5981789,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3984706224,
+      "lat": 12.9601752,
+      "lon": 77.5635858,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 3998912661,
+      "lat": 13.0022469,
+      "lon": 77.5792326,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4304306659,
+      "lat": 13.0264017,
+      "lon": 77.516334,
+      "tags": {
+        "man_made": "water_tower",
+        "name": "Water Tank"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4445077907,
+      "lat": 12.9240453,
+      "lon": 77.6636502,
+      "tags": {
+        "addr:city": "Bengaluru",
+        "addr:housenumber": "1809",
+        "addr:postcode": "560103",
+        "addr:street": "Sobha Mayflower, Outer Ring Road, Bellandur",
+        "man_made": "water_works",
+        "name": "Shudhi Services",
+        "phone": "080 4170 8369",
+        "website": "shudhiservices.com"
+      }
+    },
+    {
+      "type": "node",
+      "id": 4803392454,
+      "lat": 12.9648712,
+      "lon": 77.6116075,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5239803657,
+      "lat": 12.8927548,
+      "lon": 77.712236,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5395290525,
+      "lat": 12.9312349,
+      "lon": 77.6142655,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 5577965862,
+      "lat": 13.0245645,
+      "lon": 77.5652447,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6568436942,
+      "lat": 13.0657627,
+      "lon": 77.6009945,
+      "tags": {
+        "emergency": "water_tank",
+        "man_made": "water_tower",
+        "name": "Amrutahalli Water Tower",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6575118631,
+      "lat": 13.0148701,
+      "lon": 77.5719041,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 6654828313,
+      "lat": 13.0177845,
+      "lon": 77.5622357,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7292218764,
+      "lat": 12.9804936,
+      "lon": 77.5701995,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7292436158,
+      "lat": 12.9758294,
+      "lon": 77.5704637,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7296776169,
+      "lat": 12.9752204,
+      "lon": 77.5502908,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7297186466,
+      "lat": 12.9803825,
+      "lon": 77.5515582,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7301357969,
+      "lat": 12.9927331,
+      "lon": 77.5982662,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7447963159,
+      "lat": 12.9741044,
+      "lon": 77.5672075,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7448001467,
+      "lat": 13.0066158,
+      "lon": 77.686484,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7448001468,
+      "lat": 13.0015105,
+      "lon": 77.68545,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7448029463,
+      "lat": 13.0103595,
+      "lon": 77.5924458,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 7475215257,
+      "lat": 13.0010871,
+      "lon": 77.6352176,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8526700605,
+      "lat": 13.0044532,
+      "lon": 77.6384228,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 8526700606,
+      "lat": 13.0034704,
+      "lon": 77.6379818,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9182516424,
+      "lat": 13.0507902,
+      "lon": 77.5296853,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9890101564,
+      "lat": 13.0136797,
+      "lon": 77.5687511,
+      "tags": {
+        "man_made": "water_tower",
+        "operator": "IISc"
+      }
+    },
+    {
+      "type": "node",
+      "id": 9910012970,
+      "lat": 12.9950539,
+      "lon": 77.5692554,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10228891546,
+      "lat": 12.9491798,
+      "lon": 77.5739157,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10233431277,
+      "lat": 12.9036751,
+      "lon": 77.5289512,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 10573135962,
+      "lat": 12.9083301,
+      "lon": 77.5842798,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11468397655,
+      "lat": 12.91241,
+      "lon": 77.610113,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11684016168,
+      "lat": 12.9387477,
+      "lon": 77.6359665,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11684157873,
+      "lat": 12.9624936,
+      "lon": 77.6292896,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11871703649,
+      "lat": 12.9969042,
+      "lon": 77.6422799,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11956398538,
+      "lat": 12.8903001,
+      "lon": 77.6048069,
+      "tags": {
+        "man_made": "water_tower",
+        "material": "concrete"
+      }
+    },
+    {
+      "type": "node",
+      "id": 11993731094,
+      "lat": 13.0044689,
+      "lon": 77.6384336,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12035052386,
+      "lat": 13.0313895,
+      "lon": 77.539143,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12105880856,
+      "lat": 13.0793921,
+      "lon": 77.6391618,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12174267389,
+      "lat": 13.0658668,
+      "lon": 77.6201597,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12181503347,
+      "lat": 12.9771323,
+      "lon": 77.7005535,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 12526725220,
+      "lat": 13.0314588,
+      "lon": 77.5391275,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13074467244,
+      "lat": 12.9170386,
+      "lon": 77.6207927,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13104004279,
+      "lat": 12.9136276,
+      "lon": 77.4975666,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13112256967,
+      "lat": 12.8730361,
+      "lon": 77.6235006,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "node",
+      "id": 13730658968,
+      "lat": 13.065757,
+      "lon": 77.639894,
+      "tags": {
+        "man_made": "water_tower"
+      }
+    },
+    {
+      "type": "way",
+      "id": 135266038,
+      "center": {
+        "lat": 12.9824417,
+        "lon": 77.6492549
+      },
+      "nodes": [
+        1485676606,
+        1485676601,
+        1485676563,
+        1485676576,
+        1485676616,
+        1485676606
+      ],
+      "tags": {
+        "man_made": "water_works",
+        "name": "BWSSB",
+        "name:kn": "ಬೆಂಗಳೂರು ನೀರು ಸರಬರಾಜು ಮತ್ತು ಒಳಚರಂಡಿ ಮಂಡಲಿ",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 173006848,
+      "center": {
+        "lat": 13.0018163,
+        "lon": 77.6279091
+      },
+      "nodes": [
+        1838377311,
+        10997122606,
+        1838377313,
+        13166988105,
+        13166988103,
+        13166988104,
+        13166988102,
+        1838377317,
+        1838377319,
+        1838377318,
+        12104217236,
+        11096903670,
+        1838377316,
+        10997122605,
+        1838377311
+      ],
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "name": "BWSSB",
+        "name:kn": "ಬೆಂ ನಿ ಸ ಮತ್ತು ಒ ಚ ಮಂ",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 208827411,
+      "center": {
+        "lat": 12.9830125,
+        "lon": 77.5848698
+      },
+      "nodes": [
+        1121251409,
+        1121251411,
+        444380323,
+        444380321,
+        444380319,
+        2190851957,
+        1121251409
+      ],
+      "tags": {
+        "man_made": "water_works",
+        "name": "Low Level Reservoir",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 220552480,
+      "center": {
+        "lat": 12.9988482,
+        "lon": 77.5458309
+      },
+      "nodes": [
+        2296630612,
+        2296630613,
+        10313180384,
+        2296630611,
+        2296630616,
+        10313180383,
+        2296630617,
+        7413376528,
+        2296630612
+      ],
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "name": "Rajajinagar BWSSB Water Tank",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 230468780,
+      "center": {
+        "lat": 12.8973539,
+        "lon": 77.6196309
+      },
+      "nodes": [
+        2389645071,
+        2389645077,
+        2389645073,
+        2389645078,
+        2389645072,
+        2389645075,
+        2389645071
+      ],
+      "tags": {
+        "man_made": "water_works",
+        "name": "BWSSB",
+        "name:kn": "ಬೆಂಗಳೂರು ನೀರು ಸರಬರಾಜು ಮತ್ತು ಒಳಚರಂಡಿ ಮಂಡಲಿ",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 334647976,
+      "center": {
+        "lat": 12.9098263,
+        "lon": 77.5617787
+      },
+      "nodes": [
+        3417085535,
+        3417085532,
+        3417085533,
+        3417085538,
+        3417085539,
+        3417085537,
+        3417085536,
+        3417085535
+      ],
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "name": "BWSSB Kumaraswamy Layout Service Station"
+      }
+    },
+    {
+      "type": "way",
+      "id": 335078182,
+      "center": {
+        "lat": 12.9363038,
+        "lon": 77.5884705
+      },
+      "nodes": [
+        1448082604,
+        1448082665,
+        1448082597,
+        1809762980,
+        1809762979,
+        1809762604,
+        1809762601,
+        1809762602,
+        3422041067,
+        3422041066,
+        3422041065,
+        1719603480,
+        1719603477,
+        1448634280,
+        1448634281,
+        3422041295,
+        3422041298,
+        3422041315,
+        3422041325,
+        3422041324,
+        3422041323,
+        3422041322,
+        3422041327,
+        1448082604
+      ],
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "name": "BWSSB",
+        "name:kn": "ಬೆಂ ನಿ ಸ ಮತ್ತು ಒ ಚ ಮಂ",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 335082300,
+      "center": {
+        "lat": 13.0118375,
+        "lon": 77.5662535
+      },
+      "nodes": [
+        3422079564,
+        13648809046,
+        2876357607,
+        460976094,
+        460976096,
+        460976100,
+        10124399201,
+        10124399200,
+        12809319351,
+        11393390841,
+        3422079534,
+        12809319552,
+        3422079547,
+        3422079555,
+        3422079561,
+        3422079564
+      ],
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "name": "BWSSB Combined Jewel Filters",
+        "name:kn": "ಬೆಂ.ನಿ.ಸ, ಮತ್ತು ಒ.ಚ.ಮಂ.",
+        "old_name": "Combined Jewel Filters",
+        "operator": "BWSSB",
+        "short_name": "CJF",
+        "start_date": "1896"
+      }
+    },
+    {
+      "type": "way",
+      "id": 335084494,
+      "center": {
+        "lat": 13.0907876,
+        "lon": 77.5590997
+      },
+      "nodes": [
+        12797133797,
+        12797133798,
+        11910552106,
+        11910552102,
+        2353259189,
+        2353259187,
+        3422096930,
+        12797133797
+      ],
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "name": "BWSSB",
+        "name:kn": "ಬೆಂಗಳೂರು ನೀರು ಸರಬರಾಜು ಮತ್ತು ಒಳಚರಂಡಿ ಮಂಡಲಿ",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 335084495,
+      "center": {
+        "lat": 13.0119654,
+        "lon": 77.6553651
+      },
+      "nodes": [
+        3422096904,
+        3422096916,
+        3422096914,
+        10149753746,
+        3422096907,
+        3422096904
+      ],
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "name": "BWSSB",
+        "name:kn": "ಬೆಂ.ನಿ.ಸ, ಮತ್ತು ಒ.ಚ.ಮಂ.",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 335084503,
+      "center": {
+        "lat": 12.9873543,
+        "lon": 77.589684
+      },
+      "nodes": [
+        3422095788,
+        3422095787,
+        3422095789,
+        3422095792,
+        9775599275,
+        4058224891,
+        1363295018,
+        12425607801,
+        12425607802,
+        3422096903,
+        1931925458,
+        661983046,
+        661983044,
+        3422096898,
+        11676514126,
+        3422096896,
+        3751686655,
+        3422095788
+      ],
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "name": "BWSSB",
+        "name:kn": "ಬೆಂ ನಿ ಸ ಮತ್ತು ಒ ಚ ಮಂ",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 335085867,
+      "center": {
+        "lat": 12.922348,
+        "lon": 77.4832043
+      },
+      "nodes": [
+        3422107788,
+        3422107789,
+        3422107770,
+        3422107769,
+        3422107788
+      ],
+      "tags": {
+        "man_made": "water_works",
+        "name": "BWSSB",
+        "name:kn": "ಬೆಂಗಳೂರು ನೀರು ಸರಬರಾಜು ಮತ್ತು ಒಳಚರಂಡಿ ಮಂಡಲಿ",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 335085868,
+      "center": {
+        "lat": 12.9193443,
+        "lon": 77.5222384
+      },
+      "nodes": [
+        3422107766,
+        3422107768,
+        3422107767,
+        3422107765,
+        3422107766
+      ],
+      "tags": {
+        "man_made": "water_works",
+        "name": "BWSSB",
+        "name:kn": "ಬೆಂ ನಿ ಸ ಮತ್ತು ಒ ಚ ಮಂ",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 335085870,
+      "center": {
+        "lat": 12.9114822,
+        "lon": 77.6467373
+      },
+      "nodes": [
+        3422107762,
+        266301703,
+        3422107763,
+        266301704,
+        3422107762
+      ],
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "name": "BWSSB",
+        "name:kn": "ಬೆಂಗಳೂರು ನೀರು ಸರಬರಾಜು ಮತ್ತು ಒಳಚರಂಡಿ ಮಂಡಲಿ",
+        "operator": "BWSSB",
+        "utility": "water"
+      }
+    },
+    {
+      "type": "way",
+      "id": 335085871,
+      "center": {
+        "lat": 12.9973112,
+        "lon": 77.51127
+      },
+      "nodes": [
+        3422108401,
+        3422108400,
+        10026849820,
+        3422108403,
+        3422108404,
+        10028827019,
+        3422108402,
+        3422108401
+      ],
+      "tags": {
+        "man_made": "water_works",
+        "name": "BWSSB",
+        "name:kn": "ಬೆಂ ನಿ ಸ ಮತ್ತು ಒ ಚ ಮಂ",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 335085872,
+      "center": {
+        "lat": 12.8738118,
+        "lon": 77.5850945
+      },
+      "nodes": [
+        3422107757,
+        12555816434,
+        11507906932,
+        13263775646,
+        3422107751,
+        12294215434,
+        3422107752,
+        3422107759,
+        3206593611,
+        3422107758,
+        3422107760,
+        3422107757
+      ],
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "name": "BWSSB",
+        "name:kn": "ಬೆಂ.ನಿ.ಸ, ಮತ್ತು ಒ.ಚ.ಮಂ.",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 335085873,
+      "center": {
+        "lat": 12.9939977,
+        "lon": 77.5156707
+      },
+      "nodes": [
+        1572829924,
+        3422108394,
+        3422108396,
+        3422108397,
+        3422108399,
+        3422108398,
+        3422108395,
+        1572829941,
+        1572829924
+      ],
+      "tags": {
+        "man_made": "water_works",
+        "name": "BWSSB",
+        "name:kn": "ಬೆಂ ನಿ ಸ ಮತ್ತು ಒ ಚ ಮಂ",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 335086294,
+      "center": {
+        "lat": 13.026533,
+        "lon": 77.6343784
+      },
+      "nodes": [
+        3422110856,
+        3422110831,
+        3422110848,
+        3422110866,
+        3422110856
+      ],
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "name": "BWSSB",
+        "name:kn": "ಬೆಂ ನಿ ಸ ಮತ್ತು ಒ ಚ ಮಂ",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 335088189,
+      "center": {
+        "lat": 13.0590659,
+        "lon": 77.5869617
+      },
+      "nodes": [
+        3422132402,
+        3422131388,
+        3422131382,
+        3422132394,
+        3422132402
+      ],
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "name": "BWSSB Sahakarnagara",
+        "name:kn": "ಬೆಂಗಳೂರು ನೀರು ಸರಬರಾಜು ಮತ್ತು ಒಳಚರಂಡಿ ಮಂಡಲಿ ಸಹಕಾರನಗರ",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 335421119,
+      "center": {
+        "lat": 13.012168,
+        "lon": 77.5817052
+      },
+      "nodes": [
+        3425329793,
+        461539116,
+        3425328784,
+        461539117,
+        3425329793
+      ],
+      "tags": {
+        "man_made": "water_works",
+        "name": "Kempegowda Tower BWSSB Service Station",
+        "name:kn": "ಬೆಂಗಳೂರು ನೀರು ಸರಬರಾಜು ಮತ್ತು ಒಳಚರಂಡಿ ಮಂಡಲಿ",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 335421120,
+      "center": {
+        "lat": 12.9413797,
+        "lon": 77.5685084
+      },
+      "nodes": [
+        3425328777,
+        3425328778,
+        3425328779,
+        3425328783,
+        10118159322,
+        3425328782,
+        11215840018,
+        3425328781,
+        3425328780,
+        3425328776,
+        3425328777
+      ],
+      "tags": {
+        "man_made": "water_works",
+        "name": "BWSSB",
+        "name:kn": "ಬೆಂ ನಿ ಸ ಮತ್ತು ಒ ಚ ಮಂ",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 335732489,
+      "center": {
+        "lat": 12.9753497,
+        "lon": 77.5620045
+      },
+      "nodes": [
+        3428394631,
+        3428394632,
+        1780485259,
+        3428394630,
+        3428394631
+      ],
+      "tags": {
+        "man_made": "water_works",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 367148875,
+      "center": {
+        "lat": 12.9772318,
+        "lon": 77.7114891
+      },
+      "nodes": [
+        3711001730,
+        10719546279,
+        1383260324,
+        1383260330,
+        3710999573,
+        3711001730
+      ],
+      "tags": {
+        "man_made": "water_works",
+        "name": "BWSSB",
+        "name:kn": "ಬೆಂ.ನಿ.ಸ, ಮತ್ತು ಒ.ಚ.ಮಂ."
+      }
+    },
+    {
+      "type": "way",
+      "id": 367149868,
+      "center": {
+        "lat": 12.9723043,
+        "lon": 77.6212958
+      },
+      "nodes": [
+        9870248525,
+        3403642588,
+        14161802412,
+        3403642589,
+        14161802507,
+        14161802506,
+        14161802438,
+        14161802505,
+        1473221152,
+        14161802467,
+        9870248525
+      ],
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "name": "BWSSB",
+        "name:kn": "ಬೆಂಗಳೂರು ನೀರು ಸರಬರಾಜು ಮತ್ತು ಒಳಚರಂಡಿ ಮಂಡಲಿ",
+        "office": "government"
+      }
+    },
+    {
+      "type": "way",
+      "id": 389877538,
+      "center": {
+        "lat": 13.008122,
+        "lon": 77.5511997
+      },
+      "nodes": [
+        3930382958,
+        7201051764,
+        9936581286,
+        7148500829,
+        2492263974,
+        3930382975,
+        3930382977,
+        2059801371,
+        2059801397,
+        324667496,
+        12108082269,
+        12108082268,
+        3930382961,
+        9967147496,
+        9936581278,
+        9936581274,
+        9936581279,
+        3930382958
+      ],
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "name": "BWSSB Rajajinagara",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 393741534,
+      "center": {
+        "lat": 12.9240792,
+        "lon": 77.5580746
+      },
+      "nodes": [
+        3968954825,
+        3968954828,
+        3968954827,
+        3968954823,
+        3968954825
+      ],
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 437848265,
+      "center": {
+        "lat": 12.955635,
+        "lon": 77.5294621
+      },
+      "nodes": [
+        4356274618,
+        4356274617,
+        4356274615,
+        4356274616,
+        4356274618
+      ],
+      "tags": {
+        "man_made": "water_works"
+      }
+    },
+    {
+      "type": "way",
+      "id": 513608921,
+      "center": {
+        "lat": 12.9161125,
+        "lon": 77.5723225
+      },
+      "nodes": [
+        5020021462,
+        5020021461,
+        5020021460,
+        12330259128,
+        12512064222,
+        5020021459,
+        5020021462
+      ],
+      "tags": {
+        "man_made": "water_works",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 571044514,
+      "center": {
+        "lat": 12.9757925,
+        "lon": 77.6400393
+      },
+      "nodes": [
+        3374405017,
+        3374405018,
+        5489150677,
+        4215503807,
+        3374405017
+      ],
+      "tags": {
+        "man_made": "water_works",
+        "name": "BWSSB Indiranagar",
+        "name:kn": "ಬೆಂ.ನಿ.ಸ, ಮತ್ತು ಒ.ಚ.ಮಂ. ಇಂದಿರನಗರ"
+      }
+    },
+    {
+      "type": "way",
+      "id": 571057346,
+      "center": {
+        "lat": 12.9719939,
+        "lon": 77.6446002
+      },
+      "nodes": [
+        3506426622,
+        5489263384,
+        5489263386,
+        5489263385,
+        9545465449,
+        9545465448,
+        3506426622
+      ],
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "name": "BWSSB Indiranagar",
+        "name:kn": "ಬೆಂ.ನಿ.ಸ, ಮತ್ತು ಒ.ಚ.ಮಂ. ಇಂದಿರನಗರ",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 591251803,
+      "center": {
+        "lat": 13.0208771,
+        "lon": 77.649528
+      },
+      "nodes": [
+        5644388856,
+        5644388857,
+        12180117969,
+        5644388858,
+        5644388859,
+        5644388856
+      ],
+      "tags": {
+        "man_made": "water_works",
+        "name": "BWSSB Water Tank"
+      }
+    },
+    {
+      "type": "way",
+      "id": 726516092,
+      "center": {
+        "lat": 12.9141679,
+        "lon": 77.4891859
+      },
+      "nodes": [
+        6809886325,
+        6809886326,
+        6809886327,
+        6809886328,
+        6809886310,
+        6809886311,
+        6809886312,
+        6809886317,
+        6809886318,
+        6809886319,
+        6809886320,
+        6809886321,
+        6809886322,
+        6809886323,
+        6809886324,
+        6809886313,
+        6809886314,
+        6809886315,
+        6809886316,
+        6809886325
+      ],
+      "tags": {
+        "man_made": "water_works"
+      }
+    },
+    {
+      "type": "way",
+      "id": 726516173,
+      "center": {
+        "lat": 12.9145408,
+        "lon": 77.4892699
+      },
+      "nodes": [
+        6809868818,
+        6809868819,
+        6809868820,
+        6809868821,
+        6809868822,
+        6809868823,
+        6809868805,
+        6809868806,
+        6809868807,
+        6809868811,
+        6809868812,
+        6809868813,
+        6809868814,
+        6809868815,
+        6809868816,
+        6809868817,
+        6809868808,
+        6809868809,
+        6809868810,
+        6809868818
+      ],
+      "tags": {
+        "man_made": "water_works",
+        "name": "Trickling Filter"
+      }
+    },
+    {
+      "type": "way",
+      "id": 726516251,
+      "center": {
+        "lat": 12.9142669,
+        "lon": 77.4887175
+      },
+      "nodes": [
+        6809859867,
+        6809859868,
+        6809859869,
+        6809859870,
+        6809859871,
+        6809859872,
+        6809859854,
+        6809859855,
+        6809859856,
+        6809859861,
+        6809859862,
+        6809859863,
+        6809859864,
+        6809859865,
+        6809859866,
+        6809859857,
+        6809859858,
+        6809859859,
+        6809859860,
+        6809859867
+      ],
+      "tags": {
+        "man_made": "water_works",
+        "name": "Trickling Filter"
+      }
+    },
+    {
+      "type": "way",
+      "id": 767324687,
+      "center": {
+        "lat": 12.9733977,
+        "lon": 77.5381237
+      },
+      "nodes": [
+        7164421084,
+        7164421083,
+        7164421082,
+        7164421081,
+        7164421084
+      ],
+      "tags": {
+        "man_made": "water_works",
+        "name": "BWSSB",
+        "name:kn": "ಬೆಂ.ನಿ.ಸ, ಮತ್ತು ಒ.ಚ.ಮಂ.",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1082360483,
+      "center": {
+        "lat": 12.8572887,
+        "lon": 77.5844702
+      },
+      "nodes": [
+        9919570176,
+        9919570175,
+        9919570174,
+        9919570173,
+        9919570172,
+        9919570171,
+        9919570170,
+        9919570169,
+        9919570168,
+        9919570167,
+        9919570166,
+        9919570176
+      ],
+      "tags": {
+        "alt_name": "50ML GLR Gottigere",
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "name": "Gottigere 50ML Reservoir",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1082360484,
+      "center": {
+        "lat": 12.8666854,
+        "lon": 77.582012
+      },
+      "nodes": [
+        9919570182,
+        12369594999,
+        9919570181,
+        9919570180,
+        9919570179,
+        9919570178,
+        9919570182
+      ],
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "name": "BWSSB",
+        "name:kn": "ಬೆಂ.ನಿ.ಸ, ಮತ್ತು ಒ.ಚ.ಮಂ.",
+        "office": "government",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1087826095,
+      "center": {
+        "lat": 13.0343946,
+        "lon": 77.5007838
+      },
+      "nodes": [
+        9967192799,
+        9967192798,
+        9967143499,
+        9967143500,
+        9967192799
+      ],
+      "tags": {
+        "man_made": "water_works",
+        "name": "BWSSB",
+        "name:kn": "ಬೆಂ ನಿ ಸ ಮತ್ತು ಒ ಚ ಮಂ",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1134091906,
+      "center": {
+        "lat": 12.9080441,
+        "lon": 77.6527141
+      },
+      "nodes": [
+        10573114566,
+        10573114565,
+        10573114564,
+        10573114563,
+        10573114566
+      ],
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "name": "BWSSB",
+        "name:kn": "ಬೆಂ ನಿ ಸ ಮತ್ತು ಒ ಚ ಮಂ",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1135950143,
+      "center": {
+        "lat": 12.888014,
+        "lon": 77.6999776
+      },
+      "nodes": [
+        13817373768,
+        10589178306,
+        10589178305,
+        10589137604,
+        10589137573,
+        13817373768
+      ],
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "name": "Doddakanahalli 48ML Reservoir",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1217375985,
+      "center": {
+        "lat": 12.9162112,
+        "lon": 77.6070823
+      },
+      "nodes": [
+        11279857279,
+        11279857278,
+        11279857277,
+        11279857276,
+        11279857275,
+        11279857274,
+        11279857273,
+        11279857279
+      ],
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "name": "BWSSB",
+        "name:kn": "ಬೆಂ ನಿ ಸ ಮತ್ತು ಒ ಚ ಮಂ",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1238665549,
+      "center": {
+        "lat": 12.94374,
+        "lon": 77.7172134
+      },
+      "nodes": [
+        11506520718,
+        11506520717,
+        11506520716,
+        11506520715,
+        11506520718
+      ],
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1269088665,
+      "center": {
+        "lat": 12.9771049,
+        "lon": 77.4539452
+      },
+      "nodes": [
+        11787272607,
+        11787272606,
+        11787272605,
+        11787272604,
+        11787272603,
+        11787272602,
+        11787272607
+      ],
+      "tags": {
+        "man_made": "water_works",
+        "name": "10MLD GLR"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1286755769,
+      "center": {
+        "lat": 12.9349658,
+        "lon": 77.478476
+      },
+      "nodes": [
+        11934560831,
+        11934560830,
+        11934560829,
+        11934560828,
+        11934560831
+      ],
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "name": "BWSSB Service Station"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1337330239,
+      "center": {
+        "lat": 12.85048,
+        "lon": 77.5731915
+      },
+      "nodes": [
+        12369330586,
+        12369330583,
+        12369330582,
+        12369330581,
+        12369330580,
+        12369330579,
+        12369330585,
+        12369330586
+      ],
+      "tags": {
+        "landuse": "industrial",
+        "man_made": "water_works",
+        "name": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1344973952,
+      "center": {
+        "lat": 12.8731437,
+        "lon": 77.5192718
+      },
+      "nodes": [
+        12443389852,
+        12443389853,
+        12443389851,
+        12443389846,
+        12443389850,
+        12443389849,
+        12443389848,
+        12443389847,
+        3983485487,
+        12443389852
+      ],
+      "tags": {
+        "man_made": "water_works",
+        "name": "BWSSB Resrvoir Banashankari 6th Stage",
+        "operator": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1354138787,
+      "center": {
+        "lat": 12.9932837,
+        "lon": 77.6096413
+      },
+      "nodes": [
+        12531280491,
+        12531340568,
+        12531340512,
+        12531340559,
+        12531340507,
+        12531280491
+      ],
+      "tags": {
+        "man_made": "water_works",
+        "name": "BWSSB"
+      }
+    },
+    {
+      "type": "way",
+      "id": 1363792231,
+      "center": {
+        "lat": 13.034081,
+        "lon": 77.6242015
+      },
+      "nodes": [
+        12627965237,
+        12627965236,
+        12627965235,
+        12627903243,
+        12627965237
+      ],
+      "tags": {
+        "man_made": "water_works",
+        "name": "BWSSB",
+        "operator": "BWSSB"
+      }
+    }
+  ]
+}

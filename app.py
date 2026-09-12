@@ -125,6 +125,20 @@ st.markdown(
 
 # ---------------------------------------------------------------- data loading
 
+# Invalidate all caches when the processed graph is rebuilt (e.g. after switching the
+# network to a different city). load_graph()/ranking()/run_cascade() are cached but not
+# keyed on the data file, so without this a long-running server would keep serving the
+# previous city's graph, ranking and substation names.
+def _graph_mtime() -> float:
+    return (REPO_ROOT / "data" / "processed" / "graph.gpickle").stat().st_mtime
+
+
+if st.session_state.get("_graph_mtime") != _graph_mtime():
+    st.cache_data.clear()
+    st.cache_resource.clear()
+    st.session_state["_graph_mtime"] = _graph_mtime()
+
+
 def load_config() -> dict[str, Any]:
     path = REPO_ROOT / "config.yaml"
     return _load_config(path.stat().st_mtime)
@@ -430,6 +444,11 @@ def _section(title: str, lede: str = "") -> None:
     st.markdown(f'<div class="sc-sec"><h3>{title}</h3>{f"<p>{lede}</p>" if lede else ""}</div>', unsafe_allow_html=True)
 
 
+def _plain(text: str) -> None:
+    """A brief, formal, plain-language explanation of the section for non-technical readers."""
+    st.markdown(f'<p class="sc-cap">{text}</p>', unsafe_allow_html=True)
+
+
 def page_overview() -> None:
     st.markdown(
         '<div class="sc-hero">'
@@ -437,7 +456,7 @@ def page_overview() -> None:
         '<div class="sc-title">SILENT <span>CASCADE</span></div>'
         '<p class="sc-lede">Cities monitor every physical asset. Nothing monitors the AI that decides which asset '
         'gets fixed first — and it degrades silently, worst on the citizens least able to escalate.</p>'
-        '<div class="sc-meta"><span><b>Network</b> Bhopal, MP · OpenStreetMap</span>'
+        '<div class="sc-meta"><span><b>Network</b> Bengaluru, Karnataka · OpenStreetMap</span>'
         '<span><b>Domain</b> Disaster Resilience &amp; Critical Infrastructure</span>'
         '<span><b>Theme</b> The Butterfly Effect</span></div>'
         "</div>",
@@ -445,6 +464,9 @@ def page_overview() -> None:
     )
 
     _section("The chain we model", "We model <em>delay</em>, not automated dispatch — the only link the published evidence supports.")
+    _plain("A single mishandled complaint can begin a chain that ends in a real power and water outage. "
+           "Each box is one link in that chain; the red links are the physical consequences that follow once the "
+           "initial routing decision goes wrong.")
     steps = [
         ("Intake", "Citizen complaint", "Kannada · voice → text", ""),
         ("AI layer", "Classification &amp; routing", "department + urgency", ""),
@@ -463,6 +485,9 @@ def page_overview() -> None:
     )
 
     _section("No alarm fired", "Complaint acknowledged. Ticket created. Status green. SLA nominally met — for the category it was assigned to.")
+    _plain("The operations dashboard on the left reports every system as healthy, because it only checks whether the "
+           "software responded — not whether the answer was correct. The ticket on the right was answered successfully "
+           "(HTTP 200) but sent to the wrong department, so no alarm was ever raised.")
     classifier = (
         '<div class="sc-panel sc-bad">'
         '<div class="hdr"><b style="color:#d93025">What the classifier actually did</b><span>ticket c01 · HTTP 200</span></div>'
@@ -484,9 +509,12 @@ def page_overview() -> None:
                 "Monitoring watches whether the AI answered — not whether it was right.</p>", unsafe_allow_html=True)
 
     _section("What's real, what's simulated", "Every number in this prototype is one of three things: observed from a named source, measured, or simulated on declared assumptions.")
+    _plain("This table states the origin of every figure in the prototype. <em>Observed</em> means taken directly from "
+           "OpenStreetMap; <em>Measured</em> means computed by our own code; <em>Inferred</em>, <em>Assumed</em> and "
+           "<em>Synthetic</em> are clearly labelled stand-ins, used only where real data was unavailable.")
     rows = [
-        ("Substation locations (27)", "OpenStreetMap · power=substation", "Observed", "real"),
-        ("Hospital &amp; pump locations (398)", "OpenStreetMap · amenity / man_made", "Observed", "real"),
+        ("Substation locations (190)", "OpenStreetMap · power=substation", "Observed", "real"),
+        ("Hospital &amp; pump locations (1,217)", "OpenStreetMap · amenity / man_made", "Observed", "real"),
         ("Feeder topology (grid edges)", "3-nearest-neighbour by haversine", "Inferred", "inf"),
         ("Capacity, load, population served", "config.yaml · seeded uniform draws", "Assumed", "sim"),
         ("Generator / reservoir buffer hours", "8 h · 6 h typical engineering values", "Assumed", "sim"),
@@ -511,8 +539,11 @@ def page_cascade() -> None:
     rank = ranking()
     hps = cfg["assumptions"]["hours_per_step"]
 
-    _section("Cascade simulator", "Real Bhopal substations, hospitals and pumps at real coordinates. Load-redistribution cascade, "
+    _section("Cascade simulator", "Real Bengaluru substations, hospitals and pumps at real coordinates. Load-redistribution cascade, "
              f"{hps:g} h per step. Grid edges are <em>inferred</em> (3 nearest neighbours) — no feeder topology is published.")
+    _plain("Select any one substation to switch off. The map then shows, hour by hour, how its electrical load shifts to "
+           "neighbouring substations, overloads them, and forces further shutdowns — until hospitals fall back to generators "
+           "and wards lose water supply. The counter tracks how many people are affected as the failure spreads.")
 
     subs = nodes[nodes.type == "substation"].copy()
     labels = {r.id: f"{r.id} · {r.name if isinstance(r.name, str) and r.name else '(unnamed)'} · serves {int(r.population_served):,}" for r in subs.itertuples()}
@@ -538,6 +569,8 @@ def page_cascade() -> None:
     st.write("")
     st.markdown("#### Criticality ranking — by people affected, not by degree")
     st.caption("Each substation failed alone; ranked by total people affected at the final step. This is the ranking a classification node has to beat.")
+    _plain("This table answers a single question: if only one substation failed, which failure would harm the most people? "
+           "Substations are ranked by the total number of people affected — not by their size or how many connections they have.")
     st.dataframe(rank, width="stretch", hide_index=True)
 
 
@@ -599,6 +632,9 @@ def page_language() -> None:
              "One complaint, one degraded condition, followed from the classifier's decision to the substation. "
              "The classifier is the exact <code>classify_one()</code> that produced outputs/d2_results.csv — a keyword baseline, "
              "<em>not a production LLM</em>. The guard and the monitor are the fix.")
+    _plain("This page follows one complaint from the moment the AI classifies it to the moment a repair crew is — or is not — "
+           "sent in time. It shows how a complaint written in Kannada can be routed to the wrong queue while every system still "
+           "reports success. Use the three controls below to choose the complaint, its language, and how the input is degraded.")
 
     c = st.columns([2, 1, 1])
     with c[0]:
@@ -620,6 +656,9 @@ def page_language() -> None:
 
     # ---- 1. what the classifier saw and decided
     st.markdown("#### 1 · The decision")
+    _plain("The highlighted words are the terms the classifier recognised. Green terms point to the correct department; "
+           "red terms point to the wrong one. The card on the right states where the complaint was actually sent and whether "
+           "that decision was correct.")
     left, right = st.columns([1.3, 1])
     with left:
         body = _highlight(seen, kws, row["true_dept"])
@@ -642,8 +681,11 @@ def page_language() -> None:
 
     # ---- 2. the guard: today vs with a verification checkpoint
     st.markdown("#### 2 · The routing guard — a verification checkpoint on the decision")
+    _plain("A proposed safeguard that re-checks each decision before it is acted on. Complaints that are unreadable or classified "
+           "with low confidence are diverted to a 48-hour human-verification queue instead of a routine multi-day queue, and any "
+           "complaint mentioning a safety hazard is fast-tracked. The two cards compare today's routing with the safeguarded routing.")
     st.caption("The guard sees exactly what the classifier saw. Unparseable or low-confidence decisions go to a 48 h verification queue "
-               "(the cited UPPCL window) instead of a general queue; safety terms cap the SLA at the emergency SLA. Other SLAs are labelled assumptions in config.yaml.")
+               "(a 48 h field-officer verify/assign window) instead of a general queue; safety terms cap the SLA at the emergency SLA. All SLAs are labelled assumptions in config.yaml.")
     naive_late = g["naive"]["sla_hours"] >= ttf
     guard_late = g["guarded"]["sla_hours"] >= ttf
     st.markdown(
@@ -656,6 +698,9 @@ def page_language() -> None:
 
     # ---- 3. close the loop into the physical network
     st.markdown("#### 3 · What that delay does to the network")
+    _plain("This connects the routing delay to physical harm. If the repair is scheduled only after the equipment is expected "
+           "to fail, the cascade runs — and the resulting people-affected figure is produced by the same simulator used on the "
+           "Cascade page, not an estimate.")
     if row["true_dept"] in CASCADE_DEPTS:
         nodes = load_nodes()
         rank = ranking()
@@ -694,6 +739,9 @@ def page_language() -> None:
 
     # ---- 4. the monitor that should have existed
     st.markdown("#### 4 · Decision monitor — the canary CivicOps never had")
+    _plain("A monitor that re-tests the AI on a fixed set of 20 complaints in both languages and raises an alarm when accuracy in "
+           "Kannada falls well below English. This is the automatic check that would have caught the failure — the one the "
+           "green operations dashboard on the Overview page does not perform.")
     st.caption("Every request above returned 200. This monitor ignores that and re-runs a golden set of 20 complaints in both languages "
                f"under the live condition, watching accuracy and the unparseable rate per language. It alarms when native-script accuracy "
                f"falls more than {d2['canary_language_gap_alarm_pct']:g} points below English.")
@@ -728,6 +776,8 @@ def page_language() -> None:
 
     st.write("")
     st.markdown("#### Accuracy by language × condition (120 classifications, measured)")
+    _plain("Measured accuracy across all 120 classifications (20 complaints × 2 languages × 3 conditions). Taller bars are better. "
+           "The gap between the English and Kannada bars under the <em>truncated</em> condition is the core finding of the experiment.")
     results = load_csv("d2_results.csv")
     acc = load_csv("d2_accuracy.csv")
     if acc is None or results is None:
@@ -752,6 +802,9 @@ def page_intervention() -> None:
     _section("Intervention comparison — the smallest intervention",
              "Same cascade engine, N random initiating failures shared across all three conditions (paired). "
              "Costs are <em>order-of-magnitude assumptions</em> from config.yaml, not quotes.")
+    _plain("A like-for-like comparison of two responses to the same set of random failures: physically upgrading the single most "
+           "critical substation (expensive), versus adding a human verification step to the AI routing layer (cheap). Every "
+           "condition faces the identical set of failures, so the only variable is the intervention. Lower bars mean fewer people affected.")
     n_runs = st.slider("Runs per condition", 20, 200, cfg["d4"]["n_runs"], 10)
     if st.button("Run comparison", type="primary") or "d4" in st.session_state:
         with st.spinner(f"Running {n_runs} × 3 cascades…"):
