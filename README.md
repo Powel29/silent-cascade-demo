@@ -48,10 +48,10 @@ flowchart LR
 
 | | What it is | Best for |
 |---|---|---|
-| **[`app.py`](app.py) — Interactive prototype (Streamlit)** | A live app calling the project's real Python functions (`cascade()`, `classify_one()`, `route_with_guard()`, `run_condition()`) — nothing is reimplemented for the UI. Runs locally or deployed on Streamlit Community Cloud. | Judges who want to change inputs and see the actual pipeline respond — the PLAN.md §A.5 bonus prototype. |
-| **[`outputs/dashboard/index.html`](outputs/dashboard/index.html) / [`outputs/d3_dashboard.html`](outputs/d3_dashboard.html)** | Static, self-contained HTML snapshots (one is a frozen copy of a Claude-Artifact-hosted interactive page; the other is the standalone D3 "all-green monitor" mock). No Python required — open directly in a browser. | Slides, video recording, or anyone without Python installed. |
+| **[`app.py`](app.py) — Interactive prototype (Streamlit)** | The canonical live app, calling the project's real Python functions (`cascade()`, `classify_one()`, `route_with_guard()`, `run_condition()`) — nothing is reimplemented for the UI, so every number matches the committed `outputs/*.csv`. Runs locally or deployed on Streamlit Community Cloud. | Judges who want to change inputs and see the actual pipeline respond — the PLAN.md §A.5 bonus prototype. |
+| **[`outputs/d3_dashboard.html`](outputs/d3_dashboard.html)** + the D1/D2/D4 PNG/GIF/CSV assets | Standalone, self-contained static assets — the "all-green monitor" mock plus the cascade GIF, language chart and intervention chart. No Python required. | Slides, the video, or anyone without Python installed. |
 
-Both read from the same `outputs/*.csv` and `config.yaml` — there is one source of truth.
+`app.py` is the single source of truth; the static assets are exports of the same `outputs/*.csv` and `config.yaml`.
 
 **Live deployment:** _add your Streamlit Community Cloud URL here once deployed (see [Deploying the prototype](#deploying-the-prototype))._
 
@@ -152,20 +152,23 @@ silent-cascade-demo/
 │   ├── build_graph.py             # Spatial network builder & topology generator
 │   ├── cascade.py                 # Pure-function cascading failure engine
 │   ├── d1_cascade.py              # D1 pipeline: runs cascade & generates GIF/PNG frames
-│   ├── d2_language.py             # D2 pipeline + classify_one/route_with_guard/canary_report
+│   ├── d2_language.py             # D2 pipeline + classify_one/route_with_guard/canary_report/bootstrap_ci
 │   ├── d3_dashboard.py            # D3 pipeline: generates CivicOps monitor HTML
-│   └── d4_intervention.py         # D4 pipeline: Monte Carlo intervention analysis
-└── outputs/                       # Final artifacts, charts, CSVs, and dashboards
+│   ├── d4_intervention.py         # D4 pipeline: Monte Carlo intervention + sensitivity sweep
+│   └── d1_robustness.py           # D1 robustness sweep across topology/headroom assumptions
+└── outputs/                       # Final artifacts, charts, CSVs
     ├── d1_cascade_scenario_a.gif  # Animated cascade simulation
     ├── d1_criticality.csv         # Substation vulnerability ranking
+    ├── d1_robustness.csv          # Robustness sweep results (9 parameter combinations)
     ├── d2_chart.png               # Language accuracy bar chart
     ├── d2_results.csv             # Full 120 classification records
+    ├── d2_accuracy.csv            # Accuracy + 95% bootstrap CI per language × condition
+    ├── d2_dangerous_downgrade.csv # Consequence-weighted downgrade rate
     ├── d3_dashboard.html          # Standalone all-green ops monitor HTML
+    ├── d3_dashboard.png           # Rendered screenshot of the monitor (for slides)
     ├── d4_comparison.png          # Intervention comparison chart
-    ├── d4_summary.csv             # Intervention statistical summary
-    └── dashboard/
-        ├── index.html             # Static snapshot of the interactive showcase
-        └── assets/                # Supporting images and static media
+    ├── d4_sensitivity.png / .csv  # Prevention-rate sensitivity sweep
+    └── d4_summary.csv             # Intervention statistical summary
 ```
 
 ---
@@ -223,10 +226,13 @@ python src/d3_dashboard.py
 python src/d4_intervention.py
 ```
 
-### Viewing the static dashboards
-Open the HTML files directly in your web browser — no Python required:
-* **Interactive showcase (static snapshot)**: [`outputs/dashboard/index.html`](outputs/dashboard/index.html)
-* **CivicOps Monitor mock**: [`outputs/d3_dashboard.html`](outputs/d3_dashboard.html)
+### Viewing the static assets
+No Python required — open directly, or drop into slides / the video:
+* **CivicOps Monitor mock**: [`outputs/d3_dashboard.html`](outputs/d3_dashboard.html) (rendered screenshot: [`outputs/d3_dashboard.png`](outputs/d3_dashboard.png))
+* **Cascade animation**: [`outputs/d1_cascade_scenario_a.gif`](outputs/d1_cascade_scenario_a.gif)
+* **Language accuracy chart**: [`outputs/d2_chart.png`](outputs/d2_chart.png) · **Intervention comparison**: [`outputs/d4_comparison.png`](outputs/d4_comparison.png) · **Sensitivity sweep**: [`outputs/d4_sensitivity.png`](outputs/d4_sensitivity.png)
+
+The interactive experience is [`app.py`](app.py) (see [Running the prototype locally](#running-the-prototype-locally)).
 
 ---
 
