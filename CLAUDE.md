@@ -76,9 +76,13 @@ Add nothing else without asking.
 
 ### Step 1: fetch data (`src/fetch_data.py`)
 
-Target city: **Bhopal** (fallback: Indore, Nagpur, Jaipur — try in that order if node count < 15).
+Target city: **Bengaluru** (fallback: Bhopal, Indore, Nagpur, Jaipur — try in that order if node count < 15).
+Bengaluru was chosen so the network geography matches the complaint language: the D2 dataset is
+in **Kannada**, the language of Karnataka. (Bhopal, the original target, is in Hindi-speaking
+Madhya Pradesh — the mismatch is why we switched.)
 
 Bounding boxes:
+- Bengaluru: `12.85, 77.45, 13.10, 77.75`
 - Bhopal: `23.15, 77.30, 23.35, 77.55`
 - Indore: `22.65, 75.75, 22.80, 75.95`
 
@@ -280,7 +284,7 @@ Create `data/complaints.csv` with **20 civic complaints**, hand-written:
 |---|---|
 | `id` | c01–c20 |
 | `text_en` | English complaint, 1–2 sentences, realistic |
-| `text_native` | Same complaint in **Kannada or Odia native script** |
+| `text_native` | Same complaint in **Kannada native script** (Karnataka's language, matching the Bengaluru network) |
 | `true_dept` | ground truth label |
 
 Six departments: `electrical_emergency`, `electrical_maintenance`, `water_supply`,
@@ -393,7 +397,7 @@ Do not consider a module done until:
 ## When you are unsure
 
 Ask. Do not guess at:
-- Which city, if Bhopal returns too little data
+- Which city, if Bengaluru returns too little data
 - Whether to synthesise a layer
 - Any number that would appear on a slide
 

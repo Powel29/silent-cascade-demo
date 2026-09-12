@@ -18,7 +18,7 @@
 | 1 | Round 1 **submission** deadline (NOT registration close) | ________ | Determines which timeline in §A.6 applies |
 | 2 | Are you registered? | ________ | If registration closes Sept 15, this is step zero |
 | 3 | Team size | ________ | Determines how much of M1–M6 is achievable |
-| 4 | Does MPPKVVCL GIS portal load + export? | ________ | Determines real vs synthetic physical layer |
+| 4 | ~~Does MPPKVVCL GIS portal load + export?~~ RESOLVED — using OSM/Overpass for Bengaluru | DONE | Physical layer is OSM-observed; feeder topology inferred + labelled |
 
 > **Known:** Registration for Round 1 opened Aug 30 and closes Sept 15.
 > **Unknown:** whether submission is also Sept 15 or later. These are usually different dates.
@@ -66,7 +66,7 @@ or omit it.**
 |---|---|
 | Delhi launched an AI grievance system (IGMS) with IIT Kanpur — department prediction, automatic routing, spam filtering, semantic search, root-cause analysis, OCR | Delhi Govt / IIT Kanpur, Dec 2025 |
 | National scale: classification engines assign every complaint topic, urgency and destination; speech-to-text across 22 languages; Bhashini across text, voice, WhatsApp, kiosks | NextGen CPGRAMS |
-| Complaints reach field officers who verify and assign teams; escalation supervisor → zonal → Executive Engineer → CGRF; **48-hour SLA** | UPPCL published process |
+| Complaints reach field officers who verify and assign teams; escalation supervisor → zonal → Executive Engineer → CGRF; **48-hour SLA** | UPPCL published process (used only as evidence that such verify/assign SLAs exist; the demo treats its 48 h verification window as a labelled assumption, since no equivalent BESCOM/BWSSB figure was verified for Karnataka) |
 | Water boards run centralised control rooms coordinating head office with field staff, complaints in any Indian language, docket tracking | KUWSDB CCRRC |
 | Gateway fallback handles provider errors and operational failures — **not low-quality answers that still return successfully** | LLM gateway comparison, 2026 |
 | Error compounding: 99% per-step accuracy → 36.6% at 100 steps | Six Sigma Agent, arXiv 2026 |
@@ -99,17 +99,21 @@ only.** That gap is large and undisputed.
 
 | Source | Contents | Status |
 |---|---|---|
-| **MPPKVVCL (Madhya Pradesh)** — PRIMARY | Distribution GIS portal: feeders, substations, lines | **VERIFY DAY 0** |
-| **KSEB (Kerala)** — BACKUP A | Substation and line registers 2024–25 | Published |
-| **WBSETCL (West Bengal)** — BACKUP B | District substation register + single-line diagrams | Published |
-| **OSM / Overpass API** — UNIVERSAL FALLBACK | Power lines, transformers, poles, substations | Always available |
+| **OSM / Overpass API (Bengaluru)** — ACTUAL SOURCE USED | Substations, hospitals, water works / pumping stations | **Used in the build** |
+| **BESCOM / BWSSB (Karnataka)** — utility reference | Bengaluru power & water distribution operators | Not machine-readable at feeder level |
+| **MPPKVVCL (Madhya Pradesh)** | Distribution GIS portal: feeders, substations, lines | Not used (city switched away from MP) |
+| **KSEB (Kerala) / WBSETCL (West Bengal)** | Substation and line registers | Not used |
 | Census / ward boundaries | Population, vulnerability | Always available |
 
-**City recommendation: Indore or Bhopal** — MPPKVVCL is the only listed Indian source with
-**distribution-level** granularity, which is what a city cascade needs.
+**FINAL DECISION: Bengaluru, via OSM / Overpass.** The city was switched from the original
+Madhya Pradesh candidates to **Bengaluru (Karnataka)** so the network geography matches the
+D2 complaint language (**Kannada** is Karnataka's language). OSM returned 190 substations,
+1,060 hospitals and 157 water nodes over the Bengaluru bounding box — a denser, more legible
+network than the MP options.
 
-**If MPPKVVCL fails:** fall back to OSM Overpass for any city, synthesise feeder topology,
-and label it clearly. A synthetic-but-labelled layer is acceptable. An unlabelled one is not.
+**Feeder topology is inferred** (3-nearest-neighbour, not published by any Karnataka utility)
+and labelled `provenance="inferred"` on every edge. A synthetic-but-labelled layer is
+acceptable; an unlabelled one is not.
 
 ## 1.5 Real vs synthetic — prepare this slide
 
@@ -117,14 +121,14 @@ You WILL be asked. Have the answer ready:
 
 | Component | Source | Status |
 |---|---|---|
-| Substation locations | MPPKVVCL / OSM | Real |
-| Feeder topology | MPPKVVCL, else inferred | Real or Inferred |
-| Hospital locations | OSM | Real |
-| Ward populations | Census | Real |
-| Generator fuel / reservoir hours | Typical engineering values | Declared assumption |
-| Complaint volumes & text | Synthetic | Synthetic |
-| AI routing accuracy by language tier | Measured in our pipeline | Measured |
-| Cascade outcomes | Simulated | Simulated |
+| Substation locations (190) | OSM / Overpass, Bengaluru | Real (Observed) |
+| Feeder topology | Inferred, 3-nearest-neighbour (no Karnataka utility publishes it) | Inferred |
+| Hospital & water locations (1,060 + 157) | OSM / Overpass, Bengaluru | Real (Observed) |
+| Capacity / load / population served | config.yaml, seeded uniform draws | Declared assumption |
+| Generator fuel / reservoir hours | Typical engineering values (8 h / 6 h) | Declared assumption |
+| Complaint volumes & text (20 × 2 langs) | Hand-written, English + Kannada | Synthetic |
+| AI routing accuracy by language | Measured in our pipeline (120 classifications) | Measured |
+| Cascade outcomes / criticality ranking | Simulated, deterministic (seed 42) | Simulated |
 
 Label every edge in the graph: **Observed / Declared / Inferred / Unknown.**
 
@@ -372,7 +376,7 @@ on mobile data before submitting.**
 
 | Day | Task |
 |---|---|
-| **Sept 11** | Confirm deadline. Download template. Test MPPKVVCL. Assign: 1 person deck, 1 video, rest data. |
+| **Sept 11** | Confirm deadline. Download template. Fetch Bengaluru OSM data (Overpass). Assign: 1 person deck, 1 video, rest data. |
 | **Sept 12** | Pull OSM Overpass for chosen city. Build a SIMPLE M1 — 20–30 nodes, hand-checked. Slides 1–8. |
 | **Sept 13** | Run one cascade. Screenshot everything. Slides 9–16. M3 conceptual only — describe, don't build. |
 | **Sept 14** | Record + edit video. Full deck review against all 6 pillars. |
@@ -504,8 +508,9 @@ at high-fan-out nodes, consensus at critical joins.
 
 **"Isn't your cascade speculative?"**
 > "The link from misrouting to repair delay is documented — field officers assign teams, and
-> SLAs like UPPCL's 48-hour window are published. We model delay, not automated dispatch.
-> We're explicit about that boundary."
+> verify/assign SLAs like UPPCL's published 48-hour window show such windows exist. We use
+> 48 h as a labelled assumption (no verified Karnataka figure), and we model delay, not
+> automated dispatch. We're explicit about that boundary."
 
 **"How much of your data is real?"**
 > *(Show the §1.5 table.)* "Substations, hospitals and ward populations are real. Feeder
@@ -520,7 +525,7 @@ at high-fan-out nodes, consensus at critical joins.
 |---|---|---|---|
 | 1 | **Deadline is Sept 15, not later** | **Critical** | §0 verify TODAY. Switch to Timeline A. |
 | 2 | Not registered before Sept 15 close | **Critical** | Register today |
-| 3 | MPPKVVCL portal dead or gated | High | Verify Day 0. Backups: KSEB, WBSETCL, OSM+synthetic labelled |
+| 3 | ~~MPPKVVCL portal dead or gated~~ RESOLVED | — | City switched to Bengaluru; data sourced from OSM/Overpass, feeder topology inferred + labelled |
 | 4 | Scope overrun | High | Cut order M5 → M3 extras → M6. Never M1. Scale by team size (§3.1) |
 | 5 | Read as an AI project, not infra | High | Delete test. Slides 7–8 before any AI mention |
 | 6 | Team too small for scope | High | §3.1 scaling table. Decide now, not Day 6 |
@@ -537,7 +542,7 @@ at high-fan-out nodes, consensus at critical joins.
 1. ☐ **Confirm the Round 1 submission deadline** (not registration close)
 2. ☐ **Confirm you are registered** — registration closes Sept 15
 3. ☐ **Count your team** → apply §3.1 scaling
-4. ☐ **Open the MPPKVVCL GIS portal** — does it load? export?
+4. ☑ **Physical data** — RESOLVED: Bengaluru via OSM/Overpass (feeder topology inferred + labelled)
 5. ☐ **Download the mandatory template**
 6. ☐ Assign owners: M1 · deck · video
 
