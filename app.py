@@ -37,11 +37,12 @@ from d2_language import (  # noqa: E402
     canary_report,
     classify_one,
     condition_input,
+    dangerous_downgrade_rate,
     misroute_examples,
     route_with_guard,
     plot_accuracy,
 )
-from d4_intervention import draw_random_failures, hardened_graph, plot_comparison, run_condition  # noqa: E402
+from d4_intervention import draw_random_failures, hardened_graph, plot_comparison, plot_sensitivity, run_condition, sensitivity_sweep  # noqa: E402
 
 COLORS = {"healthy": "#9aa0a6", "overloaded": "#f5a623", "failed": "#d93025", "blue": "#4285f4", "green": "#34a853"}
 
@@ -203,6 +204,20 @@ def run_interventions(n_runs: int) -> tuple[list[tuple[str, list[int], float]], 
         ],
         top_node,
     )
+
+
+@st.cache_data
+def run_sensitivity(n_runs: int) -> tuple[pd.DataFrame, float]:
+    """Sweep the verification-checkpoint prevention rate to test whether the headline result
+    is robust to that assumption, or an artifact of the one chosen value (0.4)."""
+    cfg = load_config()
+    G = load_graph()
+    top_node = ranking().iloc[0]["node_id"]
+    seed = cfg["seed"]
+    failures = draw_random_failures(G, n_runs, seed)
+    hardened_mean = sum(run_condition(hardened_graph(G, top_node, 1.5), failures, cfg)) / n_runs
+    sweep = sensitivity_sweep(G, failures, cfg, [0.1, 0.2, 0.3, 0.4, 0.5, 0.6], seed)
+    return sweep, hardened_mean
 
 
 # ---------------------------------------------------------------- map (client-side Leaflet, no reruns)
@@ -459,6 +474,9 @@ def page_overview() -> None:
         '<div class="sc-meta"><span><b>Network</b> Bengaluru, Karnataka · OpenStreetMap</span>'
         '<span><b>Domain</b> Disaster Resilience &amp; Critical Infrastructure</span>'
         '<span><b>Theme</b> The Butterfly Effect</span></div>'
+        '<p class="sc-cap" style="margin-top:16px">This is a <b>scenario-based stress test</b> of a hypothesis, not a validated '
+        'prediction of Bengaluru\'s actual grid or grievance system. Every number below is labelled Cited / Assumed / Simulated / '
+        'Measured — see <code>LIMITATIONS.md</code> in the repo for the full breakdown and the robustness checks behind the headline findings.</p>'
         "</div>",
         unsafe_allow_html=True,
     )
@@ -568,7 +586,11 @@ def page_cascade() -> None:
 
     st.write("")
     st.markdown("#### Criticality ranking — by people affected, not by degree")
-    st.caption("Each substation failed alone; ranked by total people affected at the final step. This is the ranking a classification node has to beat.")
+    st.caption("Each substation failed alone; ranked by total people affected at the final step. This is the ranking a classification node has to beat. "
+               "A robustness sweep across 9 alternate topology/headroom assumptions confirms the top-ranked substation always affects "
+               "2.1x–240x as many nodes as the median one — this concentration is a structural property of the network, not an artifact "
+               "of one chosen parameter (outputs/d1_robustness.csv, LIMITATIONS.md). It is not the case that any substation collapses the "
+               "entire network — the worst case affects at most ~97% of nodes, not 100%.")
     _plain("This table answers a single question: if only one substation failed, which failure would harm the most people? "
            "Substations are ranked by the total number of people affected — not by their size or how many connections they have.")
     st.dataframe(rank, width="stretch", hide_index=True)
@@ -720,7 +742,7 @@ def page_language() -> None:
             return (f'<div class="sc-panel sc-ok"><div class="hdr"><b>{title}</b></div>'
                     f'<div class="sc-k">Repair scheduled</div><div class="sc-v ok">T+{sla:g} h — before the asset fails at T+{ttf:g} h</div>'
                     f'<div class="sc-k" style="margin-top:10px">Cascade</div>'
-                    f'<div class="sc-big" style="color:#34a853">0</div><div class="sc-k">people affected · failure prevented</div></div>')
+                    f'<div class="sc-big" style="color:#34a853">0</div><div class="sc-k">people affected · no cascade <em>if</em> repaired before the assumed failure window</div></div>')
 
         st.markdown('<div class="sc-split">' + outcome(naive_late, g["naive"]["sla_hours"], "Today · no guard")
                     + outcome(guard_late, g["guarded"]["sla_hours"], "With guard") + "</div>", unsafe_allow_html=True)
@@ -752,6 +774,12 @@ def page_language() -> None:
     lang_gap = cur.loc["en", "accuracy_pct"] - cur.loc["native", "accuracy_pct"]
     alarm = lang_gap > d2["canary_language_gap_alarm_pct"]
 
+    _dd_results = load_csv("d2_results.csv")
+    dd = dangerous_downgrade_rate(_dd_results, d2) if _dd_results is not None else pd.DataFrame()
+    dd_cur = dd[dd.condition == cond].set_index("language") if not dd.empty else None
+    dd_en = dd_cur.loc["en", "dangerous_downgrade_pct"] if dd_cur is not None and "en" in dd_cur.index else None
+    dd_kn = dd_cur.loc["native", "dangerous_downgrade_pct"] if dd_cur is not None and "native" in dd_cur.index else None
+
     def tile(label: str, value: str, ok: bool, sub: str) -> str:
         col = "#34a853" if ok else "#d93025"
         return (f'<div><div class="l">{label}</div><div class="v" style="color:{col}">{value} <i class="gdot" style="background:{col};box-shadow:0 0 8px {col}"></i></div>'
@@ -767,6 +795,9 @@ def page_language() -> None:
         + tile("Kannada accuracy", f"{cur.loc['native', 'accuracy_pct']:.0f}%", kn_ok, f"unparseable {cur.loc['native', 'unparseable_pct']:.0f}%")
         + tile("Language gap", f"{lang_gap:+.0f} pts", not alarm, f"alarm above {d2['canary_language_gap_alarm_pct']:g} pts")
         + tile("Drift vs clean (Kannada)", f"{-gap:+.0f} pts", gap <= d2["canary_language_gap_alarm_pct"], "same golden set, clean condition")
+        + (tile("Dangerous downgrade (EN)", f"{dd_en:.0f}%" if dd_en is not None else "—", (dd_en or 0) == 0, "critical complaint → non-critical queue")
+           + tile("Dangerous downgrade (KN)", f"{dd_kn:.0f}%" if dd_kn is not None else "—", (dd_kn or 0) == 0, "critical complaint → non-critical queue")
+           if dd_cur is not None else "")
         + "</div>"
         + (f'<div class="sc-v bad" style="margin-top:12px">▲ ALARM · native-script routing degraded {lang_gap:.0f} pts below English while every request returned 200</div>' if alarm
            else '<div class="sc-v ok" style="margin-top:12px">● no language divergence on the golden set</div>')
@@ -787,10 +818,16 @@ def page_language() -> None:
     with a:
         st.pyplot(plot_accuracy(acc, None), width="stretch")
     with b:
-        piv = acc.pivot(index="condition", columns="language", values="accuracy_pct").reindex(CONDITIONS)
+        if "ci_low" in acc.columns:
+            fmt_cell = acc.apply(lambda r: f"{r.accuracy_pct:.0f}% [{r.ci_low:.0f}–{r.ci_high:.0f}]", axis=1)
+            piv = acc.assign(cell=fmt_cell).pivot(index="condition", columns="language", values="cell").reindex(CONDITIONS)
+        else:
+            piv = acc.pivot(index="condition", columns="language", values="accuracy_pct").reindex(CONDITIONS)
         piv.columns = ["English" if c == "en" else "Kannada" for c in piv.columns]
         st.dataframe(piv, width="stretch")
-        st.markdown('<p class="sc-cap">Truncation shows a real language gap. The small-model condition did not. We report both — we don\'t tune experiments to fit the pitch.</p>', unsafe_allow_html=True)
+        st.markdown('<p class="sc-cap">Truncation shows a real language gap. The small-model condition did not. We report both — we don\'t tune experiments to fit the pitch. '
+                    'Bracketed numbers are 95% bootstrap confidence intervals — with n=20 complaints per cell, treat this as a <b>directional</b> finding, '
+                    'not a population estimate of Kannada-routing accuracy. See LIMITATIONS.md.</p>', unsafe_allow_html=True)
 
     ex = misroute_examples(results, complaints)
     st.markdown(f"#### Routed correctly in English, misrouted in Kannada — {len(ex)} cases")
@@ -820,6 +857,24 @@ def page_intervention() -> None:
         st.pyplot(plot_comparison(conditions, n_runs, None), width="stretch")
         st.markdown(f'<p class="sc-cap">Hardened node: <b>{top_node}</b> (capacity × 1.5). Checkpoint modelled as preventing the initiating failure in '
                     f'{cfg["d4"]["verification_checkpoint_prevention_rate"]:.0%} of runs — an assumption, labelled as such.</p>', unsafe_allow_html=True)
+
+        st.write("")
+        st.markdown("#### Is this fragile to the 40% assumption?")
+        _plain("The checkpoint's advantage above depends on assuming it catches 40% of misroutes before they cause a failure. "
+               "This chart re-runs the same comparison at other prevention rates, from 10% to 60%, to see whether the "
+               "checkpoint would still win under a far less generous assumption.")
+        with st.spinner("Sweeping prevention rate…"):
+            sweep, hardened_mean = run_sensitivity(n_runs)
+        st.pyplot(plot_sensitivity(sweep, hardened_mean, cfg["d4"]["verification_checkpoint_prevention_rate"], None), width="stretch")
+        crossover = sweep[sweep.mean_people_affected <= hardened_mean]
+        if not crossover.empty:
+            x = crossover.iloc[0]["prevention_rate"]
+            st.markdown(f'<p class="sc-cap">Robust: the checkpoint beats hardening down to a prevention rate of <b>{x:.0%}</b> — '
+                        f'well below the {cfg["d4"]["verification_checkpoint_prevention_rate"]:.0%} headline assumption. '
+                        "The conclusion does not depend on that one chosen number.</p>", unsafe_allow_html=True)
+        else:
+            st.markdown('<p class="sc-cap">At this run count, the checkpoint does not beat hardening anywhere in the swept range — '
+                        "reporting this honestly rather than hiding it. See LIMITATIONS.md.</p>", unsafe_allow_html=True)
     else:
         summary = load_csv("d4_summary.csv")
         if summary is not None:

@@ -8,6 +8,11 @@
 > **Problem Statement:** *Cascading Failure: When One Failure Becomes Many*  
 > **Domain:** Disaster Resilience & Critical Infrastructure (UN SDG 11)
 
+> **Read [`LIMITATIONS.md`](LIMITATIONS.md) first.** It states the one claim this prototype
+> actually supports, exactly which numbers are cited vs. assumed vs. simulated vs. measured,
+> and the robustness/sensitivity checks that back the headline findings. Everything below is
+> built on that framing, not around it.
+
 ---
 
 ## Executive Summary
