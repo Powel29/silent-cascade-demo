@@ -144,6 +144,63 @@ def main() -> None:
 
     plot_comparison(conditions, n_runs, OUTPUTS_DIR / "d4_comparison.png")
 
+    print("\n[d4_intervention] === sensitivity sweep: is 31% reduction fragile to the 40% assumption? ===")
+    rates = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6]
+    hardened_mean = sum(hardened_results) / n_runs
+    sweep = sensitivity_sweep(G, initial_failures, cfg, rates, seed)
+    sweep_path = OUTPUTS_DIR / "d4_sensitivity.csv"
+    sweep.to_csv(sweep_path, index=False)
+    print(f"[d4_intervention] wrote {sweep_path}")
+    print(sweep.to_string(index=False))
+    crossover = sweep[sweep.mean_people_affected <= hardened_mean]
+    if not crossover.empty:
+        x = crossover.iloc[0]["prevention_rate"]
+        print(f"[d4_intervention] checkpoint beats hardening down to prevention_rate={x:.0%} "
+              f"(assumption used elsewhere is {prevention_rate:.0%})")
+    else:
+        print("[d4_intervention] NOTE: checkpoint does NOT beat hardening anywhere in the swept "
+              "range — report this honestly if it occurs, do not hide it.")
+    plot_sensitivity(sweep, hardened_mean, prevention_rate, OUTPUTS_DIR / "d4_sensitivity.png")
+
+
+def sensitivity_sweep(
+    G: nx.DiGraph,
+    initial_failures: list[str],
+    cfg: dict[str, Any],
+    rates: list[float],
+    seed: int,
+) -> pd.DataFrame:
+    """Re-run the verification-checkpoint condition across a range of prevention rates.
+
+    The headline 40% prevention rate is an assumption (see config.yaml); this shows whether
+    the "checkpoint beats hardening" conclusion is a robust finding across the plausible range
+    or an artifact of that one chosen number.
+    """
+    n_runs = len(initial_failures)
+    rows = []
+    for rate in rates:
+        results = run_condition(G, initial_failures, cfg, prevention_rate=rate, prevention_seed=seed + 1)
+        rows.append({"prevention_rate": rate, "mean_people_affected": sum(results) / n_runs})
+    return pd.DataFrame(rows)
+
+
+def plot_sensitivity(sweep: pd.DataFrame, hardened_mean: float, headline_rate: float, out_path: Path | None) -> plt.Figure:
+    """Line chart: checkpoint's mean impact vs. prevention rate, with hardening as a reference line."""
+    fig, ax = plt.subplots(figsize=(10, 5.5), dpi=150)
+    ax.plot(sweep.prevention_rate * 100, sweep.mean_people_affected, marker="o", color="#34a853", label="Verification checkpoint")
+    ax.axhline(hardened_mean, color="#4285f4", linestyle="--", label=f"Harden substation ({hardened_mean:,.0f})")
+    ax.axvline(headline_rate * 100, color="#9aa0a6", linestyle=":", label=f"Headline assumption ({headline_rate:.0%})")
+    ax.set_xlabel("Verification checkpoint prevention rate (%)", fontsize=12)
+    ax.set_ylabel("Mean people affected", fontsize=12)
+    ax.set_title("Sensitivity: does the checkpoint still win at lower prevention rates?", fontsize=14)
+    ax.legend(fontsize=10)
+    fig.tight_layout()
+    if out_path is not None:
+        fig.savefig(out_path, dpi=150)
+        plt.close(fig)
+        print(f"[d4_intervention] wrote {out_path}")
+    return fig
+
 
 def plot_comparison(conditions: list[tuple[str, list[int], float]], n_runs: int, out_path: Path | None) -> plt.Figure:
     """Horizontal bar chart of mean impact per condition. Saves to out_path if given; returns the figure."""
