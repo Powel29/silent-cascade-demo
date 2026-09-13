@@ -58,7 +58,9 @@ labeled real / inferred / assumed / simulated.
   e.g. "Substation locations (190) — OpenStreetMap — Observed" vs. "Capacity, load,
   population served — config.yaml seeded draws — Assumed." This mirrors the
   provenance discipline CLAUDE.md requires on every node/edge (`provenance` column) but
-  presents it as a human-readable legend for the whole app.
+  presents it as a human-readable legend for the whole app. The "Measured" row points the
+  reader to `LIMITATIONS.md` for the single defensible claim, the honest caveats, and the
+  robustness/sensitivity checks behind the headline findings.
 
 ### Result
 No computation happens on this page — it's pure presentation over static content and
@@ -98,7 +100,10 @@ in-browser instead of a fixed GIF, plus the criticality ranking table (D1's
   client-side to stop page reruns and flicker"*).
 - Below the map: `st.dataframe(rank, ...)` renders the criticality ranking table
   (`node_id, name, people_affected, cascade_size, hospitals_hit`), captioned as "the
-  ranking a classification node has to beat."
+  ranking a classification node has to beat." A caption notes the **robustness sweep**
+  (`src/d1_robustness.py` → `outputs/d1_robustness.csv`, 9 alternate topology/headroom
+  assumption combinations) confirming the top-ranked substation stays high-impact across
+  the swept assumptions — the finding is not an artifact of one parameter choice.
 
 ### Result
 With Bengaluru's fetched network (190 substations, 1,060 hospitals, 157 water nodes — see
@@ -165,22 +170,33 @@ condition. The page computes the English-vs-Kannada accuracy gap for the *curren
 condition and raises a visual "ALARM" if that gap exceeds
 `d2.canary_language_gap_alarm_pct` (15 points, from `config.yaml`) — this is presented
 as "the canary CivicOps never had," i.e. the thing that should have caught the D2
-finding automatically instead of a human noticing it in a spreadsheet.
+finding automatically instead of a human noticing it in a spreadsheet. The canary panel
+also surfaces a **dangerous-downgrade rate** per language (`dangerous_downgrade_rate()`
+from `src/d2_language.py`, backing `outputs/d2_dangerous_downgrade.csv`) — the share of
+genuinely urgent complaints routed to a non-critical queue, a consequence-weighted metric
+that matters more than raw accuracy because not every misroute is equally harmful.
 
 Below the four interactive sections, the page falls back to the static D2 outputs if
 present: `outputs/d2_accuracy.csv` plotted via `plot_accuracy()` (same function used by
 `d2_language.py`'s `main()`), a pivoted accuracy table, and `misroute_examples()` —
-the complaints correctly routed in English but misrouted in native script.
+the complaints correctly routed in English but misrouted in native script. The accuracy
+table now also carries **95% bootstrap confidence intervals** (`bootstrap_ci()`,
+columns `ci_low`/`ci_high` in `outputs/d2_accuracy.csv`), rendered inline as
+`90% [75–100]`. With n=20 complaints per cell the intervals are wide, so the app labels
+the result explicitly as **directional**, not a precise measurement.
 
 ### Result
 From `outputs/d2_accuracy.csv` (120 measured classifications: 20 complaints × 2
 languages × 3 conditions):
 
-| condition | English accuracy | Native (Kannada) accuracy |
+| condition | English accuracy [95% CI] | Native (Kannada) accuracy [95% CI] |
 |---|---|---|
-| clean | 100.0% | 100.0% |
-| truncated | 90.0% | 55.0% |
-| small_model | 70.0% | 75.0% |
+| clean | 100% [100–100] | 100% [100–100] |
+| truncated | 90% [75–100] | 55% [35–75] |
+| small_model | 70% [50–90] | 75% [55–95] |
+
+(CIs are 95% bootstrap intervals from `outputs/d2_accuracy.csv`; with n=20 per cell they
+are wide, so the finding is directional, not precise.)
 
 The `truncated` condition shows a genuine 35-point language gap (native script degrades
 far more from truncation than English does) — this is the finding the demo is built
@@ -216,6 +232,12 @@ only viewing the static `outputs/d4_comparison.png`.
   illustrative ₹ cost from `config.yaml: assumptions.cost_inr`) and the same
   `plot_comparison()` horizontal bar chart used by the static script.
 - If not yet run, falls back to displaying the precomputed `outputs/d4_summary.csv`.
+- **"Is this fragile to the 40% assumption?"** — a sensitivity section (`run_sensitivity()`
+  → `sensitivity_sweep()`/`plot_sensitivity()` from `src/d4_intervention.py`, backing
+  `outputs/d4_sensitivity.{csv,png}`) sweeps the checkpoint prevention rate across
+  0.1–0.6 and reports the break-even point: the lowest rate at which the checkpoint still
+  beats hardening. This directly answers the obvious challenge that the headline result
+  rests on one assumed number.
 
 ### Result
 From `outputs/d4_summary.csv` (100 paired runs per condition, seed 42):
