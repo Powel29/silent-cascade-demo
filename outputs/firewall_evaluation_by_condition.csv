@@ -1,0 +1,16 @@
+configuration,condition,label,n_cases,n_critical_cases,n_dangerous_ai_routes,dangerous_misroutes_allowed,dangerous_misroutes_intercepted,critical_incident_catch_rate,critical_emergency_response,critical_emergency_response_rate,human_review_count,human_review_rate,emergency_dispatch_count,emergency_dispatch_rate,n_noncritical_ai_correct,unnecessary_escalations,unnecessary_escalation_rate,safe_automation_count,safe_automation_rate,n_noncritical_ai_wrong,noncritical_misroutes_caught,noncritical_misroutes_caught_rate,n_mapped_critical_scenarios,simulated_incidents_prevented,simulated_incidents_prevented_rate,simulated_exposure_incurred,simulated_exposure_avoided_vs_ai_only
+ai_only,clean,AI only,40,8,0,0,0,,8,1.0,0,0.0,0,0.0,32,0,0.0,32,1.0,0,0,,1,1,1.0,0,0
+existing_guard,clean,Existing guard,40,8,0,0,0,,8,1.0,0,0.0,11,0.275,32,3,0.0938,29,0.9062,0,0,,1,1,1.0,0,0
+decision_firewall,clean,Decision Firewall,40,8,0,0,0,,8,1.0,13,0.325,8,0.2,32,5,0.1562,27,0.8438,0,0,,1,1,1.0,0,0
+decision_firewall_reliability_normal,clean,"Firewall, safe mode off",40,8,0,0,0,,8,1.0,13,0.325,8,0.2,32,5,0.1562,27,0.8438,0,0,,1,1,1.0,0,0
+escalate_everything,clean,Escalate everything (reference),40,8,0,0,0,,0,0.0,40,1.0,0,0.0,32,32,1.0,0,0.0,0,0,,1,1,1.0,0,0
+ai_only,truncated,AI only,40,8,6,6,0,0.0,2,0.25,0,0.0,0,0.0,27,0,0.0,27,1.0,5,0,0.0,2,1,0.5,2729047,0
+existing_guard,truncated,Existing guard,40,8,6,0,6,1.0,2,0.25,12,0.3,4,0.1,27,3,0.1111,24,0.8889,5,5,1.0,2,2,1.0,0,2729047
+decision_firewall,truncated,Decision Firewall,40,8,6,0,6,1.0,8,1.0,40,1.0,8,0.2,27,27,1.0,0,0.0,5,5,1.0,2,2,1.0,0,2729047
+decision_firewall_reliability_normal,truncated,"Firewall, safe mode off",40,8,6,0,6,1.0,8,1.0,40,1.0,8,0.2,27,27,1.0,0,0.0,5,5,1.0,2,2,1.0,0,2729047
+escalate_everything,truncated,Escalate everything (reference),40,8,6,0,6,1.0,0,0.0,40,1.0,0,0.0,27,27,1.0,0,0.0,5,5,1.0,2,2,1.0,0,2729047
+ai_only,small_model,AI only,40,8,3,3,0,0.0,5,0.625,0,0.0,0,0.0,24,0,0.0,24,1.0,8,0,0.0,1,1,1.0,0,0
+existing_guard,small_model,Existing guard,40,8,3,0,3,1.0,8,1.0,13,0.325,11,0.275,24,4,0.1667,20,0.8333,8,8,1.0,1,1,1.0,0,0
+decision_firewall,small_model,Decision Firewall,40,8,3,0,3,1.0,8,1.0,40,1.0,8,0.2,24,24,1.0,0,0.0,8,8,1.0,1,1,1.0,0,0
+decision_firewall_reliability_normal,small_model,"Firewall, safe mode off",40,8,3,0,3,1.0,8,1.0,22,0.55,8,0.2,24,6,0.25,18,0.75,8,8,1.0,1,1,1.0,0,0
+escalate_everything,small_model,Escalate everything (reference),40,8,3,0,3,1.0,0,0.0,40,1.0,0,0.0,24,24,1.0,0,0.0,8,8,1.0,1,1,1.0,0,0

@@ -1,0 +1,6 @@
+configuration,label,n_cases,n_critical_cases,n_dangerous_ai_routes,dangerous_misroutes_allowed,dangerous_misroutes_intercepted,critical_incident_catch_rate,critical_emergency_response,critical_emergency_response_rate,human_review_count,human_review_rate,emergency_dispatch_count,emergency_dispatch_rate,n_noncritical_ai_correct,unnecessary_escalations,unnecessary_escalation_rate,safe_automation_count,safe_automation_rate,n_noncritical_ai_wrong,noncritical_misroutes_caught,noncritical_misroutes_caught_rate,n_mapped_critical_scenarios,simulated_incidents_prevented,simulated_incidents_prevented_rate,simulated_exposure_incurred,simulated_exposure_avoided_vs_ai_only
+ai_only,AI only,120,24,9,9,0,0.0,15,0.625,0,0.0,0,0.0,83,0,0.0,83,1.0,13,0,0.0,4,3,0.75,2729047,0
+existing_guard,Existing guard,120,24,9,0,9,1.0,18,0.75,25,0.2083,26,0.2167,83,10,0.1205,73,0.8795,13,13,1.0,4,4,1.0,0,2729047
+decision_firewall,Decision Firewall,120,24,9,0,9,1.0,24,1.0,93,0.775,24,0.2,83,56,0.6747,27,0.3253,13,13,1.0,4,4,1.0,0,2729047
+decision_firewall_reliability_normal,"Firewall, safe mode off",120,24,9,0,9,1.0,24,1.0,75,0.625,24,0.2,83,38,0.4578,45,0.5422,13,13,1.0,4,4,1.0,0,2729047
+escalate_everything,Escalate everything (reference),120,24,9,0,9,1.0,0,0.0,120,1.0,0,0.0,83,83,1.0,0,0.0,13,13,1.0,4,4,1.0,0,2729047

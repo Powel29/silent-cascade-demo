@@ -1,0 +1,315 @@
+{
+  "scenario": {
+    "scenario_id": "SC-01",
+    "complaint_id": "c01",
+    "language": "native",
+    "condition": "truncated",
+    "asset_id": "sub_039",
+    "asset_mapping_method": "scenario_selected",
+    "structured_hazard": "sparking",
+    "structured_immediate_danger": true,
+    "scenario_failure_window_hours": 336.0,
+    "provenance": "synthetic_scenario",
+    "notes": "CANONICAL. Kannada sparking-transformer complaint; truncation makes the classifier return an unparseable/wrong route while the complete original text still contains the hazard. Mapped by the scenario author to LR Bande Substation (very-high simulated-consequence tier). The mapping is scenario-selected: it is NOT evidence that the synthetic complaint occurred at this asset. Failure window = config d2.time_to_failure_hours (assumed)."
+  },
+  "complaint": {
+    "id": "c01",
+    "text_en": "There are sparks coming out of the transformer box on our street and it smells like burning. Please send someone immediately, it's dangerous especially with children playing nearby.",
+    "text_native": "ನಮ್ಮ ಬೀದಿಯಲ್ಲಿರುವ ಟ್ರಾನ್ಸ್‌ಫಾರ್ಮರ್ ಬಾಕ್ಸ್‌ನಿಂದ ಕಿಡಿಗಳು ಹಾರುತ್ತಿವೆ ಮತ್ತು ಸುಟ್ಟ ವಾಸನೆ ಬರುತ್ತಿದೆ. ದಯವಿಟ್ಟು ತಕ್ಷಣ ಯಾರನ್ನಾದರೂ ಕಳುಹಿಸಿ, ಮಕ್ಕಳು ಹತ್ತಿರದಲ್ಲಿ ಆಡುತ್ತಿರುವುದರಿಂದ ಇದು ತುಂಬಾ ಅಪಾಯಕಾರಿ.",
+    "provenance": "synthetic"
+  },
+  "language": "native",
+  "condition": "truncated",
+  "reliability_state": "degraded",
+  "classifier": {
+    "seen_text": "ನಮ್ಮ ಬೀದಿಯಲ್ಲಿರುವ ಟ್ರಾನ್ಸ್‌ಫಾರ್ಮರ್ ಬಾಕ್ಸ",
+    "input_complete": false,
+    "scores": {
+      "electrical_emergency": 0,
+      "electrical_maintenance": 0,
+      "water_supply": 0,
+      "drainage": 0,
+      "roads": 0,
+      "sanitation": 0
+    },
+    "predicted_dept": "",
+    "margin": 0,
+    "condition": "truncated",
+    "vocabulary_size": 38
+  },
+  "safety_scan": {
+    "language": "native",
+    "scanned_text_length": 185,
+    "matched_terms": [
+      {
+        "term": "ಕಿಡಿ",
+        "language": "native",
+        "hazard": "electrical_sparking",
+        "source": "original_text",
+        "in_legacy_guard_vocabulary": true
+      },
+      {
+        "term": "ಸುಟ್ಟ ವಾಸನೆ",
+        "language": "native",
+        "hazard": "fire_or_burning",
+        "source": "original_text",
+        "in_legacy_guard_vocabulary": true
+      },
+      {
+        "term": "sparking",
+        "language": "structured",
+        "hazard": "electrical_sparking",
+        "source": "structured_intake",
+        "in_legacy_guard_vocabulary": false
+      },
+      {
+        "term": "immediate_danger=true",
+        "language": "structured",
+        "hazard": "unknown_immediate_danger",
+        "source": "structured_intake",
+        "in_legacy_guard_vocabulary": false
+      }
+    ],
+    "hazards": [
+      "electrical_sparking",
+      "fire_or_burning",
+      "unknown_immediate_danger"
+    ],
+    "direct_hazards": [
+      "electrical_sparking",
+      "fire_or_burning"
+    ],
+    "service_hazards": [],
+    "direct_hazard": true,
+    "immediate_danger": true,
+    "required_departments": [
+      "electrical_emergency"
+    ],
+    "provenance": {
+      "text_scan": "measured_rule_based_scan_of_complete_original_text",
+      "structured_intake": "synthetic_intake_answer",
+      "vocabulary": "d2_language safety vocabulary + terms present in the controlled complaint set"
+    }
+  },
+  "asset_context": {
+    "context_available": true,
+    "asset_id": "sub_039",
+    "asset_name": "LR Bande Substation",
+    "mapping_method": "scenario_selected",
+    "criticality_rank": 2,
+    "criticality_percentile": 99.47,
+    "criticality_tier": "very_high",
+    "n_ranked_assets": 190,
+    "simulated_people_exposed": 2729047,
+    "simulated_substations_failed": 104,
+    "simulated_cascade_size": 870,
+    "dependent_hospitals": 660,
+    "dependent_water_assets": 106,
+    "hospitals_without_power": 270,
+    "wards_without_water": 69,
+    "reason": null,
+    "provenance": {
+      "location": "observed (OpenStreetMap)",
+      "topology": "inferred (3-nearest-neighbour grid edges, nearest-substation supply edges)",
+      "capacities_loads": "assumed (config.yaml seeded draws)",
+      "population": "assumed (config.yaml seeded draws; per-substation, not unique people)",
+      "outcome": "simulated (corrected cascade engine, within the configured step horizon)",
+      "asset_mapping": "synthetic: scenario-selected mapping, not evidence the complaint occurred here"
+    }
+  },
+  "firewall_input": {
+    "complaint_id": "c01",
+    "original_text": "ನಮ್ಮ ಬೀದಿಯಲ್ಲಿರುವ ಟ್ರಾನ್ಸ್‌ಫಾರ್ಮರ್ ಬಾಕ್ಸ್‌ನಿಂದ ಕಿಡಿಗಳು ಹಾರುತ್ತಿವೆ ಮತ್ತು ಸುಟ್ಟ ವಾಸನೆ ಬರುತ್ತಿದೆ. ದಯವಿಟ್ಟು ತಕ್ಷಣ ಯಾರನ್ನಾದರೂ ಕಳುಹಿಸಿ, ಮಕ್ಕಳು ಹತ್ತಿರದಲ್ಲಿ ಆಡುತ್ತಿರುವುದರಿಂದ ಇದು ತುಂಬಾ ಅಪಾಯಕಾರಿ.",
+    "language": "native",
+    "structured_hazards": [
+      "sparking"
+    ],
+    "immediate_danger": true,
+    "predicted_dept": "",
+    "prediction_margin": 0,
+    "classifier_input_complete": false,
+    "asset_id": "sub_039",
+    "asset_criticality_percentile": 99.47,
+    "simulated_people_exposed": 2729047,
+    "dependent_hospitals": 660,
+    "dependent_water_assets": 106,
+    "proposed_route": "electrical_maintenance",
+    "proposed_sla_hours": 336,
+    "scenario_failure_window_hours": 336.0,
+    "reliability_state": "degraded"
+  },
+  "decision": {
+    "risk_level": "red",
+    "action": "emergency_dispatch",
+    "final_department": "electrical_emergency",
+    "recommended_department": null,
+    "ai_autonomy_allowed": false,
+    "human_review_required": true,
+    "dispatch_immediate": true,
+    "ai_route_overridden": true,
+    "reason_codes": [
+      "STRUCTURED_IMMEDIATE_DANGER",
+      "DIRECT_HAZARD",
+      "DANGEROUS_DOWNGRADE",
+      "VERY_HIGH_ASSET_CRITICALITY",
+      "REPAIR_WINDOW_AT_RISK",
+      "RELIABILITY_DEGRADED",
+      "UNPARSEABLE_CLASSIFICATION",
+      "LOW_MARGIN",
+      "TRUNCATED_CLASSIFIER_INPUT"
+    ],
+    "reason_text": [
+      "The intake form explicitly marks this complaint as immediate danger.",
+      "The original complaint or intake form reports an immediate physical hazard (electrical_sparking, fire_or_burning).",
+      "A time-critical hazard was routed to a slower, non-critical route (electrical_sparking, fire_or_burning -> unparseable).",
+      "The affected asset is in the top simulated-consequence tier (LR Bande Substation: rank 2/190, percentile 99.47, simulated exposure 2,729,047).",
+      "The proposed route's repair time (336 h proposed vs 336 h assumed failure window) reaches the assumed failure window.",
+      "The routing quality check for this language/condition is degraded — safe mode restricts automatic routing.",
+      "The classifier returned no department at all.",
+      "The classifier's score margin (margin 0) is below the configured threshold — an uncertainty signal, not a probability.",
+      "The classifier saw a truncated or incomplete version of the complaint."
+    ],
+    "missing_fields": [],
+    "signals": {
+      "direct_hazards": [
+        "electrical_sparking",
+        "fire_or_burning"
+      ],
+      "service_hazards": [],
+      "immediate_danger": true,
+      "predicted_dept": null,
+      "prediction_margin": 0,
+      "classifier_input_complete": false,
+      "reliability_state": "degraded",
+      "criticality_tier": "very_high",
+      "proposed_sla_hours": 336,
+      "scenario_failure_window_hours": 336.0
+    },
+    "provenance": {
+      "policy_thresholds": "assumed prototype policy (config.yaml: firewall)",
+      "safety_scan": "measured_rule_based_scan_of_complete_original_text",
+      "asset_context": "synthetic: scenario-selected mapping, not evidence the complaint occurred here",
+      "consequence": "simulated (corrected cascade engine)",
+      "reliability_state": "policy response to a supplied controlled-canary signal, not production monitoring"
+    }
+  },
+  "action_plan": {
+    "simulated": true,
+    "risk_level": "red",
+    "ai_recommended_department": null,
+    "policy_provenance": "assumed prototype policy (config.yaml: firewall.action_policy)",
+    "work_order_type": "emergency_work_order",
+    "assigned_department": "electrical_emergency",
+    "priority": "P1_immediate",
+    "requires_acknowledgement": true,
+    "human_review_parallel": true,
+    "status": "dispatched_awaiting_acknowledgement",
+    "acknowledgement_target_minutes": 15,
+    "reescalation_target_minutes": 30,
+    "next_action_if_unacknowledged": "re-escalate to control_room_supervisor",
+    "ai_route_finalized": false
+  },
+  "acknowledgement": {
+    "awaiting": {
+      "simulated": true,
+      "risk_level": "red",
+      "ai_recommended_department": null,
+      "policy_provenance": "assumed prototype policy (config.yaml: firewall.action_policy)",
+      "work_order_type": "emergency_work_order",
+      "assigned_department": "electrical_emergency",
+      "priority": "P1_immediate",
+      "requires_acknowledgement": true,
+      "human_review_parallel": true,
+      "status": "dispatched_awaiting_acknowledgement",
+      "acknowledgement_target_minutes": 15,
+      "reescalation_target_minutes": 30,
+      "next_action_if_unacknowledged": "re-escalate to control_room_supervisor",
+      "ai_route_finalized": false,
+      "minutes_elapsed": 0,
+      "acknowledgement_state": "awaiting"
+    },
+    "acknowledged": {
+      "simulated": true,
+      "risk_level": "red",
+      "ai_recommended_department": null,
+      "policy_provenance": "assumed prototype policy (config.yaml: firewall.action_policy)",
+      "work_order_type": "emergency_work_order",
+      "assigned_department": "electrical_emergency",
+      "priority": "P1_immediate",
+      "requires_acknowledgement": true,
+      "human_review_parallel": true,
+      "status": "acknowledged",
+      "acknowledgement_target_minutes": 15,
+      "reescalation_target_minutes": 30,
+      "next_action_if_unacknowledged": "re-escalate to control_room_supervisor",
+      "ai_route_finalized": false,
+      "minutes_elapsed": 5,
+      "acknowledgement_state": "acknowledged"
+    },
+    "unacknowledged_past_target": {
+      "simulated": true,
+      "risk_level": "red",
+      "ai_recommended_department": null,
+      "policy_provenance": "assumed prototype policy (config.yaml: firewall.action_policy)",
+      "work_order_type": "emergency_work_order",
+      "assigned_department": "electrical_emergency",
+      "priority": "P1_immediate",
+      "requires_acknowledgement": true,
+      "human_review_parallel": true,
+      "status": "reescalated_to_control_room_supervisor",
+      "acknowledgement_target_minutes": 15,
+      "reescalation_target_minutes": 30,
+      "next_action_if_unacknowledged": "re-escalate to control_room_supervisor",
+      "ai_route_finalized": false,
+      "minutes_elapsed": 30,
+      "acknowledgement_state": "reescalated",
+      "escalated_to": "control_room_supervisor"
+    }
+  },
+  "physical_outcome": {
+    "assumption": "the initiating failure occurs only if the response arrives at or after the assumed failure window",
+    "ai_only": {
+      "label": "AI only",
+      "response_hours": 336,
+      "failure_window_hours": 336.0,
+      "initiating_failure": true,
+      "cascade": {
+        "steps": 12,
+        "hours": 24.0,
+        "people_affected": 2729047,
+        "substations_failed": 104,
+        "cascade_size": 870,
+        "hospitals_feeder_lost": 660,
+        "hospitals_on_backup": 390,
+        "hospitals_without_power": 270,
+        "pumps_feeder_lost": 106,
+        "pumps_without_water": 69,
+        "unserved_load_mw": 4241.16
+      }
+    },
+    "decision_firewall": {
+      "label": "Decision Firewall",
+      "response_hours": 4.0,
+      "failure_window_hours": 336.0,
+      "initiating_failure": false,
+      "cascade": {
+        "people_affected": 0,
+        "substations_failed": 0,
+        "cascade_size": 0,
+        "hospitals_on_backup": 0,
+        "hospitals_without_power": 0,
+        "pumps_without_water": 0
+      }
+    }
+  },
+  "labels": {
+    "complaint": "synthetic",
+    "asset_mapping": "synthetic (scenario-selected)",
+    "classifier_result": "measured (prototype classifier)",
+    "safety_scan": "measured (rule-based)",
+    "policy_thresholds": "assumed prototype policy",
+    "failure_window": "assumed",
+    "cascade": "simulated",
+    "exposure": "simulated service population, not unique people"
+  }
+}
