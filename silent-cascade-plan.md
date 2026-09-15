@@ -1,4 +1,10 @@
 # SILENT CASCADE
+
+> **Status: historical planning and research notes.** This document preserves the original
+> Round 1/2 strategy, evidence collection, and monitoring-focused concept. It is not the
+> current build plan. Follow `CLAUDE.md` for implementation and `PLAN.md` for the current
+> Decision Firewall product and presentation direction.
+
 ### Manipal Hackathon (M#) — Full Plan, Round 1 → Round 2
 **Version 2 — corrected**
 
