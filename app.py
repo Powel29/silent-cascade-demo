@@ -1,8 +1,13 @@
-"""Silent Cascade — interactive prototype (Streamlit).
+"""Silent Cascade Decision Firewall — interactive intervention prototype (Streamlit).
 
-A thin UI over the repo's existing pure functions. Every number shown here comes from the
-same code that produced outputs/*.csv: cascade.cascade(), d2_language.classify_one(),
-d4_intervention.run_condition(). Nothing is reimplemented in the app layer.
+A thin UI over the repo's pure functions. Every decision shown here is produced by
+src/decision_firewall.py (the same code the offline evaluation scores), every cascade by
+src/cascade.py, every classifier result by src/d2_language.py. Nothing is reimplemented in the
+app layer and nothing here sends a real message, creates a real ticket or dispatches anyone.
+
+UI principle: structure explains itself. The pipeline ribbon carries the architecture, each
+reason code sits in the stage that produced it, and every control shows its own meaning — so a
+judge can read the demo cold without a narrator and without paragraphs of explanation.
 
 Run locally:  pip install -r requirements.txt && streamlit run app.py
 """
@@ -24,147 +29,181 @@ import yaml
 REPO_ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(REPO_ROOT / "src"))
 
-from cascade import cascade, criticality_ranking  # noqa: E402
-from d2_language import (  # noqa: E402
-    CONDITIONS,
-    DEPARTMENTS,
-    FULL_KEYWORDS_EN,
-    FULL_KEYWORDS_KN,
-    SMALL_KEYWORDS_EN,
-    SMALL_KEYWORDS_KN,
-    _looks_english,
-    accuracy_table,
-    canary_report,
-    classify_one,
-    condition_input,
-    dangerous_downgrade_rate,
-    misroute_examples,
-    route_with_guard,
-    plot_accuracy,
+from cascade import cascade, summarize_final  # noqa: E402
+from d2_language import CONDITIONS, DEPARTMENTS, canary_report, condition_input, plot_accuracy  # noqa: E402
+from decision_firewall import (  # noqa: E402
+    advance_acknowledgement,
+    build_asset_context,
+    reliability_state_from_canary,
+    run_firewall,
 )
-from d4_intervention import draw_random_failures, hardened_graph, plot_comparison, plot_sensitivity, run_condition, sensitivity_sweep  # noqa: E402
+from evaluate_firewall import LABELS, PRIMARY_CONFIGURATIONS  # noqa: E402
 
-COLORS = {"healthy": "#9aa0a6", "overloaded": "#f5a623", "failed": "#d93025", "blue": "#4285f4", "green": "#34a853"}
-
-st.set_page_config(page_title="Silent Cascade", page_icon="⚡", layout="wide")
+st.set_page_config(page_title="Silent Cascade Decision Firewall", page_icon="⚡", layout="wide")
 
 st.markdown(
     """
     <style>
-      .sc-eyebrow { font-family: monospace; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: #9aa0a6; }
-      .sc-title { font-size: 44px; font-weight: 800; letter-spacing: .04em; line-height: 1; margin: 6px 0 10px; }
+      .sc-eyebrow { font-family: monospace; font-size: 11.5px; letter-spacing: .16em; text-transform: uppercase; color: #9aa0a6; }
+      .sc-title { font-size: clamp(26px, 3.2vw, 38px); font-weight: 800; letter-spacing: .03em; line-height: 1.05; margin: 4px 0 4px; }
       .sc-title span { color: #d93025; }
-      .sc-lede { color: #cfd2d6; font-size: 18px; max-width: 70ch; }
-      .sc-cap { font-family: monospace; font-size: 13px; color: #cfd2d6; border-left: 2px solid #343b46; padding-left: 12px; }
-      .sc-card { background: #171b21; border: 1px solid #262b33; border-radius: 10px; padding: 16px 18px; }
-      .sc-bad { border-color: rgba(217,48,37,.6); box-shadow: 0 0 24px rgba(217,48,37,.18); }
-      .sc-ok  { border-color: rgba(52,168,83,.5); box-shadow: 0 0 24px rgba(52,168,83,.12); }
-      .sc-k { font-family: monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #9aa0a6; }
-      .sc-v { font-family: monospace; font-size: 15px; }
+      .sc-q { color: #cfd2d6; font-size: 15px; margin: 0 0 4px; }
+      .sc-cap { font-family: monospace; font-size: 12.5px; color: #9aa0a6; line-height: 1.5; margin: 6px 0 0; }
+      .sc-card { background: #171b21; border: 1px solid #262b33; border-radius: 10px; padding: 14px 16px; height: 100%; }
+      .sc-k { font-family: monospace; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; color: #9aa0a6; margin-top: 10px; }
+      .sc-k:first-child { margin-top: 0; }
+      .sc-v { font-family: monospace; font-size: 14px; color: #e8eaed; }
       .sc-v.bad { color: #d93025; font-weight: 700; } .sc-v.ok { color: #34a853; } .sc-v.unp { color: #f5a623; font-weight: 700; }
-      .sc-text { font-size: 16px; line-height: 1.6; }
+      .sc-text { font-size: 15px; line-height: 1.6; margin: 4px 0 0; }
       .sc-text mark { background: rgba(66,133,244,.22); color: inherit; border-bottom: 1px solid #4285f4; padding: 0 1px; }
       .sc-text mark.wrong { background: rgba(217,48,37,.22); border-bottom-color: #d93025; }
+      .sc-text mark.haz { background: rgba(217,48,37,.3); border-bottom: 2px solid #d93025; font-weight: 600; }
       .sc-text s { color: #6b7280; text-decoration-color: rgba(217,48,37,.6); }
-      .sc-log { font-family: monospace; font-size: 12px; color: #6b7280; } .sc-log b { color: #34a853; font-weight: 500; }
-      .sc-hud { display: flex; flex-wrap: wrap; gap: 10px; margin: 6px 0 14px; }
-      .sc-hud > div { flex: 1 1 150px; background: #171b21; border: 1px solid #262b33; border-radius: 8px; padding: 10px 14px; }
-      .sc-big { font-family: monospace; font-size: 26px; font-weight: 700; line-height: 1.15; margin-top: 4px; font-variant-numeric: tabular-nums; }
-      .sc-pill { display: inline-block; font-family: monospace; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; border: 1px solid #343b46; }
+      .sc-pill { display: inline-block; font-family: monospace; font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; border: 1px solid #343b46; color: #9aa0a6; margin: 2px 3px 2px 0; }
       .sc-pill.real { color: #34a853; border-color: rgba(52,168,83,.5); } .sc-pill.meas { color: #4285f4; border-color: rgba(66,133,244,.5); }
-      .sc-pill.inf { color: #f5a623; border-color: rgba(245,166,35,.5); } .sc-pill.syn { color: #9aa0a6; } .sc-pill.sim { color: #cfd2d6; }
+      .sc-pill.inf { color: #f5a623; border-color: rgba(245,166,35,.5); } .sc-pill.red { color: #d93025; border-color: rgba(217,48,37,.6); }
 
-      .sc-hero { padding: 28px 0 8px; }
-      .sc-hero .sc-eyebrow { display: inline-flex; align-items: center; gap: 10px; }
-      .sc-hero .sc-eyebrow i { width: 6px; height: 6px; border-radius: 50%; background: #d93025; box-shadow: 0 0 10px #d93025; display: inline-block; }
-      .sc-hero .sc-title { font-size: clamp(40px, 7vw, 72px); margin: 10px 0 14px; }
-      .sc-hero .sc-lede { font-size: clamp(17px, 1.6vw, 20px); line-height: 1.5; }
-      .sc-meta { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-top: 18px; font-family: monospace; font-size: 12px; color: #6b7280; }
-      .sc-meta b { color: #9aa0a6; font-weight: 500; margin-right: 6px; }
+      /* --- pipeline ribbon: the architecture, told by structure instead of prose --- */
+      /* minmax(0,…) lets a track shrink below its longest token, so one long reason code cannot
+         steal width from the decision tile; the decision tile gets the extra weight. */
+      .sc-ribbon { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)) minmax(0, 1.35fr); gap: 9px; margin: 4px 0 14px; }
+      .sc-rt { position: relative; background: #171b21; border: 1px solid #262b33; border-top: 3px solid #4a5160; border-radius: 10px; padding: 9px 11px 10px; min-height: 104px; }
+      .sc-rt .n { font-family: monospace; font-size: 10px; color: #6b7280; }
+      .sc-rt .s { font-family: monospace; font-size: 10px; letter-spacing: .09em; text-transform: uppercase; color: #9aa0a6; margin-top: 1px; }
+      .sc-rt .v { font-size: 14.5px; font-weight: 700; line-height: 1.25; margin-top: 5px; color: #e8eaed; overflow-wrap: anywhere; }
+      .sc-rt .g { font-family: monospace; font-size: 10.5px; color: #6b7280; margin-top: 4px; line-height: 1.4; overflow-wrap: anywhere; }
+      .sc-rt .c { margin-top: 6px; }
+      .sc-rt.red { border-top-color: #d93025; background: rgba(217,48,37,.07); } .sc-rt.red .v { color: #ff6b5e; }
+      .sc-rt.amber { border-top-color: #f5a623; background: rgba(245,166,35,.06); } .sc-rt.amber .v { color: #f5a623; }
+      .sc-rt.green { border-top-color: #34a853; } .sc-rt.green .v { color: #34a853; }
+      .sc-rt.last { border-width: 2px; border-top-width: 3px; }
+      .sc-rt.last .v { font-size: 26px; letter-spacing: .04em; font-family: monospace; }
+      .sc-rt.last.red { border-color: rgba(217,48,37,.7); } .sc-rt.last.yellow { border-color: rgba(245,166,35,.7); }
+      .sc-rt.last.green { border-color: rgba(52,168,83,.6); }
+      .sc-rt.yellow { border-top-color: #f5a623; background: rgba(245,166,35,.06); } .sc-rt.yellow .v { color: #f5a623; }
+      .sc-rt:not(:last-child)::after { content: '▸'; position: absolute; right: -8px; top: 46%; color: #4a5160; font-size: 13px; z-index: 2; }
+      .sc-chip { display: inline-block; font-family: monospace; font-size: 9.5px; letter-spacing: .04em; padding: 2px 6px; border-radius: 4px; margin: 2px 3px 0 0;
+                 background: rgba(217,48,37,.18); border: 1px solid rgba(217,48,37,.45); color: #ff8a80; overflow-wrap: anywhere; }
+      .sc-chip.y { background: rgba(245,166,35,.15); border-color: rgba(245,166,35,.45); color: #f5c26b; }
+      .sc-chip.g { background: rgba(52,168,83,.14); border-color: rgba(52,168,83,.45); color: #7bcf95; }
+      @media (max-width: 1100px) { .sc-ribbon { grid-template-columns: repeat(3, minmax(0, 1fr)); } .sc-rt::after { display: none; } }
+      @media (max-width: 640px) { .sc-ribbon { grid-template-columns: minmax(0, 1fr); } }
 
-      .sc-sec { margin: 44px 0 18px; padding-top: 18px; border-top: 1px solid #262b33; }
-      .sc-sec h3 { margin: 0; font-size: 26px; font-weight: 700; letter-spacing: .01em; }
-      .sc-sec p { margin: 6px 0 0; color: #9aa0a6; max-width: 70ch; font-size: 15px; }
-      .sc-sec em { color: #cfd2d6; font-style: normal; font-weight: 600; }
+      /* --- verdict --- */
+      .sc-risk { border-radius: 14px; padding: 20px 24px; margin: 0 0 10px; border: 2px solid; }
+      .sc-risk .lvl { font-family: monospace; font-size: clamp(22px, 2.9vw, 34px); font-weight: 800; letter-spacing: .03em; line-height: 1.1; }
+      .sc-risk .sub { font-size: 15.5px; margin-top: 7px; line-height: 1.5; color: #e8eaed; }
+      .sc-risk .why { font-size: 13.5px; margin-top: 8px; color: #cfd2d6; }
+      .sc-risk.red { background: rgba(217,48,37,.14); border-color: #d93025; box-shadow: 0 0 40px rgba(217,48,37,.26); }
+      .sc-risk.red .lvl { color: #ff6b5e; }
+      .sc-risk.yellow { background: rgba(245,166,35,.12); border-color: #f5a623; box-shadow: 0 0 28px rgba(245,166,35,.16); }
+      .sc-risk.yellow .lvl { color: #f5a623; }
+      .sc-risk.green { background: rgba(52,168,83,.10); border-color: #34a853; box-shadow: 0 0 28px rgba(52,168,83,.13); }
+      .sc-risk.green .lvl { color: #34a853; }
 
-      .sc-flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; }
-      .sc-step { background: #171b21; border: 1px solid #262b33; border-radius: 10px; padding: 12px 14px; position: relative; }
-      .sc-step .dot { width: 10px; height: 10px; border-radius: 50%; background: #4285f4; box-shadow: 0 0 10px rgba(66,133,244,.6); margin: 8px 0 10px; }
-      .sc-step.bad .dot { background: #d93025; box-shadow: 0 0 12px rgba(217,48,37,.7); }
-      .sc-step.bad { border-color: rgba(217,48,37,.35); }
-      .sc-step .t { font-size: 15px; line-height: 1.3; color: #e8eaed; font-weight: 600; }
-      .sc-step .s { font-family: monospace; font-size: 11.5px; color: #9aa0a6; margin-top: 5px; line-height: 1.4; }
+      .sc-delta { font-family: monospace; font-size: 13px; padding: 8px 14px; border-radius: 8px; margin: 0 0 10px;
+                  background: rgba(66,133,244,.12); border: 1px solid rgba(66,133,244,.45); color: #9ec1fa; }
+      .sc-safe { border-radius: 9px; padding: 9px 14px; font-family: monospace; font-size: 12.5px; border: 1px solid; margin-bottom: 10px; }
+      .sc-safe.on { background: rgba(245,166,35,.12); border-color: #f5a623; color: #f5a623; }
+      .sc-safe.off { background: rgba(52,168,83,.07); border-color: rgba(52,168,83,.4); color: #34a853; }
+      .sc-safe b { letter-spacing: .08em; }
+      .sc-safe span { color: #9aa0a6; }
 
-      .sc-split { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 18px; align-items: stretch; }
-      .sc-panel { background: #171b21; border: 1px solid #262b33; border-radius: 12px; padding: 18px 20px; }
-      .sc-panel .hdr { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
-      .sc-panel .hdr b { font-size: 16px; } .sc-panel .hdr span { font-family: monospace; font-size: 11px; color: #6b7280; letter-spacing: .06em; }
-      .sc-mgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-      .sc-mgrid .m { background: #1d222a; border: 1px solid #262b33; border-radius: 8px; padding: 12px 14px; }
-      .sc-mgrid .l { font-size: 12px; color: #9aa0a6; }
-      .sc-mgrid .v { font-family: monospace; font-size: 22px; font-weight: 600; display: flex; align-items: center; gap: 8px; margin-top: 2px; }
-      .sc-mgrid svg { display: block; width: 100%; height: 26px; margin-top: 8px; }
-      .gdot { width: 8px; height: 8px; border-radius: 50%; background: #34a853; box-shadow: 0 0 8px rgba(52,168,83,.8); display: inline-block; }
-      .sc-svc { margin-top: 12px; border-top: 1px solid #262b33; }
-      .sc-svc div { display: flex; align-items: center; gap: 10px; padding: 8px 2px; border-bottom: 1px solid #262b33; font-family: monospace; font-size: 12.5px; }
-      .sc-svc div:last-child { border-bottom: 0; } .sc-svc span { flex: 1; color: #cfd2d6; }
-      .sc-svc em { font-style: normal; color: #34a853; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; }
-      .sc-trace { display: grid; gap: 0; margin-top: 8px; }
-      .sc-trace > div { display: grid; grid-template-columns: 90px 1fr; gap: 12px; align-items: baseline; padding: 9px 0; border-top: 1px solid rgba(217,48,37,.2); font-size: 14px; }
-      .sc-trace > div:last-child { border-bottom: 1px solid rgba(217,48,37,.2); }
+      .sc-split { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+      .sc-panel { background: #171b21; border: 1px solid #262b33; border-radius: 12px; padding: 15px 18px; }
+      .sc-panel.bad { border-color: rgba(217,48,37,.6); box-shadow: 0 0 22px rgba(217,48,37,.14); }
+      .sc-panel.ok { border-color: rgba(52,168,83,.5); box-shadow: 0 0 22px rgba(52,168,83,.1); }
+      .sc-panel .hdr { font-family: monospace; font-size: 12px; letter-spacing: .12em; font-weight: 700; margin-bottom: 9px; }
+      .sc-panel.bad .hdr { color: #ff6b5e; } .sc-panel.ok .hdr { color: #34a853; }
+      .sc-big { font-family: monospace; font-size: 27px; font-weight: 700; line-height: 1.1; margin-top: 6px; font-variant-numeric: tabular-nums; }
+      .sc-wo { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 9px; }
+      .sc-wo > div { background: #1d222a; border: 1px solid #262b33; border-radius: 8px; padding: 9px 11px; }
 
-      .sc-prov { border: 1px solid #262b33; border-radius: 12px; background: #171b21; padding: 4px 20px; }
-      .sc-prov > div { display: grid; grid-template-columns: 1.3fr 1fr auto; gap: 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid #262b33; }
+      /* --- evidence table --- */
+      .sc-tbl { width: 100%; border-collapse: collapse; font-size: 14px; }
+      .sc-tbl th, .sc-tbl td { padding: 10px 12px; border-bottom: 1px solid #262b33; text-align: right; }
+      .sc-tbl th:first-child, .sc-tbl td:first-child { text-align: left; }
+      .sc-tbl thead th { font-family: monospace; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #9aa0a6; border-bottom: 1px solid #343b46; }
+      .sc-tbl thead th.win { color: #ff6b5e; }
+      .sc-tbl td { font-family: monospace; font-variant-numeric: tabular-nums; }
+      .sc-tbl td:first-child { font-family: inherit; color: #e8eaed; }
+      .sc-tbl tr.cost td:first-child::after { content: ' (cost)'; color: #6b7280; font-size: 12px; }
+      .sc-tbl td.best { color: #34a853; font-weight: 700; } .sc-tbl td.worst { color: #d93025; font-weight: 700; }
+      .sc-tbl tbody tr:hover { background: rgba(255,255,255,.02); }
+
+      .sc-prov { border: 1px solid #262b33; border-radius: 12px; background: #171b21; padding: 2px 18px; }
+      .sc-prov > div { display: grid; grid-template-columns: 1.3fr 1fr auto; gap: 14px; align-items: center; padding: 10px 0; border-bottom: 1px solid #262b33; font-size: 14px; }
       .sc-prov > div:last-child { border-bottom: 0; }
-      .sc-prov .k { color: #e8eaed; font-size: 14.5px; } .sc-prov .src { font-family: monospace; font-size: 12px; color: #9aa0a6; }
-      @media (max-width: 640px) { .sc-prov > div { grid-template-columns: 1fr; gap: 4px; } .sc-mgrid { grid-template-columns: 1fr; } }
+      .sc-prov .src { font-family: monospace; font-size: 12px; color: #9aa0a6; }
+      .sc-mon div { display: flex; justify-content: space-between; padding: 5px 0; border-bottom: 1px solid #262b33; font-family: monospace; font-size: 12.5px; }
+      .sc-mon div:last-child { border-bottom: 0; } .sc-mon em { font-style: normal; color: #34a853; }
+      @media (max-width: 640px) { .sc-prov > div { grid-template-columns: 1fr; gap: 3px; } }
     </style>
     """,
     unsafe_allow_html=True,
 )
 
 
-# ---------------------------------------------------------------- data loading
-
-# Invalidate all caches when the processed graph is rebuilt (e.g. after switching the
-# network to a different city). load_graph()/ranking()/run_cascade() are cached but not
-# keyed on the data file, so without this a long-running server would keep serving the
-# previous city's graph, ranking and substation names.
-def _graph_mtime() -> float:
-    return (REPO_ROOT / "data" / "processed" / "graph.gpickle").stat().st_mtime
+# ---------------------------------------------------------------- data loading (fail loudly, never default silently)
 
 
-if st.session_state.get("_graph_mtime") != _graph_mtime():
+def _mtime(rel: str) -> float:
+    p = REPO_ROOT / rel
+    return p.stat().st_mtime if p.exists() else -1.0
+
+
+_SIG = (_mtime("data/processed/graph.gpickle"), _mtime("outputs/d1_criticality.csv"), _mtime("config.yaml"))
+if st.session_state.get("_sig") != _SIG:
     st.cache_data.clear()
     st.cache_resource.clear()
-    st.session_state["_graph_mtime"] = _graph_mtime()
+    st.session_state["_sig"] = _SIG
 
 
-def load_config() -> dict[str, Any]:
-    path = REPO_ROOT / "config.yaml"
-    return _load_config(path.stat().st_mtime)
+def require(rel: str, command: str) -> Path:
+    p = REPO_ROOT / rel
+    if not p.exists():
+        st.error(f"Missing required file `{rel}`. Generate it with:\n\n```bash\n{command}\n```")
+        st.stop()
+    return p
 
 
 @st.cache_data
-def _load_config(mtime: float) -> dict[str, Any]:
+def load_config(_sig: tuple) -> dict[str, Any]:
     with open(REPO_ROOT / "config.yaml", encoding="utf-8") as f:
         return yaml.safe_load(f)
 
 
 @st.cache_resource
-def load_graph():
-    with open(REPO_ROOT / "data" / "processed" / "graph.gpickle", "rb") as f:
+def load_graph(_sig: tuple):
+    with open(require("data/processed/graph.gpickle", "python src/build_graph.py"), "rb") as f:
         return pickle.load(f)
 
 
 @st.cache_data
 def load_nodes() -> pd.DataFrame:
-    return pd.read_csv(REPO_ROOT / "data" / "processed" / "nodes.csv")
+    return pd.read_csv(require("data/processed/nodes.csv", "python src/build_graph.py"))
 
 
 @st.cache_data
 def load_complaints() -> pd.DataFrame:
-    return pd.read_csv(REPO_ROOT / "data" / "complaints.csv")
+    return pd.read_csv(require("data/complaints.csv", "git checkout data/complaints.csv"))
+
+
+@st.cache_data
+def load_scenarios() -> pd.DataFrame:
+    df = pd.read_csv(require("data/scenarios.csv", "git checkout data/scenarios.csv"), dtype={"structured_hazard": "string"})
+    df["structured_hazard"] = df["structured_hazard"].fillna("")
+    df["structured_immediate_danger"] = df["structured_immediate_danger"].astype(str).str.lower().isin(["true", "1", "yes"])
+    return df
+
+
+@st.cache_data
+def load_ranking(_sig: tuple) -> pd.DataFrame:
+    df = pd.read_csv(require("outputs/d1_criticality.csv", "python src/d1_cascade.py"))
+    if "rank" not in df.columns or "criticality_percentile" not in df.columns:
+        st.error("`outputs/d1_criticality.csv` is a legacy top-10 slice without rank/percentile. Regenerate the full ranking:\n\n```bash\npython src/d1_cascade.py\n```")
+        st.stop()
+    return df
 
 
 @st.cache_data
@@ -174,50 +213,18 @@ def load_csv(name: str) -> pd.DataFrame | None:
 
 
 @st.cache_data
-def run_cascade(node_id: str) -> list[dict[str, Any]]:
-    cfg = load_config()
-    return cascade(load_graph(), [node_id], max_steps=cfg["d1"]["max_steps"], hours_per_step=cfg["assumptions"]["hours_per_step"])
+def canary(_sig: tuple) -> pd.DataFrame:
+    return canary_report(load_complaints(), load_config(_SIG)["d2"])
 
 
 @st.cache_data
-def ranking() -> pd.DataFrame:
-    cfg = load_config()
-    return criticality_ranking(load_graph(), max_steps=cfg["d1"]["max_steps"], hours_per_step=cfg["assumptions"]["hours_per_step"], top_n=10)
+def run_cascade(node_id: str, _sig: tuple) -> list[dict[str, Any]]:
+    cfg = load_config(_SIG)
+    return cascade(load_graph(_SIG), [node_id], max_steps=cfg["d1"]["max_steps"], hours_per_step=cfg["assumptions"]["hours_per_step"])
 
 
-@st.cache_data
-def run_interventions(n_runs: int) -> tuple[list[tuple[str, list[int], float]], str]:
-    cfg = load_config()
-    G = load_graph()
-    top_node = ranking().iloc[0]["node_id"]
-    seed = cfg["seed"]
-    failures = draw_random_failures(G, n_runs, seed)
-    baseline = run_condition(G, failures, cfg)
-    hardened = run_condition(hardened_graph(G, top_node, 1.5), failures, cfg)
-    checkpoint = run_condition(G, failures, cfg, prevention_rate=cfg["d4"]["verification_checkpoint_prevention_rate"], prevention_seed=seed + 1)
-    costs = cfg["assumptions"]["cost_inr"]
-    return (
-        [
-            ("Baseline\n(no intervention)", baseline, 0),
-            ("Harden substation", hardened, costs["harden_substation"]),
-            ("Verification checkpoint", checkpoint, costs["verification_checkpoint"]),
-        ],
-        top_node,
-    )
-
-
-@st.cache_data
-def run_sensitivity(n_runs: int) -> tuple[pd.DataFrame, float]:
-    """Sweep the verification-checkpoint prevention rate to test whether the headline result
-    is robust to that assumption, or an artifact of the one chosen value (0.4)."""
-    cfg = load_config()
-    G = load_graph()
-    top_node = ranking().iloc[0]["node_id"]
-    seed = cfg["seed"]
-    failures = draw_random_failures(G, n_runs, seed)
-    hardened_mean = sum(run_condition(hardened_graph(G, top_node, 1.5), failures, cfg)) / n_runs
-    sweep = sensitivity_sweep(G, failures, cfg, [0.1, 0.2, 0.3, 0.4, 0.5, 0.6], seed)
-    return sweep, hardened_mean
+CFG = load_config(_SIG)
+FW = CFG["firewall"]
 
 
 # ---------------------------------------------------------------- map (client-side Leaflet, no reruns)
@@ -230,25 +237,22 @@ MAP_HTML = r"""
   #wrap { position: relative; width: 100%; height: __H__px; border-radius: 10px; overflow: hidden; border: 1px solid #343b46; background: #0b0d10; }
   #map { position: absolute; inset: 0; }
   .leaflet-tile-pane { filter: brightness(.62) saturate(.7); }
-  .hud { position: absolute; left: 12px; top: 12px; z-index: 1000; display: grid; gap: 5px; min-width: 200px; pointer-events: none;
-         background: rgba(15,18,22,.86); border: 1px solid #343b46; border-radius: 8px; padding: 10px 12px; font-family: monospace; }
+  .hud { position: absolute; left: 12px; top: 12px; z-index: 1000; display: grid; gap: 4px; min-width: 230px; pointer-events: none;
+         background: rgba(15,18,22,.88); border: 1px solid #343b46; border-radius: 8px; padding: 10px 12px; font-family: monospace; }
   .hud div { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; font-size: 12px; }
   .hud .k { color: #9aa0a6; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
   .hud b { font-weight: 700; color: #e8eaed; font-size: 14px; font-variant-numeric: tabular-nums; }
   .hud .t b { font-size: 21px; color: #d93025; } .hud .p b { color: #d93025; }
+  .hud .lbl { font-size: 9.5px; color: #6b7280; letter-spacing: .06em; text-transform: uppercase; }
   .ctl { position: absolute; left: 12px; right: 12px; bottom: 12px; z-index: 1000; display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
          background: rgba(15,18,22,.88); border: 1px solid #343b46; border-radius: 8px; padding: 7px 10px; }
   .btn { font-family: monospace; font-size: 12px; color: #0f1216; background: #e8eaed; border: 0; border-radius: 6px; padding: 6px 11px; cursor: pointer; font-weight: 700; white-space: nowrap; }
   .btn.ghost { background: transparent; color: #cfd2d6; border: 1px solid #343b46; font-weight: 500; }
   input[type=range] { flex: 1; min-width: 120px; accent-color: #d93025; }
-  .seg { display: inline-flex; border: 1px solid #343b46; border-radius: 6px; overflow: hidden; }
-  .seg button { font-family: monospace; font-size: 11px; color: #9aa0a6; background: transparent; border: 0; border-right: 1px solid #343b46; padding: 6px 9px; cursor: pointer; }
-  .seg button:last-child { border-right: 0; } .seg button.on { color: #e8eaed; background: #343b46; }
   .attrib { margin-left: auto; font-family: monospace; font-size: 10px; color: rgba(232,234,237,.55); white-space: nowrap; }
   .attrib a { color: inherit; }
   .leaflet-control-attribution { display: none; }
   .leaflet-tooltip { background: rgba(15,18,22,.95); color: #e8eaed; border: 1px solid #343b46; font-family: monospace; font-size: 11px; }
-  .leaflet-tooltip-top:before { border-top-color: #343b46; }
   .pump { width: 9px; height: 9px; border: 1px solid #000; box-sizing: border-box; }
   .leaflet-marker-icon.pump { background: var(--c, #9aa0a6); }
 </style>
@@ -256,70 +260,62 @@ MAP_HTML = r"""
   <div id="map"></div>
   <div class="hud">
     <div class="t"><span class="k">Elapsed</span><b id="h-t">T+0.0h</b></div>
-    <div class="p"><span class="k">People affected</span><b id="h-p">0</b></div>
-    <div><span class="k">Hospitals on generator</span><b id="h-h">0</b></div>
-    <div><span class="k">Wards without water</span><b id="h-w">0</b></div>
+    <div class="p"><span class="k">Simulated exposure</span><b id="h-p">0</b></div>
     <div><span class="k">Substations tripped</span><b id="h-s">0</b></div>
+    <div><span class="k">Hospitals on generator</span><b id="h-h">0</b></div>
+    <div><span class="k">Hospitals without power</span><b id="h-ho">0</b></div>
+    <div><span class="k">Wards without water</span><b id="h-w">0</b></div>
+    <div class="lbl">simulated · assumed loads · inferred topology</div>
   </div>
   <div class="ctl">
     <button class="btn" id="play">❚❚ Pause</button>
     <button class="btn ghost" id="restart">↺</button>
     <input type="range" id="scrub" min="0" max="__LAST__" step="0.01" value="0">
-    <div class="seg"><button data-s="4" class="on">slow</button><button data-s="2">normal</button><button data-s="0.8">fast</button></div>
     <button class="btn ghost" id="fit">⤢ fit</button>
     <span class="attrib">© <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors</span>
   </div>
 </div>
 <script>
 const D = __DATA__;
-const C = { healthy: '#9aa0a6', over: '#f5a623', failed: '#d93025' };
+const C = { healthy: '#9aa0a6', over: '#f5a623', backup: '#f5a623', failed: '#d93025' };
 const map = L.map('map', { zoomControl: false, attributionControl: false });
 L.control.zoom({ position: 'topright' }).addTo(map);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18 }).addTo(map);
 const bounds = L.latLngBounds(D.nodes.map(n => [n[0], n[1]]));
 map.fitBounds(bounds.pad(0.08));
-
-// per-node schedule: failAt (fractional step, staggered within a step), overloaded steps
-const failAt = new Array(D.nodes.length).fill(Infinity);
+const failAt = new Array(D.nodes.length).fill(Infinity), backupAt = new Array(D.nodes.length).fill(Infinity);
 const overAt = D.nodes.map(() => new Set());
 D.steps.forEach(s => {
   const n = s.new.length;
   s.new.forEach((i, k) => { failAt[i] = s.step + (n > 1 ? (k / n) * 0.8 : 0); });
+  s.backup.forEach(i => { backupAt[i] = Math.min(backupAt[i], s.step); });
   s.over.forEach(i => overAt[i].add(s.step));
 });
-const stateOf = (i, t) => failAt[i] <= t ? 'failed' : overAt[i].has(Math.floor(t)) ? 'over' : 'healthy';
-
-// edges
+const stateOf = (i, t) => failAt[i] <= t ? 'failed' : backupAt[i] <= t ? 'backup' : overAt[i].has(Math.floor(t)) ? 'over' : 'healthy';
 const edgeLayers = D.edges.map(([a, b]) => L.polyline([[D.nodes[a][0], D.nodes[a][1]], [D.nodes[b][0], D.nodes[b][1]]], { color: '#6b7280', weight: 1.4, opacity: .8, interactive: false }).addTo(map));
-// nodes: substations big circles, hospitals small circles, pumps squares (divIcon)
 const markers = D.nodes.map((n, i) => {
   const [lat, lon, type, id, name, pop] = n;
-  const label = `<b>${name || id}</b><br>${['substation','hospital','pump'][type]}${type === 0 ? ` · serves ${pop.toLocaleString('en-US')}` : ''}<br><span id="tt-${i}"></span>`;
+  const label = `<b>${name || id}</b><br>${['substation','hospital','pump'][type]}${type === 0 ? ` · simulated service population ${pop.toLocaleString('en-US')}` : ''}<br><span id="tt-${i}"></span>`;
   let m;
-  if (type === 2) {
-    m = L.marker([lat, lon], { icon: L.divIcon({ className: 'pump', iconSize: [9, 9] }), interactive: true });
-  } else {
-    m = L.circleMarker([lat, lon], { radius: type === 0 ? 7 : 3, color: type === 0 ? '#000' : C.healthy, weight: type === 0 ? 1 : 2, fillColor: C.healthy, fillOpacity: .95 });
-  }
+  if (type === 2) m = L.marker([lat, lon], { icon: L.divIcon({ className: 'pump', iconSize: [9, 9] }), interactive: true });
+  else m = L.circleMarker([lat, lon], { radius: type === 0 ? 7 : 3, color: type === 0 ? '#000' : C.healthy, weight: type === 0 ? 1 : 2, fillColor: C.healthy, fillOpacity: .95 });
   m.bindTooltip(label, { direction: 'top', offset: [0, -6] });
   m.addTo(map);
   return m;
 });
 const TYPE = D.nodes.map(n => n[2]);
 const fmt = v => v.toLocaleString('en-US');
-
-let t = 0, playing = true, secPerStep = 4, last = 0;
+let t = 0, playing = true, secPerStep = 2.5, last = 0;
 const LAST = D.steps.length - 1;
 function paint() {
   const step = Math.floor(t);
-  let subs = 0;
   D.nodes.forEach((n, i) => {
     const s = stateOf(i, t), col = C[s];
-    if (s === 'failed' && TYPE[i] === 0) subs++;
     const m = markers[i];
     if (TYPE[i] === 2) { const el = m.getElement(); if (el) el.style.background = col; }
     else m.setStyle(TYPE[i] === 0 ? { fillColor: col } : { fillColor: col, color: col });
-    const tt = document.getElementById('tt-' + i); if (tt) tt.textContent = s === 'failed' ? `FAILED at T+${(failAt[i] * D.hps).toFixed(1)}h` : s.toUpperCase();
+    const tt = document.getElementById('tt-' + i);
+    if (tt) tt.textContent = s === 'failed' ? `${TYPE[i] === 0 ? 'TRIPPED' : 'SERVICE OUTAGE'} at T+${(failAt[i] * D.hps).toFixed(1)}h` : s === 'backup' ? `ON BACKUP since T+${(backupAt[i] * D.hps).toFixed(1)}h` : s.toUpperCase();
   });
   D.edges.forEach(([a, b], k) => {
     const fa = failAt[a] <= t, fb = failAt[b] <= t;
@@ -328,18 +324,15 @@ function paint() {
   const s = D.steps[step];
   document.getElementById('h-t').textContent = `T+${(t * D.hps).toFixed(1)}h`;
   document.getElementById('h-p').textContent = fmt(s.people);
-  document.getElementById('h-h').textContent = fmt(s.hosp);
-  document.getElementById('h-w').textContent = fmt(s.pumps);
-  document.getElementById('h-s').textContent = `${subs} / ${D.nsub}`;
+  document.getElementById('h-s').textContent = `${s.subs} / ${D.nsub}`;
+  document.getElementById('h-h').textContent = fmt(s.hosp_gen);
+  document.getElementById('h-ho').textContent = fmt(s.hosp_out);
+  document.getElementById('h-w').textContent = fmt(s.water_out);
   document.getElementById('scrub').value = t;
 }
 function loop(ts) {
   const dt = last ? (ts - last) / 1000 : 0; last = ts;
-  if (playing) {
-    t = Math.min(LAST, t + dt / secPerStep);
-    if (t >= LAST) { playing = false; document.getElementById('play').textContent = '↺ Replay'; }
-    paint();
-  }
+  if (playing) { t = Math.min(LAST, t + dt / secPerStep); if (t >= LAST) { playing = false; document.getElementById('play').textContent = '↺ Replay'; } paint(); }
   requestAnimationFrame(loop);
 }
 const playBtn = document.getElementById('play');
@@ -347,554 +340,663 @@ playBtn.onclick = () => { if (playing) { playing = false; playBtn.textContent = 
 document.getElementById('restart').onclick = () => { t = 0; playing = true; playBtn.textContent = '❚❚ Pause'; paint(); };
 document.getElementById('fit').onclick = () => map.fitBounds(bounds.pad(0.08));
 document.getElementById('scrub').oninput = e => { t = +e.target.value; playing = false; playBtn.textContent = t >= LAST ? '↺ Replay' : '▶ Play'; paint(); };
-document.querySelectorAll('.seg button').forEach(b => b.onclick = () => { secPerStep = +b.dataset.s; document.querySelectorAll('.seg button').forEach(x => x.classList.toggle('on', x === b)); });
 paint();
 requestAnimationFrame(loop);
 </script>
 """
 
 
-def cascade_component(nodes: pd.DataFrame, G, timeline: list[dict[str, Any]], hours_per_step: float, height: int = 620) -> str:
-    """Self-contained Leaflet page: whole timeline embedded, animated client-side (no Streamlit reruns)."""
+def cascade_component(nodes: pd.DataFrame, G, timeline: list[dict[str, Any]], hours_per_step: float, height: int = 520) -> str:
+    """Self-contained Leaflet page: whole timeline embedded, animated client-side. OSM names are
+    JSON-encoded (never interpolated into markup) and rendered via textContent/tooltip."""
     idx = {nid: i for i, nid in enumerate(nodes.id)}
     tcode = {"substation": 0, "hospital": 1, "pump": 2}
     node_list = [
         [round(float(r.lat), 5), round(float(r.lon), 5), tcode[r.type], r.id,
-         r.name if isinstance(r.name, str) else "", int(r.population_served) if r.type == "substation" else 0]
+         html.escape(r.name) if isinstance(r.name, str) else "", int(r.population_served) if r.type == "substation" else 0]
         for r in nodes.itertuples()
     ]
     edges = [[idx[u], idx[v]] for u, v, d in G.edges(data=True) if d["type"] == "grid" and u < v]
-    prev: set[str] = set()
+    prev_failed: set[str] = set()
+    prev_backup: set[str] = set()
     steps = []
     for s in timeline:
-        new = sorted(idx[n] for n in s["failed"] - prev) if s["step"] else sorted(idx[n] for n in s["failed"])
-        prev = set(s["failed"])
+        new = sorted(idx[n] for n in s["failed"] - prev_failed)
+        backup = sorted(idx[n] for n in s["on_backup"] - prev_backup)
+        prev_failed, prev_backup = set(s["failed"]), set(s["on_backup"])
         steps.append({
-            "step": s["step"], "new": new, "over": sorted(idx[n] for n in s["overloaded"]),
-            "people": s["people_affected"], "hosp": len(s["hospitals_on_generator"]), "pumps": len(s["wards_without_water"]),
+            "step": s["step"], "new": new, "backup": backup, "over": sorted(idx[n] for n in s["overloaded"]),
+            "people": s["people_affected"], "subs": len(s["failed_substations"]),
+            "hosp_gen": len(s["hospitals_on_generator"]), "hosp_out": len(s["hospitals_without_power"]),
+            "water_out": len(s["wards_without_water"]),
         })
     data = {"nodes": node_list, "edges": edges, "steps": steps, "hps": hours_per_step, "nsub": int((nodes.type == "substation").sum())}
-    return (MAP_HTML.replace("__DATA__", json.dumps(data, ensure_ascii=False))
+    return (MAP_HTML.replace("__DATA__", json.dumps(data, ensure_ascii=False).replace("</", "<\\/"))
             .replace("__LAST__", str(len(timeline) - 1)).replace("__H__", str(height)))
 
 
-# ---------------------------------------------------------------- pages
+# ---------------------------------------------------------------- small helpers
 
-# Live "all green" monitor. Runs entirely in the browser (no Streamlit reruns): metrics drift,
-# sparklines scroll, the clock ticks, and a request log fills with 200 OKs. It is a MOCK — the
-# point is that a healthy-looking monitor is exactly what a silently wrong classifier produces.
-MONITOR_HTML = r"""
-<style>
-  html, body { margin: 0; background: transparent; font-family: "Source Sans Pro", "Segoe UI", sans-serif; color: #e8eaed; }
-  .p { background: #171b21; border: 1px solid rgba(52,168,83,.5); box-shadow: 0 0 24px rgba(52,168,83,.12); border-radius: 12px; padding: 18px 20px; }
-  .hdr { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
-  .hdr b { font-size: 16px; } .hdr span { font-family: monospace; font-size: 11px; color: #6b7280; letter-spacing: .06em; }
-  .g { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .m { background: #1d222a; border: 1px solid #262b33; border-radius: 8px; padding: 12px 14px; }
-  .l { font-size: 12px; color: #9aa0a6; }
-  .v { font-family: monospace; font-size: 22px; font-weight: 600; display: flex; align-items: center; gap: 8px; margin-top: 2px; font-variant-numeric: tabular-nums; }
-  svg { display: block; width: 100%; height: 26px; margin-top: 8px; }
-  .d { width: 8px; height: 8px; border-radius: 50%; background: #34a853; box-shadow: 0 0 8px rgba(52,168,83,.8); display: inline-block; }
-  .svc { margin-top: 12px; border-top: 1px solid #262b33; }
-  .svc div { display: flex; align-items: center; gap: 10px; padding: 7px 2px; border-bottom: 1px solid #262b33; font-family: monospace; font-size: 12.5px; }
-  .svc div:last-child { border-bottom: 0; } .svc span { flex: 1; color: #cfd2d6; }
-  .svc em { font-style: normal; color: #34a853; font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; }
-  .log { margin-top: 12px; border-top: 1px solid #262b33; padding-top: 8px; font-family: monospace; font-size: 11px; color: #6b7280; line-height: 1.7; height: 5.1em; overflow: hidden; }
-  .log b { color: #34a853; font-weight: 500; }
-  @media (max-width: 300px) { .g { grid-template-columns: 1fr; } }
-</style>
-<div class="p">
-  <div class="hdr"><b>CivicOps Monitor</b><span>grievance pipeline · all systems · <span id="clk">updated just now</span></span></div>
-  <div class="g">
-    <div class="m"><div class="l">Uptime</div><div class="v"><span id="up">99.98%</span> <i class="d"></i></div><svg viewBox="0 0 160 26" preserveAspectRatio="none"><polyline id="s-up" fill="none" stroke="#34a853" stroke-width="1.6" points="0,14 12,13 24,15 36,13 48,14 60,12 72,14 84,13 96,15 108,13 120,14 132,12 144,13 160,14"/></svg></div>
-    <div class="m"><div class="l">p50 Latency</div><div class="v"><span id="lat">187ms</span> <i class="d"></i></div><svg viewBox="0 0 160 26" preserveAspectRatio="none"><polyline id="s-lat" fill="none" stroke="#34a853" stroke-width="1.6" points="0,15 12,14 24,16 36,15 48,13 60,15 72,16 84,14 96,13 108,15 120,16 132,14 144,15 160,13"/></svg></div>
-    <div class="m"><div class="l">Error rate</div><div class="v"><span id="err">0.01%</span> <i class="d"></i></div><svg viewBox="0 0 160 26" preserveAspectRatio="none"><polyline id="s-err" fill="none" stroke="#34a853" stroke-width="1.6" points="0,16 12,16 24,15 36,16 48,17 60,16 72,15 84,16 96,16 108,17 120,16 132,15 144,16 160,16"/></svg></div>
-    <div class="m"><div class="l">Requests / min</div><div class="v"><span id="rpm">1,240</span> <i class="d"></i></div><svg viewBox="0 0 160 26" preserveAspectRatio="none"><polyline id="s-rpm" fill="none" stroke="#34a853" stroke-width="1.6" points="0,13 12,15 24,12 36,14 48,16 60,13 72,12 84,15 96,14 108,12 120,15 132,13 144,14 160,12"/></svg></div>
-  </div>
-  <div class="svc">
-    <div><i class="d"></i><span>intake-api</span><em>operational</em></div>
-    <div><i class="d"></i><span>language-normaliser</span><em>operational</em></div>
-    <div><i class="d"></i><span>classifier</span><em>operational</em></div>
-    <div><i class="d"></i><span>urgency-scorer</span><em>operational</em></div>
-    <div><i class="d"></i><span>router</span><em>operational</em></div>
-    <div><i class="d"></i><span>queue-worker</span><em>operational</em></div>
-  </div>
-  <div class="log" id="log"></div>
-</div>
-<script>
-const $ = id => document.getElementById(id);
-let seed = 7; const rnd = () => { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return seed / 0x7fffffff; };
-const S = {}; for (const k of ['up','lat','err','rpm']) S[k] = $('s-' + k).getAttribute('points').trim().split(/\s+/).map(p => +p.split(',')[1]);
-function push(k, y) { const s = S[k]; s.push(Math.max(4, Math.min(22, y))); s.shift(); $('s-' + k).setAttribute('points', s.map((v, i) => `${(i / (s.length - 1) * 160).toFixed(1)},${v.toFixed(1)}`).join(' ')); }
-let rpm = 1240, lat = 187, last = 0, n = 4127;
-const IDS = ['c01','c03','c05','c07','c08','c10','c12','c13','c15','c17','c19','c20'], LANG = ['en','kn','kn','en','kn'], COND = ['clean','clean','truncated','clean','small_model'];
-function tick() {
-  rpm = Math.round(Math.max(1180, Math.min(1310, rpm + (rnd() - .5) * 26)));
-  lat = Math.round(Math.max(160, Math.min(215, lat + (rnd() - .5) * 14)));
-  $('rpm').textContent = rpm.toLocaleString('en-US'); $('lat').textContent = lat + 'ms';
-  push('rpm', 13 + (1245 - rpm) / 12); push('lat', 13 + (lat - 187) / 6); push('up', 13.5 + (rnd() - .5) * 2); push('err', 16 + (rnd() - .5) * 1.2);
-  last = 0; $('clk').textContent = 'updated just now';
+E = html.escape
+
+# Which pipeline stage each reason code belongs to, so a reason is shown inside the stage that
+# produced it instead of in a separate list of sentences. Unmapped codes fall through to the
+# decision tile, so a new reason code can never silently disappear from the UI.
+REASON_STAGE: dict[str, int] = {
+    "STRUCTURED_IMMEDIATE_DANGER": 0,
+    "UNPARSEABLE_CLASSIFICATION": 1, "LOW_MARGIN": 1, "TRUNCATED_CLASSIFIER_INPUT": 1,
+    "DIRECT_HAZARD": 2, "DANGEROUS_DOWNGRADE": 2, "CONFLICTING_SIGNALS": 2,
+    "VERY_HIGH_ASSET_CRITICALITY": 3, "HIGH_ASSET_CRITICALITY": 3, "ASSET_CONTEXT_MISSING": 3, "REPAIR_WINDOW_AT_RISK": 3,
+    "RELIABILITY_DEGRADED": 4, "RELIABILITY_UNAVAILABLE": 4,
 }
-function logLine() {
-  const id = IDS[Math.floor(rnd() * IDS.length)], lg = LANG[Math.floor(rnd() * LANG.length)], cd = COND[Math.floor(rnd() * COND.length)];
-  const ms = 150 + ((n++ * 37) % 90);
-  const log = $('log');
-  log.insertAdjacentHTML('afterbegin', `<div>POST /classify  ${id}  ${lg}  ${cd.padEnd(11, ' ')}  <b>200 OK</b>  ${ms} ms</div>`);
-  while (log.children.length > 4) log.lastChild.remove();
+
+# Short plain-language chip for each stable reason code. The code itself is never lost: it is
+# the chip's tooltip and it is listed verbatim next to its full sentence in the reasons expander.
+SHORT_REASON: dict[str, str] = {
+    "STRUCTURED_IMMEDIATE_DANGER": "immediate danger",
+    "DIRECT_HAZARD": "direct hazard",
+    "DANGEROUS_DOWNGRADE": "dangerous downgrade",
+    "UNPARSEABLE_CLASSIFICATION": "unparseable",
+    "LOW_MARGIN": "low margin",
+    "TRUNCATED_CLASSIFIER_INPUT": "input cut off",
+    "VERY_HIGH_ASSET_CRITICALITY": "very high consequence",
+    "HIGH_ASSET_CRITICALITY": "high consequence",
+    "REPAIR_WINDOW_AT_RISK": "repair too late",
+    "RELIABILITY_DEGRADED": "quality degraded",
+    "RELIABILITY_UNAVAILABLE": "no quality signal",
+    "ASSET_CONTEXT_MISSING": "no asset context",
+    "CONFLICTING_SIGNALS": "signals conflict",
+    "MISSING_REQUIRED_FIELD": "missing data",
+    "SAFE_AUTOMATION_ALLOWED": "safe to automate",
 }
-for (let i = 0; i < 3; i++) logLine();
-setInterval(tick, 2400);
-setInterval(logLine, 1300);
-setInterval(() => { last += 1; $('clk').textContent = last < 2 ? 'updated just now' : `updated ${last}s ago`; }, 1000);
-</script>
-"""
+
+COND_LABEL = {"clean": "full text", "truncated": "cut to 40 chars", "small_model": "smaller model"}
+REL_LABEL = {"auto": "auto (from quality check)", "normal": "healthy", "degraded": "degraded", "unavailable": "no signal"}
+LEVEL_WORD = {"red": "RED", "yellow": "YELLOW", "green": "GREEN"}
+CHIP_CLS = {"red": "", "yellow": "y", "green": "g"}
 
 
-def _spark(points: str) -> str:
-    return (f'<svg viewBox="0 0 160 26" preserveAspectRatio="none"><polyline fill="none" stroke="#34a853" '
-            f'stroke-width="1.6" points="{points}"/></svg>')
+def _pill(text: str, cls: str = "") -> str:
+    return f'<span class="sc-pill {cls}">{E(text)}</span>'
 
 
-def _section(title: str, lede: str = "") -> None:
-    st.markdown(f'<div class="sc-sec"><h3>{title}</h3>{f"<p>{lede}</p>" if lede else ""}</div>', unsafe_allow_html=True)
-
-
-def _plain(text: str) -> None:
-    """A brief, formal, plain-language explanation of the section for non-technical readers."""
+def _cap(text: str) -> None:
     st.markdown(f'<p class="sc-cap">{text}</p>', unsafe_allow_html=True)
 
 
-def page_overview() -> None:
+def _highlight(text: str, keywords: dict[str, list[str]] | None, hazard_terms: list[str], predicted: str) -> str:
+    """Escape the complaint text and wrap classifier keyword hits / hazard-scan hits in <mark>."""
+    low = text.lower()
+    hits: list[tuple[int, int, str]] = []
+    for term in hazard_terms:
+        k, i = term.lower(), 0
+        while k and (i := low.find(k, i)) != -1:
+            hits.append((i, i + len(k), "haz"))
+            i += len(k)
+    for dept in DEPARTMENTS if keywords else []:
+        for kw in keywords[dept]:
+            k, i = kw.lower(), 0
+            while (i := low.find(k, i)) != -1:
+                hits.append((i, i + len(kw), "" if dept == predicted else "wrong"))
+                i += len(kw)
+    hits.sort(key=lambda h: (h[0], 0 if h[2] == "haz" else 1))
+    out, pos = [], 0
+    for s, e, cls in hits:
+        if s < pos:
+            continue
+        out.append(E(text[pos:s]))
+        out.append(f'<mark class="{cls}">{E(text[s:e])}</mark>')
+        pos = e
+    out.append(E(text[pos:]))
+    return "".join(out)
+
+
+def _hours(h: float | None) -> str:
+    if h is None:
+        return "—"
+    return f"{h:g} h" if h < 48 else f"{h / 24:g} days"
+
+
+def _num(n: int | None) -> str:
+    return f"{n:,}" if isinstance(n, (int, float)) else "—"
+
+
+# ---------------------------------------------------------------- decision computation
+
+
+def compute_trace(cid: str, language: str, condition: str, structured: list[str], immediate: bool,
+                  asset_id: str | None, mapping_method: str, reliability: str, window: float | None) -> dict[str, Any]:
+    complaints = load_complaints().set_index("id")
+    text = complaints.loc[cid, "text_native" if language == "native" else "text_en"]
+    ctx = build_asset_context(load_graph(_SIG), asset_id, load_ranking(_SIG), CFG, mapping_method)
+    trace = run_firewall(cid, text, language, condition, CFG, structured_hazards=structured, immediate_danger=immediate,
+                         asset_context=ctx, reliability_state=reliability, scenario_failure_window_hours=window)
+    trace["original_text"] = text
+    return trace
+
+
+def resolve_reliability(choice: str, language: str, condition: str) -> str:
+    if choice == "auto":
+        return reliability_state_from_canary(canary(_SIG), language, condition, CFG)
+    return choice
+
+
+# ---------------------------------------------------------------- page 1: live intervention
+
+
+CONTROL_KEYS = ("scenario", "complaint", "language", "condition", "asset", "reliability", "structured", "immediate", "use_window", "window")
+
+
+def _apply_scenario(scen: pd.Series, asset_ids: set[str]) -> None:
+    has_window = not pd.isna(scen.scenario_failure_window_hours)
+    st.session_state.update({
+        "complaint": scen.complaint_id,
+        "language": scen.language,
+        "condition": scen.condition,
+        "asset": scen.asset_id if scen.asset_id in asset_ids else "(no asset context)",
+        "reliability": "auto",
+        "structured": [h for h in str(scen.structured_hazard).split(";") if h],
+        "immediate": bool(scen.structured_immediate_danger),
+        "use_window": bool(has_window),
+        "window": float(scen.scenario_failure_window_hours) if has_window else float(CFG["d2"]["time_to_failure_hours"]),
+    })
+
+
+def page_live() -> None:
+    complaints = load_complaints()
+    scenarios = load_scenarios().set_index("scenario_id")
+    nodes = load_nodes()
+    G = load_graph(_SIG)
+    d2 = CFG["d2"]
+    asset_ids = set(nodes[nodes.type == "substation"].id)
+    scen_ids = list(scenarios.index)
+    canonical = FW.get("canonical_scenario_id", scen_ids[0])
+
     st.markdown(
-        '<div class="sc-hero">'
-        '<div class="sc-eyebrow"><i></i>Manipal Hackathon · Cascading Failure · SDG 11</div>'
-        '<div class="sc-title">SILENT <span>CASCADE</span></div>'
-        '<p class="sc-lede">Cities monitor every physical asset. Nothing monitors the AI that decides which asset '
-        'gets fixed first — and it degrades silently, worst on the citizens least able to escalate.</p>'
-        '<div class="sc-meta"><span><b>Network</b> Bengaluru, Karnataka · OpenStreetMap</span>'
-        '<span><b>Domain</b> Disaster Resilience &amp; Critical Infrastructure</span>'
-        '<span><b>Theme</b> The Butterfly Effect</span></div>'
-        '<p class="sc-cap" style="margin-top:16px">This is a <b>scenario-based stress test</b> of a hypothesis, not a validated '
-        'prediction of Bengaluru\'s actual grid or grievance system. Every number below is labelled Cited / Assumed / Simulated / '
-        'Measured — see <code>LIMITATIONS.md</code> in the repo for the full breakdown and the robustness checks behind the headline findings.</p>'
+        '<div class="sc-eyebrow">Manipal Hackathon · Cascading Failure · SDG 11 · Bengaluru</div>'
+        '<div class="sc-title">SILENT CASCADE <span>DECISION FIREWALL</span></div>'
+        '<p class="sc-q">The AI proposes a route. The Firewall asks: <b>if this decision is wrong, how dangerous is the consequence?</b></p>',
+        unsafe_allow_html=True,
+    )
+
+    # ---- seed every control before anything reads it (widgets render lower down the page) ----
+    if "scenario" not in st.session_state:
+        st.session_state["scenario"] = canonical
+        _apply_scenario(scenarios.loc[canonical], asset_ids)
+        st.session_state["_applied_scenario"] = canonical
+
+    # ---- guided demo: three clicks tell the whole story, no narrator needed ----
+    g1, g2, g3, g4 = st.columns([1, 1, 1, 1.5])
+    if g1.button("① The dangerous miss", width="stretch", type="primary", key="g_miss"):
+        st.session_state["scenario"] = canonical
+        _apply_scenario(scenarios.loc[canonical], asset_ids)
+        st.session_state["_applied_scenario"] = canonical
+        st.session_state.update(ack=False, ack_min=0)
+    if g2.button("② A routine complaint", width="stretch", key="g_routine"):
+        routine = "SC-05" if "SC-05" in scenarios.index else scen_ids[-1]
+        st.session_state["scenario"] = routine
+        _apply_scenario(scenarios.loc[routine], asset_ids)
+        st.session_state["_applied_scenario"] = routine
+        st.session_state.update(ack=False, ack_min=0)
+    if g3.button("③ Nobody accepts it", width="stretch", key="g_wait"):
+        st.session_state["ack"] = False
+        st.session_state["ack_min"] = FW["action_policy"]["red_reescalation_target_minutes"]
+    g4.markdown('<p class="sc-cap" style="margin-top:6px">Click ① ② ③ in order. Every panel below updates.</p>', unsafe_allow_html=True)
+
+    # ---- a scenario change resets its dependent controls ----
+    scen_choice = st.session_state["scenario"]
+    if st.session_state.get("_applied_scenario") != scen_choice:
+        st.session_state["_applied_scenario"] = scen_choice
+        if scen_choice != "custom":
+            _apply_scenario(scenarios.loc[scen_choice], asset_ids)
+    scen = scenarios.loc[scen_choice] if scen_choice != "custom" else None
+
+    # ---- compute from session state (controls are rendered after the verdict) ----
+    cid = st.session_state["complaint"]
+    lang = st.session_state["language"]
+    cond = st.session_state["condition"]
+    asset_sel = st.session_state["asset"]
+    rel_choice = st.session_state["reliability"]
+    struct = list(st.session_state["structured"])
+    immediate = bool(st.session_state["immediate"])
+    window = float(st.session_state["window"]) if st.session_state["use_window"] else None
+    asset_id = None if asset_sel == "(no asset context)" else asset_sel
+    mapping = scen.asset_mapping_method if (scen is not None and asset_id == scen.asset_id) else ("scenario_selected" if asset_id else "none")
+
+    rel = resolve_reliability(rel_choice, lang, cond)
+    trace = compute_trace(cid, lang, cond, struct, immediate, asset_id, mapping, rel, window)
+    decision, plan, clf, scan, ctx = trace["decision"], trace["action_plan"], trace["classifier"], trace["safety_scan"], trace["asset_context"]
+    level = decision["risk_level"]
+    text = trace["original_text"]
+    row = complaints.set_index("id").loc[cid]
+
+    # counterfactual: what the same complaint would get with a healthy AI quality check
+    ghost_level = None
+    if rel != "normal":
+        alt = compute_trace(cid, lang, cond, struct, immediate, asset_id, mapping, "normal", window)
+        if alt["decision"]["risk_level"] != level:
+            ghost_level = alt["decision"]["risk_level"]
+
+    # ---- delta banner: teaches causality in one line whenever the verdict moves ----
+    if st.session_state.get("_prev_level") and st.session_state["_prev_level"] != level:
+        new_codes = [c for c in decision["reason_codes"] if c not in st.session_state.get("_prev_codes", [])]
+        why = f" · new reason: {SHORT_REASON.get(new_codes[0], new_codes[0])}" if new_codes else ""
+        st.markdown(f'<div class="sc-delta">CHANGED · {LEVEL_WORD[st.session_state["_prev_level"]]} → {LEVEL_WORD[level]}{E(why)}</div>', unsafe_allow_html=True)
+    st.session_state["_prev_level"], st.session_state["_prev_codes"] = level, list(decision["reason_codes"])
+
+    # ---- 1. the pipeline ribbon: the architecture, readable in one glance ----
+    chips_by_stage: dict[int, list[str]] = {}
+    for code in decision["reason_codes"]:
+        chips_by_stage.setdefault(REASON_STAGE.get(code, 5), []).append(code)
+
+    def chips(stage: int) -> str:
+        return '<div class="c">' + "".join(
+            f'<span class="sc-chip {CHIP_CLS[level]}" title="{E(c)}">{E(SHORT_REASON.get(c, c.lower().replace("_", " ")))}</span>'
+            for c in chips_by_stage.get(stage, [])) + "</div>"
+
+    haz_terms = [m["term"] for m in scan["matched_terms"] if m["source"] == "original_text"]
+    haz_names = [h.replace("_", " ") for h in scan["hazards"]]
+    haz_summary = ", ".join(haz_names[:2]) + (f" +{len(haz_names) - 2} more" if len(haz_names) > 2 else "")
+    n_struct = len([m for m in scan["matched_terms"] if m["source"] == "structured_intake"])
+    tiles = [
+        ("Complaint", "Kannada" if lang == "native" else "English",
+         f'{len(text)} chars · intake flags: {n_struct or "none"}', "red" if immediate else ""),
+        ("AI prediction", clf["predicted_dept"] or "none — unparseable",
+         f'margin {clf["margin"]} · saw {"all " + str(len(text)) if clf["input_complete"] else str(len(clf["seen_text"])) + " of " + str(len(text))} chars',
+         "amber" if (not clf["predicted_dept"] or not clf["input_complete"] or clf["margin"] < FW["uncertainty"]["low_margin_threshold"]) else ""),
+        ("Independent scan", f'{len(scan["direct_hazards"])} direct hazard' + ("s" if len(scan["direct_hazards"]) != 1 else "") if scan["direct_hazards"] else "no hazard found",
+         haz_summary or f"scanned all {len(text)} chars", "red" if scan["direct_hazard"] else "green"),
+        ("Asset consequence", (ctx["criticality_tier"].replace("_", " ") if ctx["context_available"] else "unknown"),
+         (f'rank {ctx["criticality_rank"]}/{ctx["n_ranked_assets"]} · {_num(ctx["simulated_people_exposed"])} exposed' if ctx["context_available"] else "no asset mapped"),
+         "red" if ctx.get("criticality_tier") == "very_high" else ("amber" if ctx.get("criticality_tier") in ("high", "unknown") else "")),
+        ("AI quality check", rel,
+         (f"if healthy → {LEVEL_WORD[ghost_level]}" if ghost_level else ("automatic routing permitted" if rel == "normal" else "automatic routing restricted")),
+         "amber" if rel != "normal" else "green"),
+        ("Firewall decision", LEVEL_WORD[level],
+         {"red": "dispatch now · review in parallel", "yellow": "person checks before routing", "green": "routed automatically"}[level], level),
+    ]
+    st.markdown(
+        '<div class="sc-ribbon">' + "".join(
+            f'<div class="sc-rt {cls}{" last" if i == len(tiles) - 1 else ""}"><div class="n">{i + 1}</div><div class="s">{E(name)}</div>'
+            f'<div class="v">{E(str(value))}</div><div class="g">{E(str(ghost))}</div>{chips(i)}</div>'
+            for i, (name, value, ghost, cls) in enumerate(tiles)
+        ) + "</div>",
+        unsafe_allow_html=True,
+    )
+
+    # ---- 2. the verdict ----
+    if level == "red":
+        head, sub = "RED — IMMEDIATE EMERGENCY DISPATCH", (
+            f'AI route <b>{"overridden" if decision["ai_route_overridden"] else "confirmed and escalated"}</b> → '
+            f'<b>{E(decision["final_department"])}</b>. Work order created now. Human review runs <b>in parallel</b>.')
+    elif level == "yellow":
+        head, sub = "YELLOW — HUMAN VERIFICATION BEFORE ROUTING", (
+            f'AI suggestion <b>{E(decision["recommended_department"] or "none")}</b> is advice only. Not routed until a person checks it.')
+    else:
+        head, sub = "GREEN — AUTOMATIC ROUTING ALLOWED", (
+            f'Routed to <b>{E(decision["final_department"])}</b> automatically. No person needed.')
+    st.markdown(f'<div class="sc-risk {level}"><div class="lvl">{head}</div><div class="sub">{sub}</div>'
+                f'<div class="why">{E(decision["reason_text"][0])}</div></div>', unsafe_allow_html=True)
+    with st.expander(f"All {len(decision['reason_codes'])} reasons in plain language"):
+        for code, txt in zip(decision["reason_codes"], decision["reason_text"]):
+            st.markdown(f'<div style="padding:5px 0;border-top:1px solid #262b33"><span class="sc-chip {CHIP_CLS[level]}">{E(code)}</span> {E(txt)}</div>', unsafe_allow_html=True)
+
+    # ---- 3. AI-only vs Firewall, always on screen ----
+    ai_hours, fw_hours = trace["ai_only"]["response_hours"], trace["response_hours"]
+    ai_fails = fw_fails = None
+    summ = None
+    if ctx["context_available"] and window is not None:
+        ai_fails, fw_fails = ai_hours >= window, fw_hours >= window
+        summ = summarize_final(run_cascade(ctx["asset_id"], _SIG))
+
+    def outcome_line(fails: bool | None) -> str:
+        if fails is None:
+            return '<div class="sc-k">Physical outcome</div><div class="sc-v">not evaluated — needs a mapped asset and a failure window</div>'
+        if fails:
+            return (f'<div class="sc-k">Physical outcome (simulated)</div><div class="sc-v bad">equipment fails → cascade</div>'
+                    f'<div class="sc-big" style="color:#d93025">{summ["people_affected"]:,}</div>'
+                    f'<div class="sc-k">simulated service population exposed · {summ["substations_failed"]} substations · '
+                    f'{summ["hospitals_on_backup"]} hospitals on generator · {summ["pumps_without_water"]} wards without water</div>')
+        return ('<div class="sc-k">Physical outcome (simulated)</div><div class="sc-v ok">repair lands before the assumed failure window</div>'
+                '<div class="sc-big" style="color:#34a853">0</div><div class="sc-k">no cascade under the stated scenario assumption</div>')
+
+    fw_action = {"red": f'emergency dispatch → {decision["final_department"]}', "yellow": "human verification, then routing",
+                 "green": f'automatic → {decision["final_department"]}'}[level]
+    st.markdown(
+        '<div class="sc-split">'
+        f'<div class="sc-panel bad"><div class="hdr">AI ONLY · TODAY</div>'
+        f'<div class="sc-k">Route</div><div class="sc-v">{E(trace["ai_only"]["department"])}{" · " + E(trace["ai_only"]["department_note"]) if trace["ai_only"]["department_note"] else ""}</div>'
+        f'<div class="sc-k">Response</div><div class="sc-v bad">{_hours(ai_hours)}</div>{outcome_line(ai_fails)}</div>'
+        f'<div class="sc-panel {"ok" if level != "green" else ""}"><div class="hdr">WITH DECISION FIREWALL</div>'
+        f'<div class="sc-k">Route</div><div class="sc-v">{E(fw_action)}</div>'
+        f'<div class="sc-k">Response</div><div class="sc-v ok">{_hours(fw_hours)}</div>{outcome_line(fw_fails)}</div>'
         "</div>",
         unsafe_allow_html=True,
     )
 
-    _section("The chain we model", "We model <em>delay</em>, not automated dispatch — the only link the published evidence supports.")
-    _plain("A single mishandled complaint can begin a chain that ends in a real power and water outage. "
-           "Each box is one link in that chain; the red links are the physical consequences that follow once the "
-           "initial routing decision goes wrong.")
-    steps = [
-        ("Intake", "Citizen complaint", "Kannada · voice → text", ""),
-        ("AI layer", "Classification &amp; routing", "department + urgency", ""),
-        ("Ops", "Dispatch queue", "position set by category", ""),
-        ("Delay", "Repair delay", "wrong SLA, wrong crew", ""),
-        ("T+14d", "Equipment fails", "transformer trips", "bad"),
-        ("Cascade", "Power &amp; water", "load shed → neighbours trip", "bad"),
-        ("Impact", "Households dry, hospital on generator", "buffers are hours, not booleans", "bad"),
-    ]
-    st.markdown(
-        '<div class="sc-flow">' + "".join(
-            f'<div class="sc-step {cls}"><span class="sc-k">{k}</span><div class="dot"></div><div class="t">{t}</div><div class="s">{s}</div></div>'
-            for k, t, s, cls in steps
-        ) + "</div>",
+    # ---- 4. work order + acknowledgement ----
+    sig = json.dumps([cid, lang, cond, struct, immediate, asset_id, rel, window, level], default=str)
+    if st.session_state.get("ack_sig") != sig:
+        st.session_state["ack_sig"], st.session_state["ack"], st.session_state["ack_min"] = sig, False, 0
+    # the card is rendered into a slot reserved ABOVE the buttons, so a click updates the status
+    # in the same rerun instead of one interaction late
+    wo_slot = st.container()
+    if plan["requires_acknowledgement"]:
+        b1, b2, b3, _ = st.columns([1, 1.2, 0.7, 2.1])
+        if b1.button("✔ Crew accepts", width="stretch", key="btn_ack"):
+            st.session_state["ack"] = True
+        if b2.button("⏱ Nobody accepts", width="stretch", key="btn_wait"):
+            st.session_state["ack_min"] += FW["action_policy"]["red_reescalation_target_minutes"] if level == "red" else FW["action_policy"]["yellow_review_target_hours"] * 60
+        if b3.button("↺", width="stretch", key="btn_reset"):
+            st.session_state["ack"], st.session_state["ack_min"] = False, 0
+    state = advance_acknowledgement(plan, st.session_state.get("ack", False), st.session_state.get("ack_min", 0), FW)
+    status_cls = {"acknowledged": "ok", "not_required": "", "reescalated": "bad"}.get(state["acknowledgement_state"], "unp")
+    wo_slot.markdown(
+        '<div class="sc-card" style="margin-top:14px"><div class="sc-wo">'
+        f'<div><div class="sc-k">Work order</div><div class="sc-v">{E(plan["work_order_type"])}</div></div>'
+        f'<div><div class="sc-k">Assigned to</div><div class="sc-v">{E(plan["assigned_department"])}</div></div>'
+        f'<div><div class="sc-k">Priority</div><div class="sc-v">{E(plan["priority"])}</div></div>'
+        f'<div><div class="sc-k">Human review</div><div class="sc-v">{"in parallel" if plan["human_review_parallel"] else ("before routing" if level == "yellow" else "not required")}</div></div>'
+        f'<div><div class="sc-k">Status · T+{state["minutes_elapsed"]:g} min</div><div class="sc-v {status_cls}">{E(state["status"]).replace("_", " ")}</div></div>'
+        f'<div><div class="sc-k">If nobody accepts</div><div class="sc-v">{E(plan["next_action_if_unacknowledged"])}</div></div>'
+        "</div></div>",
         unsafe_allow_html=True,
     )
 
-    _section("No alarm fired", "Complaint acknowledged. Ticket created. Status green. SLA nominally met — for the category it was assigned to.")
-    _plain("The operations dashboard on the left reports every system as healthy, because it only checks whether the "
-           "software responded — not whether the answer was correct. The ticket on the right was answered successfully "
-           "(HTTP 200) but sent to the wrong department, so no alarm was ever raised.")
-    classifier = (
-        '<div class="sc-panel sc-bad">'
-        '<div class="hdr"><b style="color:#d93025">What the classifier actually did</b><span>ticket c01 · HTTP 200</span></div>'
-        '<p class="sc-text">ನಮ್ಮ ಬೀದಿಯಲ್ಲಿರುವ ಟ್ರಾನ್ಸ್‌ಫಾರ್ಮರ್ ಬಾಕ್ಸ್‌ನಿಂದ ಕಿಡಿಗಳು ಹಾರುತ್ತಿವೆ ಮತ್ತು ಸುಟ್ಟ ವಾಸನೆ ಬರುತ್ತಿದೆ…</p>'
-        '<div class="sc-trace">'
-        '<div><span class="sc-k">Meaning</span><span>Sparks from the transformer box, smell of burning, children nearby.</span></div>'
-        '<div><span class="sc-k">True dept</span><span class="sc-v ok">electrical_emergency</span></div>'
-        '<div><span class="sc-k">Routed to</span><span class="sc-v unp">(unparseable) → general queue</span></div>'
-        '<div><span class="sc-k">SLA</span><span>14-day maintenance window</span></div>'
-        '<div><span class="sc-k">Outcome</span><span class="sc-v bad">equipment failure → cascade</span></div>'
-        "</div></div>"
-    )
-    left, right = st.columns([1.15, 1])
-    with left:
-        components.html(MONITOR_HTML, height=640)
-    with right:
-        st.markdown(classifier, unsafe_allow_html=True)
-    st.markdown('<p class="sc-cap" style="margin-top:18px">Every dashboard says everything is fine. <b>The thing that failed was a decision, not a server.</b> '
-                "Monitoring watches whether the AI answered — not whether it was right.</p>", unsafe_allow_html=True)
+    # ---- 5. controls: every feature visible, nothing hidden behind an expander ----
+    with st.container(border=True):
+        st.markdown('<div class="sc-eyebrow">Change any input · the decision above recomputes</div>', unsafe_allow_html=True)
+        c1, c2, c3, c4 = st.columns([1.15, 1.35, 1, 1])
+        c1.selectbox("Scenario", scen_ids + ["custom"], key="scenario",
+                     format_func=lambda s: f"{s} · {scenarios.loc[s, 'complaint_id']}" if s != "custom" else "custom", help="Rehearsed complaint-to-asset mappings from data/scenarios.csv (synthetic).")
+        c2.selectbox("Complaint", list(complaints.id), key="complaint",
+                     format_func=lambda i: f"{i} · {complaints.set_index('id').loc[i, 'text_en'][:42]}…")
+        c3.radio("Submitted in", ["native", "en"], horizontal=True, key="language",
+                 format_func=lambda v: "ಕನ್ನಡ" if v == "native" else "English")
+        c4.radio("AI input", CONDITIONS, horizontal=True, key="condition", format_func=COND_LABEL.get,
+                 help="How the classifier sees the complaint. The safety scan always reads the complete original.")
+        c5, c6, c7 = st.columns([1.5, 1, 1.3])
+        c5.selectbox("Affected asset", ["(no asset context)"] + sorted(asset_ids), key="asset",
+                     format_func=lambda a: a if a.startswith("(") else f"{a} · {nodes.set_index('id').loc[a, 'name'] if isinstance(nodes.set_index('id').loc[a, 'name'], str) else 'unnamed'}",
+                     help="Scenario-selected mapping. Not evidence that the complaint occurred at this asset.")
+        c6.selectbox("AI quality check", ["auto", "normal", "degraded", "unavailable"], key="reliability", format_func=REL_LABEL.get,
+                     help="Degraded or missing quality signal switches safe mode on and restricts automatic routing.")
+        c7.multiselect("Hazard boxes ticked at intake", ["sparking", "fire", "live_wire", "shock", "burst_pipe", "flooding"], key="structured",
+                       help="The structured path: works even when free-text classification fails.")
+        c8, c9, c10 = st.columns([1.2, 1.1, 1.2])
+        c8.checkbox("Caller says immediate danger", key="immediate")
+        c9.checkbox("Assume a failure window", key="use_window")
+        if st.session_state["use_window"]:
+            c10.number_input("Failure window (hours, assumed)", min_value=1.0, step=24.0, key="window")
 
-    _section("What's real, what's simulated", "Every number in this prototype is one of three things: observed from a named source, measured, or simulated on declared assumptions.")
-    _plain("This table states the origin of every figure in the prototype. <em>Observed</em> means taken directly from "
-           "OpenStreetMap; <em>Measured</em> means computed by our own code; <em>Inferred</em>, <em>Assumed</em> and "
-           "<em>Synthetic</em> are clearly labelled stand-ins, used only where real data was unavailable.")
-    rows = [
-        ("Substation locations (190)", "OpenStreetMap · power=substation", "Observed", "real"),
-        ("Hospital &amp; pump locations (1,217)", "OpenStreetMap · amenity / man_made", "Observed", "real"),
-        ("Feeder topology (grid edges)", "3-nearest-neighbour by haversine", "Inferred", "inf"),
-        ("Capacity, load, population served", "config.yaml · seeded uniform draws", "Assumed", "sim"),
-        ("Generator / reservoir buffer hours", "8 h · 6 h typical engineering values", "Assumed", "sim"),
-        ("Complaint text (20 × 2 languages)", "hand-written, Kannada script", "Synthetic", "syn"),
-        ("Routing accuracy by language", "120 classifications, keyword baseline", "Measured", "meas"),
-        ("Cascade outcomes, criticality ranking", "cascade.py · deterministic, seed 42", "Simulated", "sim"),
-        ("Intervention costs (₹)", "order-of-magnitude placeholders", "Assumed", "sim"),
-    ]
-    st.markdown(
-        '<div class="sc-prov">' + "".join(
-            f'<div><span class="k">{k}</span><span class="src">{src}</span><span class="sc-pill {cls}">{status}</span></div>'
-            for k, src, status, cls in rows
-        ) + "</div>",
-        unsafe_allow_html=True,
-    )
-
-
-def page_cascade() -> None:
-    cfg = load_config()
-    G = load_graph()
-    nodes = load_nodes()
-    rank = ranking()
-    hps = cfg["assumptions"]["hours_per_step"]
-
-    _section("Cascade simulator", "Real Bengaluru substations, hospitals and pumps at real coordinates. Load-redistribution cascade, "
-             f"{hps:g} h per step. Grid edges are <em>inferred</em> (3 nearest neighbours) — no feeder topology is published.")
-    _plain("Select any one substation to switch off. The map then shows, hour by hour, how its electrical load shifts to "
-           "neighbouring substations, overloads them, and forces further shutdowns — until hospitals fall back to generators "
-           "and wards lose water supply. The counter tracks how many people are affected as the failure spreads.")
-
-    subs = nodes[nodes.type == "substation"].copy()
-    labels = {r.id: f"{r.id} · {r.name if isinstance(r.name, str) and r.name else '(unnamed)'} · serves {int(r.population_served):,}" for r in subs.itertuples()}
-    default = rank.iloc[0]["node_id"]
-    options = list(subs.id)
-    node = st.selectbox("Initiating failure", options, index=options.index(default), format_func=labels.get)
-    timeline = run_cascade(node)
-    final = timeline[-1]
-    st.caption(f"Cascade from **{labels[node]}** runs {len(timeline) - 1} steps (T+{final['hours']:.0f}h) and ends with "
-               f"**{final['people_affected']:,}** people affected, **{len(final['hospitals_on_generator'])}** hospitals on generator. "
-               "Playback is in-browser — the page does not reload while it plays.")
-
-    components.html(cascade_component(nodes, G, timeline, hps, height=620), height=640)
-    st.markdown(
-        '<span class="sc-pill" style="color:#9aa0a6">● healthy</span> &nbsp;'
-        '<span class="sc-pill" style="color:#f5a623">● overloaded &gt;90%</span> &nbsp;'
-        '<span class="sc-pill" style="color:#d93025">● failed</span> &nbsp;'
-        '<span class="sc-pill">● substation &nbsp; • hospital &nbsp; ■ pump</span> &nbsp; '
-        '<span class="sc-pill">hover a node for its state and failure time</span>',
-        unsafe_allow_html=True,
-    )
-
-    st.write("")
-    st.markdown("#### Criticality ranking — by people affected, not by degree")
-    st.caption("Each substation failed alone; ranked by total people affected at the final step. This is the ranking a classification node has to beat. "
-               "A robustness sweep across 9 alternate topology/headroom assumptions confirms the top-ranked substation always affects "
-               "2.1x–240x as many nodes as the median one — this concentration is a structural property of the network, not an artifact "
-               "of one chosen parameter (outputs/d1_robustness.csv, LIMITATIONS.md). It is not the case that any substation collapses the "
-               "entire network — the worst case affects at most ~97% of nodes, not 100%.")
-    _plain("This table answers a single question: if only one substation failed, which failure would harm the most people? "
-           "Substations are ranked by the total number of people affected — not by their size or how many connections they have.")
-    st.dataframe(rank, width="stretch", hide_index=True)
-
-
-def _highlight(text: str, keywords: dict[str, list[str]], true_dept: str) -> str:
-    low = text.lower()
-    hits: list[tuple[int, int, str]] = []
-    for dept in DEPARTMENTS:
-        for kw in keywords[dept]:
-            k = kw.lower()
-            i = 0
-            while (i := low.find(k, i)) != -1:
-                hits.append((i, i + len(kw), dept))
-                i += len(kw)
-    hits.sort()
-    out, pos = [], 0
-    for s, e, dept in hits:
-        if s < pos:
-            continue
-        out.append(html.escape(text[pos:s]))
-        cls = "" if dept == true_dept else ' class="wrong"'
-        out.append(f"<mark{cls} title='{dept}'>{html.escape(text[s:e])}</mark>")
-        pos = e
-    out.append(html.escape(text[pos:]))
-    return "".join(out)
-
-
-CASCADE_DEPTS = {"electrical_emergency"}  # complaints whose neglect we link to a substation failure
-
-
-@st.cache_data
-def canary() -> pd.DataFrame:
-    return canary_report(load_complaints(), load_config()["d2"])
-
-
-def _route_card(title: str, r: dict[str, Any], flags: list[str], safety: list[str], cls: str) -> str:
-    q = r["queue"]
-    sla = r["sla_hours"]
-    sla_txt = f"{sla:g} h" if sla < 48 else f"{sla / 24:g} days"
-    flag_html = "".join(f'<span class="sc-pill {"inf" if f != "urgency_floor" else "real"}">{f.replace("_", " ")}</span> ' for f in flags)
-    flags_block = f'<div style="margin-top:8px">{flag_html}</div>' if flags else ""
-    safety_html = f'<div class="sc-k" style="margin-top:8px">Safety terms seen</div><div class="sc-v">{", ".join(safety)}</div>' if safety else ""
-    q_cls = "unp" if q == "verification" else ("ok" if cls == "sc-ok" else "bad")
-    return (
-        f'<div class="sc-panel {cls}"><div class="hdr"><b>{title}</b></div>'
-        f'<div class="sc-k">Queue</div><div class="sc-v {q_cls}">{q}</div>'
-        f'<div class="sc-k" style="margin-top:8px">Time to repair (SLA)</div><div class="sc-big" style="font-size:22px">{sla_txt}</div>'
-        f"{flags_block}{safety_html}</div>"
-    )
-
-
-def page_language() -> None:
-    cfg = load_config()
-    d2 = cfg["d2"]
-    complaints = load_complaints()
-    truncate = d2["truncate_chars"]
-    ttf = d2["time_to_failure_hours"]
-
-    _section("Language routing — the AI injection, traced end to end",
-             "One complaint, one degraded condition, followed from the classifier's decision to the substation. "
-             "The classifier is the exact <code>classify_one()</code> that produced outputs/d2_results.csv — a keyword baseline, "
-             "<em>not a production LLM</em>. The guard and the monitor are the fix.")
-    _plain("This page follows one complaint from the moment the AI classifies it to the moment a repair crew is — or is not — "
-           "sent in time. It shows how a complaint written in Kannada can be routed to the wrong queue while every system still "
-           "reports success. Use the three controls below to choose the complaint, its language, and how the input is degraded.")
-
-    c = st.columns([2, 1, 1])
-    with c[0]:
-        cid = st.selectbox("Complaint", list(complaints.id), format_func=lambda i: f"{i} · {complaints.set_index('id').loc[i, 'text_en'][:60]}…")
-    with c[1]:
-        lang = st.radio("Language", ["English", "ಕನ್ನಡ (native)"], horizontal=True)
-    with c[2]:
-        cond = st.radio("Condition", CONDITIONS, horizontal=True)
-
-    row = complaints.set_index("id").loc[cid]
-    full = row["text_en"] if lang == "English" else row["text_native"]
-    is_en = _looks_english(full)
-    g = route_with_guard(full, cond, d2)
-    pred, wrong = g["predicted"], g["predicted"] != row["true_dept"]
-    seen, kws = condition_input(full, cond, truncate)
-
-    st.session_state.reqn = st.session_state.get("reqn", 4127) + 1
-    ms = 150 + (st.session_state.reqn * 37) % 90
-
-    # ---- 1. what the classifier saw and decided
-    st.markdown("#### 1 · The decision")
-    _plain("The highlighted words are the terms the classifier recognised. Green terms point to the correct department; "
-           "red terms point to the wrong one. The card on the right states where the complaint was actually sent and whether "
-           "that decision was correct.")
-    left, right = st.columns([1.3, 1])
-    with left:
-        body = _highlight(seen, kws, row["true_dept"])
-        if cond == "truncated":
-            body += f"<s>{html.escape(full[truncate:])}</s>"
-        st.markdown(f'<div class="sc-card"><div class="sc-k">Input · {cond}</div><p class="sc-text">{body}</p></div>', unsafe_allow_html=True)
-        st.markdown(f'<p class="sc-log" style="margin-top:8px">POST /classify {cid} {"en" if is_en else "kn"} {cond} <b>200 OK</b> {ms} ms</p>', unsafe_allow_html=True)
-    with right:
-        verdict = "correct · right queue" if not wrong else ("MISROUTED · wrong queue, wrong SLA" if pred else "DROPPED · unparseable")
-        vcls = "ok" if not wrong else ("bad" if pred else "unp")
-        st.markdown(
-            f'<div class="sc-card {"sc-bad" if wrong else "sc-ok"}">'
-            f'<div class="sc-k">True dept</div><div class="sc-v ok">{row["true_dept"]}</div><br>'
-            f'<div class="sc-k">Classifier said</div><div class="sc-v {vcls}">{pred or "(unparseable)"}</div><br>'
-            f'<div class="sc-k">Verdict</div><div class="sc-v {vcls}">{verdict}</div><br>'
-            f'<div class="sc-k">Score margin (top − 2nd)</div><div class="sc-v">{g["margin"]}</div>'
-            "</div>",
-            unsafe_allow_html=True,
-        )
-
-    # ---- 2. the guard: today vs with a verification checkpoint
-    st.markdown("#### 2 · The routing guard — a verification checkpoint on the decision")
-    _plain("A proposed safeguard that re-checks each decision before it is acted on. Complaints that are unreadable or classified "
-           "with low confidence are diverted to a 48-hour human-verification queue instead of a routine multi-day queue, and any "
-           "complaint mentioning a safety hazard is fast-tracked. The two cards compare today's routing with the safeguarded routing.")
-    st.caption("The guard sees exactly what the classifier saw. Unparseable or low-confidence decisions go to a 48 h verification queue "
-               "(a 48 h field-officer verify/assign window) instead of a general queue; safety terms cap the SLA at the emergency SLA. All SLAs are labelled assumptions in config.yaml.")
-    naive_late = g["naive"]["sla_hours"] >= ttf
-    guard_late = g["guarded"]["sla_hours"] >= ttf
-    st.markdown(
-        '<div class="sc-split">'
-        + _route_card("Today · no guard", g["naive"], [], [], "sc-bad" if naive_late else "sc-ok")
-        + _route_card("With guard", g["guarded"], g["flags"], g["safety_hits"], "sc-bad" if guard_late else "sc-ok")
-        + "</div>",
-        unsafe_allow_html=True,
-    )
-
-    # ---- 3. close the loop into the physical network
-    st.markdown("#### 3 · What that delay does to the network")
-    _plain("This connects the routing delay to physical harm. If the repair is scheduled only after the equipment is expected "
-           "to fail, the cascade runs — and the resulting people-affected figure is produced by the same simulator used on the "
-           "Cascade page, not an estimate.")
-    if row["true_dept"] in CASCADE_DEPTS:
-        nodes = load_nodes()
-        rank = ranking()
-        subs = nodes[nodes.type == "substation"]
-        labels = {r.id: f"{r.id} · {r.name if isinstance(r.name, str) and r.name else '(unnamed)'}" for r in subs.itertuples()}
-        opts = list(subs.id)
-        linked = st.selectbox("Substation this complaint sits on", opts, index=opts.index(rank.iloc[0]["node_id"]), format_func=labels.get)
-        final = run_cascade(linked)[-1]
-        people, hosp = final["people_affected"], len(final["hospitals_on_generator"])
-
-        def outcome(late: bool, sla: float, title: str) -> str:
-            if late:
-                return (f'<div class="sc-panel sc-bad"><div class="hdr"><b>{title}</b></div>'
-                        f'<div class="sc-k">Repair scheduled</div><div class="sc-v bad">T+{sla:g} h — not before the asset fails at T+{ttf:g} h</div>'
-                        f'<div class="sc-k" style="margin-top:10px">Cascade from {linked}</div>'
-                        f'<div class="sc-big" style="color:#d93025">{people:,}</div><div class="sc-k">people affected · {hosp} hospitals on generator</div></div>')
-            return (f'<div class="sc-panel sc-ok"><div class="hdr"><b>{title}</b></div>'
-                    f'<div class="sc-k">Repair scheduled</div><div class="sc-v ok">T+{sla:g} h — before the asset fails at T+{ttf:g} h</div>'
-                    f'<div class="sc-k" style="margin-top:10px">Cascade</div>'
-                    f'<div class="sc-big" style="color:#34a853">0</div><div class="sc-k">people affected · no cascade <em>if</em> repaired before the assumed failure window</div></div>')
-
-        st.markdown('<div class="sc-split">' + outcome(naive_late, g["naive"]["sla_hours"], "Today · no guard")
-                    + outcome(guard_late, g["guarded"]["sla_hours"], "With guard") + "</div>", unsafe_allow_html=True)
-        delta = (people if naive_late else 0) - (people if guard_late else 0)
-        if delta > 0:
-            st.markdown(f'<p class="sc-cap" style="margin-top:14px">One checkpoint on one decision: <b>{delta:,} fewer people affected</b>. '
-                        "Same substation, same physics — the only thing that changed is when the repair crew was told.</p>", unsafe_allow_html=True)
-        elif naive_late and guard_late:
-            st.markdown('<p class="sc-cap" style="margin-top:14px">The guard could not rescue this one — the degraded input hid every signal it looks for. '
-                        "That is the honest limit of a check that sees only what the classifier saw.</p>", unsafe_allow_html=True)
-        else:
-            st.markdown('<p class="sc-cap" style="margin-top:14px">Routed in time either way — no cascade for this complaint.</p>', unsafe_allow_html=True)
+    # ---- 6. safe mode, stated as behaviour ----
+    if rel != "normal":
+        st.markdown(f'<div class="sc-safe on" style="margin-top:14px"><b>SAFE MODE ACTIVE</b> · {"Kannada" if lang == "native" else "English"} automatic routing restricted · '
+                    f'uncertain complaints become Yellow, direct-danger complaints become Red <span>· quality check: {E(rel)}</span></div>', unsafe_allow_html=True)
     else:
-        st.markdown(f'<p class="sc-cap">This complaint is <b>{row["true_dept"]}</b>; the physical cascade model covers electrical faults only, '
-                    "so no substation is linked. The routing guard above still applies.</p>", unsafe_allow_html=True)
+        st.markdown('<div class="sc-safe off" style="margin-top:14px"><b>SAFE MODE OFF</b> · quality check healthy · automatic routing permitted for eligible low-risk complaints</div>', unsafe_allow_html=True)
 
-    # ---- 4. the monitor that should have existed
-    st.markdown("#### 4 · Decision monitor — the canary CivicOps never had")
-    _plain("A monitor that re-tests the AI on a fixed set of 20 complaints in both languages and raises an alarm when accuracy in "
-           "Kannada falls well below English. This is the automatic check that would have caught the failure — the one the "
-           "green operations dashboard on the Overview page does not perform.")
-    st.caption("Every request above returned 200. This monitor ignores that and re-runs a golden set of 20 complaints in both languages "
-               f"under the live condition, watching accuracy and the unparseable rate per language. It alarms when native-script accuracy "
-               f"falls more than {d2['canary_language_gap_alarm_pct']:g} points below English.")
-    rep = canary()
-    cur = rep[rep.condition == cond].set_index("language")
-    base = rep[rep.condition == "clean"].set_index("language")
-    gap = base.loc["native", "accuracy_pct"] - cur.loc["native", "accuracy_pct"]
-    lang_gap = cur.loc["en", "accuracy_pct"] - cur.loc["native", "accuracy_pct"]
-    alarm = lang_gap > d2["canary_language_gap_alarm_pct"]
-
-    _dd_results = load_csv("d2_results.csv")
-    dd = dangerous_downgrade_rate(_dd_results, d2) if _dd_results is not None else pd.DataFrame()
-    dd_cur = dd[dd.condition == cond].set_index("language") if not dd.empty else None
-    dd_en = dd_cur.loc["en", "dangerous_downgrade_pct"] if dd_cur is not None and "en" in dd_cur.index else None
-    dd_kn = dd_cur.loc["native", "dangerous_downgrade_pct"] if dd_cur is not None and "native" in dd_cur.index else None
-
-    def tile(label: str, value: str, ok: bool, sub: str) -> str:
-        col = "#34a853" if ok else "#d93025"
-        return (f'<div><div class="l">{label}</div><div class="v" style="color:{col}">{value} <i class="gdot" style="background:{col};box-shadow:0 0 8px {col}"></i></div>'
-                f'<div class="l" style="margin-top:4px">{sub}</div></div>')
-
-    en_ok = cur.loc["en", "accuracy_pct"] >= base.loc["en", "accuracy_pct"] - d2["canary_language_gap_alarm_pct"]
-    kn_ok = not alarm and cur.loc["native", "accuracy_pct"] >= base.loc["native", "accuracy_pct"] - d2["canary_language_gap_alarm_pct"]
-    st.markdown(
-        f'<div class="sc-panel {"sc-bad" if alarm else "sc-ok"}">'
-        f'<div class="hdr"><b>Routing-quality canary · condition: {cond}</b><span>golden set · 20 × 2 languages · re-run now</span></div>'
-        '<div class="sc-mgrid">'
-        + tile("English accuracy", f"{cur.loc['en', 'accuracy_pct']:.0f}%", en_ok, f"unparseable {cur.loc['en', 'unparseable_pct']:.0f}%")
-        + tile("Kannada accuracy", f"{cur.loc['native', 'accuracy_pct']:.0f}%", kn_ok, f"unparseable {cur.loc['native', 'unparseable_pct']:.0f}%")
-        + tile("Language gap", f"{lang_gap:+.0f} pts", not alarm, f"alarm above {d2['canary_language_gap_alarm_pct']:g} pts")
-        + tile("Drift vs clean (Kannada)", f"{-gap:+.0f} pts", gap <= d2["canary_language_gap_alarm_pct"], "same golden set, clean condition")
-        + (tile("Dangerous downgrade (EN)", f"{dd_en:.0f}%" if dd_en is not None else "—", (dd_en or 0) == 0, "critical complaint → non-critical queue")
-           + tile("Dangerous downgrade (KN)", f"{dd_kn:.0f}%" if dd_kn is not None else "—", (dd_kn or 0) == 0, "critical complaint → non-critical queue")
-           if dd_cur is not None else "")
-        + "</div>"
-        + (f'<div class="sc-v bad" style="margin-top:12px">▲ ALARM · native-script routing degraded {lang_gap:.0f} pts below English while every request returned 200</div>' if alarm
-           else '<div class="sc-v ok" style="margin-top:12px">● no language divergence on the golden set</div>')
-        + "</div>",
-        unsafe_allow_html=True,
-    )
-
-    st.write("")
-    st.markdown("#### Accuracy by language × condition (120 classifications, measured)")
-    _plain("Measured accuracy across all 120 classifications (20 complaints × 2 languages × 3 conditions). Taller bars are better. "
-           "The gap between the English and Kannada bars under the <em>truncated</em> condition is the core finding of the experiment.")
-    results = load_csv("d2_results.csv")
-    acc = load_csv("d2_accuracy.csv")
-    if acc is None or results is None:
-        st.info("Run `python src/d2_language.py` to produce outputs/d2_results.csv and d2_accuracy.csv.")
-        return
-    a, b = st.columns([1.3, 1])
+    # ---- 7. the evidence behind the verdict, two rows ----
+    seen, kws = condition_input(text, cond, d2["truncate_chars"])
+    a, b = st.columns(2)
     with a:
-        st.pyplot(plot_accuracy(acc, None), width="stretch")
+        st.markdown(f'<div class="sc-card"><div class="sc-k">1 · Complaint as submitted · red marks = hazards the scan found</div>'
+                    f'<p class="sc-text">{_highlight(text, None, haz_terms, "")}</p>'
+                    f'<div class="sc-k">Translation</div><p class="sc-text" style="color:#9aa0a6;font-size:13.5px">{E(row["text_en"] if lang == "native" else row["text_native"])}</p></div>',
+                    unsafe_allow_html=True)
     with b:
-        if "ci_low" in acc.columns:
-            fmt_cell = acc.apply(lambda r: f"{r.accuracy_pct:.0f}% [{r.ci_low:.0f}–{r.ci_high:.0f}]", axis=1)
-            piv = acc.assign(cell=fmt_cell).pivot(index="condition", columns="language", values="cell").reindex(CONDITIONS)
+        body = _highlight(seen, kws, [], clf["predicted_dept"])
+        if not clf["input_complete"]:
+            body += f"<s>{E(text[len(seen):])}</s>"
+        st.markdown(f'<div class="sc-card"><div class="sc-k">2 · What the AI saw · struck-through text was cut off</div><p class="sc-text">{body}</p>'
+                    f'<div class="sc-k">Verdict</div><div class="sc-v {"unp" if not clf["predicted_dept"] else ""}">{E(clf["predicted_dept"]) or "unparseable — no department"} · margin {clf["margin"]}</div></div>',
+                    unsafe_allow_html=True)
+    a, b = st.columns(2)
+    with a:
+        hits = "".join(f'<div class="sc-v">{_pill(m["source"].replace("_", " "), "meas" if m["source"] == "original_text" else "syn")} <b>{E(str(m["term"]))}</b> → {E(m["hazard"])}</div>'
+                       for m in scan["matched_terms"]) or '<div class="sc-v ok">no hazard terms in this complaint</div>'
+        st.markdown(f'<div class="sc-card"><div class="sc-k">3 · Independent scan · reads all {len(text)} chars, never the AI prediction</div>{hits}</div>', unsafe_allow_html=True)
+    with b:
+        if ctx["context_available"]:
+            st.markdown(f'<div class="sc-card"><div class="sc-k">4 · Affected asset · {E(ctx["mapping_method"].replace("_", " "))}</div>'
+                        f'<div class="sc-v">{E(ctx["asset_name"])} · rank {ctx["criticality_rank"]} of {ctx["n_ranked_assets"]} · {E(ctx["criticality_tier"].replace("_", " "))}</div>'
+                        f'<div class="sc-k">If it fails (simulated, {CFG["d1"]["max_steps"] * CFG["assumptions"]["hours_per_step"]:g} h horizon)</div>'
+                        f'<div class="sc-v">{_num(ctx["simulated_people_exposed"])} exposed · {ctx["simulated_substations_failed"]} substations · '
+                        f'{ctx["dependent_hospitals"]} hospitals lose feeder · {ctx["wards_without_water"]} wards without water</div>'
+                        f'<div class="sc-k">Labels</div><div>{_pill("location observed", "real")}{_pill("topology inferred", "inf")}{_pill("loads assumed", "syn")}{_pill("outcome simulated", "")}</div></div>',
+                        unsafe_allow_html=True)
         else:
-            piv = acc.pivot(index="condition", columns="language", values="accuracy_pct").reindex(CONDITIONS)
-        piv.columns = ["English" if c == "en" else "Kannada" for c in piv.columns]
-        st.dataframe(piv, width="stretch")
-        st.markdown('<p class="sc-cap">Truncation shows a real language gap. The small-model condition did not. We report both — we don\'t tune experiments to fit the pitch. '
-                    'Bracketed numbers are 95% bootstrap confidence intervals — with n=20 complaints per cell, treat this as a <b>directional</b> finding, '
-                    'not a population estimate of Kannada-routing accuracy. See LIMITATIONS.md.</p>', unsafe_allow_html=True)
+            st.markdown(f'<div class="sc-card"><div class="sc-k">4 · Affected asset</div><div class="sc-v unp">none mapped — {E(str(ctx["reason"]))}</div>'
+                        '<div class="sc-k">Policy</div><div class="sc-v">unknown consequence is never treated as low consequence, and no asset is picked on the complaint\'s behalf</div></div>',
+                        unsafe_allow_html=True)
 
-    ex = misroute_examples(results, complaints)
-    st.markdown(f"#### Routed correctly in English, misrouted in Kannada — {len(ex)} cases")
-    st.dataframe(ex[["condition", "id", "true_dept", "predicted_en", "predicted_native", "text_en"]], width="stretch", hide_index=True)
+    # ---- 8. the map, only when a failure actually occurs ----
+    if ai_fails:
+        st.markdown('<div class="sc-k" style="margin-top:14px">5 · AI-only branch · corrected cascade from the mapped asset</div>', unsafe_allow_html=True)
+        components.html(cascade_component(nodes, G, run_cascade(ctx["asset_id"], _SIG), CFG["assumptions"]["hours_per_step"], height=480), height=500)
+        st.markdown('<span class="sc-pill">● healthy</span><span class="sc-pill inf">● overloaded / on backup</span><span class="sc-pill red">● tripped / no service</span>'
+                    '<span class="sc-pill">● substation · hospital ■ pump · hover for state</span>', unsafe_allow_html=True)
+
+    with st.expander("Why the operations dashboard never noticed (the problem, not the solution)"):
+        st.markdown('<div class="sc-mon"><div><span>intake-api</span><em>operational · 200 OK</em></div><div><span>classifier</span><em>operational · p50 187 ms</em></div>'
+                    '<div><span>router</span><em>operational · error rate 0.01%</em></div></div>', unsafe_allow_html=True)
+        _cap("Health dashboards measure whether the AI answered, not whether the answer was safe to act on. Every request above returned 200 OK.")
+    with st.expander("Provenance and caveats for this page"):
+        _cap("Complaints and asset mappings are <b>synthetic</b>. Classifier and Firewall results are <b>measured</b> on this prototype. "
+             "Cascade outcomes are <b>simulated</b> on assumed loads and inferred topology, and exposure is service population, not unique people. "
+             f"Acknowledgement ({FW['action_policy']['red_acknowledgement_target_minutes']} min) and re-escalation "
+             f"({FW['action_policy']['red_reescalation_target_minutes']} min) targets are assumed prototype policy, unconfirmed by the team. "
+             "Nothing here dispatches a real crew. Full detail: LIMITATIONS.md.")
+        if scen is not None:
+            _cap(f"<b>Scenario {E(str(scen.name))}</b> · {E(str(scen.notes))}")
 
 
-def page_intervention() -> None:
-    cfg = load_config()
-    _section("Intervention comparison — the smallest intervention",
-             "Same cascade engine, N random initiating failures shared across all three conditions (paired). "
-             "Costs are <em>order-of-magnitude assumptions</em> from config.yaml, not quotes.")
-    _plain("A like-for-like comparison of two responses to the same set of random failures: physically upgrading the single most "
-           "critical substation (expensive), versus adding a human verification step to the AI routing layer (cheap). Every "
-           "condition faces the identical set of failures, so the only variable is the intervention. Lower bars mean fewer people affected.")
-    n_runs = st.slider("Runs per condition", 20, 200, cfg["d4"]["n_runs"], 10)
-    if st.button("Run comparison", type="primary") or "d4" in st.session_state:
-        with st.spinner(f"Running {n_runs} × 3 cascades…"):
-            conditions, top_node = run_interventions(n_runs)
-        st.session_state.d4 = True
-        means = [sum(v) / n_runs for _, v, _ in conditions]
-        base = means[0]
-        cols = st.columns(3)
-        for col, (label, vals, cost), mean in zip(cols, conditions, means):
-            delta = None if mean == base else f"{(mean - base) / base * 100:+.1f}%"
-            col.metric(f"{label.replace(chr(10), ' ')} · people affected", f"{mean:,.0f}", delta, delta_color="inverse")
-            col.caption(f"cost ~₹{cost:,.0f}" if cost else "cost ₹0")
-        st.pyplot(plot_comparison(conditions, n_runs, None), width="stretch")
-        st.markdown(f'<p class="sc-cap">Hardened node: <b>{top_node}</b> (capacity × 1.5). Checkpoint modelled as preventing the initiating failure in '
-                    f'{cfg["d4"]["verification_checkpoint_prevention_rate"]:.0%} of runs — an assumption, labelled as such.</p>', unsafe_allow_html=True)
+# ---------------------------------------------------------------- page 2: evidence
 
-        st.write("")
-        st.markdown("#### Is this fragile to the 40% assumption?")
-        _plain("The checkpoint's advantage above depends on assuming it catches 40% of misroutes before they cause a failure. "
-               "This chart re-runs the same comparison at other prevention rates, from 10% to 60%, to see whether the "
-               "checkpoint would still win under a far less generous assumption.")
-        with st.spinner("Sweeping prevention rate…"):
-            sweep, hardened_mean = run_sensitivity(n_runs)
-        st.pyplot(plot_sensitivity(sweep, hardened_mean, cfg["d4"]["verification_checkpoint_prevention_rate"], None), width="stretch")
-        crossover = sweep[sweep.mean_people_affected <= hardened_mean]
-        if not crossover.empty:
-            x = crossover.iloc[0]["prevention_rate"]
-            st.markdown(f'<p class="sc-cap">Robust: the checkpoint beats hardening down to a prevention rate of <b>{x:.0%}</b> — '
-                        f'well below the {cfg["d4"]["verification_checkpoint_prevention_rate"]:.0%} headline assumption. '
-                        "The conclusion does not depend on that one chosen number.</p>", unsafe_allow_html=True)
+
+def page_evidence() -> None:
+    ev = load_csv("firewall_evaluation.csv")
+    by_cond = load_csv("firewall_evaluation_by_condition.csv")
+    if ev is None:
+        st.error("Missing `outputs/firewall_evaluation.csv`. Generate it with:\n\n```bash\npython src/evaluate_firewall.py\n```")
+        st.stop()
+    e = ev.set_index("configuration")
+    fw, gd = e.loc["decision_firewall"], e.loc["existing_guard"]
+
+    st.markdown('<div class="sc-eyebrow">Evidence</div>'
+                '<div class="sc-title" style="font-size:clamp(22px,2.6vw,30px)">Does it catch danger <span>without escalating everything?</span></div>'
+                '<p class="sc-q">20 synthetic complaints × 2 languages × 3 AI conditions = 120 decisions. Ground truth is used to score, never to decide.</p>',
+                unsafe_allow_html=True)
+
+    rows = [
+        ("Dangerous AI routes intercepted", "dangerous_misroutes_intercepted", "n_dangerous_ai_routes", "benefit", True),
+        ("Dangerous AI routes allowed through", "dangerous_misroutes_allowed", "n_dangerous_ai_routes", "benefit", False),
+        ("Critical cases answered at emergency speed", "critical_emergency_response", "n_critical_cases", "benefit", True),
+        ("Correct low-risk routes kept automatic", "safe_automation_count", "n_noncritical_ai_correct", "benefit", True),
+        ("Decisions needing a human", "human_review_count", "n_cases", "cost", False),
+        ("Unnecessary escalations", "unnecessary_escalations", "n_noncritical_ai_correct", "cost", False),
+    ]
+    body = ""
+    for label, num_col, den_col, kind, higher_better in rows:
+        vals = {c: int(e.loc[c, num_col]) for c in PRIMARY_CONFIGURATIONS}
+        best = max(vals.values()) if higher_better else min(vals.values())
+        worst = min(vals.values()) if higher_better else max(vals.values())
+        cells = ""
+        for c in PRIMARY_CONFIGURATIONS:
+            cls = "best" if vals[c] == best and best != worst else ("worst" if vals[c] == worst and best != worst else "")
+            cells += f'<td class="{cls}">{vals[c]} / {int(e.loc[c, den_col])}</td>'
+        body += f'<tr class="{kind}"><td>{E(label)}</td>{cells}</tr>'
+    head = "".join(f'<th class="{"win" if c == "decision_firewall" else ""}">{E(LABELS[c])}</th>' for c in PRIMARY_CONFIGURATIONS)
+    st.markdown(f'<table class="sc-tbl"><thead><tr><th>Every number is count / denominator</th>{head}</tr></thead><tbody>{body}</tbody></table>', unsafe_allow_html=True)
+
+    st.markdown(
+        f'<p class="sc-q" style="margin-top:16px">The guard blocks the same {int(gd.dangerous_misroutes_intercepted)} dangerous routes, but leaves '
+        f'<b>{int(gd.n_critical_cases - gd.critical_emergency_response)} critical cases sitting in a queue</b>. The Firewall acts on all '
+        f'{int(fw.n_critical_cases)}. It costs {int(fw.human_review_count)} of {int(fw.n_cases)} decisions going to a human.</p>',
+        unsafe_allow_html=True)
+
+    p = REPO_ROOT / "outputs" / "firewall_comparison.png"
+    if p.exists():
+        st.image(str(p), width="stretch")
+
+    if by_cond is not None:
+        show = by_cond[by_cond.configuration.isin(PRIMARY_CONFIGURATIONS)].copy()
+        show["condition"] = show.condition.map(lambda c: COND_LABEL.get(c, c))
+        for new, num, den in [("dangerous routes caught", "dangerous_misroutes_intercepted", "n_dangerous_ai_routes"),
+                              ("human review", "human_review_count", "n_cases"),
+                              ("kept automatic", "safe_automation_count", "n_noncritical_ai_correct")]:
+            show[new] = show[num].astype(int).astype(str) + " / " + show[den].astype(int).astype(str)
+        st.markdown("##### Where the review workload comes from")
+        st.dataframe(show[["label", "condition", "dangerous routes caught", "human review", "kept automatic"]], width="stretch", hide_index=True)
+        _cap("With full text the Firewall keeps most correct low-risk routes automatic. When the AI input is cut off or the quality check is degraded, "
+             "the policy deliberately withdraws AI autonomy. That is the cost, reported rather than hidden.")
+
+    with st.expander("Mapped scenarios · simulated physical outcome"):
+        cols = {"label": "configuration", "simulated_incidents_prevented": "incidents prevented", "n_mapped_critical_scenarios": "mapped scenarios",
+                "simulated_exposure_incurred": "simulated exposure incurred", "simulated_exposure_avoided_vs_ai_only": "exposure avoided vs AI-only"}
+        st.dataframe(ev[list(cols)].rename(columns=cols), width="stretch", hide_index=True)
+        _cap("Under the assumed 336 h failure window the guard's 48 h queue also beats the window, so the Firewall's edge here is the emergency-speed "
+             "response for people next to the hazard, not the 14-day window. Exposure is simulated service population, not unique people.")
+    with st.expander("How each configuration works, and how response time is modelled"):
+        _cap("<b>AI only</b>: the classifier's route is accepted automatically; unparseable goes to the maintenance queue. "
+             "<b>Existing guard</b>: the earlier uncertainty and safety-keyword check, which sees the same degraded input the classifier saw. "
+             "<b>Decision Firewall</b>: independent scan of the original complaint, asset consequence, fail-safe policy and quality-check state. "
+             "Response times are assumed: emergency 4 h; human verification is the review target plus the correct department's SLA. "
+             "The Firewall is scored on free text only, so structured intake answers never inflate the result. "
+             "n = 20 complaints per cell, so treat every rate as directional.")
+    with st.expander("Appendix · all five configurations, including an escalate-everything reference"):
+        st.dataframe(ev, width="stretch", hide_index=True)
+        _cap(f"Escalate everything scores {int(e.loc['escalate_everything', 'safe_automation_count'])} / "
+             f"{int(e.loc['escalate_everything', 'n_noncritical_ai_correct'])} on safe automation. It is what the Firewall must not become.")
+    with st.expander("Appendix · classifier accuracy by language and condition (legacy D2 experiment)"):
+        acc, dd = load_csv("d2_accuracy.csv"), load_csv("d2_dangerous_downgrade.csv")
+        if acc is not None:
+            a, b = st.columns([1.3, 1])
+            with a:
+                st.pyplot(plot_accuracy(acc, None), width="stretch")
+            with b:
+                st.dataframe(acc, width="stretch", hide_index=True)
+                if dd is not None:
+                    st.dataframe(dd, width="stretch", hide_index=True)
+            _cap("Truncation shows a real language gap; the smaller-model condition did not. Both are reported. The dangerous-downgrade rate reaches "
+                 "100% for critical Kannada complaints under truncation, which is the case the Firewall exists for.")
         else:
-            st.markdown('<p class="sc-cap">At this run count, the checkpoint does not beat hardening anywhere in the swept range — '
-                        "reporting this honestly rather than hiding it. See LIMITATIONS.md.</p>", unsafe_allow_html=True)
-    else:
-        summary = load_csv("d4_summary.csv")
-        if summary is not None:
-            st.caption("Precomputed result from outputs/d4_summary.csv — press Run to recompute live.")
-            st.dataframe(summary, width="stretch", hide_index=True)
+            st.info("Run `python src/d2_language.py` to produce outputs/d2_accuracy.csv.")
+    with st.expander("Appendix · cascade robustness, and the legacy D4 comparison"):
+        rob, d4 = load_csv("d1_robustness.csv"), load_csv("d4_summary.csv")
+        if rob is not None:
+            st.dataframe(rob, width="stretch", hide_index=True)
+            _cap("With one-time load shedding the large cascade appears only under the default headroom assumption; under 6 of 9 combinations the worst "
+                 "failure stays near 3% of nodes. Consequence is highly sensitive to assumed headroom, and nothing collapses the whole network.")
+        if d4 is not None:
+            st.dataframe(d4, width="stretch", hide_index=True)
+            _cap("Legacy hardening-vs-checkpoint table, kept for provenance. It depends on an assumed 40% prevention rate and is not Firewall evidence.")
+
+
+# ---------------------------------------------------------------- page 3: scenario explorer
+
+
+def page_explorer() -> None:
+    nodes = load_nodes()
+    G = load_graph(_SIG)
+    rank = load_ranking(_SIG)
+    scenarios = load_scenarios().set_index("scenario_id")
+    st.markdown('<div class="sc-eyebrow">Scenario explorer</div>'
+                '<div class="sc-title" style="font-size:clamp(22px,2.6vw,30px)">Consequence depends on <span>which asset is hit</span></div>'
+                '<p class="sc-q">Pick a substation to fail. This is the consequence model the Firewall reads when it scores an asset.</p>',
+                unsafe_allow_html=True)
+    subs = nodes[nodes.type == "substation"]
+    labels = {r.id: f"{r.id} · {r.name if isinstance(r.name, str) and r.name else '(unnamed)'}" for r in subs.itertuples()}
+    opts = list(subs.id)
+    canonical = scenarios.loc[FW.get("canonical_scenario_id", scenarios.index[0]), "asset_id"]
+    node = st.selectbox("Substation that fails", opts, index=opts.index(canonical) if canonical in opts else 0, key="explorer_asset", format_func=labels.get)
+    ctx = build_asset_context(G, node, rank, CFG, "explorer_selected")
+    tl = run_cascade(node, _SIG)
+    s = summarize_final(tl)
+    st.markdown(f'<div class="sc-card"><div class="sc-k">{E(labels[node])}</div>'
+                f'<div class="sc-v">rank {ctx["criticality_rank"]} of {ctx["n_ranked_assets"]} · percentile {ctx["criticality_percentile"]:g} · '
+                f'{E(ctx["criticality_tier"].replace("_", " "))} tier</div>'
+                f'<div class="sc-k">Simulated outcome within {tl[-1]["hours"]:g} h</div>'
+                f'<div class="sc-v">{s["people_affected"]:,} exposed · {s["substations_failed"]} substations tripped · {s["hospitals_on_backup"]} hospitals on generator · '
+                f'{s["hospitals_without_power"]} without power · {s["pumps_without_water"]} wards without water · {s["unserved_load_mw"]:,} MW unserved</div></div>',
+                unsafe_allow_html=True)
+    components.html(cascade_component(nodes, G, tl, CFG["assumptions"]["hours_per_step"], height=560), height=580)
+    st.markdown('<span class="sc-pill">● healthy</span><span class="sc-pill inf">● overloaded / on backup</span><span class="sc-pill red">● tripped / no service</span>'
+                '<span class="sc-pill">● substation · hospital ■ pump · hover for state</span>', unsafe_allow_html=True)
+    with st.expander("Criticality ranking · top 10 of 190"):
+        top = rank.head(10).copy()
+        top["tier"] = top.criticality_percentile.apply(lambda p: "very high" if p >= FW["criticality_percentiles"]["very_high"] else ("high" if p >= FW["criticality_percentiles"]["high"] else "normal"))
+        st.dataframe(top[["rank", "node_id", "name", "tier", "people_affected", "substations_failed", "hospitals_feeder_lost", "hospitals_without_power", "pumps_without_water"]],
+                     width="stretch", hide_index=True)
+        _cap("Ranked by simulated service population of tripped substations. Very high = top 10%, high = next 15%, both assumed policy boundaries in config.yaml. "
+             "Population values are independent per-substation draws, not unique people.")
+
+
+# ---------------------------------------------------------------- page 4: methodology & limitations
+
+
+def page_method() -> None:
+    st.markdown('<div class="sc-eyebrow">Methodology &amp; limitations</div>'
+                '<div class="sc-title" style="font-size:clamp(22px,2.6vw,30px)">What is real, <span>what is assumed</span></div>'
+                '<p class="sc-q">Every quantity in this prototype carries one of these labels.</p>', unsafe_allow_html=True)
+    rows = [
+        ("Substation, hospital and pump locations (190 / 1,060 / 157)", "OpenStreetMap, cached in data/raw/", "Observed", "real"),
+        ("Grid topology (which substation feeds what)", "3 nearest neighbours by distance", "Inferred", "inf"),
+        ("Capacity, load, population served, buffers, SLAs, failure window", "config.yaml · seeded draws and declared values", "Assumed", ""),
+        ("Firewall thresholds, tiers, review and acknowledgement targets", "config.yaml · firewall (confirmed_by_team=false)", "Assumed", ""),
+        ("Complaints (20 × 2 languages) and complaint-to-asset mappings", "hand-written · data/scenarios.csv", "Synthetic", ""),
+        ("Classifier predictions, hazard hits, Firewall decisions, evaluation counts", "src/d2_language.py, decision_firewall.py, evaluate_firewall.py", "Measured", "meas"),
+        ("Cascade outcomes, criticality ranking, exposure avoided", "src/cascade.py · deterministic, seed 42", "Simulated", ""),
+        ("AI grievance routing is deployed in Indian cities; low-resource-language gap", "references in LIMITATIONS.md", "Cited", "real"),
+    ]
+    st.markdown('<div class="sc-prov">' + "".join(f'<div><span>{E(k)}</span><span class="src">{E(src)}</span>{_pill(status, cls)}</div>' for k, src, status, cls in rows) + "</div>",
+                unsafe_allow_html=True)
+
+    with st.expander("What the evidence does and does not support"):
+        _cap("<b>Supported:</b> in this controlled bilingual set and simulated scenario, a deterministic consequence-aware Firewall intercepts the dangerous "
+             "routes an AI-only workflow allows, answers every critical case at emergency speed, and keeps automatic routing for most correct low-risk cases "
+             "under clean input.<br><br><b>Not supported:</b> any estimate of real Bengaluru routing accuracy, real feeder connectivity, real repair times, or "
+             "real people protected.")
+    with st.expander("What changed in the physical model"):
+        _cap("The earlier engine re-shed every failed substation's full load on every timestep and ignored the configured buffers, which amplified cascades "
+             "artificially. The corrected engine sheds each failed substation's load once, records it as unserved when no live neighbour remains, conserves "
+             "load at every snapshot, and moves hospitals and pumps through healthy → on backup → service outage. Every D1, robustness and D4 output was "
+             "regenerated; no earlier headline figure is reused.")
+    with st.expander("Known limitations of this prototype"):
+        _cap("• The quality check uses the <b>same 20 complaints</b> as the evaluation, which is circular; a real deployment needs a separate golden set.<br>"
+             "• The hazard vocabulary is small and keyword-based. Kannada active flooding is reachable only through the structured intake path, and Kannada "
+             "ಒಡೆದ (broken/burst) also matches a broken footpath, producing one Yellow conflict flag that is left visible rather than tuned away.<br>"
+             "• The classifier is a deterministic keyword proxy, not a production model. Its score margin is an uncertainty signal, not calibrated confidence.<br>"
+             "• Response, review and acknowledgement timings are assumed prototype policy.<br>"
+             "• Nothing dispatches, messages or changes any real municipal system.")
+    with st.expander("Reproduce every number"):
+        st.code("python src/build_graph.py\npython src/d1_cascade.py\npython src/d1_robustness.py\npython src/d2_language.py\n"
+                "python src/evaluate_firewall.py\npython -m pytest tests/ -q\nstreamlit run app.py", language="bash")
+        _cap("Full detail: LIMITATIONS.md, README.md and docs/STREAMLIT_APP.md.")
 
 
 # ---------------------------------------------------------------- router
 
 PAGES = {
-    "Overview": page_overview,
-    "Cascade simulator": page_cascade,
-    "Language routing": page_language,
-    "Intervention comparison": page_intervention,
+    "Live intervention": page_live,
+    "Evidence": page_evidence,
+    "Scenario explorer": page_explorer,
+    "Methodology & limitations": page_method,
+}
+PAGE_HINT = {
+    "Live intervention": "Watch one complaint become an action",
+    "Evidence": "Catches danger without escalating everything?",
+    "Scenario explorer": "Why the asset matters",
+    "Methodology & limitations": "What is real, what is assumed",
 }
 
 with st.sidebar:
-    st.markdown('<div class="sc-eyebrow">Silent Cascade</div>', unsafe_allow_html=True)
-    choice = st.radio("Section", list(PAGES), label_visibility="collapsed")
+    st.markdown('<div class="sc-eyebrow">Silent Cascade · Decision Firewall</div>', unsafe_allow_html=True)
+    choice = st.radio("Section", list(PAGES), label_visibility="collapsed", key="page",
+                      format_func=lambda p: p, captions=[PAGE_HINT[p] for p in PAGES])
     st.markdown("---")
-    st.caption("Prototype · scenario-based stress testing, not prediction. Every edge carries a provenance label; every assumption lives in config.yaml.")
+    st.markdown('<p class="sc-cap">AI handles routine cases. When danger, uncertainty, missing data or infrastructure consequence is high, the Firewall '
+                'restricts AI authority, overrides the route, starts the emergency action and requires acknowledgement.<br><br>'
+                'Scenario-based prototype. Nothing here dispatches a real crew.</p>', unsafe_allow_html=True)
 
 PAGES[choice]()

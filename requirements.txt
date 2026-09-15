@@ -1,12 +1,21 @@
-osmnx
-overpy
-networkx
-geopandas
-shapely
-matplotlib
-imageio
-pandas
-pyyaml
+# Pinned to the versions the Round 1 submission was verified with (Python 3.11).
+# Compatible ranges: anything >= these minor versions should work; pins keep the demo reproducible.
+networkx==3.6.1
+pandas==2.3.3
+numpy==2.4.3
+matplotlib==3.10.8
+imageio==2.37.4
+PyYAML==6.0.3
 
-# Streamlit prototype (app.py) only — the src/*.py scripts do not use these.
-streamlit
+# Only needed to re-fetch OpenStreetMap data (src/fetch_data.py). The cached data/raw/ files
+# are committed, so the demo, the evaluation and the tests never need these at runtime.
+osmnx==2.1.1
+overpy==0.7
+geopandas==1.1.4
+shapely==2.1.2
+
+# Interactive prototype (app.py) and its smoke tests.
+streamlit==1.55.0
+
+# Test suite (python -m pytest tests/ -q).
+pytest==9.1.1

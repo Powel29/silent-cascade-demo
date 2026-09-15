@@ -1,280 +1,166 @@
-# Silent Cascade — Streamlit App: Pages, Implementation & Results
+# Silent Cascade Decision Firewall — Streamlit App: Pages, Implementation & Results
 
-`app.py` is an interactive Streamlit prototype layered on top of the repo's pure
-functions (`src/cascade.py`, `src/d2_language.py`, `src/d4_intervention.py`). It does not
-reimplement any logic — every number it shows comes from the same code that writes
-`outputs/*.csv`.
-
-> **Note on scope vs. CLAUDE.md:** [CLAUDE.md](../CLAUDE.md) specifies four static demo
-> assets (PNG/GIF/CSV) and explicitly says *"No Streamlit, no Flask, no database, no web
-> server."* This app is a later, additional interactive layer built on top of that
-> pipeline — it is not part of the original build spec. It's documented here as-is,
-> since it exists on this branch and is runnable.
-
-Run it with:
+`app.py` is a thin UI over the repository's pure functions. Every decision it shows is produced
+by `src/decision_firewall.py` (the same code `src/evaluate_firewall.py` scores), every cascade
+by `src/cascade.py`, every classifier result by `src/d2_language.py`. Nothing is reimplemented
+in the app layer, nothing is fetched at runtime except OpenStreetMap map tiles, and nothing
+dispatches, messages or mutates a real system.
 
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
 ```
 
-It has four pages, selected from the sidebar radio (`PAGES` dict, [app.py:779](../app.py:779)):
+Navigation (sidebar, each option carries a one-line caption): **Live intervention** (default) ·
+**Evidence** · **Scenario explorer** · **Methodology & limitations**.
 
-1. Overview
-2. Cascade simulator
-3. Language routing
-4. Intervention comparison
+## Design rule: structure explains itself
 
----
+The app is built so a judge can read it cold, with no narrator and no paragraphs of
+explanation. Prose is replaced by structure:
 
-## 1. Overview (`page_overview`, [app.py:433](../app.py:433))
+| Instead of text saying | The app shows |
+|---|---|
+| how the pipeline works | a six-tile **pipeline ribbon** carrying the live value of every stage |
+| why the verdict is Red | each reason as a short chip **inside the stage that produced it** |
+| what the Firewall adds | AI-only and Firewall panels side by side, always on screen |
+| what a control does | a self-describing label plus a `help` tooltip |
+| what just changed | a one-line **delta banner**: `CHANGED · GREEN → YELLOW · new reason: …` |
+| what safe mode does | a **counterfactual** in the quality-check tile: `if healthy → GREEN` |
 
-### Purpose
-Pitch framing for the whole demo: states the thesis ("nothing monitors the AI that
-decides which asset gets fixed first"), walks through the causal chain from a citizen
-complaint to a physical cascade, shows one concrete misrouted ticket next to a fake
-"all green" monitor, and closes with a provenance table so every number in the app is
-labeled real / inferred / assumed / simulated.
+Two rules follow from this and are enforced by `tests/test_app.py`:
 
-### Implementation
-- **Hero header** — static HTML/CSS block (hackathon eyebrow, title, one-line thesis,
-  metadata row).
-- **Causal chain** (`sc-flow` grid) — a fixed 7-step list (`steps` local variable):
-  Intake → AI layer → Ops → Delay → T+14d equipment fails → Cascade → Impact. The last
-  three steps get a red ("bad") style. This is narrative scaffolding, not computed data.
-- **"No alarm fired" section** — two columns:
-  - Left: `MONITOR_HTML` ([app.py:357](../app.py:357)) embedded via
-    `st.components.v1.html`. This is the same fake "all green" dashboard as D3
-    (`src/d3_dashboard.py`), reimplemented inline as a self-contained HTML/CSS/JS
-    snippet so it can animate client-side (sparklines drift, a request log scrolls,
-    a clock ticks) without triggering Streamlit reruns. It is explicitly a mock: metric
-    values are randomized with a simple linear-congruential PRNG seeded at 7, not real
-    telemetry.
-  - Right: a static "what the classifier actually did" card, hard-coded to complaint
-    `c01` — a Kannada transformer-spark complaint that the keyword classifier fails to
-    parse and drops to a general queue with a 14-day SLA.
-- **Provenance table** (`sc-prov` list) — a fixed list of 9 rows, each tagged
-  `real` (observed), `inf` (inferred), `sim` (assumed/simulated), or `syn` (synthetic),
-  e.g. "Substation locations (190) — OpenStreetMap — Observed" vs. "Capacity, load,
-  population served — config.yaml seeded draws — Assumed." This mirrors the
-  provenance discipline CLAUDE.md requires on every node/edge (`provenance` column) but
-  presents it as a human-readable legend for the whole app. The "Measured" row points the
-  reader to `LIMITATIONS.md` for the single defensible claim, the honest caveats, and the
-  robustness/sensitivity checks behind the headline findings.
+1. **No feature is hidden behind an expander.** Every control stays on the page. Expanders hold
+   justification and appendices only, never a feature.
+2. **The verdict renders before any control.** Controls are read from `st.session_state` at the
+   top of the page and their widgets are rendered lower down, so the decision leads.
 
-### Result
-No computation happens on this page — it's pure presentation over static content and
-values pulled from the other three pages' underlying data (counts like 190 substations /
-1,217 hospitals+pumps, sourced from `data/processed/nodes.csv`). It sets up the vocabulary
-("observed / inferred / assumed / simulated") that recurs on every other page's captions.
+Measured on the canonical scenario at 1400×900, against the previous layout:
 
----
-
-## 2. Cascade simulator (`page_cascade`, [app.py:507](../app.py:507))
-
-### Purpose
-Interactive version of D1 (`src/d1_cascade.py`'s cascade GIF), but scrubbable/playable
-in-browser instead of a fixed GIF, plus the criticality ranking table (D1's
-`outputs/d1_criticality.csv`).
-
-### Implementation
-- Loads `data/processed/graph.gpickle` (`load_graph`, cached with `st.cache_resource`),
-  `data/processed/nodes.csv` (`load_nodes`), and `config.yaml` (`load_config`).
-- `ranking()` calls `criticality_ranking()` from `src/cascade.py` directly (cached with
-  `st.cache_data`), producing the top-10 substations by cascade impact.
-- A `st.selectbox` lets the user pick which substation is the *initiating failure*,
-  defaulting to the top-ranked one. Selecting a node calls `run_cascade(node)`, which is
-  `cascade(load_graph(), [node], max_steps=cfg["d1"]["max_steps"], hours_per_step=...)`
-  — the exact same pure function used by the static pipeline, deep-copying the graph so
-  nothing is mutated between reruns.
-- **Map rendering** ([`cascade_component`](../app.py:328), backed by `MAP_HTML`,
-  [app.py:196](../app.py:196)): instead of Streamlit re-rendering per frame (which would
-  cause a full page rerun per animation tick), the *entire* timeline is serialized to
-  JSON (`node_list`, `edges`, `steps`) and embedded into a self-contained Leaflet.js page
-  via `st.components.v1.html`. A `requestAnimationFrame` loop in the browser animates
-  node/edge color transitions (healthy → overloaded → failed) against real OpenStreetMap
-  tiles, with play/pause, a scrub bar, speed toggle (slow/normal/fast), and a HUD showing
-  elapsed time, people affected, hospitals on generator, wards without water, and
-  substations tripped. This avoids the "flicker on every rerun" problem Streamlit's
-  native `st.pyplot`/`st.image` loop would have (see git log: *"Animate the cascade
-  client-side to stop page reruns and flicker"*).
-- Below the map: `st.dataframe(rank, ...)` renders the criticality ranking table
-  (`node_id, name, people_affected, cascade_size, hospitals_hit`), captioned as "the
-  ranking a classification node has to beat." A caption notes the **robustness sweep**
-  (`src/d1_robustness.py` → `outputs/d1_robustness.csv`, 9 alternate topology/headroom
-  assumption combinations) confirming the top-ranked substation stays high-impact across
-  the swept assumptions — the finding is not an artifact of one parameter choice.
-
-### Result
-With Bengaluru's fetched network (190 substations, 1,060 hospitals, 157 water nodes — see
-`data/processed/nodes.csv`), the top-ranked substation by `criticality_ranking()`
-(`sub_170`, "MUSS NGEF") produces a final cascade of **3,073,265 people affected**, an
-**870-node** failure cascade, and **668 hospitals** hit (`outputs/d1_criticality.csv`).
-The UI lets a user pick any of the 190 substations and watch its specific cascade play
-out at real coordinates instead of only seeing the single worst-case GIF.
-
----
-
-## 3. Language routing (`page_language`, [app.py:591](../app.py:591))
-
-### Purpose
-The most detailed page: traces one complaint end-to-end through (1) the classifier's
-literal decision, (2) a proposed "routing guard" verification checkpoint, (3) what a
-misrouted decision does to the physical cascade, and (4) a live canary/alarm that
-would have caught the degradation. This is D2 (`src/d2_language.py`) made interactive
-and connected to D1's cascade engine and D4's intervention idea.
-
-### Implementation
-Uses functions imported directly from `src/d2_language.py`: `classify_one`,
-`condition_input`, `route_with_guard`, `canary_report`, `misroute_examples`,
-`plot_accuracy`, plus the keyword tables (`FULL_KEYWORDS_EN/KN`,
-`SMALL_KEYWORDS_EN/KN`) and `_looks_english`.
-
-Three selectors drive the whole page: complaint ID (from `data/complaints.csv`, 20
-rows), language (English vs. Kannada native script), and condition (`clean`,
-`truncated`, `small_model` — same three degradation conditions as D2's static
-experiment).
-
-**Section 1 — The decision.** `route_with_guard(full, cond, d2_cfg)` runs the keyword
-classifier under the chosen condition and returns predicted department, keyword-count
-margin, and safety-term hits. `_highlight()` ([app.py:544](../app.py:544)) renders the
-complaint text with `<mark>` tags around every keyword hit, colored green if it matches
-the true department and red ("wrong") otherwise — visually showing *why* the classifier
-picked what it picked. Under `truncated`, the un-seen tail of the text is rendered
-struck through. A fake `POST /classify` log line with a synthetic latency is appended
-for verisimilitude (mirrors the Overview monitor's request log). The right column shows
-true department vs. predicted vs. a verdict (correct / MISROUTED / DROPPED) and the
-score margin.
-
-**Section 2 — The routing guard.** Shows `g["naive"]` (today: unparseable falls to
-`electrical_maintenance`, i.e. a 14-day SLA) side-by-side with `g["guarded"]` (the
-verification-checkpoint logic in `route_with_guard`: unparseable or low-margin
-decisions go to a 48-hour verification queue; any safety keyword hit caps the SLA at
-the emergency SLA regardless of routed department). Cards are colored red/green based
-on whether the resulting SLA is later than `time_to_failure_hours` (336h / 14 days,
-from `config.yaml`).
-
-**Section 3 — Cascade linkage.** If the complaint's true department is
-`electrical_emergency` (`CASCADE_DEPTS`), the user picks which substation the complaint
-"sits on" (defaulting to the #1 criticality-ranked node) and the page calls
-`run_cascade(linked)` (same `cascade()` function as page 2) to show the concrete people-
-affected number that results if the repair SLA is later than 336h vs. if it's caught in
-time. This is the same "same physics, only the decision timing changed" argument as D4.
-Non-electrical complaints show a message that the physical model only covers electrical
-faults.
-
-**Section 4 — Decision-quality canary.** `canary()` (cached, calls `canary_report()`
-from `src/d2_language.py`) re-runs the full 20-complaint golden set across all
-conditions/languages and reports accuracy and unparseable rate per language ×
-condition. The page computes the English-vs-Kannada accuracy gap for the *current*
-condition and raises a visual "ALARM" if that gap exceeds
-`d2.canary_language_gap_alarm_pct` (15 points, from `config.yaml`) — this is presented
-as "the canary CivicOps never had," i.e. the thing that should have caught the D2
-finding automatically instead of a human noticing it in a spreadsheet. The canary panel
-also surfaces a **dangerous-downgrade rate** per language (`dangerous_downgrade_rate()`
-from `src/d2_language.py`, backing `outputs/d2_dangerous_downgrade.csv`) — the share of
-genuinely urgent complaints routed to a non-critical queue, a consequence-weighted metric
-that matters more than raw accuracy because not every misroute is equally harmful.
-
-Below the four interactive sections, the page falls back to the static D2 outputs if
-present: `outputs/d2_accuracy.csv` plotted via `plot_accuracy()` (same function used by
-`d2_language.py`'s `main()`), a pivoted accuracy table, and `misroute_examples()` —
-the complaints correctly routed in English but misrouted in native script. The accuracy
-table now also carries **95% bootstrap confidence intervals** (`bootstrap_ci()`,
-columns `ci_low`/`ci_high` in `outputs/d2_accuracy.csv`), rendered inline as
-`90% [75–100]`. With n=20 complaints per cell the intervals are wide, so the app labels
-the result explicitly as **directional**, not a precise measurement.
-
-### Result
-From `outputs/d2_accuracy.csv` (120 measured classifications: 20 complaints × 2
-languages × 3 conditions):
-
-| condition | English accuracy [95% CI] | Native (Kannada) accuracy [95% CI] |
+| | Before | After |
 |---|---|---|
-| clean | 100% [100–100] | 100% [100–100] |
-| truncated | 90% [75–100] | 55% [35–75] |
-| small_model | 70% [50–90] | 75% [55–95] |
-
-(CIs are 95% bootstrap intervals from `outputs/d2_accuracy.csv`; with n=20 per cell they
-are wide, so the finding is directional, not precise.)
-
-The `truncated` condition shows a genuine 35-point language gap (native script degrades
-far more from truncation than English does) — this is the finding the demo is built
-around, and it would trip the page's canary alarm (gap > 15 pts). The `small_model`
-condition does *not* show a gap in the direction the pitch expects (Kannada actually
-scores higher); per CLAUDE.md's instruction not to tune the experiment to fit the pitch,
-this is reported honestly in both the static chart and the interactive canary rather
-than hidden. `clean` shows no gap in either language, as expected from a baseline
-keyword classifier with full vocabulary in both languages.
+| Scrolling before the verdict appears | 2.3 screens | none, visible on load |
+| Visible words, Live intervention | 1,010 | 592 |
+| Visible words, Evidence | 560 | 249 |
+| Page length, Live intervention | 4.6 screens | 3.4 screens |
 
 ---
 
-## 4. Intervention comparison (`page_intervention`, [app.py:750](../app.py:750))
+## 1. Live intervention (`page_live`)
 
-### Purpose
-Interactive version of D4 (`src/d4_intervention.py`): lets the user re-run the
-baseline/harden/checkpoint comparison live with an adjustable number of runs, instead of
-only viewing the static `outputs/d4_comparison.png`.
+### Layout, in render order
 
-### Implementation
-- `st.slider` for `n_runs` (20–200, default from `config.yaml: d4.n_runs`, step 10).
-- On button click (or if already run this session, tracked via `st.session_state.d4`),
-  calls `run_interventions(n_runs)` ([app.py:173](../app.py:173)), which:
-  1. Loads the graph and `ranking()` to get the top-critical substation.
-  2. Draws `n_runs` shared random initial failures via `draw_random_failures()` (paired
-     across all three conditions, same seed).
-  3. Runs `run_condition()` three times — baseline, on a graph produced by
-     `hardened_graph(G, top_node, 1.5)` (capacity × 1.5), and with
-     `prevention_rate=cfg["d4"]["verification_checkpoint_prevention_rate"]` (0.4,
-     meaning 40% of runs have their initiating failure prevented outright — modeling a
-     verification checkpoint catching the misroute before the asset physically fails).
-- Renders three `st.metric` columns (mean people affected, % delta vs. baseline,
-  illustrative ₹ cost from `config.yaml: assumptions.cost_inr`) and the same
-  `plot_comparison()` horizontal bar chart used by the static script.
-- If not yet run, falls back to displaying the precomputed `outputs/d4_summary.csv`.
-- **"Is this fragile to the 40% assumption?"** — a sensitivity section (`run_sensitivity()`
-  → `sensitivity_sweep()`/`plot_sensitivity()` from `src/d4_intervention.py`, backing
-  `outputs/d4_sensitivity.{csv,png}`) sweeps the checkpoint prevention rate across
-  0.1–0.6 and reports the break-even point: the lowest rate at which the checkpoint still
-  beats hardening. This directly answers the obvious challenge that the headline result
-  rests on one assumed number.
+1. **Header** — title and the one question the product asks.
+2. **Guided demo** — three buttons that drive the whole story with no instructions:
+   ① The dangerous miss (loads the canonical scenario, produces Red),
+   ② A routine complaint (loads a clean low-risk scenario, produces Green, proving the
+   Firewall does not escalate everything),
+   ③ Nobody accepts it (advances the acknowledgement clock into re-escalation).
+3. **Delta banner** — appears only when the verdict changes, naming the before, the after and
+   the first new reason code.
+4. **Pipeline ribbon** — six tiles: Complaint, AI prediction, Independent scan, Asset
+   consequence, AI quality check, Firewall decision. Each shows a live value, a secondary
+   detail, a colour, and the reason chips that fired at that stage. The decision tile is wider
+   and heavier than the rest. Reason chips are short plain language ("direct hazard", "very
+   high consequence", "input cut off"); the stable machine code is the chip's tooltip and is
+   listed verbatim in the reasons expander, so nothing is lost.
+5. **Verdict card** — `RED — IMMEDIATE EMERGENCY DISPATCH` / `YELLOW — HUMAN VERIFICATION
+   BEFORE ROUTING` / `GREEN — AUTOMATIC ROUTING ALLOWED`, with the top reason in plain
+   language and an expander holding all reasons with their codes.
+6. **Contrast panels** — AI only versus With Decision Firewall: route, response time and the
+   simulated physical outcome for each.
+7. **Work order and acknowledgement** — work-order type, department, priority, whether review
+   runs in parallel, live status and what happens if nobody accepts. Buttons: *Crew accepts*,
+   *Nobody accepts*, reset. The card is rendered into a container reserved above the buttons so
+   a click updates the status in the same rerun.
+8. **Controls** — one bordered block, every input visible: scenario, complaint, submitted
+   language, AI input condition (labelled *full text* / *cut to 40 chars* / *smaller model*),
+   affected asset, AI quality check (*auto* / *healthy* / *degraded* / *no signal*), hazard
+   boxes ticked at intake, immediate-danger flag, and the optional assumed failure window.
+9. **Safe mode banner** — `SAFE MODE ACTIVE` or `SAFE MODE OFF`, stated as behaviour.
+10. **Evidence behind the verdict** — four cards in two rows: the complaint as submitted with
+    hazard hits marked, what the AI saw with the cut-off text struck through, the independent
+    scan hits with their source, and the asset context with provenance pills.
+11. **Cascade map** — rendered only when the AI-only branch actually fails.
+12. **Two expanders** — the all-green operations dashboard as the problem illustration, and
+    provenance and caveats for the page.
 
-### Result
-From `outputs/d4_summary.csv` (100 paired runs per condition, seed 42):
+### Canonical scenario (SC-01), as the ribbon reads it
 
-| condition | mean people affected | Δ vs. baseline | illustrative cost |
-|---|---|---|---|
-| Baseline (no intervention) | 1,470,074 | — | ₹0 |
-| Harden substation (capacity ×1.5) | 1,464,398 | −0.4% | ₹8,500,000 |
-| Verification checkpoint (40% prevention) | 1,006,309 | −31.5% | ₹150,000 |
+```text
+1 COMPLAINT        Kannada · 185 chars · intake flags: 2      [immediate danger]
+2 AI PREDICTION    none — unparseable · margin 0 · saw 40 of 185 chars
+                                          [unparseable] [low margin] [input cut off]
+3 INDEPENDENT SCAN 2 direct hazards · electrical sparking, fire or burning +1 more
+                                          [direct hazard] [dangerous downgrade]
+4 ASSET CONSEQUENCE very high · rank 2/190 · 2,729,047 exposed
+                                          [very high consequence] [repair too late]
+5 AI QUALITY CHECK degraded · automatic routing restricted   [quality degraded]
+6 FIREWALL DECISION RED · dispatch now · review in parallel
+```
 
-The interactive page's headline point: the verification checkpoint (cheap, targets the
-AI decision layer) produces a far larger reduction in mean people affected than
-physically hardening the top-ranked substation (expensive, targets one piece of
-hardware) — at roughly 1.8% of the cost. On the dense 190-substation Bengaluru network,
-hardening a *single* node is almost negligible (−0.4%), which sharpens the point: the
-cheap decision-layer fix dominates the expensive hardware fix. Both the prevention rate
-(40%) and the two cost figures are
-explicitly labeled assumptions in `config.yaml`, and the page repeats that label in its
-caption rather than presenting them as measured.
+AI-only responds at 336 h, at or after the assumed failure window, so the cascade runs.
+The Firewall responds at 4 h, so the initiating failure is prevented under the stated
+scenario assumption.
+
+### Presenter moments
+
+- Click ② then set **AI quality check** to `degraded`: Green becomes Yellow, the delta banner
+  names `RELIABILITY_DEGRADED`, and the tile shows `if healthy → GREEN`.
+- Click ② then change **Affected asset** from MUSS NGEF (normal tier) to LR Bande (very high):
+  consequence alone moves the verdict to Yellow.
+- Set **Affected asset** to `(no asset context)`: `ASSET_CONTEXT_MISSING`, because unknown
+  consequence is never treated as low consequence.
+- Click ③: the Red work order re-escalates to the control room supervisor.
+
+---
+
+## 2. Evidence (`page_evidence`)
+
+One question as the headline, one line of context, then a single comparison table: six metrics
+by three configurations, every cell a count over its denominator, best value green and worst
+red. One sentence states the trade-off. Then the comparison chart.
+
+Everything else is an expander: the per-condition workload breakdown, mapped-scenario simulated
+outcomes, how each configuration works and how response time is modelled, the full five-
+configuration table including the escalate-everything reference, the legacy D2 accuracy
+experiment with bootstrap intervals, and the cascade robustness sweep with the legacy D4 table.
+
+## 3. Scenario explorer (`page_explorer`)
+
+Pick a substation to fail. Shows its rank, percentile and tier from the full ranking, the
+simulated outcome summary, and the client-side Leaflet animation of the corrected cascade: grey
+healthy, amber overloaded or on backup, red tripped or in service outage. The top-10 ranking is
+in an expander. The page exists to show that consequence depends on which asset is hit, which is
+the input the Firewall reads when it scores an asset.
+
+## 4. Methodology & limitations (`page_method`)
+
+The provenance table (Observed / Inferred / Assumed / Synthetic / Measured / Simulated / Cited)
+and four expanders: what the evidence does and does not support, what changed in the physical
+model, known limitations, and the commands to reproduce every number.
 
 ---
 
 ## Cross-cutting implementation notes
 
-- **Caching.** Every expensive load or computation (`load_config`, `load_graph`,
-  `load_nodes`, `run_cascade`, `ranking`, `run_interventions`, `canary`) is wrapped in
-  `st.cache_data` / `st.cache_resource` keyed on file mtimes or arguments, so switching
-  pages or re-selecting the same substation doesn't re-run the simulation.
-- **No client-side reruns for animation.** Both the cascade map (page 2) and the fake
-  monitor (page 1) are embedded as self-contained HTML/JS via
-  `st.components.v1.html`, animating with `requestAnimationFrame`/`setInterval` inside
-  an iframe rather than Streamlit's own rerun loop — this was a deliberate fix for
-  flicker (see git history: *"Make the CivicOps monitor on the Overview live,"*
-  *"Animate the cascade client-side to stop page reruns and flicker"*).
-- **Single source of truth.** No page reimplements simulation or classification logic;
-  every number traces back to `src/cascade.py`, `src/d2_language.py`, or
-  `src/d4_intervention.py` — the same modules the static `outputs/*.csv`/`*.png` files
-  are built from. Where the app shows a number CLAUDE.md would call an "assumption"
-  (capacities, populations, SLA hours, prevention rate, costs), the UI labels it as such
-  in a caption, matching the provenance discipline in the underlying data schema.
+- **Caching.** `st.cache_data` / `st.cache_resource` are keyed on the modification times of
+  `data/processed/graph.gpickle`, `outputs/d1_criticality.csv` and `config.yaml`.
+- **Fail loudly.** A missing graph, ranking, scenario file or evaluation CSV produces an error
+  naming the exact command to run. A legacy top-10 `d1_criticality.csv` without
+  `rank`/`criticality_percentile` is rejected the same way. No asset is ever chosen on a
+  complaint's behalf.
+- **Escaping.** Complaint text, OSM names and scenario notes go through `html.escape`; the map's
+  node list is JSON-encoded with `</` escaped and names render through Leaflet tooltips.
+- **State.** Control values live in `st.session_state` and are seeded from the canonical
+  scenario on first load. Selecting a scenario resets its dependent controls. The
+  acknowledgement demo keeps `ack` and `ack_min`, reset whenever the decision changes.
+- **No runtime ground truth.** The app never passes `true_dept` to the Firewall;
+  `assess_risk()` raises if it ever receives it.
+- **Tests.** `tests/test_app.py` drives the app with `streamlit.testing.v1.AppTest` and covers:
+  the canonical scenario renders Red; the ribbon shows all six stages with chips and tooltips;
+  no feature is hidden behind an expander; the guided buttons drive the demo and the delta
+  banner announces the change; language and condition changes recompute; changing the asset
+  changes the consequence context; changing reliability changes AI autonomy and surfaces the
+  counterfactual; an unacknowledged Red order re-escalates; rendered text is escaped; a missing
+  ranking file yields an actionable error.
