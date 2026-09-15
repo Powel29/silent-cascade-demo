@@ -1,4 +1,4 @@
 condition,mean_people_affected,cost_inr
-Baseline (no intervention),1470073.97,0
-Harden substation,1464398.07,8500000
-Verification checkpoint,1006309.26,150000
+Baseline (no intervention),174195.23,0
+Harden substation,173857.01,8500000
+Verification checkpoint,99268.32,150000

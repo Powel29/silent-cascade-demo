@@ -5,7 +5,11 @@ Produces:
   outputs/d1_frames/{scenario}_frame_{step:02d}.png
   outputs/d1_cascade_scenario_a.gif
   outputs/d1_cascade_scenario_b.gif
-  outputs/d1_criticality.csv
+  outputs/d1_criticality.csv   (FULL ranking of every substation, with rank + percentile)
+
+Uses the corrected cascade engine (one-time load shedding, hospital/water buffer states) —
+see src/cascade.py. Amber markers are substations >90% load OR dependent assets on backup;
+red markers are tripped substations OR dependent assets whose buffer has expired.
 """
 
 from __future__ import annotations
@@ -29,7 +33,7 @@ PROCESSED_DIR = REPO_ROOT / "data" / "processed"
 OUTPUTS_DIR = REPO_ROOT / "outputs"
 FRAMES_DIR = OUTPUTS_DIR / "d1_frames"
 
-COLORS = {"healthy": "#9aa0a6", "overloaded": "#f5a623", "failed": "#d93025"}
+COLORS = {"healthy": "#9aa0a6", "overloaded": "#f5a623", "failed": "#d93025", "on_backup": "#f5a623"}
 MARKERS = {"substation": "o", "hospital": "+", "pump": "s"}
 
 
@@ -63,8 +67,8 @@ def render_frame(G: nx.DiGraph, snapshot: dict[str, Any], out_path: Path, cfg: d
         y = [G.nodes[u]["lat"], G.nodes[v]["lat"]]
         ax.plot(x, y, color="#cccccc", linewidth=0.6, zorder=1)
 
-    failed = snapshot["failed"]
-    overloaded = snapshot["overloaded"]
+    failed = snapshot["failed"]  # tripped substations + dependent assets whose buffer expired
+    overloaded = snapshot["overloaded"] | snapshot["on_backup"]  # amber: overloaded or on backup
 
     for node_type, marker in MARKERS.items():
         xs, ys, colors = [], [], []
@@ -89,8 +93,11 @@ def render_frame(G: nx.DiGraph, snapshot: dict[str, Any], out_path: Path, cfg: d
     ax.set_ylabel("Latitude")
 
     textstr = (
-        f"People affected: {snapshot['people_affected']:,}\n"
-        f"Hospitals on generator: {len(snapshot['hospitals_on_generator'])}"
+        f"Simulated service population exposed: {snapshot['people_affected']:,}\n"
+        f"Substations tripped: {len(snapshot['failed_substations'])}\n"
+        f"Hospitals on generator: {len(snapshot['hospitals_on_generator'])}\n"
+        f"Hospitals without power: {len(snapshot['hospitals_without_power'])}\n"
+        f"Wards without water: {len(snapshot['wards_without_water'])}"
     )
     ax.text(
         0.02, 0.02, textstr, transform=ax.transAxes, fontsize=13, va="bottom", ha="left",
@@ -116,8 +123,9 @@ def render_scenario(
         frame_paths.append(out_path)
         print(
             f"[d1_cascade] {scenario_name} step={snapshot['step']:02d} "
-            f"T+{snapshot['hours']:.1f}h failed={len(snapshot['failed'])} "
-            f"people_affected={snapshot['people_affected']}"
+            f"T+{snapshot['hours']:.1f}h substations_failed={len(snapshot['failed_substations'])} "
+            f"on_backup={len(snapshot['on_backup'])} outage={len(snapshot['service_outage'])} "
+            f"people_affected={snapshot['people_affected']} unserved_mw={snapshot['unserved_load']:.1f}"
         )
     return frame_paths
 
@@ -167,13 +175,15 @@ def main() -> None:
     print(f"[d1_cascade] graph: {G.number_of_nodes()} nodes, {G.number_of_edges()} edges")
 
     print("\n[d1_cascade] === criticality ranking ===")
+    # FULL ranking (all substations) so the Decision Firewall can look up any asset's rank and
+    # percentile; the top-10 view is what the deck shows.
     ranking = criticality_ranking(
-        G, max_steps=cfg["d1"]["max_steps"], hours_per_step=cfg["assumptions"]["hours_per_step"], top_n=10
+        G, max_steps=cfg["d1"]["max_steps"], hours_per_step=cfg["assumptions"]["hours_per_step"], top_n=None
     )
     ranking_path = OUTPUTS_DIR / "d1_criticality.csv"
     ranking.to_csv(ranking_path, index=False)
-    print(f"[d1_cascade] wrote {ranking_path}")
-    print(ranking.to_string(index=False))
+    print(f"[d1_cascade] wrote {ranking_path} ({len(ranking)} substations, full ranking)")
+    print(ranking.head(10).to_string(index=False))
 
     top_node = ranking.iloc[0]["node_id"]
     pop_node = largest_substation_by_population(G)

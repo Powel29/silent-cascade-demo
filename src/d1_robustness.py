@@ -3,11 +3,13 @@ cascade impact, which D4's "harden the top-ranked node" and the pitch's "a class
 outranks every substation" both depend on) a structural property of this network, or an
 artifact of one chosen KNN k / one chosen load-headroom range?
 
-NOTE: on this network (190 Bengaluru substations), no single substation's failure collapses the
-*entire* network the way an earlier Bhopal-seed run showed — the worst single substation affects
-at most ~65% of nodes, not 100%. So the metric worth stress-testing isn't "does everyone collapse"
-(false on its face) but "is impact genuinely concentrated in a few substations, or is it roughly
-uniform across all of them" — the latter would undermine the whole idea of a criticality ranking.
+NOTE (corrected engine): with one-time load shedding and buffered dependent assets, the size
+of the worst single-substation cascade is HIGHLY sensitive to the assumed load headroom and KNN
+k. Under the default parameters (k=3, load 55-75% of capacity) the top substation still affects
+~60% of nodes within the 24 h horizon, but under most alternate combinations the failure stays
+contained to a handful of nodes. Impact remains *concentrated* (top vs. median ratio >> 1) in
+every combination, which is the property the relative criticality tiers depend on. No single
+substation collapses the entire network under any tested combination.
 
 Rebuilds the graph under a 3x3 grid of alternate topology (KNN k) and capacity-headroom
 assumptions, reruns criticality_ranking() under each, and reports the concentration of impact
