@@ -113,3 +113,71 @@ d4:
   # initiating failure in X% of runs" per CLAUDE.md's D4 spec. Chosen as an illustrative
   # mid-range value, not derived from D2's accuracy numbers or any external source.
   verification_checkpoint_prevention_rate: 0.4
+
+# ---------------------------------------------------------------------------------------------
+# Decision Firewall policy. EVERY value in this block is an ASSUMED PROTOTYPE POLICY PARAMETER
+# unless a `source:` line says otherwise. None of these numbers is a municipal standard.
+# `confirmed_by_team: false` means the implementer chose placeholder values so the prototype
+# runs end to end; the team must confirm (or change) them before they appear in the PPT.
+# ---------------------------------------------------------------------------------------------
+firewall:
+  confirmed_by_team: false
+  canonical_scenario_id: SC-01          # default Live Intervention scenario (data/scenarios.csv)
+
+  # Relative criticality tiers, from the FULL criticality ranking (criticality_percentile,
+  # 100 = most critical). very_high = top 10% of substations; high = the next 15%.
+  criticality_percentiles:
+    very_high: 90
+    high: 75
+
+  uncertainty:
+    # Keyword-score margin (top dept score minus second). NOT a probability or calibrated
+    # confidence. Same semantics as d2.low_confidence_margin: a margin below 1 is a tie.
+    low_margin_threshold: 1
+
+  reliability:
+    # Reliability state derived from the controlled canary run (canary_report()) for the
+    # (language, condition) in play. Reuses d2.canary_language_gap_alarm_pct semantics.
+    language_gap_degraded_pct: 15       # native accuracy this far below English -> degraded
+    drift_vs_clean_degraded_pct: 15     # accuracy this far below the clean run -> degraded
+
+  # Departments whose SLA (d2.sla_hours) is <= this many hours are time-critical. Reuses the
+  # rule already used by dangerous_downgrade_rate(); today only electrical_emergency qualifies.
+  critical_sla_threshold_hours: 24
+
+  # Complaints whose predicted or hazard-implied department is one of these need an asset
+  # context (which substation) before automatic routing is allowed. The cascade model covers
+  # the electrical network only, so only electrical departments are listed.
+  asset_context_required_for: [electrical_emergency, electrical_maintenance]
+
+  action_policy:
+    # ASSUMED prototype targets for the simulated work-order state machine. Not SLAs.
+    yellow_review_target_hours: 24          # rapid human verification before final routing
+    red_acknowledgement_target_minutes: 15  # Red work order must be accepted within this
+    red_reescalation_target_minutes: 30     # unacknowledged Red re-escalates to control room
+    red_escalation_target: control_room_supervisor
+
+  # Hazards that force RED regardless of any other signal (immediate physical danger).
+  mandatory_red_hazards: [electrical_sparking, live_wire, electric_shock, fire_or_burning]
+
+  # Department each normalized hazard requires. Used for dangerous-downgrade and conflict
+  # detection and for the Red final department. `emergency_control_room` is a simulated
+  # cross-department desk for an unspecified immediate-danger flag.
+  hazard_departments:
+    electrical_sparking: electrical_emergency
+    live_wire: electrical_emergency
+    electric_shock: electrical_emergency
+    fire_or_burning: electrical_emergency
+    burst_pipe: water_supply
+    active_flooding: drainage
+    unknown_immediate_danger: emergency_control_room
+
+  # Response time assumed for the emergency route after a Red decision (hours). Reuses
+  # d2.sla_hours.electrical_emergency; listed here so the policy is self-describing.
+  emergency_response_hours: 4
+
+  # Where the legacy AI-only workflow sends an unparseable complaint (route_with_guard()'s
+  # "naive" behaviour: a general/maintenance queue). The Firewall uses this only to know what
+  # route the AI-only pipeline is PROPOSING, so the repair-window check can compare it with
+  # the assumed failure window.
+  ai_only_fallback_queue: electrical_maintenance
