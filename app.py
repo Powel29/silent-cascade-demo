@@ -427,6 +427,9 @@ COND_LABEL = {"clean": "full text", "truncated": "cut to 40 chars", "small_model
 REL_LABEL = {"auto": "auto (from quality check)", "normal": "healthy", "degraded": "degraded", "unavailable": "no signal"}
 LEVEL_WORD = {"red": "RED", "yellow": "YELLOW", "green": "GREEN"}
 CHIP_CLS = {"red": "", "yellow": "y", "green": "g"}
+# short human words for the red banner's "why" line, built from the actual detected hazards
+HAZARD_WORD = {"electrical_sparking": "sparking", "fire_or_burning": "burning", "live_wire": "live wire",
+               "electric_shock": "shock", "burst_pipe": "burst pipe", "active_flooding": "flooding"}
 
 
 def _pill(text: str, cls: str = "") -> str:
@@ -648,8 +651,18 @@ def page_live() -> None:
     else:
         head, sub = "GREEN — AUTOMATIC ROUTING ALLOWED", (
             f'Routed to <b>{E(decision["final_department"])}</b> automatically. No person needed.')
+    # why line: for a red hazard case, read out the actual detected hazards so the screen
+    # matches the "Why? sparking + burning + immediate danger" caption; else the top reason.
+    why_line, why_prefix = decision["reason_text"][0], ""
+    if level == "red":
+        parts = [HAZARD_WORD.get(h, h.replace("_", " ")) for h in scan.get("direct_hazards", [])]
+        joined = " + ".join(parts)
+        if scan.get("immediate_danger"):
+            joined = f"{joined} + immediate danger" if joined else "immediate danger"
+        if joined:
+            why_line, why_prefix = joined[0].upper() + joined[1:], "Why? "
     st.markdown(f'<div class="sc-risk {level}"><div class="lvl">{head}</div><div class="sub">{sub}</div>'
-                f'<div class="why">{E(decision["reason_text"][0])}</div></div>', unsafe_allow_html=True)
+                f'<div class="why">{why_prefix}{E(why_line)}</div></div>', unsafe_allow_html=True)
     with st.expander(f"All {len(decision['reason_codes'])} reasons in plain language"):
         for code, txt in zip(decision["reason_codes"], decision["reason_text"]):
             st.markdown(f'<div style="padding:5px 0;border-top:1px solid #262b33"><span class="sc-chip {CHIP_CLS[level]}">{E(code)}</span> {E(txt)}</div>', unsafe_allow_html=True)
