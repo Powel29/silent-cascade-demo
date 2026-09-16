@@ -118,6 +118,19 @@ st.markdown(
       .sc-big { font-family: monospace; font-size: 27px; font-weight: 700; line-height: 1.1; margin-top: 6px; font-variant-numeric: tabular-nums; }
       .sc-wo { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 9px; }
       .sc-wo > div { background: #1d222a; border: 1px solid #262b33; border-radius: 8px; padding: 9px 11px; }
+      /* operational timeline (Scene 8): rows reveal as the simulated clock advances */
+      .sc-tl { margin-top: 12px; display: grid; gap: 6px; }
+      .sc-tl > div { display: grid; grid-template-columns: 68px 1fr; gap: 12px; align-items: center; padding: 8px 11px; border-radius: 8px;
+                     border: 1px solid #262b33; background: #1d222a; font-size: 13.5px; transition: opacity .25s; }
+      .sc-tl > div.pending { opacity: .32; }
+      .sc-tl > div .t { font-family: monospace; font-weight: 700; color: #9aa0a6; }
+      .sc-tl > div.warn { border-color: rgba(245,166,35,.55); } .sc-tl > div.warn .t { color: #f5a623; }
+      .sc-tl > div.bad  { border-color: rgba(217,48,37,.6); background: rgba(217,48,37,.1); } .sc-tl > div.bad .t { color: #d93025; }
+      .sc-tl > div.bad .lbl, .sc-tl > div.warn .lbl { font-weight: 600; color: #e8eaed; }
+      /* EMERGENCY ACTION INITIATED stamp on the complaint card (Scene 8) */
+      .sc-stamp { display: inline-block; margin: 0 0 8px; padding: 4px 12px; border: 2px solid #d93025; border-radius: 6px;
+                  color: #d93025; font-family: monospace; font-weight: 700; letter-spacing: .12em; font-size: 12px;
+                  transform: rotate(-3deg); text-transform: uppercase; box-shadow: 0 0 0 1px rgba(217,48,37,.25) inset; }
 
       /* --- evidence table --- */
       .sc-tbl { width: 100%; border-collapse: collapse; font-size: 14px; }
@@ -686,20 +699,49 @@ def page_live() -> None:
         if b1.button("✔ Crew accepts", width="stretch", key="btn_ack"):
             st.session_state["ack"] = True
         if b2.button("⏱ Nobody accepts", width="stretch", key="btn_wait"):
-            st.session_state["ack_min"] += FW["action_policy"]["red_reescalation_target_minutes"] if level == "red" else FW["action_policy"]["yellow_review_target_hours"] * 60
+            if level == "red":  # step T+0 -> T+15 -> T+30 so the timeline advances one beat per click
+                st.session_state["ack_min"] = min(FW["action_policy"]["red_reescalation_target_minutes"],
+                                                   st.session_state.get("ack_min", 0) + FW["action_policy"]["red_acknowledgement_target_minutes"])
+            else:
+                st.session_state["ack_min"] += FW["action_policy"]["yellow_review_target_hours"] * 60
         if b3.button("↺", width="stretch", key="btn_reset"):
             st.session_state["ack"], st.session_state["ack_min"] = False, 0
     state = advance_acknowledgement(plan, st.session_state.get("ack", False), st.session_state.get("ack_min", 0), FW)
     status_cls = {"acknowledged": "ok", "not_required": "", "reescalated": "bad"}.get(state["acknowledgement_state"], "unp")
+
+    # operational timeline + a display status that matches it, for the red emergency case (Scene 8)
+    tl_html, target_field = "", ""
+    ackd = state["acknowledgement_state"] == "acknowledged"
+    disp_status, disp_cls = state["status"], status_cls
+    if level == "red" and plan["requires_acknowledgement"]:
+        ack_t = plan.get("acknowledgement_target_minutes", 15)
+        resc_t = plan.get("reescalation_target_minutes", 30)
+        elapsed = state["minutes_elapsed"]
+        esc_name = FW["action_policy"]["red_escalation_target"].replace("_", " ")
+        target_field = f'<div><div class="sc-k">Acknowledgement target</div><div class="sc-v">{ack_t:g} min</div></div>'
+        if not ackd and resc_t > elapsed >= ack_t:
+            disp_status, disp_cls = "acknowledgement missed", "warn"
+        rows = [
+            ("T+0", "Emergency dispatch created", True, ""),
+            (f"T+{ack_t:g}", "Crew accepted — resolved" if ackd else "Acknowledgement missed", ackd or elapsed >= ack_t, "ok" if ackd else "warn"),
+            (f"T+{resc_t:g}", f"Escalated to {esc_name}", (not ackd) and elapsed >= resc_t, "bad"),
+        ]
+        tl = "".join(f'<div class="{cls}{"" if on else " pending"}"><span class="t">{t}</span><span class="lbl">{E(lbl)}</span></div>'
+                     for t, lbl, on, cls in rows)
+        tl_html = f'<div class="sc-tl">{tl}</div>'
+    elif level == "yellow":
+        target_field = f'<div><div class="sc-k">Review target</div><div class="sc-v">{plan.get("review_target_hours", 24):g} h</div></div>'
+
     wo_slot.markdown(
         '<div class="sc-card" style="margin-top:14px"><div class="sc-wo">'
         f'<div><div class="sc-k">Work order</div><div class="sc-v">{E(plan["work_order_type"])}</div></div>'
         f'<div><div class="sc-k">Assigned to</div><div class="sc-v">{E(plan["assigned_department"])}</div></div>'
         f'<div><div class="sc-k">Priority</div><div class="sc-v">{E(plan["priority"])}</div></div>'
+        f'{target_field}'
         f'<div><div class="sc-k">Human review</div><div class="sc-v">{"in parallel" if plan["human_review_parallel"] else ("before routing" if level == "yellow" else "not required")}</div></div>'
-        f'<div><div class="sc-k">Status · T+{state["minutes_elapsed"]:g} min</div><div class="sc-v {status_cls}">{E(state["status"]).replace("_", " ")}</div></div>'
+        f'<div><div class="sc-k">Status · T+{state["minutes_elapsed"]:g} min</div><div class="sc-v {disp_cls}">{E(disp_status).replace("_", " ")}</div></div>'
         f'<div><div class="sc-k">If nobody accepts</div><div class="sc-v">{E(plan["next_action_if_unacknowledged"])}</div></div>'
-        "</div></div>",
+        f'</div>{tl_html}</div>',
         unsafe_allow_html=True,
     )
 
@@ -741,7 +783,9 @@ def page_live() -> None:
     # taller card). Rendering as st.columns leaves height:100% unresolved and the bottoms ragged.
     seen, kws = condition_input(text, cond, d2["truncate_chars"])
 
+    stamp = '<div class="sc-stamp">⛑ Emergency action initiated</div>' if level == "red" else ""
     card1 = (f'<div class="sc-card"><div class="sc-k">1 · Complaint as submitted · red marks = hazards the scan found</div>'
+             f'{stamp}'
              f'<p class="sc-text">{_highlight(text, None, haz_terms, "")}</p>'
              f'<div class="sc-k">Translation</div><p class="sc-text" style="color:#9aa0a6;font-size:13.5px">{E(row["text_en"] if lang == "native" else row["text_native"])}</p></div>')
 
