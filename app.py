@@ -748,7 +748,19 @@ def page_live() -> None:
         body = _highlight(seen, kws, [], clf["predicted_dept"])
         if not clf["input_complete"]:
             body += f"<s>{E(text[len(seen):])}</s>"
+        # translation of what the AI saw, split to mirror the cut so a non-Kannada reader sees
+        # the classifier only got a fragment. Split point is proportional and snapped to a word.
+        other = row["text_en"] if lang == "native" else row["text_native"]
+        if clf["input_complete"] or not text:
+            tr_html, tr_label = E(other), "Translation"
+        else:
+            cut = int(round(len(seen) / len(text) * len(other)))
+            snap = other.rfind(" ", 0, cut + 1)
+            cut = snap if snap > 0 else cut
+            tr_html = f"{E(other[:cut])}<s>{E(other[cut:])}</s>"
+            tr_label = "Translation · AI saw only the un-struck part (approx. split)"
         st.markdown(f'<div class="sc-card"><div class="sc-k">2 · What the AI saw · struck-through text was cut off</div><p class="sc-text">{body}</p>'
+                    f'<div class="sc-k">{tr_label}</div><p class="sc-text" style="color:#9aa0a6;font-size:13.5px">{tr_html}</p>'
                     f'<div class="sc-k">Verdict</div><div class="sc-v {"unp" if not clf["predicted_dept"] else ""}">{E(clf["predicted_dept"]) or "unparseable — no department"} · margin {clf["margin"]}</div></div>',
                     unsafe_allow_html=True)
     a, b = st.columns(2)
