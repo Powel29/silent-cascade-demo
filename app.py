@@ -737,50 +737,48 @@ def page_live() -> None:
         st.markdown('<div class="sc-safe off" style="margin-top:14px"><b>SAFE MODE OFF</b> · quality check healthy · automatic routing permitted for eligible low-risk complaints</div>', unsafe_allow_html=True)
 
     # ---- 7. the evidence behind the verdict, two rows ----
+    # Each row is one .sc-split grid so the paired cards stretch to equal height (align to the
+    # taller card). Rendering as st.columns leaves height:100% unresolved and the bottoms ragged.
     seen, kws = condition_input(text, cond, d2["truncate_chars"])
-    a, b = st.columns(2)
-    with a:
-        st.markdown(f'<div class="sc-card"><div class="sc-k">1 · Complaint as submitted · red marks = hazards the scan found</div>'
-                    f'<p class="sc-text">{_highlight(text, None, haz_terms, "")}</p>'
-                    f'<div class="sc-k">Translation</div><p class="sc-text" style="color:#9aa0a6;font-size:13.5px">{E(row["text_en"] if lang == "native" else row["text_native"])}</p></div>',
-                    unsafe_allow_html=True)
-    with b:
-        body = _highlight(seen, kws, [], clf["predicted_dept"])
-        if not clf["input_complete"]:
-            body += f"<s>{E(text[len(seen):])}</s>"
-        # translation of what the AI saw, split to mirror the cut so a non-Kannada reader sees
-        # the classifier only got a fragment. Split point is proportional and snapped to a word.
-        other = row["text_en"] if lang == "native" else row["text_native"]
-        if clf["input_complete"] or not text:
-            tr_html, tr_label = E(other), "Translation"
-        else:
-            cut = int(round(len(seen) / len(text) * len(other)))
-            snap = other.rfind(" ", 0, cut + 1)
-            cut = snap if snap > 0 else cut
-            tr_html = f"{E(other[:cut])}<s>{E(other[cut:])}</s>"
-            tr_label = "Translation · AI saw only the un-struck part (approx. split)"
-        st.markdown(f'<div class="sc-card"><div class="sc-k">2 · What the AI saw · struck-through text was cut off</div><p class="sc-text">{body}</p>'
-                    f'<div class="sc-k">{tr_label}</div><p class="sc-text" style="color:#9aa0a6;font-size:13.5px">{tr_html}</p>'
-                    f'<div class="sc-k">Verdict</div><div class="sc-v {"unp" if not clf["predicted_dept"] else ""}">{E(clf["predicted_dept"]) or "unparseable — no department"} · margin {clf["margin"]}</div></div>',
-                    unsafe_allow_html=True)
-    a, b = st.columns(2)
-    with a:
-        hits = "".join(f'<div class="sc-v">{_pill(m["source"].replace("_", " "), "meas" if m["source"] == "original_text" else "syn")} <b>{E(str(m["term"]))}</b> → {E(m["hazard"])}</div>'
-                       for m in scan["matched_terms"]) or '<div class="sc-v ok">no hazard terms in this complaint</div>'
-        st.markdown(f'<div class="sc-card"><div class="sc-k">3 · Independent scan · reads all {len(text)} chars, never the AI prediction</div>{hits}</div>', unsafe_allow_html=True)
-    with b:
-        if ctx["context_available"]:
-            st.markdown(f'<div class="sc-card"><div class="sc-k">4 · Affected asset · {E(ctx["mapping_method"].replace("_", " "))}</div>'
-                        f'<div class="sc-v">{E(ctx["asset_name"])} · rank {ctx["criticality_rank"]} of {ctx["n_ranked_assets"]} · {E(ctx["criticality_tier"].replace("_", " "))}</div>'
-                        f'<div class="sc-k">If it fails (simulated, {CFG["d1"]["max_steps"] * CFG["assumptions"]["hours_per_step"]:g} h horizon)</div>'
-                        f'<div class="sc-v">{_num(ctx["simulated_people_exposed"])} exposed · {ctx["simulated_substations_failed"]} substations · '
-                        f'{ctx["dependent_hospitals"]} hospitals lose feeder · {ctx["wards_without_water"]} wards without water</div>'
-                        f'<div class="sc-k">Labels</div><div>{_pill("location observed", "real")}{_pill("topology inferred", "inf")}{_pill("loads assumed", "syn")}{_pill("outcome simulated", "")}</div></div>',
-                        unsafe_allow_html=True)
-        else:
-            st.markdown(f'<div class="sc-card"><div class="sc-k">4 · Affected asset</div><div class="sc-v unp">none mapped — {E(str(ctx["reason"]))}</div>'
-                        '<div class="sc-k">Policy</div><div class="sc-v">unknown consequence is never treated as low consequence, and no asset is picked on the complaint\'s behalf</div></div>',
-                        unsafe_allow_html=True)
+
+    card1 = (f'<div class="sc-card"><div class="sc-k">1 · Complaint as submitted · red marks = hazards the scan found</div>'
+             f'<p class="sc-text">{_highlight(text, None, haz_terms, "")}</p>'
+             f'<div class="sc-k">Translation</div><p class="sc-text" style="color:#9aa0a6;font-size:13.5px">{E(row["text_en"] if lang == "native" else row["text_native"])}</p></div>')
+
+    body = _highlight(seen, kws, [], clf["predicted_dept"])
+    if not clf["input_complete"]:
+        body += f"<s>{E(text[len(seen):])}</s>"
+    # translation of what the AI saw, split to mirror the cut so a non-Kannada reader sees
+    # the classifier only got a fragment. Split point is proportional and snapped to a word.
+    other = row["text_en"] if lang == "native" else row["text_native"]
+    if clf["input_complete"] or not text:
+        tr_html, tr_label = E(other), "Translation"
+    else:
+        cut = int(round(len(seen) / len(text) * len(other)))
+        snap = other.rfind(" ", 0, cut + 1)
+        cut = snap if snap > 0 else cut
+        tr_html = f"{E(other[:cut])}<s>{E(other[cut:])}</s>"
+        tr_label = "Translation · AI saw only the un-struck part (approx. split)"
+    card2 = (f'<div class="sc-card"><div class="sc-k">2 · What the AI saw · struck-through text was cut off</div><p class="sc-text">{body}</p>'
+             f'<div class="sc-k">{tr_label}</div><p class="sc-text" style="color:#9aa0a6;font-size:13.5px">{tr_html}</p>'
+             f'<div class="sc-k">Verdict</div><div class="sc-v {"unp" if not clf["predicted_dept"] else ""}">{E(clf["predicted_dept"]) or "unparseable — no department"} · margin {clf["margin"]}</div></div>')
+    st.markdown(f'<div class="sc-split">{card1}{card2}</div>', unsafe_allow_html=True)
+
+    hits = "".join(f'<div class="sc-v">{_pill(m["source"].replace("_", " "), "meas" if m["source"] == "original_text" else "syn")} <b>{E(str(m["term"]))}</b> → {E(m["hazard"])}</div>'
+                   for m in scan["matched_terms"]) or '<div class="sc-v ok">no hazard terms in this complaint</div>'
+    card3 = f'<div class="sc-card"><div class="sc-k">3 · Independent scan · reads all {len(text)} chars, never the AI prediction</div>{hits}</div>'
+
+    if ctx["context_available"]:
+        card4 = (f'<div class="sc-card"><div class="sc-k">4 · Affected asset · {E(ctx["mapping_method"].replace("_", " "))}</div>'
+                 f'<div class="sc-v">{E(ctx["asset_name"])} · rank {ctx["criticality_rank"]} of {ctx["n_ranked_assets"]} · {E(ctx["criticality_tier"].replace("_", " "))}</div>'
+                 f'<div class="sc-k">If it fails (simulated, {CFG["d1"]["max_steps"] * CFG["assumptions"]["hours_per_step"]:g} h horizon)</div>'
+                 f'<div class="sc-v">{_num(ctx["simulated_people_exposed"])} exposed · {ctx["simulated_substations_failed"]} substations · '
+                 f'{ctx["dependent_hospitals"]} hospitals lose feeder · {ctx["wards_without_water"]} wards without water</div>'
+                 f'<div class="sc-k">Labels</div><div>{_pill("location observed", "real")}{_pill("topology inferred", "inf")}{_pill("loads assumed", "syn")}{_pill("outcome simulated", "")}</div></div>')
+    else:
+        card4 = (f'<div class="sc-card"><div class="sc-k">4 · Affected asset</div><div class="sc-v unp">none mapped — {E(str(ctx["reason"]))}</div>'
+                 '<div class="sc-k">Policy</div><div class="sc-v">unknown consequence is never treated as low consequence, and no asset is picked on the complaint\'s behalf</div></div>')
+    st.markdown(f'<div class="sc-split">{card3}{card4}</div>', unsafe_allow_html=True)
 
     # ---- 8. the map, only when a failure actually occurs ----
     if ai_fails:
