@@ -803,14 +803,15 @@ def page_live() -> None:
         cut = snap if snap > 0 else cut
         tr_html = f"{E(other[:cut])}<s>{E(other[cut:])}</s>"
         tr_label = "Translation · AI saw only the un-struck part (approx. split)"
-    card2 = (f'<div class="sc-card"><div class="sc-k">2 · What the AI saw · struck-through text was cut off</div><p class="sc-text">{body}</p>'
+    card2 = (f'<div class="sc-card"><div class="sc-k">2 · What the AI saw · struck-through text was cut off {_pill("AI path · advisory only", "meas")}</div><p class="sc-text">{body}</p>'
              f'<div class="sc-k">{tr_label}</div><p class="sc-text" style="color:#9aa0a6;font-size:13.5px">{tr_html}</p>'
              f'<div class="sc-k">Verdict</div><div class="sc-v {"unp" if not clf["predicted_dept"] else ""}">{E(clf["predicted_dept"]) or "unparseable — no department"} · margin {clf["margin"]}</div></div>')
     st.markdown(f'<div class="sc-split">{card1}{card2}</div>', unsafe_allow_html=True)
 
     hits = "".join(f'<div class="sc-v">{_pill(m["source"].replace("_", " "), "meas" if m["source"] == "original_text" else "syn")} <b>{E(str(m["term"]))}</b> → {E(m["hazard"])}</div>'
                    for m in scan["matched_terms"]) or '<div class="sc-v ok">no hazard terms in this complaint</div>'
-    card3 = f'<div class="sc-card"><div class="sc-k">3 · Independent scan · reads all {len(text)} chars, never the AI prediction</div>{hits}</div>'
+    card3 = (f'<div class="sc-card"><div class="sc-k">3 · Independent scan · reads all {len(text)} chars, never the AI prediction '
+             f'{_pill("independent safety path", "real")}</div>{hits}</div>')
 
     if ctx["context_available"]:
         card4 = (f'<div class="sc-card"><div class="sc-k">4 · Affected asset · {E(ctx["mapping_method"].replace("_", " "))}</div>'
