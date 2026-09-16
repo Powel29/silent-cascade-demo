@@ -793,14 +793,6 @@ def page_live() -> None:
         st.markdown('<div class="sc-mon"><div><span>intake-api</span><em>operational · 200 OK</em></div><div><span>classifier</span><em>operational · p50 187 ms</em></div>'
                     '<div><span>router</span><em>operational · error rate 0.01%</em></div></div>', unsafe_allow_html=True)
         _cap("Health dashboards measure whether the AI answered, not whether the answer was safe to act on. Every request above returned 200 OK.")
-    with st.expander("Provenance and caveats for this page"):
-        _cap("Complaints and asset mappings are <b>synthetic</b>. Classifier and Firewall results are <b>measured</b> on this prototype. "
-             "Cascade outcomes are <b>simulated</b> on assumed loads and inferred topology, and exposure is service population, not unique people. "
-             f"Acknowledgement ({FW['action_policy']['red_acknowledgement_target_minutes']} min) and re-escalation "
-             f"({FW['action_policy']['red_reescalation_target_minutes']} min) targets are assumed prototype policy, unconfirmed by the team. "
-             "Nothing here dispatches a real crew. Full detail: LIMITATIONS.md.")
-        if scen is not None:
-            _cap(f"<b>Scenario {E(str(scen.name))}</b> · {E(str(scen.notes))}")
 
 
 # ---------------------------------------------------------------- page 2: evidence
